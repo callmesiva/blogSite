@@ -61,3 +61,113 @@ a {
   pointer-events: none;
   z-index: -1;
 }
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(47, 111, 115, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(47, 111, 115, 0.08) 1px, transparent 1px);
+  background-size: 70px 70px;
+  pointer-events: none;
+}
+
+.about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 28% 34%, rgba(10, 37, 64, 0.05), transparent 30%),
+    radial-gradient(circle at 68% 56%, rgba(47, 111, 115, 0.08), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(242, 244, 247, 0.98));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes riseFade {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.polish-layout > section {
+  position: relative;
+}
+
+.polish-layout > section > div {
+  animation: riseFade 520ms ease both;
+}
+
+.polish-layout > section:nth-child(2) > div {
+  animation-delay: 70ms;
+}
+
+.polish-layout > section:nth-child(3) > div {
+  animation-delay: 110ms;
+}
+
+.polish-layout > section:nth-child(4) > div {
+  animation-delay: 150ms;
+}
+
+.polish-layout > section:nth-child(5) > div {
+  animation-delay: 190ms;
+}
+
+.polish-layout > section:nth-child(6) > div {
+  animation-delay: 230ms;
+}
+
+.polish-layout > section:not(.hero-grid):not(.about-hero) {
+  padding-top: clamp(4rem, 5.6vw, 6.2rem);
+  padding-bottom: clamp(4rem, 5.6vw, 6.2rem);
+}
+
+.polish-layout > section:nth-child(odd):not(.hero-grid):not(.about-hero):not(.tone-lock) {
+  background-color: #eef3f7;
+}
+
+.polish-layout > section:nth-child(even):not(.hero-grid):not(.about-hero):not(.tone-lock) {
+  background-color: #f2f4f7;
+}
+
+.polish-layout article,
+.polish-layout aside,
+.polish-layout details {
+  transition:
+    transform 260ms ease,
+    box-shadow 260ms ease,
+    border-color 260ms ease,
+    background-color 260ms ease;
+}
+
+.polish-layout article:hover,
+.polish-layout aside:hover,
+.polish-layout details:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px rgba(13, 41, 69, 0.08);
+  border-color: #c8d7e1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .polish-layout > section > div {
+    animation: none;
+  }
+
+  .polish-layout article,
+  .polish-layout aside,
+  .polish-layout details {
+    transition: none;
+  }
+}

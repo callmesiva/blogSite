@@ -182,7 +182,7 @@ export default function InsightsClient() {
   }, [hasPosts, isLoading, posts.length]);
 
   return (
-    <main className="min-h-screen bg-[#f8fafc] text-[#0f172a]">
+    <main className="polish-layout min-h-screen bg-[#f8fafc] text-[#0f172a]">
       <section className="mx-auto w-full max-w-[1360px] px-5 pb-20 pt-10 sm:px-8">
         <div className="mb-9 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
