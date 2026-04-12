@@ -209,7 +209,7 @@ export default function InsightsClient() {
     return (
       <main className="min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
         <section className="w-full bg-white">
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#dde6ec] px-5 py-3 sm:px-8 lg:px-20">
+          {/* <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#dde6ec] px-5 py-3 sm:px-8 lg:px-20">
             <Link href="/insights" className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#2f7f88]">
               <ArrowIcon />
               Back to Insights
@@ -223,7 +223,7 @@ export default function InsightsClient() {
               Open in new tab
               <ArrowIcon />
             </a>
-          </div>
+          </div> */}
           <iframe
             title="Insight content"
             src={safeReadUrl}
