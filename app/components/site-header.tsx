@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
   { label: "Case Studies", href: "/#case-studies" },
   { label: "Why Wolvio", href: "/why-wolvio" },
   { label: "Insights", href: "/insights" },
-  { label: "Careers", href: "/#careers" },
+  { label: "Careers", href: "/careers" },
 ];
 
 function ArrowRightIcon() {
@@ -114,6 +114,8 @@ export default function SiteHeader() {
                     ? pathname === "/industries"
                   : item.href === "/why-wolvio"
                     ? pathname === "/why-wolvio"
+                  : item.href === "/careers"
+                    ? pathname === "/careers"
                   : item.href === "/about"
                     ? pathname === "/about"
                   : item.href === "/insights"

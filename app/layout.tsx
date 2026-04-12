@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import SiteFooter from "./components/site-footer";
 import SiteHeader from "./components/site-header";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.wolvio.com"),
@@ -39,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">
+      <body className={`min-h-full flex flex-col ${inter.variable}`}>
         <SiteHeader />
         {children}
         <SiteFooter />
