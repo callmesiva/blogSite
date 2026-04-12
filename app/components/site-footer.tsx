@@ -1,11 +1,25 @@
+import Link from "next/link";
+import Image from "next/image"
+
 export default function SiteFooter() {
   return (
     <footer className="w-full bg-[#082b4a] text-[#a7bad0]">
       <div className="mx-auto grid w-full max-w-[1660px] gap-12 px-5 py-14 sm:px-8 lg:grid-cols-[1.2fr_0.7fr_1fr] lg:px-24 lg:py-16">
         <div>
-          <h3 className="text-[40px] font-semibold tracking-[-0.03em] text-white">
-            WOLVIO
-          </h3>
+          <Link
+            href="/"
+            className="flex items-center"
+            aria-label="Wolvio home"
+          >
+            <Image
+              src="/wolvio-logo-white.png"
+              alt="Wolvio"
+              width={500}
+              height={500}
+              priority
+              className="h-[40px] w-auto"
+            />
+          </Link>
           <p className="mt-5 max-w-[600px] text-[17px] leading-[1.6]">
             Excellence Delivered. We help organizations transform through
             technology-led strategy and human creativity.
@@ -57,5 +71,5 @@ export default function SiteFooter() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
