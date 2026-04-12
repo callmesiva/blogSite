@@ -115,7 +115,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
-      <section className="about-hero relative overflow-hidden">
+      <section className="hero-grid relative overflow-hidden">
         <div className="mx-auto w-full max-w-[1660px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:px-24 lg:py-28">
           <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
             About Wolvio Solutions
