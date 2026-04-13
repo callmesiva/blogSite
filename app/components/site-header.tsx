@@ -18,8 +18,16 @@ const navItems: NavItem[] = [
     label: "Services",
     href: "/service-veeva",
     children: [
-      { label: "Digital Cloud - Veeva", href: "/service-veeva", note: "Life Sciences" },
-      { label: "Digital Transformation and AI", href: "/service-wolvio", note: "Strategy" },
+      {
+        label: "Digital Cloud - Veeva",
+        href: "/service-veeva",
+        note: "Life Sciences",
+      },
+      {
+        label: "Wolvia Intelligence",
+        href: "/service-wolvio",
+        note: "Strategy",
+      },
     ],
   },
   { label: "Industries", href: "/industries" },
@@ -27,7 +35,7 @@ const navItems: NavItem[] = [
   { label: "Why Wolvio", href: "/why-wolvio" },
   { label: "Insights", href: "/insights" },
   { label: "Careers", href: "/careers" },
-];
+]
 
 function ArrowRightIcon() {
   return (

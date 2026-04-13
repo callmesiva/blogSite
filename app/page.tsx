@@ -142,8 +142,9 @@ const deliveryStats = [
   { value: "8+", label: "Certified Veeva Experts" },
   { value: "10+", label: "Specialist Delivery Partnerships" },
   { value: "15+", label: "Veeva Engagements Delivered" },
-  { value: "50+", label: "Years of Combined Expertise" },
-];
+  { value: "50+", label: "Years of Combined Life Sciences Expertise" },
+  { value: "3", label: "Continents Asia, Europe & North America" },
+]
 
 const serviceCards: SimpleCard[] = [
   {
@@ -514,7 +515,7 @@ export default function Home() {
       className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
       <div className="hero-grid">
-        <section className="site-container grid items-center gap-12 pt-10 lg:pt-0 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
+        <section className="site-container grid items-center gap-12 pt-10 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
           <div className="max-w-[760px] mx-auto lg:mx-0 ">
             <h1 className="max-w-[550px] text-center lg:text-left">
               Specialist Veeva Consulting & Managed Services for{" "}
@@ -528,19 +529,19 @@ export default function Home() {
                 pharma, biotech{" "}
               </strong>
               and{" "}
-              <strong className="font-semibold text-[#0f172a]">medtech</strong>
+              <strong className="font-semibold text-[#0f172a]">medtech </strong>
               organisations that require compliant, dependable delivery.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
-                href="#contact"
+                href="contact-us"
                 className="site-btn-primary !bg-[#0a2540] !text-[14px] hover:!bg-[#081d30]"
               >
                 Schedule a Consultation
                 <ArrowRightIcon />
               </a>
               <a
-                href="#services"
+                href="service-veeva"
                 className="site-btn-secondary !text-[14px]"
               >
                 Explore Our Veeva Services
@@ -549,10 +550,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative">
+          {/* <div className="relative">
             <div className="absolute inset-x-[10%] top-[10%] h-[78%] rounded-full bg-[radial-gradient(circle,rgba(47,111,115,0.12)_0%,rgba(255,255,255,0)_68%)] blur-3xl" />
             <SolutionDiagram />
-          </div>
+          </div> */}
         </section>
       </div>
 
@@ -568,7 +569,7 @@ export default function Home() {
             Every number below reflects real engagements, real certifications,
             and real delivery across regulated environments.
           </p>
-          <div className="mt-10 grid gap-y-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+          <div className="mt-10 grid gap-y-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-5">
             {deliveryStats.map(stat => (
               <article
                 key={stat.label}
@@ -605,7 +606,7 @@ export default function Home() {
               </p>
             </div>
             <a
-              href="#services"
+              href="service-veeva"
               className="inline-flex items-center gap-3 text-[16px] font-semibold text-[#2f7f88] transition hover:text-[#256a72]"
             >
               View all services
@@ -626,13 +627,13 @@ export default function Home() {
                 </div>
                 <h3 className="mt-6">{card.title}</h3>
                 <p className="mt-4 mb-6 ">{card.description}</p>
-                <a
+                {/* <a
                   href="#services"
                   className="inline-flex mt-auto items-center gap-2 text-[16px] font-semibold text-[#2f7f88] opacity-0 transition duration-300 group-hover:opacity-100"
                 >
                   See more
                   <ArrowRightIcon />
-                </a>
+                </a> */}
               </article>
             ))}
           </div>
@@ -647,11 +648,14 @@ export default function Home() {
           <p className="site-kicker text-center">
             How We&apos;ve Helped Our Clients
           </p>
-          <h2 className="mx-auto mt-4 max-w-[980px] text-center">
+          <h2 className="mt-3 text-center">
+            Proven Outcomes in Complex Environments
+          </h2>
+          <p className="mx-auto mt-5 max-w-[760px] text-center">
             Explore how we've helped clients navigate complexity, reduce risk,
             and achieve compliant, dependable outcomes across their Veeva Vault
             environments.
-          </h2>
+          </p>
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             {caseCards.map(card => (
               <PillCard
@@ -662,7 +666,7 @@ export default function Home() {
           </div>
           <div className="mt-10 flex justify-center">
             <a
-              href="#contact"
+              href="case-studies"
               className="inline-flex items-center gap-3 rounded-full border border-[#bad0d5] px-8 py-3 text-[16px] font-semibold text-[#2f7f88] transition hover:bg-white"
             >
               Read case study
@@ -704,7 +708,7 @@ export default function Home() {
           </div>
           <div className="mt-10 flex justify-center">
             <a
-              href="#contact"
+              href="why-wolvio"
               className="inline-flex items-center gap-3 rounded-full border border-[#bad0d5] px-8 py-3 text-[16px] font-semibold text-[#2f7f88] transition hover:bg-white"
             >
               Learn More About Our Approach
@@ -789,19 +793,19 @@ export default function Home() {
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Start a Conversation
               </span>
-              <h2 className="mx-auto mt-7 max-w-[900px] ">
+              <h2 className="mx-auto mt-7 max-w-[900px] !text-[26px]">
                 A Focused Conversation Is Where Every Veeva Engagement Starts.
               </h2>
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
                 <a
-                  href="#contact"
+                  href=""
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-sm font-semibold text-white transition hover:bg-[#347f80]"
                 >
                   Schedule a Consultation
                   <ArrowRightIcon />
                 </a>
                 <a
-                  href="mailto:contact@wolviosolutions.com"
+                  href="contact-us"
                   className="inline-flex items-center justify-center rounded-full border border-white/30 px-10 py-4 text-sm font-semibold text-white transition hover:bg-white/10"
                 >
                   Contact Us

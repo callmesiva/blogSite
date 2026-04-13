@@ -1,7 +1,42 @@
 import Image from "next/image";
 import Link from "next/link";
 
+type NavItem = {
+  label: string
+  href: string
+  children?: { label: string; href: string; note?: string }[]
+}
+
 export default function SiteFooter() {
+
+  const navItems: NavItem[] = [
+    { label: "Home", href: "/" },
+    { label: "About", href: "/about" },
+    {
+      label: "Services",
+      href: "/service-veeva",
+      children: [
+        {
+          label: "Digital Cloud - Veeva",
+          href: "/service-veeva",
+          note: "Life Sciences",
+        },
+        {
+          label: "Wolvia Intelligence",
+          href: "/service-wolvio",
+          note: "Strategy",
+        },
+      ],
+    },
+    { label: "Industries", href: "/industries" },
+    { label: "Case Studies", href: "/#case-studies" },
+    { label: "Why Wolvio", href: "/why-wolvio" },
+    { label: "Insights", href: "/insights" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact-us" },
+  ]
+ 
+
   return (
     <footer className="w-full bg-[#082b4a] text-[#a7bad0]">
       <div className="site-container grid w-full gap-10 py-14 sm:py-16 lg:grid-cols-[1.2fr_0.7fr_1fr]">
@@ -30,12 +65,31 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="space-y-3 text-[14px]">
-          <p className="text-[#b5c5d6]"> Digital Cloud - Veeva</p>
-          <p className="text-[#b5c5d6]"> Digital Transformation</p>
-          <p className="text-[#b5c5d6]"> Blockchain</p>
-          <p className="text-[#b5c5d6]"> Blogs</p>
-          <p className="text-[#b5c5d6]"> Careers</p>
-          <p className="text-[#b5c5d6]"> About Us</p>
+          <div className="space-y-3 text-[14px]">
+            {navItems.map(item => {
+              if (item.children) {
+                return item.children.map(child => (
+                  <a
+                    key={child.label}
+                    href={child.href}
+                    className="block text-[#b5c5d6] transition hover:text-white"
+                  >
+                    {child.label}
+                  </a>
+                ))
+              }
+
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="block text-[#b5c5d6] transition hover:text-white"
+                >
+                  {item.label}
+                </a>
+              )
+            })}
+          </div>
         </div>
         <div className="space-y-8">
           <div>

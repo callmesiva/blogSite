@@ -22,7 +22,7 @@ const practices: PracticeCard[] = [
     title: "Wolvio Life Sciences",
     description:
       "Our core practice. Specialist Veeva consulting and managed services for pharma, biotech, and med tech organisations operating in regulated environments. Every engagement is led by expert consultants with deep GxP expertise and hands-on Vault experience.",
-    ctaLabel: "Explore Life Sciences Practice",
+    ctaLabel: "Explore",
     ctaHref: "/service-veeva",
     accent: "bg-[#0b3a63]",
   },
@@ -30,7 +30,7 @@ const practices: PracticeCard[] = [
     title: "Wolvio Intelligence",
     description:
       "Our AI and automation practice. Cross-industry intelligent automation solutions, from private knowledge assistants and document intelligence to workflow automation and voice AI agents. Built for businesses that want to move faster without adding headcount.",
-    ctaLabel: "Explore Wolvio Intelligence",
+    ctaLabel: "Explore",
     ctaHref: "/service-wolvio",
     accent: "bg-[#2f8b92]",
   },
@@ -266,19 +266,21 @@ export default function AboutPage() {
               Asia, Europe, and North America.
             </p>
           </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-8 grid gap-5 sm:grid-cols-4">
             {[
               "2 India Offices",
               "ISO 9001:2015 Certified",
               "15+ Engagements Delivered",
               "Global Client Footprint",
-            ].map(item => (
-              <div
-                key={item}
-                className="site-card-muted px-4 py-3 text-center"
+            ].map(stat => (
+              <article
+                key={stat}
+                className="site-card px-5 py-4"
               >
-                <p>{item}</p>
-              </div>
+                <p className="text-[16px] font-semibold text-[#173652]">
+                  {stat}
+                </p>
+              </article>
             ))}
           </div>
         </div>
@@ -333,7 +335,7 @@ export default function AboutPage() {
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[920px]">
+              <h2 className="mx-auto mt-7 max-w-[920px] !text-[26px]">
                 Schedule a time to discuss your requirements and learn how our
                 expertise can drive meaningful outcomes for your business.
               </h2>
