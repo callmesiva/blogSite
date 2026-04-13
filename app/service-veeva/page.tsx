@@ -566,7 +566,7 @@ export default function ServiceVeevaPage() {
                 it.
               </p>
               <Link
-                href="/#contact"
+                href="/service-veeva"
                 className="mt-8 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88] transition hover:gap-3"
               >
                 Talk to Us About Managed Services
@@ -599,10 +599,10 @@ export default function ServiceVeevaPage() {
                     : "col-span-1 lg:col-span-3" // row 2: each takes 3/6 cols
                 }`}
               >
-                <h4 className="text-[19px] font-semibold text-[#173652]">
+                <h4 className="">
                   {domain.domain}
                 </h4>
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+                <p className="mt-3">
                   {domain.coverage}
                 </p>
               </article>
@@ -616,10 +616,10 @@ export default function ServiceVeevaPage() {
           <p className="site-kicker">How We Work With You</p>
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
             <article className="site-card p-6">
-              <h3 className="text-[21px] font-semibold text-[#173652]">
+              <h3 className="">
                 Veeva Consulting Engagements
               </h3>
-              <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+              <p className="mt-3 ">
                 Defined projects with clear scope, deliverables, and timelines
                 for implementation, migration, integration, and targeted
                 configuration programs delivered by senior consultants
@@ -627,10 +627,10 @@ export default function ServiceVeevaPage() {
               </p>
             </article>
             <article className="site-card p-6">
-              <h3 className="text-[21px] font-semibold text-[#173652]">
+              <h3 className="">
                 Veeva Managed Services
               </h3>
-              <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+              <p className="mt-3">
                 Once live, your platform demands shift to release stability,
                 compliance updates, and operational evolution. We provide
                 structured long-term support models based on your in-house
@@ -657,17 +657,17 @@ export default function ServiceVeevaPage() {
                 key={model.title}
                 className="site-card p-6"
               >
-                <h4 className="text-[19px] font-semibold text-[#173652]">
+                <h4 className="">
                   {model.title}
                 </h4>
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+                <p className="mt-3">
                   {model.desc}
                 </p>
               </article>
             ))}
           </div>
           <Link
-            href="/#contact"
+            href="/service-veeva"
             className="mt-6 inline-flex items-center gap-2 text-[16px] font-semibold text-[#2f7f88]"
           >
             Talk to Us About Managed Services
@@ -686,10 +686,10 @@ export default function ServiceVeevaPage() {
                 key={item.question}
                 className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}
               >
-                <summary className="cursor-pointer list-none text-[17px] font-semibold text-[#173652]">
+                <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#173652]">
                   {item.question}
                 </summary>
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+                <p className="mt-3">
                   {item.answer}
                 </p>
               </details>
@@ -706,13 +706,13 @@ export default function ServiceVeevaPage() {
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[900px] text-[clamp(1.8rem,2.3vw,2.9rem)] font-semibold leading-[1.18] tracking-[-0.03em] text-white">
+              <h2 className="mx-auto mt-7 max-w-[900px] !text-[26px]">
                 Discuss your Veeva platform goals with specialists who deliver
                 in regulated environments every day.
               </h2>
               <div className="mt-8 flex justify-center">
                 <Link
-                  href="/#contact"
+                  href="/contact-us"
                   className="inline-flex items-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[16px] font-semibold text-white transition hover:bg-[#347f80]"
                 >
                   Talk to a Veeva Specialist
