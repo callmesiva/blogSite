@@ -154,7 +154,7 @@ export default function SiteHeader() {
                     {item.children ? <ChevronDownIcon /> : null}
                   </Link>
                   {item.children && item.label === "Services" ? (
-                    <div className="invisible absolute left-1/2 top-full z-20 mt-4 w-[500px] -translate-x-1/2 rounded-[34px] border border-[#dce7ec] bg-white p-4 opacity-0 shadow-[0_24px_60px_rgba(10,37,64,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="invisible absolute left-1/2 top-full z-20 mt-4 w-[450px] -translate-x-1/2 rounded-[34px] border border-[#dce7ec] bg-white p-4 opacity-0 shadow-[0_24px_60px_rgba(10,37,64,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                       <p className="px-4 pb-4 pt-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#92a2b8]">
                         What We Do
                       </p>
@@ -163,9 +163,7 @@ export default function SiteHeader() {
                           <Link
                             key={child.label}
                             href={child.href}
-                            className={`group/item flex items-center justify-between rounded-[28px] px-4 py-4 transition ${
-                              index === 0 ? "bg-[#eef3f7] hover:bg-[#e8f0f6]" : "hover:bg-[#eef3f7]"
-                            }`}
+                            className={`group/item flex items-center justify-between rounded-[28px] px-2 py-2 transition hover:bg-[#eef3f7]`}
                           >
                             <div className="flex items-center gap-4">
                               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#dde6ed] text-[#2f6f73]">
@@ -188,7 +186,7 @@ export default function SiteHeader() {
                                 </svg>
                               </div>
                               <div>
-                                <p className="text-[15px] font-semibold text-[#17314c]">
+                                <p className="text-[13px] font-semibold text-[#17314c]">
                                   {child.label}
                                   {child.note ? (
                                     <span className="ml-2 rounded-full bg-[#e8eeff] px-2 py-1 text-[12px] font-semibold text-[#3158c9]">
@@ -208,8 +206,8 @@ export default function SiteHeader() {
                         ))}
                       </div>
                       <div className="mt-3 flex items-center justify-between border-t border-[#d6e0e8] px-4 pb-2 pt-4">
-                        <p className="text-[14px] font-medium text-[#95a7ba]">Not sure where to start?</p>
-                        <Link href="/contact-us" className="site-btn-link text-[15px]">
+                        <p className="!text-[12px] font-medium text-[#95a7ba]">Not sure where to start?</p>
+                        <Link href="/contact-us" className="site-btn-link !text-[12px]">
                           Talk to us
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M7 17 17 7" />
@@ -223,7 +221,7 @@ export default function SiteHeader() {
               );
             })}
           </nav>
-          <Link href="/contact-us" className="site-btn-primary hidden md:inline-flex">
+          <Link href="/contact-us" className="site-btn-primary !hidden md:!inline-flex">
             Contact us
             <ArrowRightIcon />
           </Link>

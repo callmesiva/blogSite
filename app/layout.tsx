@@ -12,9 +12,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.wolvio.com"),
-  title: "Wolvio | Specialist Veeva Consulting Services",
+  title: "Wolvio | Veeva Consulting & Managed Services for Life Sciences",
   description:
-    "Wolvio delivers specialist Veeva Vault consulting services for pharma, biotech, and med tech teams with implementation, optimization, and post-go-live support.",
+    "Wolvio delivers specialist Veeva Vault Consulting & managed services for pharma, biotech, medtech combining GxP compliant implementation with expert-led delivery",
   keywords: [
     "Wolvio",
     "Veeva Vault consulting",
@@ -24,20 +24,14 @@ export const metadata: Metadata = {
     "digital solutions",
   ],
   openGraph: {
-    title: "Wolvio | Specialist Veeva Consulting Services",
+    title: "Wolvio | Veeva Consulting & Managed Services for Life Sciences",
     description:
-      "Specialist Veeva Vault consulting services for pharma, biotech, and med tech teams.",
+      "Wolvio delivers specialist Veeva Vault Consulting & managed services for pharma, biotech, medtech combining GxP compliant implementation with expert-led delivery ",
     url: "https://www.wolvio.com",
     siteName: "Wolvio",
     type: "website",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Wolvio | Specialist Veeva Consulting Services",
-    description:
-      "Specialist Veeva Vault consulting services for pharma, biotech, and med tech teams.",
-  },
-};
+}
 
 export default function RootLayout({
   children,

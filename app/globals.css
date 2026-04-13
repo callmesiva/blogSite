@@ -49,20 +49,20 @@
   }
 
   h2 {
-    font-size: clamp(1.75rem, 2.45vw, 2.6rem);
-    line-height: 1.16;
-    letter-spacing: -0.03em;
-    font-weight: 600;
-    color: var(--primary);
-  }
+  font-size: clamp(1.500rem, 2vw, 2.300rem); /* 2 → 1.875, 2.8 → 2.675 */
+  line-height: 1.16;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--primary);
+}
 
-  h3 {
-    font-size: clamp(1.3rem, 1.45vw, 1.55rem);
-    line-height: 1.24;
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    color: #173652;
-  }
+h3 {
+  font-size: clamp(1.050rem, 1.325vw, 1.300rem); /* 2px -> 0.125*/
+  line-height: 1.24;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #173652;
+}
 
   h4 {
     font-size: clamp(1.1rem, 1.2vw, 1.25rem);
@@ -72,12 +72,12 @@
     color: #173652;
   }
 
-  p {
-    font-size: clamp(0.95rem, 0.98vw, 1rem);
-    line-height: 1.65;
-    font-weight: 400;
-    color: #63798d;
-  }
+ p {
+  font-size: clamp(0.825rem, 0.98vw, 0.875rem); /* 0.95 → 0.825, 1 → 0.875 */
+  line-height: 1.65;
+  font-weight: 400;
+  color: #63798d;
+}
 
   small,
   label {
@@ -229,6 +229,19 @@
 .site-btn-link:hover {
   color: #256a72;
   transform: translateX(1px);
+}
+
+.site-card-premium {
+  transition:
+    transform 320ms ease,
+    box-shadow 320ms ease,
+    border-color 320ms ease,
+    background-color 320ms ease;
+}
+
+.site-card-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 28px 68px rgba(10, 37, 64, 0.16);
 }
 
 .hero-grid {

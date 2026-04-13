@@ -1,89 +1,68 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import type { ReactNode } from "react";
+import LeadershipSection from "../components/leaderShip"
 
-type InfoCard = {
+type PracticeCard = {
   title: string;
   description: string;
+  ctaLabel: string;
+  ctaHref: string;
   accent: string;
-  icon: ReactNode;
 };
 
-type StatCard = {
-  value: string;
-  label: string;
-};
-
-type ApproachCard = {
+type PrincipleCard = {
   number: string;
   title: string;
   description: string;
   accent: string;
 };
 
-const missionCards: InfoCard[] = [
+const practices: PracticeCard[] = [
   {
-    title: "Drive business success through cutting-edge digital solutions",
+    title: "Wolvio Life Sciences",
     description:
-      "To drive business success by delivering cutting-edge digital solutions that inspire growth, efficiency, and lasting innovation, empowering life sciences organisations to achieve more with the right technology at their side.",
-    accent: "bg-[#123b77]",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <circle cx="12" cy="12" r="8" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="12" cy="12" r="1.2" />
-      </svg>
-    ),
+      "Our core practice. Specialist Veeva consulting and managed services for pharma, biotech, and med tech organisations operating in regulated environments. Every engagement is led by expert consultants with deep GxP expertise and hands-on Vault experience.",
+    ctaLabel: "Explore Life Sciences Practice",
+    ctaHref: "/service-veeva",
+    accent: "bg-[#0b3a63]",
   },
   {
-    title: "Lead globally in transformative IT services",
+    title: "Wolvio Intelligence",
     description:
-      "To lead globally in transformative IT services, enabling organisations to unlock unparalleled success in an ever-evolving digital landscape, and to become the benchmark for specialist Veeva consulting in life sciences.",
+      "Our AI and automation practice. Cross-industry intelligent automation solutions, from private knowledge assistants and document intelligence to workflow automation and voice AI agents. Built for businesses that want to move faster without adding headcount.",
+    ctaLabel: "Explore Wolvio Intelligence",
+    ctaHref: "/service-wolvio",
     accent: "bg-[#2f8b92]",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M9 18h6" />
-        <path d="M12 3a6 6 0 0 0-3 11.2V16h6v-1.8A6 6 0 0 0 12 3Z" />
-        <path d="M10 21h4" />
-      </svg>
-    ),
   },
 ];
 
-const practiceStats: StatCard[] = [
-  { value: "2022", label: "Founded" },
-  { value: "3", label: "Continents Served" },
-  { value: "2", label: "India Offices" },
-  { value: "50+", label: "Years Combined Experience" },
-];
-
-const approachCards: ApproachCard[] = [
+const principles: PrincipleCard[] = [
   {
     number: "01",
-    title: "Depth over breadth",
+    title: "Depth Over Breadth",
     description:
-      "Every consultant brings genuine Veeva and life sciences expertise, not broad platform knowledge stretched across industries. We hire for depth and keep it that way.",
+      "Every person we put on an engagement carries real expertise in the domain they are working in. Not broad knowledge stretched across industries, genuine depth where it matters.",
     accent: "bg-[#163f7d]",
   },
   {
     number: "02",
-    title: "Compliance first",
+    title: "Built-In Standards",
     description:
-      "Every configuration decision and workflow is reviewed with GxP, 21 CFR Part 11, and IDMP compliance at the forefront, not as an afterthought once build is complete.",
+      "The standards that govern our work are embedded from day one, not reviewed at the end when it is too late. We design with the right constraints in place from the start.",
     accent: "bg-[#2f8b92]",
   },
   {
     number: "03",
-    title: "Senior accountability",
+    title: "Senior Accountability",
     description:
-      "Senior consultants lead every engagement from discovery through hypercare. You will not be handed to junior resources once the contract is signed.",
+      "The person who scopes your engagement is the person who delivers it. No bait and switch. No handoff to a junior team once the contract is signed.",
     accent: "bg-[#163f7d]",
   },
   {
     number: "04",
-    title: "Knowledge transfer",
+    title: "Knowledge Transfer",
     description:
-      "We build your team's capability throughout every engagement. Our measure of success is client self-sufficiency, not perpetual dependency on our support.",
+      "We build your team's capability throughout every engagement. Our measure of success is your self-sufficiency when we leave, not dependency on our support.",
     accent: "bg-[#2f8b92]",
   },
 ];
@@ -109,203 +88,259 @@ function ArrowRightIcon() {
 export const metadata: Metadata = {
   title: "About | Wolvio",
   description:
-    "Learn about Wolvio Solutions, our mission, practice model, leadership, and specialist approach to Veeva consulting in life sciences.",
+    "Learn about Wolvio, our two focused practices, mission, vision, specialist operating model, and leadership.",
 };
 
 export default function AboutPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
-      <section className="hero-grid relative overflow-hidden">
-        <div className="site-container py-16 text-center sm:py-20 lg:py-28">
-          <p className="site-kicker">
-            About Wolvio Solutions
+      <section className="hero-grid">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">About Wolvio</p>
+          <h1 className="mt-4 max-w-[960px]">People Behind the Platform.</h1>
+          <p className="site-subheading mt-5 max-w-[1040px]">
+            A specialist technology firm with two focused practices: Veeva
+            consulting for life sciences, and AI and automation for businesses
+            that need to move faster.
           </p>
-          <h1 className="mx-auto mt-6 max-w-[980px]">
-            A specialist <span className="underline decoration-[#3d7f8e]">Veeva consulting</span>{" "}
-            firm built exclusively for <span className="text-[#2f7f88]">life sciences.</span>
-          </h1>
         </div>
       </section>
 
       <section className="site-section">
-        <div className="site-container grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
-          <div>
-            <p className="site-kicker">
-              Who We Are
-            </p>
-            <h2 className="mt-4 max-w-[840px]">
-              Built for life sciences. <span className="text-[#2f7f88]">Fluent in Veeva.</span>
-            </h2>
-            <div className="site-body mt-7 space-y-7">
-              <p>
-                Wolvio Solutions is a specialist consulting firm dedicated to Veeva technology and digital
-                transformation within the life sciences industry. Unlike generalist firms that treat Veeva as one
-                capability among many, we have structured our entire practice around the unique demands of
-                pharmaceutical, biotech, and medical technology companies.
-              </p>
-              <p>
-                Backed by over <strong className="font-semibold text-[#082b4a]">50 years of combined experience</strong>{" "}
-                and ISO 9001:2015 certification, we bring niche expertise in Veeva Vault, CRM, OpenText Documentum,
-                RPA, and AI-infused workflows to clients who cannot afford implementations that fall short in a
-                regulated environment.
-              </p>
-              <p>
-                At Wolvio, technology is more than tools. It is a catalyst for transformation. Our solutions free
-                clients from IT complexity so they can focus on what matters most: innovation, compliance, and growth.
-              </p>
-            </div>
-            <div className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#bfd2d8] bg-[#edf5f6] px-5 py-2.5 text-[clamp(0.95rem,0.9vw,1.05rem)] font-semibold text-[#082b4a]">
-              <span className="text-[#2f7f88]">*</span>
-              ISO 9001:2015 Certified
-            </div>
-          </div>
+        <div className="site-container">
+          <p className="site-kicker">Who We Are</p>
+          <h2 className="mt-4 max-w-[760px]">
+            One firm. Two focused practices.
+          </h2>
+          <p className="site-body mt-5 max-w-[980px]">
+            Wolvio was built on a single belief: specialist firms outperform
+            generalists every time. That belief shaped not just how we work, but
+            what we built. Today Wolvio operates two distinct practices, each
+            with its own focus, team, and client base.
+          </p>
 
-          <div className="space-y-7">
-            {missionCards.map((card, index) => (
-              <article key={card.title} className="site-card relative overflow-hidden bg-[#f7f9fb] p-6 sm:p-7">
-                <div className={`absolute left-0 top-0 h-[6px] w-full ${card.accent}`} />
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#dfe5e8] text-[#2f7f88]">
-                    <div className="h-7 w-7">{card.icon}</div>
-                  </div>
-                  <p className="site-kicker">
-                    {index === 0 ? "Our Mission" : "Our Vision"}
-                  </p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {practices.map(practice => (
+              <article
+                key={practice.title}
+                className="site-card group relative overflow-hidden bg-white p-6 sm:p-7"
+              >
+                <div
+                  className={`absolute left-0 top-0 h-[5px] w-full ${practice.accent}`}
+                />
+                <h3>{practice.title}</h3>
+                <p className="mt-4">{practice.description}</p>
+                <Link
+                  href={practice.ctaHref}
+                  className="site-btn-link mt-5"
+                >
+                  {practice.ctaLabel}
+                  <ArrowRightIcon />
+                </Link>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="site-section-alt overflow-hidden">
+        <div className="site-container">
+          <div className="mt-10 grid overflow-hidden rounded-[36px] shadow-[0_24px_64px_rgba(10,37,64,0.10)] lg:grid-cols-2">
+            {/* ── Mission ── */}
+            <article className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden bg-[#0a2540] p-10 transition-all duration-500 hover:-translate-y-[2px] hover:shadow-[0_30px_70px_rgba(10,37,64,0.18)] sm:p-14">
+              {/* background glow */}
+              <div className="pointer-events-none absolute -left-16 top-10 h-44 w-44 rounded-full bg-[#2f8f95]/20 blur-3xl transition-all duration-700 group-hover:scale-125 group-hover:bg-[#2f8f95]/30" />
+              <div className="pointer-events-none absolute bottom-0 right-0 h-52 w-52 rounded-full bg-white/[0.05] blur-3xl transition-all duration-700 group-hover:scale-110" />
+
+              {/* soft sweep */}
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,transparent_42%,rgba(255,255,255,0.05)_50%,transparent_58%,transparent_100%)] opacity-0 transition-all duration-700 group-hover:translate-x-6 group-hover:opacity-100" />
+
+              {/* Large decorative letter */}
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-4 -top-6 select-none font-bold leading-none text-white/[0.04] transition-all duration-700 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105 group-hover:text-white/[0.07]"
+                style={{ fontSize: "clamp(9rem,16vw,14rem)" }}
+              >
+                M
+              </span>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/10 text-[13px] font-semibold text-white transition-all duration-300 group-hover:scale-105 group-hover:border-white/35 group-hover:bg-white/14">
+                    01
+                  </span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#5caeb4] transition-all duration-300 group-hover:text-[#8bd0d4]">
+                    Mission
+                  </span>
                 </div>
-                <h3 className="mt-6 text-[clamp(1.45rem,1.7vw,2rem)] font-semibold leading-[1.28] tracking-[-0.02em] text-[#173652]">
-                  {card.title}
-                </h3>
-                <p className="mt-4 text-[clamp(0.98rem,0.95vw,1.1rem)] leading-[1.7] text-[#63798d]">
-                  {card.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="site-section-alt">
-        <div className="site-container grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
-          <div>
-            <p className="site-kicker">
-              Our Practice
-            </p>
-            <h2 className="mt-4 max-w-[860px]">
-              Why we built a <span className="text-[#2f7f88]">specialist firm</span>
-            </h2>
-            <div className="site-body mt-7 space-y-7">
-              <p>
-                We founded Wolvio Solutions in <strong className="font-semibold text-[#082b4a]">September 2022</strong>{" "}
-                with a clear conviction: organisations operating in regulated environments deserve a technology partner
-                that genuinely understands the territory, not one that learns it on their engagement.
-              </p>
-              <p>
-                That meant building a firm where every consultant carries real depth in Veeva and life sciences
-                processes. Not certified generalists rotating between platforms, but practitioners who have spent their
-                careers inside the GxP world, working on regulatory submissions, quality management, commercial
-                operations, and clinical data.
-              </p>
-              <p>
-                It also meant staying focused. We have deliberately not expanded into unrelated industries or
-                platforms. Our specialist focus on{" "}
-                <strong className="font-semibold text-[#082b4a]">pharma, biotech, and med tech</strong> is not a
-                constraint, it is the reason clients trust us with their most critical implementations.
-              </p>
-              <p>
-                Since founding, we have grown into a firm serving clients across three continents, with two India
-                offices, ISO 9001:2015 certification, and over 50 years of combined experience, holding to the same
-                standards we started with.
-              </p>
-            </div>
-          </div>
+                <div className="mt-8 h-px w-12 bg-gradient-to-r from-[#2f8f95] to-transparent transition-all duration-500 group-hover:w-24 group-hover:from-[#6bc1c7]" />
 
-          <div className="grid h-fit grid-cols-1 gap-6 sm:grid-cols-2">
-            {practiceStats.map(stat => (
-              <article key={stat.label} className="site-card bg-[#f7f9fb] p-6 sm:p-7">
-                <p className="text-[clamp(2.25rem,3.1vw,3.6rem)] font-bold leading-none tracking-[-0.03em] text-[#2f7f88]">
-                  {stat.value}
-                </p>
-                <p className="mt-3 text-[clamp(1rem,0.95vw,1.18rem)] font-medium text-[#5d7188]">
-                  {stat.label}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+                <h2
+                  className="mt-8 font-semibold leading-[1.18] tracking-[-0.025em] !text-white transition-all duration-300 group-hover:translate-y-[-1px]"
+                  style={{ fontSize: "clamp(1.6rem,2vw,2.1rem)" }}
+                >
+                  Empowering life&nbsp;sciences through technology that
+                  truly&nbsp;works.
+                </h2>
 
-      <section className="tone-lock site-section py-14 sm:py-16 lg:py-20">
-        <div className="site-container">
-          <p className="site-kicker">
-            Our Approach
-          </p>
-          <h2 className="mt-4 max-w-[800px]">
-            How we engage <span className="text-[#2f7f88]">and deliver</span>
-          </h2>
-          <p className="mt-6 max-w-[980px] text-[clamp(1rem,1vw,1.22rem)] leading-[1.7] text-[#5d7188]">
-            We engage as embedded partners, not external vendors. Our delivery model aligns our incentives entirely
-            with your outcomes, and we measure success long after go-live.
-          </p>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {approachCards.map(card => (
-              <article key={card.number} className="site-card relative overflow-hidden bg-[#f7f9fb] p-6 sm:p-7">
-                <div className={`absolute left-0 top-0 h-[6px] w-full ${card.accent}`} />
-                <p className="text-[clamp(2.4rem,3vw,3.7rem)] font-semibold leading-none text-[#dbe3e8]">{card.number}</p>
-                <h3 className="mt-4 text-[clamp(1.45rem,1.65vw,1.95rem)] font-semibold leading-[1.28] tracking-[-0.02em] text-[#173652]">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-[clamp(0.98rem,0.95vw,1.1rem)] leading-[1.7] text-[#63798d]">
-                  {card.description}
+                <p className="mt-6 text-[16px] leading-[1.72] text-[#7fa8be] transition-colors duration-300 group-hover:text-[#a9c4d4]">
+                  To drive business success by delivering cutting-edge digital
+                  solutions that inspire growth, efficiency, and lasting
+                  innovation — empowering life sciences organisations to achieve
+                  more with the right technology at their side.
                 </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </article>
 
-      <section className="site-section-alt">
-        <div className="site-container">
-          <p className="site-kicker">
-            Leadership
-          </p>
-          <h2 className="mt-4 max-w-[700px]">
-            The team behind <span className="text-[#2f7f88]">Wolvio</span>
-          </h2>
-          <article className="site-card relative mt-10 max-w-[460px] overflow-hidden bg-[#f7f9fb] p-6 sm:p-7">
-            <div className="absolute left-0 top-0 h-[6px] w-full bg-[linear-gradient(90deg,#163f7d,#2f8b92)]" />
-            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1d5b86,#2f7f88)] text-[30px] font-semibold text-white">
-              N
-            </div>
-            <h3 className="mt-6 text-[clamp(1.45rem,1.7vw,1.95rem)] font-semibold leading-[1.25] text-[#173652]">
-              Name
-            </h3>
-            <p className="site-kicker mt-1 text-[13px]">
-              Designation
-            </p>
-            <p className="mt-5 text-[clamp(0.98rem,0.95vw,1.1rem)] leading-[1.7] text-[#63798d]">
-              2-3 sentence bio covering background, Veeva and life sciences expertise, and what this person leads at
-              Wolvio.
-            </p>
-          </article>
+            {/* ── Vision ── */}
+            <article className="group relative flex min-h-[460px] flex-col justify-between overflow-hidden border-t border-[#dde8ee] bg-white p-10 transition-all duration-500 hover:-translate-y-[2px] hover:shadow-[0_30px_70px_rgba(10,37,64,0.12)] sm:p-14 lg:border-l lg:border-t-0">
+              {/* background glow */}
+              <div className="pointer-events-none absolute -right-10 top-8 h-44 w-44 rounded-full bg-[#2f6f73]/10 blur-3xl transition-all duration-700 group-hover:scale-125 group-hover:bg-[#2f6f73]/16" />
+              <div className="pointer-events-none absolute bottom-0 left-0 h-52 w-52 rounded-full bg-[#0a2540]/[0.04] blur-3xl transition-all duration-700 group-hover:scale-110" />
+
+              {/* soft sweep */}
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(120deg,transparent_0%,transparent_42%,rgba(10,37,64,0.04)_50%,transparent_58%,transparent_100%)] opacity-0 transition-all duration-700 group-hover:translate-x-6 group-hover:opacity-100" />
+
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -right-4 -top-6 select-none font-bold leading-none text-[#0a2540]/[0.04] transition-all duration-700 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:scale-105 group-hover:text-[#0a2540]/[0.07]"
+                style={{ fontSize: "clamp(9rem,16vw,14rem)" }}
+              >
+                V
+              </span>
+
+              <div className="relative z-10">
+                <div className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#2f6f73]/25 bg-[#2f6f73]/10 text-[13px] font-semibold text-[#2f6f73] transition-all duration-300 group-hover:scale-105 group-hover:border-[#2f6f73]/40 group-hover:bg-[#2f6f73]/14">
+                    02
+                  </span>
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#2f6f73] transition-all duration-300 group-hover:text-[#245b5f]">
+                    Vision
+                  </span>
+                </div>
+
+                <div className="mt-8 h-px w-12 bg-gradient-to-r from-[#2f6f73] to-transparent transition-all duration-500 group-hover:w-24" />
+
+                <h2
+                  className="mt-8 font-semibold leading-[1.18] tracking-[-0.025em] !text-[#0a2540] transition-all duration-300 group-hover:translate-y-[-1px]"
+                  style={{ fontSize: "clamp(1.6rem,2vw,2.1rem)" }}
+                >
+                  The firm life sciences trusts for critical platform decisions.
+                </h2>
+
+                <p className="mt-6 text-[16px] leading-[1.72] text-[#5d748b] transition-colors duration-300 group-hover:text-[#4e667e]">
+                  To be the firm that regulated life sciences organisations
+                  trust with their most critical platform decisions, and the AI
+                  practice enterprises choose when they need automation that
+                  works in production, not just in a demo.
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
       <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">Our Practice</p>
+          <h2 className="mt-4 max-w-[860px]">
+            Why did we build a specialist firm?
+          </h2>
+          <div className="site-body mt-6 max-w-[1040px] space-y-5">
+            <p>
+              Wolvio was founded in September 2022 with a clear conviction:
+              organisations operating in complex, high-stakes environments need
+              a partner with genuine domain expertise, not one learning on their
+              time and budget.
+            </p>
+            <p>
+              Built as a specialist firm, Wolvio focuses on depth over breadth,
+              bringing together experienced professionals who have already spent
+              their careers in the fields they serve.
+            </p>
+            <p>
+              Our firm has deliberately avoided unnecessary expansion, choosing
+              to grow only where proven expertise exists. This focused approach
+              has enabled Wolvio to deliver high-impact work across clients in
+              Asia, Europe, and North America.
+            </p>
+          </div>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              "2 India Offices",
+              "ISO 9001:2015 Certified",
+              "15+ Engagements Delivered",
+              "Global Client Footprint",
+            ].map(item => (
+              <div
+                key={item}
+                className="site-card-muted px-4 py-3 text-center"
+              >
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Our Approach</p>
+          <h2 className="mt-4 max-w-[880px]">
+            We engage as partners. We deliver as practitioners.
+          </h2>
+          <p className="site-body mt-5 max-w-[760px]">
+            Four principles that hold across everything we do.
+          </p>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {principles.map(card => (
+              <article
+                key={card.number}
+                className="site-card relative overflow-hidden bg-white p-6 sm:p-7"
+              >
+                <div
+                  className={`absolute left-0 top-0 h-[5px] w-full ${card.accent}`}
+                />
+                <p className="text-[42px] font-semibold leading-none text-[#dbe3e8]">
+                  {card.number}
+                </p>
+                <h3 className="mt-3">{card.title}</h3>
+                <p className="mt-3">{card.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">Leadership</p>
+          <h2 className="mt-4 max-w-[700px]">The team behind Wolvio</h2>
+          <p className="site-subheading mt-5 max-w-[1040px]">
+            Practitioners who bring deep expertise, clear thinking, and proven
+            execution to every engagement.
+          </p>
+          <LeadershipSection />
+        </div>
+      </section>
+
+      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
         <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
-              <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
+              <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[900px] text-[clamp(1.75rem,2.2vw,2.7rem)] font-semibold leading-[1.22] tracking-[-0.03em] text-white">
-                Schedule a time to discuss your requirements and learn how our expertise can drive meaningful outcomes
-                for your business.
+              <h2 className="mx-auto mt-7 max-w-[920px]">
+                Schedule a time to discuss your requirements and learn how our
+                expertise can drive meaningful outcomes for your business.
               </h2>
               <div className="mt-8 flex justify-center">
                 <Link
-                  href="/#contact"
-                  className="inline-flex items-center justify-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[16px] font-semibold text-white transition hover:bg-[#347f80]"
+                  href="/contact-us"
+                  className="inline-flex items-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[14px] font-semibold text-white transition hover:bg-[#347f80]"
                 >
                   Get in touch
                   <ArrowRightIcon />
@@ -316,5 +351,6 @@ export default function AboutPage() {
         </div>
       </section>
     </main>
-  );
+  )
 }
+
