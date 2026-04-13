@@ -26,7 +26,6 @@
   --font-sans: var(--font-inter);
 }
 
-/* ✅ Wrap ALL bare element styles in @layer base */
 @layer base {
   * { box-sizing: border-box; }
 
@@ -94,7 +93,6 @@
   }
 }
 
-/* Component classes stay unlayered — they're intentional overrides */
 .tone-lock h1,
 .tone-lock h2,
 .tone-lock h3,
@@ -117,9 +115,6 @@
 .tone-lock article > p:last-child {
   color: #8ea5ba;
 }
-
-/* ... rest of your component classes unchanged ... */
-
 
 .site-main {
   min-height: 100vh;

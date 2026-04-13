@@ -94,15 +94,9 @@ export default function CareersClient() {
           params.set("search", query);
         }
 
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_CARRER_API}?${params.toString()}`,
-          {
-            signal: controller.signal,
-          },
-        )
-
-        console.log("career Res", response);
-        
+        const response = await fetch(`/api/career?${params.toString()}`, {
+         signal: controller.signal,
+        })
 
         const payload = (await response.json()) as JobsResponse;
         if (!response.ok || !payload.success) {
