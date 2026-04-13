@@ -20,37 +20,26 @@ type WordPressPost = {
   };
 };
 
-function sanitizeType(input: string | null): SupportedType {
-  if (!input) {
-    return "all";
-  }
-  const value = input.toLowerCase().trim();
-  if (value === "uncategorzied") {
-    return "uncategorized";
-  }
-  if (TYPE_SLUGS.includes(value as (typeof TYPE_SLUGS)[number])) {
-    return value as SupportedType;
-  }
-  return "all";
-}
 
-function resolvePostType(post: WordPressPost) {
-  const termGroups = post._embedded?.["wp:term"] ?? [];
+
+function resolvePostType(post: WordPressPost): string {
+  const termGroups = post._embedded?.["wp:term"] ?? []
   const categories = termGroups
     .flat()
-    .filter(term => term.taxonomy === "category" && term.slug);
+    .filter(
+      term =>
+        term.taxonomy === "category" &&
+        term.slug &&
+        term.slug !== "uncategorized",
+    )
 
-  const supported = categories.find(term =>
-    TYPE_SLUGS.includes((term.slug ?? "") as (typeof TYPE_SLUGS)[number]),
-  );
+  // Return the first real category name, or fallback
+  return categories[0]?.name ?? "Uncategorized"
+}
 
-  if (supported?.slug === "white-space") {
-    return "White Space";
-  }
-  if (supported?.slug === "blog") {
-    return "Blog";
-  }
-  return "Uncategorized";
+function sanitizeType(input: string | null): string {
+  if (!input || input.trim() === "") return "all"
+  return input.toLowerCase().trim()
 }
 
 async function fetchCategoryIdBySlug(slug: string) {
@@ -141,3 +130,4 @@ export async function GET(request: Request) {
     );
   }
 }
+

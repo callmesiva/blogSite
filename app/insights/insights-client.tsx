@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import selectDropDown from "../components/selectDropDown";
+import SelectDropDown from "../components/selectDropDown";
 
 type InsightPost = {
   id: number;
@@ -109,6 +111,25 @@ export default function InsightsClient() {
   const [error, setError] = useState<string | null>(null);
   const loaderRef = useRef<HTMLDivElement | null>(null);
 
+  const [filterOptions, setFilterOptions] = useState([
+    { label: "All Types", value: "all" },
+  ])
+
+  useEffect(() => {
+    fetch("/api/insights/categories")
+      .then(r => r.json())
+      .then(data => {
+        const dynamic = (
+          data.categories as Array<{ slug: string; name: string }>
+        ).map(cat => ({
+          label: cat.name,
+          value: cat.slug,
+        }))
+        setFilterOptions([{ label: "All Types", value: "all" }, ...dynamic])
+      })
+      .catch(() => {}) // silently keep "All Types" only on failure
+  }, [])
+
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setSearchTerm(query.trim());
@@ -207,7 +228,7 @@ export default function InsightsClient() {
 
   if (safeReadUrl) {
     return (
-      <main className="min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+      <main className="min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
         <section className="w-full bg-white">
           {/* <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#dde6ec] px-5 py-3 sm:px-8 lg:px-20">
             <Link href="/insights" className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#2f7f88]">
@@ -227,7 +248,7 @@ export default function InsightsClient() {
           <iframe
             title="Insight content"
             src={safeReadUrl}
-            className="w-full min-h-[760px] h-[calc(100vh-64px)]"
+            className="h-[calc(100vh-72px)] min-h-[760px] w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />
@@ -239,22 +260,18 @@ export default function InsightsClient() {
   return (
     <main className="polish-layout min-h-screen bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
-            Insights
-          </p>
-          <h1 className="mt-4 max-w-[860px] text-[clamp(1.95rem,3vw,3.15rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
-            Knowledge Center
-          </h1>
-          <p className="mt-5 max-w-[940px] text-[16px] leading-[1.65] text-[#63798d]">
-            Practitioner-led perspectives on Veeva platform delivery, regulated operations, and AI-enabled
-            transformation.
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">Insights</p>
+          <h1 className="mt-4 max-w-[860px]">Knowledge Center</h1>
+          <p className="site-subheading mt-5 max-w-[940px]">
+            Practitioner-led perspectives on Veeva platform delivery, regulated
+            operations, and AI-enabled transformation.
           </p>
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="site-section-alt">
+        <div className="site-container">
           <div className="mb-9 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <p className="text-[15px] text-[#5f7388]">{headingNote}</p>
             <div className="grid w-full grid-cols-1 gap-3 md:w-auto md:grid-cols-[minmax(340px,1fr)_200px]">
@@ -266,23 +283,16 @@ export default function InsightsClient() {
                 className="h-12 rounded-2xl border border-[#d1e0e5] bg-white px-4 text-[15px] text-[#0f172a] outline-none ring-[#2f6f73]/25 transition focus:ring-4"
                 aria-label="Search insights by title and content"
               />
-              <select
+              <SelectDropDown
                 value={type}
-                onChange={event => setType(event.target.value)}
-                className="h-12 rounded-2xl border border-[#d1e0e5] bg-white px-4 text-[15px] text-[#0f172a] outline-none ring-[#2f6f73]/25 transition focus:ring-4"
-                aria-label="Filter insights by type"
-              >
-                {FILTER_OPTIONS.map(option => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </select>
+                onChange={setType}
+                options={filterOptions}
+              />
             </div>
           </div>
 
           {error ? (
-            <div className="rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-[15px] text-rose-700">
+            <div className="site-card rounded-2xl border-rose-200 bg-rose-50 px-5 py-4 text-[15px] text-rose-700">
               {error}
             </div>
           ) : null}
@@ -292,7 +302,7 @@ export default function InsightsClient() {
               {Array.from({ length: 6 }).map((_, index) => (
                 <div
                   key={`skeleton-${index}`}
-                  className="overflow-hidden rounded-[24px] border border-[#dce7ec] bg-white"
+                  className="site-card overflow-hidden bg-white"
                 >
                   <div className="aspect-[16/9] animate-pulse bg-[#eaf2f5]" />
                   <div className="space-y-3 p-5">
@@ -307,8 +317,10 @@ export default function InsightsClient() {
           ) : null}
 
           {!isLoading && !hasPosts ? (
-            <div className="rounded-[24px] border border-[#dce7ec] bg-white px-8 py-12 text-center">
-              <h2 className="text-[28px] font-semibold text-[#0a2540]">No insights found</h2>
+            <div className="site-card bg-white px-8 py-12 text-center">
+              <h2 className="text-[28px] font-semibold text-[#0a2540]">
+                No insights found
+              </h2>
               <p className="mt-2 text-[16px] text-[#475569]">
                 Try changing your keyword or switching the type filter.
               </p>
@@ -320,7 +332,7 @@ export default function InsightsClient() {
               {posts.map(post => (
                 <article
                   key={post.id}
-                  className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-[#dce7ec] bg-white shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.1)]"
+                  className="site-card group flex h-full flex-col overflow-hidden bg-white shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.1)]"
                 >
                   <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#eaf2f5]">
                     {post.image ? (
@@ -338,7 +350,9 @@ export default function InsightsClient() {
                     )}
                   </div>
                   <div className="flex h-full flex-col p-5">
-                    <p className="text-[13px] text-[#64748b]">{formatDate(post.date)}</p>
+                    <p className="text-[13px] text-[#64748b]">
+                      {formatDate(post.date)}
+                    </p>
                     <h2
                       className="mt-3 line-clamp-2 text-[22px] font-semibold leading-[1.25] text-[#0a2540]"
                       dangerouslySetInnerHTML={{ __html: post.title }}
@@ -364,19 +378,26 @@ export default function InsightsClient() {
             </div>
           ) : null}
 
-          <div ref={loaderRef} className="flex min-h-16 items-center justify-center pt-6">
+          <div
+            ref={loaderRef}
+            className="flex min-h-16 items-center justify-center pt-6"
+          >
             {isLoadingMore ? (
-              <p className="text-[14px] text-[#617387]">Loading more posts...</p>
+              <p className="text-[14px] text-[#617387]">
+                Loading more posts...
+              </p>
             ) : null}
             {!hasMore && hasPosts ? (
-              <p className="text-[14px] text-[#617387]">You have reached the end.</p>
+              <p className="text-[14px] text-[#617387]">
+                You have reached the end.
+              </p>
             ) : null}
           </div>
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] pb-16 pt-10 sm:pb-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
@@ -387,7 +408,8 @@ export default function InsightsClient() {
                 Need deeper guidance on Veeva or AI strategy?
               </h2>
               <p className="mx-auto mt-4 max-w-[760px] text-[16px] leading-[1.65] text-[#b6c9da]">
-                Speak with our team for practical recommendations grounded in real delivery experience.
+                Speak with our team for practical recommendations grounded in
+                real delivery experience.
               </p>
               <div className="mt-8 flex justify-center">
                 <Link
@@ -403,5 +425,5 @@ export default function InsightsClient() {
         </div>
       </section>
     </main>
-  );
+  )
 }

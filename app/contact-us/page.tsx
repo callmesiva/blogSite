@@ -27,22 +27,22 @@ export const metadata: Metadata = {
 
 export default function ContactUsPage() {
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Contact Us</p>
-          <h1 className="mt-4 max-w-[920px] text-[clamp(1.95rem,3.1vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">Contact Us</p>
+          <h1 className="mt-4 max-w-[920px]">
             Good work starts with an honest conversation
           </h1>
-          <p className="mt-5 max-w-[980px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-subheading mt-5 max-w-[980px]">
             Whether you are here about our Veeva practice or our AI and automation services, a direct conversation is
             where every engagement starts.
           </p>
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] pb-10 pt-8 sm:pb-12">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="tone-lock site-section pb-10 pt-8 sm:pb-12">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative">
@@ -83,10 +83,10 @@ export default function ContactUsPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto grid w-full max-w-[1660px] gap-6 px-5 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:px-24">
-          <article className="rounded-[28px] border border-[#d7dde4] bg-white p-6 sm:p-7">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Zoho Booking Form</p>
+      <section className="site-section-alt">
+        <div className="site-container grid gap-6 lg:grid-cols-[1fr_0.95fr]">
+          <article className="site-card bg-white p-6 sm:p-7">
+            <p className="site-kicker">Zoho Booking Form</p>
             <h2 className="mt-4 text-[clamp(1.65rem,2.25vw,2.35rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[#173652]">
               Schedule your consultation
             </h2>
@@ -104,8 +104,8 @@ export default function ContactUsPage() {
             </div>
           </article>
 
-          <article className="rounded-[28px] border border-[#d7dde4] bg-white p-6 sm:p-7">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Office Locations</p>
+          <article className="site-card bg-white p-6 sm:p-7">
+            <p className="site-kicker">Office Locations</p>
             <h2 className="mt-4 text-[clamp(1.65rem,2.25vw,2.35rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[#173652]">
               Where to Find Us
             </h2>
@@ -139,10 +139,10 @@ export default function ContactUsPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <div className="rounded-[28px] border border-[#d7dde4] bg-white p-6 sm:p-7">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+      <section className="site-section">
+        <div className="site-container">
+          <div className="site-card bg-white p-6 sm:p-7">
+            <p className="site-kicker">
               Direct Contact Details
             </p>
             <h2 className="mt-4 text-[clamp(1.65rem,2.25vw,2.35rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[#173652]">

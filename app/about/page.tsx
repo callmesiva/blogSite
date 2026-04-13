@@ -114,29 +114,29 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid relative overflow-hidden">
-        <div className="mx-auto w-full max-w-[1660px] px-5 py-16 text-center sm:px-8 sm:py-20 lg:px-24 lg:py-28">
-          <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+        <div className="site-container py-16 text-center sm:py-20 lg:py-28">
+          <p className="site-kicker">
             About Wolvio Solutions
           </p>
-          <h1 className="mx-auto mt-6 max-w-[980px] text-[clamp(2rem,4vw,4rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[#07264a]">
+          <h1 className="mx-auto mt-6 max-w-[980px]">
             A specialist <span className="underline decoration-[#3d7f8e]">Veeva consulting</span>{" "}
             firm built exclusively for <span className="text-[#2f7f88]">life sciences.</span>
           </h1>
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto grid w-full max-w-[1660px] gap-8 px-5 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:gap-12 lg:px-24">
+      <section className="site-section">
+        <div className="site-container grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
           <div>
-            <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+            <p className="site-kicker">
               Who We Are
             </p>
-            <h2 className="mt-4 max-w-[840px] text-[clamp(1.8rem,2.9vw,3rem)] font-bold leading-[1.14] tracking-[-0.03em] text-[#07264a]">
+            <h2 className="mt-4 max-w-[840px]">
               Built for life sciences. <span className="text-[#2f7f88]">Fluent in Veeva.</span>
             </h2>
-            <div className="mt-7 space-y-7 text-[clamp(1rem,1vw,1.22rem)] leading-[1.7] text-[#5d7188]">
+            <div className="site-body mt-7 space-y-7">
               <p>
                 Wolvio Solutions is a specialist consulting firm dedicated to Veeva technology and digital
                 transformation within the life sciences industry. Unlike generalist firms that treat Veeva as one
@@ -162,16 +162,13 @@ export default function AboutPage() {
 
           <div className="space-y-7">
             {missionCards.map((card, index) => (
-              <article
-                key={card.title}
-                className="relative overflow-hidden rounded-[28px] border border-[#d7dde4] bg-[#f7f9fb] p-6 sm:p-7"
-              >
+              <article key={card.title} className="site-card relative overflow-hidden bg-[#f7f9fb] p-6 sm:p-7">
                 <div className={`absolute left-0 top-0 h-[6px] w-full ${card.accent}`} />
                 <div className="flex items-center gap-4">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#dfe5e8] text-[#2f7f88]">
                     <div className="h-7 w-7">{card.icon}</div>
                   </div>
-                  <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+                  <p className="site-kicker">
                     {index === 0 ? "Our Mission" : "Our Vision"}
                   </p>
                 </div>
@@ -187,16 +184,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto grid w-full max-w-[1660px] gap-8 px-5 sm:px-8 lg:grid-cols-[1fr_0.95fr] lg:gap-12 lg:px-24">
+      <section className="site-section-alt">
+        <div className="site-container grid gap-8 lg:grid-cols-[1fr_0.95fr] lg:gap-12">
           <div>
-            <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+            <p className="site-kicker">
               Our Practice
             </p>
-            <h2 className="mt-4 max-w-[860px] text-[clamp(1.8rem,2.9vw,3rem)] font-bold leading-[1.14] tracking-[-0.03em] text-[#07264a]">
+            <h2 className="mt-4 max-w-[860px]">
               Why we built a <span className="text-[#2f7f88]">specialist firm</span>
             </h2>
-            <div className="mt-7 space-y-7 text-[clamp(1rem,1vw,1.22rem)] leading-[1.7] text-[#5d7188]">
+            <div className="site-body mt-7 space-y-7">
               <p>
                 We founded Wolvio Solutions in <strong className="font-semibold text-[#082b4a]">September 2022</strong>{" "}
                 with a clear conviction: organisations operating in regulated environments deserve a technology partner
@@ -224,10 +221,7 @@ export default function AboutPage() {
 
           <div className="grid h-fit grid-cols-1 gap-6 sm:grid-cols-2">
             {practiceStats.map(stat => (
-              <article
-                key={stat.label}
-                className="rounded-[28px] border border-[#d7dde4] bg-[#f7f9fb] p-6 sm:p-7"
-              >
+              <article key={stat.label} className="site-card bg-[#f7f9fb] p-6 sm:p-7">
                 <p className="text-[clamp(2.25rem,3.1vw,3.6rem)] font-bold leading-none tracking-[-0.03em] text-[#2f7f88]">
                   {stat.value}
                 </p>
@@ -240,12 +234,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+      <section className="tone-lock site-section py-14 sm:py-16 lg:py-20">
+        <div className="site-container">
+          <p className="site-kicker">
             Our Approach
           </p>
-          <h2 className="mt-4 max-w-[800px] text-[clamp(1.8rem,2.9vw,3rem)] font-bold leading-[1.14] tracking-[-0.03em] text-[#07264a]">
+          <h2 className="mt-4 max-w-[800px]">
             How we engage <span className="text-[#2f7f88]">and deliver</span>
           </h2>
           <p className="mt-6 max-w-[980px] text-[clamp(1rem,1vw,1.22rem)] leading-[1.7] text-[#5d7188]">
@@ -254,10 +248,7 @@ export default function AboutPage() {
           </p>
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {approachCards.map(card => (
-              <article
-                key={card.number}
-                className="relative overflow-hidden rounded-[28px] border border-[#d7dde4] bg-[#f7f9fb] p-6 sm:p-7"
-              >
+              <article key={card.number} className="site-card relative overflow-hidden bg-[#f7f9fb] p-6 sm:p-7">
                 <div className={`absolute left-0 top-0 h-[6px] w-full ${card.accent}`} />
                 <p className="text-[clamp(2.4rem,3vw,3.7rem)] font-semibold leading-none text-[#dbe3e8]">{card.number}</p>
                 <h3 className="mt-4 text-[clamp(1.45rem,1.65vw,1.95rem)] font-semibold leading-[1.28] tracking-[-0.02em] text-[#173652]">
@@ -272,15 +263,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">
             Leadership
           </p>
-          <h2 className="mt-4 max-w-[700px] text-[clamp(1.8rem,2.9vw,3rem)] font-bold leading-[1.14] tracking-[-0.03em] text-[#07264a]">
+          <h2 className="mt-4 max-w-[700px]">
             The team behind <span className="text-[#2f7f88]">Wolvio</span>
           </h2>
-          <article className="relative mt-10 max-w-[460px] overflow-hidden rounded-[28px] border border-[#d7dde4] bg-[#f7f9fb] p-6 sm:p-7">
+          <article className="site-card relative mt-10 max-w-[460px] overflow-hidden bg-[#f7f9fb] p-6 sm:p-7">
             <div className="absolute left-0 top-0 h-[6px] w-full bg-[linear-gradient(90deg,#163f7d,#2f8b92)]" />
             <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[linear-gradient(135deg,#1d5b86,#2f7f88)] text-[30px] font-semibold text-white">
               N
@@ -288,7 +279,7 @@ export default function AboutPage() {
             <h3 className="mt-6 text-[clamp(1.45rem,1.7vw,1.95rem)] font-semibold leading-[1.25] text-[#173652]">
               Name
             </h3>
-            <p className="mt-1 text-[clamp(14px,0.95vw,18px)] font-semibold uppercase tracking-[0.14em] text-[#2e7d83]">
+            <p className="site-kicker mt-1 text-[13px]">
               Designation
             </p>
             <p className="mt-5 text-[clamp(0.98rem,0.95vw,1.1rem)] leading-[1.7] text-[#63798d]">
@@ -299,8 +290,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="site-section">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">

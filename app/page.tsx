@@ -425,16 +425,16 @@ export default function Home() {
   return (
     <main
       id="home"
-      className="min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
+      className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
       <div className="hero-grid">
-        <section className="mx-auto grid w-full max-w-[1660px] items-center gap-14 px-5 pb-18 sm:px-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:px-24 lg:pb-28">
+        <section className="site-container grid items-center gap-12 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
           <div className="max-w-[760px]">
-            <h1 className="max-w-[500px] text-[48px] font-bold leading-[1.1] tracking-[-0.07em] text-[#0a2540] sm:text-[54px] lg:text-[50px]">
+            <h1 className="max-w-[450px] tracking-[-0.04em]">
               Specialist Veeva Consulting Services for Pharma, Biotech
               <span className="block text-[#2f6f73]">&amp; Med Tech</span>
             </h1>
-            <p className="mt-8 max-w-[450px] text-[16px] leading-[1.7] text-[#475569]">
+            <p className="site-subheading mt-7 max-w-[450px]">
               Wolvio provides specialist Veeva Vault consulting for pharma,
               biotech, and med tech; from implementation to post go-live
               support. Our senior consultants bring deep{" "}
@@ -450,14 +450,14 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href="#contact"
-                className="inline-flex h-8 items-center gap-2 rounded-full bg-[#0a2540] px-4 py-5 text-[14px] font-medium leading-none text-white shadow-[0_18px_44px_rgba(10,37,64,0.18)] transition hover:bg-[#081d30]"
+                className="site-btn-primary !bg-[#0a2540] !text-[14px] hover:!bg-[#081d30]"
               >
                 Schedule a Consultation
                 <ArrowRightIcon />
               </a>
               <a
                 href="#services"
-                className="inline-flex h-8 items-center gap-3 rounded-full border border-[#c7d7df] bg-white px-4 py-5 text-[14px] font-medium leading-none text-[#2f6f73] shadow-[0_18px_44px_rgba(47,111,115,0.07)] transition hover:bg-[#f4f9fa]"
+                className="site-btn-secondary !text-[14px]"
               >
                 Explore Our Veeva Services
                 <ArrowRightIcon />
@@ -472,9 +472,9 @@ export default function Home() {
         </section>
       </div>
 
-      <section className="w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.14em] text-[#2c9aa5]">
+      <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
+        <div className="site-container">
+          <p className="site-kicker text-center !text-[#2c9aa5]">
             Delivery Track Record
           </p>
           <h2 className="mt-3 text-center text-[clamp(2rem,3.2vw,2.9rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
@@ -503,21 +503,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="services"
-        className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16"
-      >
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section id="services" className="site-section">
+        <div className="site-container">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[900px]">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+              <p className="site-kicker">
                 What We Do
               </p>
               <h2 className="mt-4 max-w-[560px] text-[clamp(2rem,2.5vw,2.8rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#0c2d4d]">
                 Specialist Veeva Consulting Services Across the{" "}
                 <span className="text-[#2f8b92]">Full Platform</span>
               </h2>
-              <p className="mt-4 max-w-[620px] text-[17px] leading-[1.65] text-[#63798d]">
+              <p className="site-body mt-4 max-w-[620px]">
                 Our Veeva consulting services are purpose-built at the
                 intersection of life sciences operations and modern platforms,
                 delivering regulatory precision and operational alignment that
@@ -563,12 +560,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="case-studies"
-        className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16"
-      >
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+      <section id="case-studies" className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker text-center">
             How We&apos;ve Helped Our Clients
           </p>
           <h2 className="mx-auto mt-4 max-w-[980px] text-center text-[clamp(2.1rem,2.8vw,3.2rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
@@ -595,12 +589,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="why-wolvio"
-        className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16"
-      >
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-center text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+      <section id="why-wolvio" className="site-section">
+        <div className="site-container">
+          <p className="site-kicker text-center">
             Why Wolvio
           </p>
           <h2 className="mx-auto mt-4 max-w-[980px] text-center text-[clamp(2.1rem,2.8vw,3.2rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
@@ -627,21 +618,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="about"
-        className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16"
-      >
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section id="about" className="site-section-alt">
+        <div className="site-container">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[980px]">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+              <p className="site-kicker">
                 Insights & Perspectives
               </p>
               <h2 className="mt-4 max-w-[980px] text-[clamp(2.1rem,2.8vw,3.4rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-[#0c2d4d]">
                 Thinking Across the{" "}
                 <span className="text-[#2f8b92]">Veeva Platform</span>
               </h2>
-              <p className="mt-4 max-w-[820px] text-[17px] leading-[1.65] text-[#63798d]">
+              <p className="site-body mt-4 max-w-[820px]">
                 Our Veeva consulting services are backed by insights from
                 practitioners. Our consultants publish regularly on Veeva
                 platform architecture, regulatory technology, and the practical
@@ -660,15 +648,15 @@ export default function Home() {
             {insightCards.map(card => (
               <article
                 key={card.title}
-                className={`relative overflow-hidden rounded-[34px] p-8 text-white ${card.bg}  bg-[gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] `}
+                className={`relative overflow-hidden rounded-[34px] p-8 text-white ${card.bg}`}
               >
                 <span className="inline-flex rounded-full bg-white/20 px-3 py-1 text-[14px] font-semibold uppercase tracking-[0.08em]">
                   {card.tag}
                 </span>
-                <h3 className="mt-6 max-w-[700px] text-[clamp(1.9rem,2.1vw,2.6rem)] font-semibold leading-[1.2] tracking-[-0.02em]">
+                <h3 className="mt-6 max-w-[700px] !text-[clamp(1.9rem,2.1vw,2.6rem)] text-white font-semibold leading-[1.2] tracking-[-0.02em]">
                   {card.title}
                 </h3>
-                <p className="mt-5 max-w-[710px] text-[17px] leading-[1.6] text-white/88">
+                <p className="mt-5 max-w-[710px] text-[17px] leading-[1.6] !text-white/88">
                   {card.description}
                 </p>
                 <div className="mt-10 flex items-center justify-between text-[16px]">
@@ -687,11 +675,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="contact"
-        className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16"
-      >
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section id="contact" className="tone-lock site-section">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">

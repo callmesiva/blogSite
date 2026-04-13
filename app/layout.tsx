@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className={`min-h-full flex flex-col ${inter.variable}`}>
+      <body className={`site-main min-h-full flex flex-col ${inter.variable}`}>
         <SiteHeader />
         {children}
         <SiteFooter />

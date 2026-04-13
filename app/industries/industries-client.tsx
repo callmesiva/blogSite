@@ -227,27 +227,27 @@ export default function IndustriesClient() {
   );
 
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Industries</p>
-          <h1 className="mt-4 max-w-[1020px] text-[clamp(1.95rem,3.1vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">Industries</p>
+          <h1 className="mt-4 max-w-[1020px]">
             Veeva Consulting for Regulated Industries. Delivered by People Who Know Them.
           </h1>
-          <p className="mt-5 max-w-[930px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-subheading mt-5 max-w-[930px]">
             From global pharma submissions to food safety compliance, if your industry is regulated and your
             operations run on Veeva, we have been here before.
           </p>
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Industry Overview</p>
-          <h2 className="mt-4 max-w-[820px] text-[clamp(1.75rem,2.45vw,2.6rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Industry Overview</p>
+          <h2 className="mt-4 max-w-[820px]">
             Why do regulated industries need a specialist partner?
           </h2>
-          <div className="mt-6 max-w-[1040px] space-y-4 text-[16px] leading-[1.65] text-[#63798d]">
+          <div className="site-body mt-6 max-w-[1040px] space-y-4">
             <p>
               Most consultancies treat compliance as a constraint. In regulated industries, it is the foundation
               everything is built on. From system configurations to data structures, each decision carries implications
@@ -262,10 +262,10 @@ export default function IndustriesClient() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="site-section">
+        <div className="site-container">
           <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
-            <aside className="h-fit rounded-[26px] border border-[#d7dde4] bg-[#f8fafc] p-4">
+            <aside className="site-card h-fit p-4">
               <p className="px-3 pb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#8fa2b8]">
                 Industry Tabs
               </p>
@@ -291,16 +291,16 @@ export default function IndustriesClient() {
               </div>
             </aside>
 
-            <div className="rounded-[30px] border border-[#d7dde4] bg-[#f8fafc] p-6 sm:p-7">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+            <div className="site-card p-6 sm:p-7">
+              <p className="site-kicker">
                 {currentTab.label}
               </p>
               <p className="mt-1 text-[14px] font-medium text-[#5d748b]">{currentTab.subtitle}</p>
-              <p className="mt-4 text-[16px] leading-[1.65] text-[#63798d]">{currentTab.intro}</p>
+              <p className="mt-4 text-[15px] leading-[1.65] text-[#63798d]">{currentTab.intro}</p>
               <div className="mt-7 grid gap-5">
                 {currentTab.blocks.map(block => (
-                  <article key={block.title} className="rounded-[24px] border border-[#d7dde4] bg-white p-5 sm:p-6">
-                    <h3 className="text-[22px] font-semibold leading-[1.2] text-[#173652]">{block.title}</h3>
+                  <article key={block.title} className="site-card rounded-[24px] bg-white p-5 sm:p-6">
+                    <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">{block.title}</h3>
                     <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{block.description}</p>
                     <ul className="mt-4 space-y-2 text-[15px] leading-[1.6] text-[#546b82]">
                       {block.bullets.map(bullet => (
@@ -318,12 +318,12 @@ export default function IndustriesClient() {
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">
             Relevant Case Studies
           </p>
-          <h2 className="mt-4 text-[clamp(1.75rem,2.45vw,2.6rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[#0c2d4d]">
+          <h2 className="mt-4">
             Real results across regulated industries
           </h2>
           <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -332,7 +332,7 @@ export default function IndustriesClient() {
               "QualityOne rollout with CAPA and supplier governance process stabilization.",
               "Recall readiness and traceability workflow modernization across multi-site operations.",
             ].map(item => (
-              <article key={item} className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
+              <article key={item} className="site-card bg-white p-6">
                 <p className="text-[15px] leading-[1.65] text-[#546b82]">{item}</p>
               </article>
             ))}
@@ -347,8 +347,8 @@ export default function IndustriesClient() {
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] pb-16 pt-10 sm:pb-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">

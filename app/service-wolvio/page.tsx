@@ -111,16 +111,16 @@ export const metadata: Metadata = {
 
 export default function ServiceWolvioPage() {
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">
             Wolvio Intelligence
           </p>
-          <h1 className="mt-4 max-w-[960px] text-[clamp(2rem,3.3vw,3.4rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
+          <h1 className="mt-4 max-w-[960px]">
             AI automation services across industries
           </h1>
-          <p className="mt-5 max-w-[900px] text-[17px] leading-[1.65] text-[#63798d]">
+          <p className="site-subheading mt-5 max-w-[900px]">
             AI systems built for how your business actually runs. We design and deploy AI agents, automation systems,
             and intelligent workflows that solve operational problems in production today.
           </p>
@@ -134,13 +134,13 @@ export default function ServiceWolvioPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">What We Do</p>
-          <h2 className="mt-4 max-w-[900px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">What We Do</p>
+          <h2 className="mt-4 max-w-[900px]">
             AI Transformation & Automation
           </h2>
-          <p className="mt-6 max-w-[1060px] text-[17px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-6 max-w-[1060px]">
             Wolvio Intelligence is the AI Transformation & Automation practice of Wolvio Solutions. Through targeted AI
             automation services we deliver intelligent agents, document processing systems, voice AI, and workflow
             automation that drive measurable outcomes across healthcare, logistics, enterprise operations, and customer
@@ -149,20 +149,20 @@ export default function ServiceWolvioPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Business Use Cases</p>
-          <h2 className="mt-4 max-w-[900px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Business Use Cases</p>
+          <h2 className="mt-4 max-w-[900px]">
             What can AI actually do for your business?
           </h2>
-          <p className="mt-5 max-w-[760px] text-[17px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-5 max-w-[760px]">
             Five systems. Each one solves a problem you already have.
           </p>
           <div className="mt-8 grid gap-6">
             {useCases.map((card, index) => (
               <article
                 key={card.title}
-                className="relative overflow-hidden rounded-[30px] border border-[#d7dde4] bg-[#f8fafc] p-6 sm:p-7"
+                className="site-card relative overflow-hidden p-6 sm:p-7"
               >
                 <div
                   className={`absolute left-0 top-0 h-[5px] w-full ${
@@ -171,18 +171,18 @@ export default function ServiceWolvioPage() {
                 />
                 <div className="flex flex-col gap-5 lg:grid lg:grid-cols-[1.2fr_1fr]">
                   <div>
-                    <h3 className="text-[28px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#173652]">
+                    <h3 className="text-[22px] font-semibold leading-[1.25] tracking-[-0.02em] text-[#173652]">
                       {card.title}
                     </h3>
-                    <p className="mt-3 text-[16px] font-medium leading-[1.6] text-[#173652]">{card.pain}</p>
-                    <p className="mt-3 text-[16px] font-semibold leading-[1.6] text-[#2f7f88]">{card.summary}</p>
-                    <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{card.details}</p>
+                    <p className="mt-3 text-[15px] font-medium leading-[1.6] text-[#173652]">{card.pain}</p>
+                    <p className="mt-3 text-[15px] font-semibold leading-[1.6] text-[#2f7f88]">{card.summary}</p>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{card.details}</p>
                   </div>
-                  <div className="rounded-[22px] border border-[#d6e3e7] bg-[#f4f9fa] p-5">
-                    <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#2d7a83]">
+                  <div className="site-card-muted rounded-[22px] p-5">
+                    <p className="site-kicker text-[12px]">
                       Capabilities
                     </p>
-                    <ul className="mt-3 space-y-2 text-[15px] text-[#486173]">
+                    <ul className="mt-3 space-y-2 text-[14px] text-[#486173]">
                       {card.bullets.map(bullet => (
                         <li key={bullet} className="flex items-start gap-2">
                           <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92]" />
@@ -198,12 +198,12 @@ export default function ServiceWolvioPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">
             Why Wolvio Intelligence
           </p>
-          <h2 className="mt-4 max-w-[940px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+          <h2 className="mt-4 max-w-[940px]">
             How we&apos;re different from typical AI consultancies
           </h2>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
@@ -225,39 +225,39 @@ export default function ServiceWolvioPage() {
                 body: "Every delivery includes governance, logging, and performance tracking for accuracy, resolution, and time saved.",
               },
             ].map(item => (
-              <article key={item.title} className="rounded-[26px] border border-[#d7dde4] bg-[#f8fafc] p-6">
-                <h3 className="text-[24px] font-semibold leading-[1.2] text-[#173652]">{item.title}</h3>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{item.body}</p>
+              <article key={item.title} className="site-card p-6">
+                <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">{item.title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{item.body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">FAQ</p>
-          <h2 className="mt-4 text-[clamp(1.8rem,2.6vw,2.8rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">FAQ</p>
+          <h2 className="mt-4">
             Questions we hear before every engagement
           </h2>
-          <p className="mt-4 max-w-[900px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-4 max-w-[900px]">
             These are the real concerns that usually stop buyers from reaching out. We answer them directly.
           </p>
           <div className="mt-8 space-y-4">
-            {faqs.map(item => (
-              <details key={item.question} className="rounded-[22px] border border-[#d7dde4] bg-[#f8fafc] px-5 py-4">
-                <summary className="cursor-pointer list-none text-[18px] font-semibold text-[#173652]">
+            {faqs.map((item, index) => (
+              <details key={item.question} className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}>
+                <summary className="cursor-pointer list-none text-[17px] font-semibold text-[#173652]">
                   {item.question}
                 </summary>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{item.answer}</p>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{item.answer}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] pb-16 pt-8 sm:pb-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="tone-lock site-section pb-16 pt-8 sm:pb-20">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">

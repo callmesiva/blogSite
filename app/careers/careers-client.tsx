@@ -28,8 +28,7 @@ type JobsResponse = {
   };
 };
 
-const API_ENDPOINT =
-  "https://wolvio-careers-page-backend-f459ff65fd55.herokuapp.com/api/jobs/postedjobs";
+
 
 function ArrowRightIcon() {
   return (
@@ -95,9 +94,15 @@ export default function CareersClient() {
           params.set("search", query);
         }
 
-        const response = await fetch(`${API_ENDPOINT}?${params.toString()}`, {
-          signal: controller.signal,
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_CARRER_API}?${params.toString()}`,
+          {
+            signal: controller.signal,
+          },
+        )
+
+        console.log("career Res", response);
+        
 
         const payload = (await response.json()) as JobsResponse;
         if (!response.ok || !payload.success) {
@@ -144,45 +149,45 @@ export default function CareersClient() {
   }, [totalJobs]);
 
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Careers</p>
-          <h1 className="mt-4 max-w-[960px] text-[clamp(1.95rem,3.1vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">Careers</p>
+          <h1 className="mt-4 max-w-[960px]">
             Build Your Career at the Intersection of Life Sciences and AI.
           </h1>
-          <p className="mt-5 max-w-[1040px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-subheading mt-5 max-w-[1040px]">
             Two specialist practices. One firm. Work that is meaningful, colleagues who have genuinely done it
             before, and a team small enough that your contribution actually shows.
           </p>
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Why Join Wolvio?</p>
-          <p className="mt-4 max-w-[1040px] text-[16px] leading-[1.65] text-[#63798d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Why Join Wolvio?</p>
+          <p className="site-body mt-4 max-w-[1040px]">
             Wolvio runs two focused practices: Veeva consulting and managed services for pharma, biotech, and med
             tech; and an AI and automation unit building knowledge assistants, document intelligence, voice agents, and
             workflow automation.
           </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            <article className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
-              <h3 className="text-[21px] font-semibold leading-[1.22] text-[#173652]">Culture & Values</h3>
+            <article className="site-card bg-white p-6">
+              <h3 className="text-[19px] font-semibold leading-[1.3] text-[#173652]">Culture & Values</h3>
               <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
                 We are direct, collaborative, and serious about quality. Your work is visible here, not buried in a
                 large hierarchy. Your voice is heard because the team is small enough to hear it.
               </p>
             </article>
-            <article className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
-              <h3 className="text-[21px] font-semibold leading-[1.22] text-[#173652]">Expert-Led Environment</h3>
+            <article className="site-card bg-white p-6">
+              <h3 className="text-[19px] font-semibold leading-[1.3] text-[#173652]">Expert-Led Environment</h3>
               <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
                 You work alongside people who have delivered real Vault implementations and AI systems in production,
                 not under layers of management disconnected from delivery.
               </p>
             </article>
-            <article className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
-              <h3 className="text-[21px] font-semibold leading-[1.22] text-[#173652]">Growth & Learning</h3>
+            <article className="site-card bg-white p-6">
+              <h3 className="text-[19px] font-semibold leading-[1.3] text-[#173652]">Growth & Learning</h3>
               <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
                 We support Veeva certification, AI skill building, and fast ownership growth. At Wolvio, meaningful
                 client-facing responsibility can happen in months, not years.
@@ -192,13 +197,13 @@ export default function CareersClient() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Open Positions</p>
-          <h2 className="mt-4 text-[clamp(1.75rem,2.45vw,2.6rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">Open Positions</p>
+          <h2 className="mt-4">
             Explore our current openings
           </h2>
-          <p className="mt-4 max-w-[1040px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-4 max-w-[1040px]">
             All roles are based across our Chennai and Coimbatore offices. We are an in-person team and believe the
             best work happens when people are in the room together.
           </p>
@@ -214,7 +219,7 @@ export default function CareersClient() {
               />
               <Link
                 href="mailto:contact@wolviosolutions.com?subject=Career%20Application%20-%20Wolvio"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-2xl border border-[#c7d7df] bg-white px-5 text-[14px] font-semibold text-[#2f6f73] transition hover:bg-[#f4f9fa]"
+                className="inline-flex h-11 w-56 items-center justify-center gap-2 rounded-2xl border border-[#c7d7df] bg-white px-5 text-[12px] font-semibold text-[#2f6f73] transition hover:bg-[#f4f9fa]"
               >
                 Send Your CV
                 <ArrowRightIcon />
@@ -231,7 +236,7 @@ export default function CareersClient() {
           {isLoading ? (
             <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {Array.from({ length: 6 }).map((_, index) => (
-                <div key={`job-skeleton-${index}`} className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
+                <div key={`job-skeleton-${index}`} className="site-card bg-white p-6">
                   <div className="h-5 w-2/3 animate-pulse rounded bg-[#eaf2f5]" />
                   <div className="mt-3 h-4 w-1/2 animate-pulse rounded bg-[#eaf2f5]" />
                   <div className="mt-4 h-4 w-full animate-pulse rounded bg-[#eaf2f5]" />
@@ -242,7 +247,7 @@ export default function CareersClient() {
           ) : null}
 
           {!isLoading && jobs.length === 0 ? (
-            <div className="mt-7 rounded-[24px] border border-[#d7dde4] bg-white px-6 py-10 text-center">
+            <div className="site-card mt-7 bg-white px-6 py-10 text-center">
               <p className="text-[19px] font-semibold text-[#173652]">No matching positions at the moment</p>
               <p className="mt-2 text-[15px] text-[#60758d]">
                 Share your profile anyway. We will reach out when a relevant role opens.
@@ -261,11 +266,11 @@ export default function CareersClient() {
             <>
               <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {jobs.map(job => (
-                  <article key={job._id} className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
+                  <article key={job._id} className="site-card bg-white p-6">
                     <p className="text-[12px] font-semibold uppercase tracking-[0.11em] text-[#8ca0b4]">
                       {job.location} | {formatDate(job.createdAt)}
                     </p>
-                    <h3 className="mt-2 text-[22px] font-semibold leading-[1.2] text-[#173652]">{job.title}</h3>
+                    <h3 className="mt-2 text-[20px] font-semibold leading-[1.25] text-[#173652]">{job.title}</h3>
                     <p className="mt-3 text-[14px] leading-[1.65] text-[#60758d]">
                       {job.companyIntroduction ||
                         "Join Wolvio to work on meaningful delivery across regulated Veeva programs and production AI systems."}

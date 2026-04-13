@@ -168,16 +168,16 @@ export const metadata: Metadata = {
 
 export default function ServiceVeevaPage() {
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">
             Veeva Consulting
           </p>
-          <h1 className="mt-4 max-w-[1050px] text-[clamp(2rem,3.3vw,3.4rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
+          <h1 className="mt-4 max-w-[1050px]">
             Veeva Implementation Partner That Knows Vault. Not Just as a Platform. As a Practice.
           </h1>
-          <p className="mt-5 max-w-[820px] text-[17px] leading-[1.65] text-[#63798d]">
+          <p className="site-subheading mt-5 max-w-[820px]">
             From the first implementation conversation to managed services, we are the Veeva implementation partner
             organisations come back to.
           </p>
@@ -191,14 +191,14 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">What We Do</p>
-          <h2 className="mt-4 max-w-[860px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">What We Do</p>
+          <h2 className="mt-4 max-w-[860px]">
             Built at the Intersection of <span className="text-[#2f8b92]">Veeva Expertise</span> and Life Sciences
             Operations.
           </h2>
-          <div className="mt-6 max-w-[1020px] space-y-5 text-[17px] leading-[1.65] text-[#63798d]">
+          <div className="site-body mt-6 max-w-[1020px] space-y-5">
             <p>
               Most technology consultancies place Veeva beside many other practices. The consultant on your Vault
               implementation this quarter may be on a different platform next quarter.
@@ -219,21 +219,21 @@ export default function ServiceVeevaPage() {
               "15+ Veeva Engagements Delivered",
               "6 Vault Suites - Full Platform Coverage",
             ].map(stat => (
-              <article key={stat} className="rounded-[24px] border border-[#d7dde4] bg-[#f8fafc] px-5 py-4">
-                <p className="text-[18px] font-semibold text-[#173652]">{stat}</p>
+              <article key={stat} className="site-card px-5 py-4">
+                <p className="text-[16px] font-semibold text-[#173652]">{stat}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Service One</p>
-          <h2 className="mt-4 max-w-[900px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Service One</p>
+          <h2 className="mt-4 max-w-[900px]">
             Veeva Vault Implementation, Migration & Integration
           </h2>
-          <div className="mt-6 max-w-[1020px] space-y-5 text-[17px] leading-[1.65] text-[#63798d]">
+          <div className="site-body mt-6 max-w-[1020px] space-y-5">
             <p>
               A misconfigured Vault often fails later in workflows, validation evidence, and audit trails, when the
               implementation partner is already gone.
@@ -247,11 +247,11 @@ export default function ServiceVeevaPage() {
             {deliveryCards.map(card => (
               <article
                 key={card.title}
-                className="relative overflow-hidden rounded-[28px] border border-[#d7dde4] bg-[#f8fafc] p-6"
+                className="site-card relative overflow-hidden p-6"
               >
                 <div className="absolute left-0 top-0 h-[5px] w-full bg-[linear-gradient(90deg,#0b3a63_0%,#2f8b92_100%)]" />
-                <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#173652]">{card.title}</h3>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{card.description}</p>
+                <h3 className="text-[21px] font-semibold leading-[1.25] tracking-[-0.02em] text-[#173652]">{card.title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{card.description}</p>
               </article>
             ))}
           </div>
@@ -266,13 +266,13 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Service Two</p>
-          <h2 className="mt-4 max-w-[900px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">Service Two</p>
+          <h2 className="mt-4 max-w-[900px]">
             Veeva Managed Services & Post Go-Live Support
           </h2>
-          <div className="mt-6 max-w-[1020px] space-y-5 text-[17px] leading-[1.65] text-[#63798d]">
+          <div className="site-body mt-6 max-w-[1020px] space-y-5">
             <p>
               Three general releases each year, changing regulations, new users, and evolving process demands are
               where most teams underestimate ongoing platform ownership.
@@ -286,11 +286,11 @@ export default function ServiceVeevaPage() {
             {managedCards.map(card => (
               <article
                 key={card.title}
-                className="relative overflow-hidden rounded-[28px] border border-[#d7dde4] bg-[#f8fafc] p-6"
+                className="site-card relative overflow-hidden p-6"
               >
                 <div className="absolute left-0 top-0 h-[5px] w-full bg-[linear-gradient(90deg,#2f8b92_0%,#0b3a63_100%)]" />
-                <h3 className="text-[24px] font-semibold leading-[1.2] tracking-[-0.02em] text-[#173652]">{card.title}</h3>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{card.description}</p>
+                <h3 className="text-[21px] font-semibold leading-[1.25] tracking-[-0.02em] text-[#173652]">{card.title}</h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{card.description}</p>
               </article>
             ))}
           </div>
@@ -301,41 +301,41 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Vault Domain Coverage</p>
-          <h2 className="mt-4 max-w-[880px] text-[clamp(1.9rem,2.8vw,3rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Vault Domain Coverage</p>
+          <h2 className="mt-4 max-w-[880px]">
             Every suite. Every domain. Hands-on, not in theory.
           </h2>
-          <p className="mt-5 max-w-[980px] text-[17px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-5 max-w-[980px]">
             The most common question we hear is whether we have delivered the exact module in a regulated environment
             for companies with similar complexity. Across every domain below, the answer is yes.
           </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {domains.map(domain => (
-              <article key={domain.domain} className="rounded-[26px] border border-[#d7dde4] bg-[#f8fafc] p-6">
-                <h3 className="text-[22px] font-semibold text-[#173652]">{domain.domain}</h3>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{domain.coverage}</p>
+            {domains.map((domain, index) => (
+              <article key={domain.domain} className={`site-card p-6 ${index % 2 ? "bg-[#f8fafc]" : ""}`}>
+                <h3 className="text-[20px] font-semibold text-[#173652]">{domain.domain}</h3>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{domain.coverage}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">How We Work With You</p>
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">How We Work With You</p>
           <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <article className="rounded-[28px] border border-[#d7dde4] bg-[#f8fafc] p-6">
-              <h3 className="text-[24px] font-semibold text-[#173652]">Veeva Consulting Engagements</h3>
-              <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">
+            <article className="site-card p-6">
+              <h3 className="text-[21px] font-semibold text-[#173652]">Veeva Consulting Engagements</h3>
+              <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
                 Defined projects with clear scope, deliverables, and timelines for implementation, migration,
                 integration, and targeted configuration programs delivered by senior consultants end-to-end.
               </p>
             </article>
-            <article className="rounded-[28px] border border-[#d7dde4] bg-[#f8fafc] p-6">
-              <h3 className="text-[24px] font-semibold text-[#173652]">Veeva Managed Services</h3>
-              <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">
+            <article className="site-card p-6">
+              <h3 className="text-[21px] font-semibold text-[#173652]">Veeva Managed Services</h3>
+              <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
                 Once live, your platform demands shift to release stability, compliance updates, and operational
                 evolution. We provide structured long-term support models based on your in-house capability.
               </p>
@@ -356,9 +356,9 @@ export default function ServiceVeevaPage() {
                 desc: "Senior specialist input on demand for complex issues, architecture decisions, validation review, or critical integration questions.",
               },
             ].map(model => (
-              <article key={model.title} className="rounded-[28px] border border-[#d7dde4] bg-[#f8fafc] p-6">
-                <h4 className="text-[22px] font-semibold text-[#173652]">{model.title}</h4>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{model.desc}</p>
+              <article key={model.title} className="site-card p-6">
+                <h4 className="text-[19px] font-semibold text-[#173652]">{model.title}</h4>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{model.desc}</p>
               </article>
             ))}
           </div>
@@ -369,27 +369,27 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-12 sm:py-14 lg:py-16">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">FAQs</p>
-          <h2 className="mt-4 text-[clamp(1.8rem,2.6vw,2.8rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">FAQs</p>
+          <h2 className="mt-4">
             Questions we hear before every engagement
           </h2>
           <div className="mt-8 space-y-4">
-            {faqs.map(item => (
-              <details key={item.question} className="rounded-[22px] border border-[#d7dde4] bg-[#f8fafc] px-5 py-4">
-                <summary className="cursor-pointer list-none text-[18px] font-semibold text-[#173652]">
+            {faqs.map((item, index) => (
+              <details key={item.question} className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}>
+                <summary className="cursor-pointer list-none text-[17px] font-semibold text-[#173652]">
                   {item.question}
                 </summary>
-                <p className="mt-3 text-[16px] leading-[1.65] text-[#63798d]">{item.answer}</p>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{item.answer}</p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] pb-16 pt-8 sm:pb-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="tone-lock site-section pb-16 pt-8 sm:pb-20">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">

@@ -61,14 +61,14 @@ export const metadata: Metadata = {
 
 export default function WhyWolvioPage() {
   return (
-    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
+    <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-16 pt-12 sm:px-8 lg:px-24 lg:pb-20 lg:pt-16">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Why Wolvio</p>
-          <h1 className="mt-4 max-w-[930px] text-[clamp(1.95rem,3.1vw,3.2rem)] font-semibold leading-[1.12] tracking-[-0.03em] text-[#0c2d4d]">
+        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+          <p className="site-kicker">Why Wolvio</p>
+          <h1 className="mt-4 max-w-[930px]">
             Why choose Wolvio Solutions?
           </h1>
-          <p className="mt-5 max-w-[1040px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-subheading mt-5 max-w-[1040px]">
             In regulated environments, the wrong Veeva partner does not just slow you down. It creates compliance debt
             that surfaces months after project closure. In AI, the wrong partner delivers a proof of concept that never
             reaches production.
@@ -76,25 +76,25 @@ export default function WhyWolvioPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Our Differentiators</p>
-          <h2 className="mt-4 text-[clamp(1.75rem,2.45vw,2.6rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Our Differentiators</p>
+          <h2 className="mt-4">
             What Sets Us Apart
           </h2>
-          <p className="mt-5 max-w-[980px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-5 max-w-[980px]">
             Choosing the right firm is rarely about price. It is about whether the people across the table actually
             know your problem and whether they remain accountable when delivery becomes hard.
           </p>
           <div className="mt-8 grid gap-5">
-            {differentiators.map(item => (
-              <article key={item.number} className="rounded-[24px] border border-[#d7dde4] bg-white p-6 sm:p-7">
+            {differentiators.map((item, index) => (
+              <article key={item.number} className={`site-card p-6 sm:p-7 ${index % 2 ? "bg-[#f8fafc]" : "bg-white"}`}>
                 <div className="flex items-start gap-4">
                   <span className="rounded-full border border-[#c7d7df] bg-[#eef5f7] px-3 py-1 text-[13px] font-semibold text-[#2f7f88]">
                     {item.number}
                   </span>
                   <div>
-                    <h3 className="text-[22px] font-semibold leading-[1.2] text-[#173652]">{item.title}</h3>
+                    <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">{item.title}</h3>
                     <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">{item.body}</p>
                   </div>
                 </div>
@@ -104,18 +104,18 @@ export default function WhyWolvioPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#f2f4f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">
+      <section className="site-section">
+        <div className="site-container">
+          <p className="site-kicker">
             Two Practices. One Standard. No Shortcuts.
           </p>
-          <p className="mt-5 max-w-[980px] text-[16px] leading-[1.65] text-[#63798d]">
+          <p className="site-body mt-5 max-w-[980px]">
             Wolvio operates two focused practices, and our delivery model is identical across both: senior ownership,
             standards embedded from the start, and accountability through final handover.
           </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <article className="rounded-[26px] border border-[#d7dde4] bg-[#f8fafc] p-6 sm:p-7">
-              <h3 className="text-[23px] font-semibold leading-[1.2] text-[#173652]">
+            <article className="site-card p-6 sm:p-7">
+              <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">
                 Wolvio Life Sciences - Veeva Consulting & Managed Services
               </h3>
               <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
@@ -128,8 +128,8 @@ export default function WhyWolvioPage() {
                 <ArrowRightIcon />
               </Link>
             </article>
-            <article className="rounded-[26px] border border-[#d7dde4] bg-[#f8fafc] p-6 sm:p-7">
-              <h3 className="text-[23px] font-semibold leading-[1.2] text-[#173652]">
+            <article className="site-card p-6 sm:p-7">
+              <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">
                 Wolvio Intelligence - AI & Automation Services
               </h3>
               <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
@@ -145,10 +145,10 @@ export default function WhyWolvioPage() {
         </div>
       </section>
 
-      <section className="w-full bg-[#eef3f7] py-14 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Testimonials</p>
-          <h2 className="mt-4 text-[clamp(1.75rem,2.45vw,2.6rem)] font-semibold leading-[1.16] tracking-[-0.03em] text-[#0c2d4d]">
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Testimonials</p>
+          <h2 className="mt-4">
             What clients say about working with us
           </h2>
           <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -157,7 +157,7 @@ export default function WhyWolvioPage() {
               "Veeva managed services testimonial to be added by Mani.",
               "AI automation outcomes testimonial to be added by Mani.",
             ].map(item => (
-              <article key={item} className="rounded-[24px] border border-[#d7dde4] bg-white p-6">
+              <article key={item} className="site-card p-6">
                 <p className="text-[15px] leading-[1.65] text-[#546b82]">{item}</p>
               </article>
             ))}
@@ -165,8 +165,8 @@ export default function WhyWolvioPage() {
         </div>
       </section>
 
-      <section className="tone-lock w-full bg-[#f2f4f7] pb-16 pt-10 sm:pb-20">
-        <div className="mx-auto w-full max-w-[1660px] px-5 sm:px-8 lg:px-24">
+      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
+        <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
