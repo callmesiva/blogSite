@@ -285,12 +285,14 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
 
+
+
       <section className="site-section-alt">
         <div className="site-container">
           {/* ── Two-column editorial split ── */}
           <div className="mt-6 grid gap-12 lg:grid-cols-[1fr_1.55fr] lg:gap-16 xl:gap-20">
             {/* LEFT — sticky context column */}
-            <div className="lg:sticky lg:top-28 lg:self-center">
+            <div className="lg:sticky lg:top-28 lg:self-start">
               <p className="site-kicker">End-to-End Delivery</p>
               <h2 className="max-w-[380px]">
                 Veeva Vault Implementation, Migration & Integration
@@ -437,11 +439,14 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
 
+
+
+
       <section className="site-section">
         <div className="site-container">
           <div className="mt-6 grid gap-12 lg:grid-cols-[1.55fr_1fr] lg:gap-16 xl:gap-20">
             {/* LEFT — paginated cards */}
-            <div className="flex flex-col gap-5">
+            <div className="order-2 flex flex-col gap-5 lg:order-1">
               <div
                 className="grid gap-4 sm:grid-cols-2 [&>article:last-child:nth-child(odd)]:col-span-2 [&>article:last-child:nth-child(odd)]:mx-auto [&>article:last-child:nth-child(odd)]:w-1/2"
                 style={{
@@ -550,7 +555,7 @@ export default function ServiceVeevaPage() {
             </div>
 
             {/* RIGHT — sticky prose */}
-            <div className="lg:self-center">
+            <div className="order-1 lg:order-2 lg:self-start">
               <p className="site-kicker">Vault Optimisation</p>
               <h2 className="max-w-[380px]">
                 Veeva Managed Services & Post Go-Live Support

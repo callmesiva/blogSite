@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { TestimonialsSection } from "../components/testimonials";
 
 type Differentiator = {
   number: string;
@@ -145,25 +146,11 @@ export default function WhyWolvioPage() {
         </div>
       </section>
 
-      <section className="site-section-alt">
-        <div className="site-container">
-          <p className="site-kicker">Testimonials</p>
-          <h2 className="mt-4">
-            What clients say about working with us
-          </h2>
-          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              "Life sciences delivery feedback to be added by Mani.",
-              "Veeva managed services testimonial to be added by Mani.",
-              "AI automation outcomes testimonial to be added by Mani.",
-            ].map(item => (
-              <article key={item} className="site-card p-6">
-                <p className="text-[15px] leading-[1.65] text-[#546b82]">{item}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      
+       
+          <TestimonialsSection/>
+     
+      
 
       <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
         <div className="site-container">
@@ -173,17 +160,17 @@ export default function WhyWolvioPage() {
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[920px] text-[clamp(1.75rem,2.2vw,2.7rem)] font-semibold leading-[1.2] tracking-[-0.03em] text-white">
+              <h2 className="mx-auto mt-7 max-w-[920px] !text-[26px]">
                 The Right Partner Gives You a Straight Answer.
               </h2>
-              <p className="mx-auto mt-4 max-w-[860px] text-[16px] leading-[1.65] text-[#b6c9da]">
+              <p className="mx-auto mt-4 max-w-[860px]">
                 Whether you are evaluating Veeva partners or exploring AI automation, we will tell you directly if we
                 are the right fit. Just an honest conversation with someone who knows the space.
               </p>
               <div className="mt-8 flex justify-center">
                 <Link
                   href="/#contact"
-                  className="inline-flex items-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[15px] font-semibold text-white transition hover:bg-[#347f80]"
+                  className="inline-flex items-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[14px] font-semibold text-white transition hover:bg-[#347f80]"
                 >
                   Schedule a Consultation
                   <ArrowRightIcon />

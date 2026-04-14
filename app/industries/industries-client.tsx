@@ -201,6 +201,51 @@ const industryTabs: IndustryTab[] = [
   },
 ];
 
+  const caseStudies = [
+  {
+    tag: "Consulting",
+    tagColor: "#0b3a63",
+    imgBg: "#dbe8f4",
+    company: "Global Pharma Co.",
+    title: "Unified Vault RIM architecture for global submissions",
+    description:
+      "Accelerated regulatory submission timelines by consolidating fragmented regional systems into a single Vault RIM instance with automated dossier assembly.",
+    stats: [
+      { value: "40%", label: "Faster submission cycles" },
+      { value: "12", label: "Markets integrated" },
+    ],
+    image: "/images/case-studies/pharma.jpg", // replace with your image
+  },
+  {
+    tag: "Life Sciences",
+    tagColor: "#0f6e56",
+    imgBg: "#d8eee7",
+    company: "MedTech Manufacturer",
+    title: "QualityOne rollout with CAPA and supplier governance",
+    description:
+      "Stabilised quality processes across 6 manufacturing sites by deploying QualityOne with standardised CAPA workflows and supplier corrective action portals.",
+    stats: [
+      { value: "60%", label: "CAPA closure rate improvement" },
+      { value: "6", label: "Sites unified" },
+    ],
+    image: "/images/case-studies/medtech.jpg",
+  },
+  {
+    tag: "Operations",
+    tagColor: "#534ab7",
+    imgBg: "#e4dff5",
+    company: "Multi-site Ops Group",
+    title: "Recall readiness and traceability workflow modernisation",
+    description:
+      "Replaced manual spreadsheet-based recall tracking with end-to-end traceability workflows, enabling rapid lot identification across distributed warehouse operations.",
+    stats: [
+      { value: "3x", label: "Faster lot traceability" },
+      { value: "100%", label: "Audit trail coverage" },
+    ],
+    image: "/images/case-studies/operations.jpg",
+  },
+];
+
 function ArrowRightIcon() {
   return (
     <svg
@@ -318,34 +363,81 @@ export default function IndustriesClient() {
         </div>
       </section>
 
-      <section className="site-section-alt">
-        <div className="site-container">
-          <p className="site-kicker">
-            Relevant Case Studies
-          </p>
-          <h2 className="mt-4">
-            Real results across regulated industries
-          </h2>
-          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {[
-              "Global submissions acceleration through unified Vault RIM architecture.",
-              "QualityOne rollout with CAPA and supplier governance process stabilization.",
-              "Recall readiness and traceability workflow modernization across multi-site operations.",
-            ].map(item => (
-              <article key={item} className="site-card bg-white p-6">
-                <p className="text-[15px] leading-[1.65] text-[#546b82]">{item}</p>
-              </article>
-            ))}
-          </div>
-          <Link
-            href="/#case-studies"
-            className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]"
+
+
+<section className="site-section-alt">
+  <div className="site-container">
+    <p className="site-kicker">Relevant Case Studies</p>
+    <h2 className="mt-4">Real results across regulated industries</h2>
+
+    <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {caseStudies.map((cs) => (
+        <article
+          key={cs.title}
+          className="site-card overflow-hidden bg-white flex flex-col"
+        >
+          {/* Image area */}
+          <div
+            className="relative h-[160px] w-full overflow-hidden flex-shrink-0"
+            style={{ background: cs.imgBg }}
           >
-            Explore case studies
-            <ArrowRightIcon />
-          </Link>
-        </div>
-      </section>
+            {/*<img
+              src={cs.image}
+              alt={cs.title}
+              className="h-full w-full object-cover"
+            /> */}
+            {/* Tag badge */}
+            <span
+              className="absolute left-3 top-3 rounded-[6px] px-[10px] py-1 text-[11px] font-medium tracking-wide"
+              style={{ background: cs.tagColor, color: "#e6f1fb" }}
+            >
+              {cs.tag}
+            </span>
+          </div>
+
+          {/* Body */}
+          <div className="flex flex-1 flex-col p-5">
+            <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-[#2f7f88]">
+              {cs.company}
+            </p>
+            <h3 className="mt-1.5 text-[16px] font-semibold leading-[1.35] text-[#173652]">
+              {cs.title}
+            </h3>
+            <p className="mt-2 flex-1 text-[14px] leading-[1.65] text-[#63798d]">
+              {cs.description}
+            </p>
+
+            {/* Stats */}
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {cs.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-[10px] bg-[#f5f8fb] px-3 py-2.5"
+                >
+                  <p className="text-[20px] font-bold leading-none text-[#0b3a63]">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[11px] leading-[1.4] text-[#63798d]">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <Link
+      href="/case-studies"
+      className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]"
+    >
+      Explore case studies
+      <ArrowRightIcon />
+    </Link>
+  </div>
+</section>
+      
 
       <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
         <div className="site-container">
@@ -355,7 +447,7 @@ export default function IndustriesClient() {
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[920px] text-[clamp(1.75rem,2.2vw,2.7rem)] font-semibold leading-[1.2] tracking-[-0.03em] text-white">
+              <h2 className="mx-auto mt-7 max-w-[920px] !text-[26px] ">
                 Serving life sciences exclusively, from day one.
               </h2>
               <p className="mx-auto mt-4 max-w-[840px] text-[16px] leading-[1.65] text-[#b6c9da]">
@@ -364,7 +456,7 @@ export default function IndustriesClient() {
               </p>
               <div className="mt-8 flex justify-center">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="inline-flex items-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[15px] font-semibold text-white transition hover:bg-[#347f80]"
                 >
                   Talk to a Specialist

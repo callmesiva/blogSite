@@ -1,5 +1,7 @@
+"use client";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { useState } from "react";
 
 type UseCaseCard = {
   title: string;
@@ -103,13 +105,12 @@ function ArrowRightIcon() {
   );
 }
 
-export const metadata: Metadata = {
-  title: "Wolvio Intelligence | AI Transformation & Automation",
-  description:
-    "AI automation services by Wolvio Intelligence including AI agents, document intelligence, workflow automation, and voice systems deployed in production.",
-};
+
 
 export default function ServiceWolvioPage() {
+  const [activeTab, setActiveTab] = useState(0);
+ const activeCard = useCases[activeTab];
+
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
@@ -158,7 +159,8 @@ export default function ServiceWolvioPage() {
           <p className="site-body mt-5 max-w-[760px]">
             Five systems. Each one solves a problem you already have.
           </p>
-          <div className="mt-8 grid gap-6">
+
+         {/* <div className="mt-8 grid gap-6">
             {useCases.map((card, index) => (
               <article
                 key={card.title}
@@ -194,7 +196,84 @@ export default function ServiceWolvioPage() {
                 </div>
               </article>
             ))}
+          </div> */} 
+
+
+
+  <div className="mt-8">
+    <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
+      
+      {/* Tab Bar */}
+      <div className="flex overflow-x-auto border-b border-[#dce6ef] scrollbar-hide">
+        {useCases.map((card, index) => (
+          <button
+            key={card.title}
+            onClick={() => setActiveTab(index)}
+            className={`
+              relative flex-1 min-w-[130px] px-4 py-4  text-center
+              whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
+              ${activeTab === index
+                ? "bg-white text-[#173652]"
+                : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
+              }
+            `}
+          >
+           <p>{card.title}</p> 
+            {/* Active indicator bar */}
+            {activeTab === index && (
+              <span
+                className="absolute bottom-0 left-0 w-full h-[2.5px]"
+                style={{ background: index % 2 === 0 ? "#0b3a63" : "#2f8b92" }}
+              />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <div className="p-6 ">
+        {/* Top color accent bar */}
+       {/* <div
+          className="mb-6 h-[4px] w-12 rounded-full"
+          style={{ background: activeTab % 2 === 0 ? "#0b3a63" : "#2f8b92" }}
+        />*/}
+
+        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[1.2fr_1fr]">
+          {/* Left: Text content */}
+          <div>
+            <h3 className="">
+              {activeCard.title}
+            </h3>
+            <p className="mt-3">
+              {activeCard.pain}
+            </p>
+            <p className="mt-3">
+              {activeCard.summary}
+            </p>
+            <p className="mt-3">
+              {activeCard.details}
+            </p>
           </div>
+
+          {/* Right: Capabilities */}
+          <div className="site-card-muted rounded-[22px] p-5">
+            <p className="site-kicker">Capabilities</p>
+            <ul className="mt-3 space-y-2 text-[14px] text-[#486173]">
+              {activeCard.bullets.map(bullet => (
+                <li key={bullet} className="flex items-start gap-2">
+                  <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92] flex-shrink-0" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
         </div>
       </section>
 
@@ -226,8 +305,8 @@ export default function ServiceWolvioPage() {
               },
             ].map(item => (
               <article key={item.title} className="site-card p-6">
-                <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">{item.title}</h3>
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{item.body}</p>
+                <h3 className="">{item.title}</h3>
+                <p className="mt-3 ">{item.body}</p>
               </article>
             ))}
           </div>
@@ -246,7 +325,7 @@ export default function ServiceWolvioPage() {
           <div className="mt-8 space-y-4">
             {faqs.map((item, index) => (
               <details key={item.question} className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}>
-                <summary className="cursor-pointer list-none text-[17px] font-semibold text-[#173652]">
+                <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#173652]">
                   {item.question}
                 </summary>
                 <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{item.answer}</p>
@@ -264,7 +343,7 @@ export default function ServiceWolvioPage() {
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Ready to Put Intelligence to Work?
               </span>
-              <h2 className="mx-auto mt-7 max-w-[900px] text-[clamp(1.8rem,2.3vw,2.9rem)] font-semibold leading-[1.18] tracking-[-0.03em] text-white">
+              <h2 className="mx-auto mt-7 max-w-[900px] text-[26px] font-semibold leading-[1.18] tracking-[-0.03em] text-white">
                 Start with the problem that matters most. We will show you a working system before asking for
                 commitment.
               </h2>

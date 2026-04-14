@@ -117,7 +117,7 @@ function LeaderCard({ leader }: { leader: (typeof leaders)[number] }) {
 
       {/* Image card with tilt */}
       <div
-        className="relative overflow-hidden rounded-[28px] will-change-transform transform-gpu transition-transform duration-300 ease-out"
+        className="relative overflow-hidden rounded-[28px] transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
         style={{
           transform:
             "rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))",

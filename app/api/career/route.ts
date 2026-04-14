@@ -1,15 +1,21 @@
-import { NextRequest, NextResponse } from "next/server"
 
-export async function GET(req: NextRequest) {
+export const runtime = "edge"  // ← add this one line
+
+export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
-  let url = process.env.NEXT_PUBLIC_CARRER_API
-  const apiUrl = `${url}?${searchParams.toString()}`
+  const base = process.env.NEXT_PUBLIC_CARRER_API!
+
+  const url = new URL(base)
+  searchParams.forEach((v, k) => url.searchParams.set(k, v))
 
   try {
-    const res = await fetch(apiUrl, { cache: "no-store" })
+    const res = await fetch(url.toString(), { cache: "no-store" })
     const data = await res.json()
-    return NextResponse.json(data, { status: res.status })
+    return Response.json(data, { status: res.status })
   } catch (err) {
-    return NextResponse.json({ message: "Proxy fetch failed" }, { status: 500 })
+    return Response.json(
+      { message: "Proxy fetch failed", detail: String(err) },
+      { status: 500 }
+    )
   }
 }

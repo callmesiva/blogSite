@@ -31,7 +31,7 @@ const navItems: NavItem[] = [
     ],
   },
   { label: "Industries", href: "/industries" },
-  { label: "Case Studies", href: "/#case-studies" },
+  { label: "Case Studies", href: "/case-studies" },
   { label: "Why Wolvio", href: "/why-wolvio" },
   { label: "Insights", href: "/insights" },
   { label: "Careers", href: "/careers" },
