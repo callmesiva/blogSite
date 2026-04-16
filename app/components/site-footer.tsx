@@ -102,41 +102,76 @@ export default function SiteFooter() {
           </div>
 
           {/* COL 2: Services */}
-          <div className="fade-up opacity-0 translate-y-5 transition-all duration-700 ease-out delay-[120ms]">
-            <div className="mb-5 border-b border-white/10 pb-3 text-[10.5px] font-bold uppercase tracking-[2px] text-[#5DCAA5]">
-              Services
-            </div>
-            <ul className="flex flex-col">
-              {[
-                {
-                  label: "Veeva Consulting & Implementation",
-                  href: "/service-veeva",
-                },
-              
-              ].map((link) => (
-                <li key={link.label}>
+          <div className="fade-up flex flex-col gap-5 opacity-0 translate-y-5 transition-all duration-700 ease-out delay-[120ms]">
+            <div>
+              <div className="mb-5 border-b border-white/10 pb-3 text-[10.5px] font-bold uppercase tracking-[2px] text-[#5DCAA5]">
+                Services
+              </div>
+              <ul className="flex flex-col">
+                {[
+                  {
+                    label: "Veeva Consulting & Implementation",
+                    href: "/service-veeva",
+                  },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="group relative block py-[7px] text-[13.5px] font-light text-white/50 transition-all duration-200 hover:pl-3 hover:text-white"
+                    >
+                      <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
                   <Link
-                    href={link.href}
+                    href="/service-wolvio"
                     className="group relative block py-[7px] text-[13.5px] font-light text-white/50 transition-all duration-200 hover:pl-3 hover:text-white"
                   >
                     <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
-                    {link.label}
+                    Wolvio Intelligence
+                    <span className="ml-2 inline-block rounded-[5px] border border-[rgba(93,202,165,0.2)] bg-[rgba(93,202,165,0.1)] px-[7px] py-[1px] text-[9.5px] font-bold tracking-[0.5px] text-[#5DCAA5]">
+                      New
+                    </span>
                   </Link>
                 </li>
-              ))}
-              <li>
-                <Link
-                  href="/service-wolvio"
-                  className="group relative block py-[7px] text-[13.5px] font-light text-white/50 transition-all duration-200 hover:pl-3 hover:text-white"
-                >
-                  <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
-                  Wolvio Intelligence
-                  <span className="ml-2 inline-block rounded-[5px] border border-[rgba(93,202,165,0.2)] bg-[rgba(93,202,165,0.1)] px-[7px] py-[1px] text-[9.5px] font-bold tracking-[0.5px] text-[#5DCAA5]">
-                    New
-                  </span>
-                </Link>
-              </li>
-            </ul>
+              </ul>
+            </div>
+
+            <div>
+              <div className="mb-5 border-b border-white/10 pb-3 text-[10.5px] font-bold uppercase tracking-[2px] text-[#5DCAA5]">
+                Resources
+              </div>
+              <ul className="flex flex-col">
+                {[
+                  {
+                    label: "Case Studies",
+                    href: "/case-studies",
+                  },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className="group relative block py-[7px] text-[13.5px] font-light text-white/50 transition-all duration-200 hover:pl-3 hover:text-white"
+                    >
+                      <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <Link
+                    href="/insights"
+                    className="group relative block py-[7px] text-[13.5px] font-light text-white/50 transition-all duration-200 hover:pl-3 hover:text-white"
+                  >
+                    <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
+                    Insights
+                   
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* COL 3: Company */}

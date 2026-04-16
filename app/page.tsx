@@ -4,6 +4,7 @@ import CountUp from "react-countup";
 import ScrollFadeGrid from "./components/ScrollFadeGrid";
 import StatsCounter from "./components/StatsCounter";
 import WhyWolvioSection from "./components/WhyWolvioSection";
+import CaseStudyCarousel from "./components/CaseStudyCarousel";
 
 type OrbitCard = {
   label: string;
@@ -586,7 +587,7 @@ export default function Home() {
           <div className="max-w-[760px] mx-auto lg:mx-0 ">
             <h1 className="max-w-[550px] text-center lg:text-left">
               Specialist Veeva Consulting & Managed Services for{" "}
-              <span className=" text-[#2f6f73]">&amp; Life Sciences</span>
+              <span className=" text-[#2f6f73]">Life Sciences</span>
             </h1>
             <p className="site-subheading mt-7 max-w-[450px] text-center lg:text-left">
               Expert-led Veeva consulting services spanning Vault assessment,
@@ -602,14 +603,14 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href="contact-us"
-                className="site-btn-primary  !text-[14px] hover:!bg-[#081d30]"
+                className="site-btn-primary  !text-[14px] hover:!bg-[#4f8f92]"
               >
                 Schedule a Consultation
                 <ArrowRightIcon />
               </a>
               <a
                 href="service-veeva"
-                className="site-btn-secondary !text-[14px]  hover:!text-black "
+                className="site-btn-secondary !text-[14px]  hover:!text-[#4f8f92]"
               >
                 Explore Our Veeva Services
                 <ArrowRightIcon />
@@ -693,17 +694,8 @@ export default function Home() {
             environments.
           </p>
 
-          <PillCard1 />
-
-          <div className="mt-10 flex justify-center">
-            <a
-              href="case-studies"
-              className="inline-flex items-center gap-3 rounded-full border border-[#bad0d5] px-8 py-3 text-[16px] font-semibold text-[#2f7f88] transition hover:bg-white"
-            >
-              View all case studies
-              <ArrowRightIcon />
-            </a>
-          </div>
+          <CaseStudyCarousel />
+          
         </div>
       </section>
 
@@ -788,7 +780,7 @@ export default function Home() {
                       className="inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-white/60 transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#5DCAA5]"
                     >
                       Read insight
-                      <ArrowRightIcon/>
+                      <ArrowRightIcon />
                     </Link>
                   </div>
                 </div>

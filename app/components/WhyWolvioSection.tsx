@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 
+
 function ArrowRightIcon() {
   return (
     <svg
@@ -27,7 +28,7 @@ const whyPillars = [
     title: "Life Sciences Focus",
     desc: "We work exclusively within pharma, biotech, and medtech — bringing deep regulatory understanding to every Veeva engagement, from initial scoping to final delivery.",
     tags: ["Pharma", "Biotech", "MedTech", "GxP Native", "FDA Compliant"],
-    link: "#",
+    link: "/why-wolvio",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -114,6 +115,35 @@ export default function WhyWolvioSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
+  // Add this ref to your scrollable div:
+  const listRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = listRef.current;
+    const section = sectionRef.current;
+    if (!el || !section) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      // Only intercept when the sticky section is actually pinned (in viewport)
+      const rect = section.getBoundingClientRect();
+      const isStickyActive = rect.top <= 0 && rect.bottom >= window.innerHeight;
+      if (!isStickyActive) return;
+
+      const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
+      const atTop = el.scrollTop <= 2;
+      const goingDown = e.deltaY > 0;
+      const goingUp = e.deltaY < 0;
+
+      if ((goingDown && !atBottom) || (goingUp && !atTop)) {
+        e.preventDefault();
+        el.scrollTop += e.deltaY;
+      }
+    };
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -133,23 +163,70 @@ export default function WhyWolvioSection() {
     return () => fadeElements?.forEach((el) => observer.unobserve(el));
   }, []);
 
+const mousePos = useRef({ x: 0, y: 0 });
+
+useEffect(() => {
+  const handleMouseMove = (e: MouseEvent) => {
+    mousePos.current = { x: e.clientX, y: e.clientY };
+  };
+  window.addEventListener("mousemove", handleMouseMove);
+  return () => window.removeEventListener("mousemove", handleMouseMove);
+}, []);
+
+useEffect(() => {
+  const el = listRef.current;
+  const section = sectionRef.current;
+  if (!el || !section) return;
+
+  const handleWheel = (e: WheelEvent) => {
+    const rect = section.getBoundingClientRect();
+    const isStickyActive = rect.top <= 0 && rect.bottom >= window.innerHeight;
+    if (!isStickyActive) return;
+
+    const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2;
+    const atTop = el.scrollTop <= 2;
+    const goingDown = e.deltaY > 0;
+    const goingUp = e.deltaY < 0;
+
+    if ((goingDown && !atBottom) || (goingUp && !atTop)) {
+      e.preventDefault();
+      el.scrollTop += e.deltaY;
+
+      // Force highlight whichever pillar is under the cursor after scroll
+      requestAnimationFrame(() => {
+        const target = document.elementFromPoint(
+          mousePos.current.x,
+          mousePos.current.y,
+        );
+        const pillarEl = target?.closest(
+          "[data-pillar-index]",
+        ) as HTMLElement | null;
+        setHoveredIndex(pillarEl ? Number(pillarEl.dataset.pillarIndex) : null);
+      });
+    }
+  };
+
+  window.addEventListener("wheel", handleWheel, { passive: false });
+  return () => window.removeEventListener("wheel", handleWheel);
+}, []);
+
   return (
     <section
       ref={sectionRef}
       id="why-wolvio"
-      className="bg-[#f2f8f5] py-[56px] px-6 lg:py-[100px] lg:px-[72px]"
+      className="bg-[#f2f8f5] py-[56px] px-6 lg:py-[100px] lg:px-[72px] min-h-[60vh]"
     >
       <div className="mx-auto max-w-[1300px]">
         <div className="grid items-start gap-12 lg:grid-cols-[380px_1fr] lg:gap-[80px]">
           {/* ── LEFT: STICKY HEADER ── */}
           <div className="fade-up lg:sticky lg:top-12">
-            <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#1D9E75] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#1D9E75]">
-              Why Wolvio
+            <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
+              <p className="site-kicker text-center"> why Wolvio </p>
             </div>
 
             <h2 className="mb-6 text-[34px] font-bold leading-[1.1] tracking-[-0.5px] text-[#071e3d] lg:text-[42px]">
               Built on Specialist Depth. No Compromises in{" "}
-              <em className="text-[#1D9E75] not-italic lg:italic">
+              <em className="text-[#2f6f73] not-italic lg:italic">
                 Regulated Environments.
               </em>
             </h2>
@@ -163,24 +240,9 @@ export default function WhyWolvioSection() {
               Here's what that means in practice.
             </p>
 
-            <div className="mb-10 flex flex-col gap-2.5">
-              <div className="ww-cred-chip flex items-center gap-2.5 text-[13px] font-medium text-[#4a6070]">
-                100% Veeva-focused practice
-              </div>
-              <div className="ww-cred-chip flex items-center gap-2.5 text-[13px] font-medium text-[#4a6070]">
-                GxP & compliance-native delivery
-              </div>
-              <div className="ww-cred-chip flex items-center gap-2.5 text-[13px] font-medium text-[#4a6070]">
-                Post go-live continuity guaranteed
-              </div>
-              <div className="ww-cred-chip flex items-center gap-2.5 text-[13px] font-medium text-[#4a6070]">
-                Every major Vault suite covered
-              </div>
-            </div>
-
             <a
               href="#"
-              className="group inline-flex items-center gap-2 rounded-[28px] bg-[#071e3d] px-6 py-3 text-[13.5px] font-semibold text-white transition-all duration-300 hover:gap-[13px] hover:bg-[#1D9E75]"
+              className="group inline-flex items-center gap-2 rounded-[28px] bg-[#071e3d] px-6 py-3 text-[13.5px] font-semibold text-white transition-all duration-300 hover:gap-[13px] hover:bg-[#2f6f73]"
             >
               Learn more about our approach <ArrowRightIcon />
             </a>
@@ -188,7 +250,10 @@ export default function WhyWolvioSection() {
 
           {/* ── RIGHT: PILLARS LIST ── */}
           {/* THE FIX: Added max-h, overflow-y-auto, overscroll-y-auto, and hid scrollbar UI */}
-          <div className="flex flex-col lg:max-h-[80vh] lg:overflow-y-auto lg:overscroll-y-auto lg:pr-6 pl-8 -ml-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+          <div
+            ref={listRef}
+            className="flex flex-col lg:max-h-[60vh] lg:overflow-y-auto lg:overscroll-y-auto lg:pr-6 pl-8 -ml-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+          >
             {whyPillars.map((pillar, index) => {
               const isHovered = hoveredIndex === index;
 
@@ -201,11 +266,11 @@ export default function WhyWolvioSection() {
                   style={{ transitionDelay: `${index * 0.08}s` }}
                 >
                   {/* Animated Left Accent Bar */}
-                  <div className="absolute bottom-0 left-[-16px] top-0 w-[3px] origin-top scale-y-0 rounded-[3px] bg-[#1D9E75] transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100 md:left-[-24px]"></div>
+                  <div className="absolute bottom-0 left-[-16px] top-0 w-[3px] origin-top scale-y-0 rounded-[3px] bg-[#2f6f73] transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100 md:left-[-24px]"></div>
 
                   {/* Number & Icon Column */}
                   <div className="flex flex-col items-start pt-[2px]">
-                    <div className="mb-3 font-serif text-[28px] font-bold leading-none text-[rgba(29,158,117,0.25)] transition-colors duration-300 group-hover:text-[#1D9E75]">
+                    <div className="mb-3 font-serif text-[28px] font-bold leading-none text-[rgba(29,158,117,0.25)] transition-colors duration-300 group-hover:text-[#2f6f73]">
                       {pillar.num}
                     </div>
                     <div className="flex h-10 w-10 items-center justify-center rounded-[11px] border border-[rgba(11,39,68,0.14)] bg-white transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:rotate-[-4deg] group-hover:scale-105 group-hover:border-[#071e3d] group-hover:bg-[#071e3d]">
@@ -215,7 +280,7 @@ export default function WhyWolvioSection() {
 
                   {/* Content Column */}
                   <div className="pt-1">
-                    <h3 className="mb-2.5  font-bold leading-[1.25] text-[#071e3d] transition-colors duration-[250ms] group-hover:text-[#1D9E75]">
+                    <h3 className="mb-2.5  font-bold leading-[1.25] text-[#071e3d] transition-colors duration-[250ms] group-hover:text-[#2f6f73]">
                       {pillar.title}
                     </h3>
                     <p className="max-w-[540px] text-[14.5px] font-light leading-[1.78] text-[#4a6070]">
@@ -230,21 +295,21 @@ export default function WhyWolvioSection() {
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="mt-[14px] flex flex-wrap gap-[6px]">
+                      {/* <div className="mt-[14px] flex flex-wrap gap-[6px]">
                         {pillar.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="rounded-[6px] bg-[#e0f5ed] px-2.5 py-1 text-[11px] font-semibold text-[#1D9E75]"
+                            className="rounded-[6px] bg-[#e0f5ed] px-2.5 py-1 text-[11px] font-semibold text-[#2f6f73]"
                           >
                             {tag}
                           </span>
                         ))}
-                      </div>
+                      </div> */}
                     </div>
 
                     <a
                       href={pillar.link}
-                      className="mt-[14px] inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-[#8aa4b8] transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#1D9E75]"
+                      className="mt-[14px] inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-[#8aa4b8] transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#2f6f73]"
                     >
                       How we work <ArrowRightIcon />
                     </a>
