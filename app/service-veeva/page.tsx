@@ -2,6 +2,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useState } from "react";
+import VerticalTabsSection from "../components/HowWeWorkSection"; 
 
 type DeliveryCard = {
   title: string;
@@ -167,6 +168,36 @@ function ArrowRightIcon() {
   );
 }
 
+
+// Define your data here (or fetch it from an API/CMS)
+const WORK_MODELS = [
+  {
+    id: "consulting",
+    title: "Veeva Consulting Engagements",
+    desc: "Defined projects with clear scope, deliverables, and timelines for implementation, migration, integration, and targeted configuration programs delivered by senior consultants end-to-end.",
+  },
+  {
+    id: "managed",
+    title: "Veeva Managed Services",
+    desc: "Once live, your platform demands shift to release stability, compliance updates, and operational evolution. We provide structured long-term support models based on your in-house capability.",
+  },
+  {
+    id: "platform-partner",
+    title: "Platform Partner",
+    desc: "Full operational ownership with proactive release management, compliance monitoring, helpdesk support, and strategic platform evolution.",
+  },
+  {
+    id: "release-cover",
+    title: "Release & Compliance Cover",
+    desc: "Ideal for teams with internal admins who need specialist support for impact assessments, validation updates, and high-risk escalations.",
+  },
+  {
+    id: "expert-on-call",
+    title: "Expert On-Call",
+    desc: "Senior specialist input on demand for complex issues, architecture decisions, validation review, or critical integration questions.",
+  },
+];
+
 // export const metadata: Metadata = {
 //   title: "Veeva Consulting | Wolvio",
 //   description:
@@ -271,11 +302,8 @@ export default function ServiceVeevaPage() {
               "8+ Certified Veeva Professionals",
               "15+ Veeva Engagements Delivered",
               "6 Vault Suites - Full Platform Coverage",
-            ].map(stat => (
-              <article
-                key={stat}
-                className="site-card px-5 py-4"
-              >
+            ].map((stat) => (
+              <article key={stat} className="site-card px-5 py-4">
                 <p className="text-[16px] font-semibold text-[#173652]">
                   {stat}
                 </p>
@@ -284,8 +312,6 @@ export default function ServiceVeevaPage() {
           </div>
         </div>
       </section>
-
-
 
       <section className="site-section-alt">
         <div className="site-container">
@@ -438,9 +464,6 @@ export default function ServiceVeevaPage() {
           </div>
         </div>
       </section>
-
-
-
 
       <section className="site-section">
         <div className="site-container">
@@ -604,82 +627,21 @@ export default function ServiceVeevaPage() {
                     : "col-span-1 lg:col-span-3" // row 2: each takes 3/6 cols
                 }`}
               >
-                <h4 className="">
-                  {domain.domain}
-                </h4>
-                <p className="mt-3">
-                  {domain.coverage}
-                </p>
+                <h4 className="">{domain.domain}</h4>
+                <p className="mt-3">{domain.coverage}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="site-section">
-        <div className="site-container">
-          <p className="site-kicker">How We Work With You</p>
-          <div className="mt-6 grid gap-6 lg:grid-cols-2">
-            <article className="site-card p-6">
-              <h3 className="">
-                Veeva Consulting Engagements
-              </h3>
-              <p className="mt-3 ">
-                Defined projects with clear scope, deliverables, and timelines
-                for implementation, migration, integration, and targeted
-                configuration programs delivered by senior consultants
-                end-to-end.
-              </p>
-            </article>
-            <article className="site-card p-6">
-              <h3 className="">
-                Veeva Managed Services
-              </h3>
-              <p className="mt-3">
-                Once live, your platform demands shift to release stability,
-                compliance updates, and operational evolution. We provide
-                structured long-term support models based on your in-house
-                capability.
-              </p>
-            </article>
-          </div>
-          <div className="mt-6 grid gap-6 lg:grid-cols-3">
-            {[
-              {
-                title: "Platform Partner",
-                desc: "Full operational ownership with proactive release management, compliance monitoring, helpdesk support, and strategic platform evolution.",
-              },
-              {
-                title: "Release & Compliance Cover",
-                desc: "Ideal for teams with internal admins who need specialist support for impact assessments, validation updates, and high-risk escalations.",
-              },
-              {
-                title: "Expert On-Call",
-                desc: "Senior specialist input on demand for complex issues, architecture decisions, validation review, or critical integration questions.",
-              },
-            ].map(model => (
-              <article
-                key={model.title}
-                className="site-card p-6"
-              >
-                <h4 className="">
-                  {model.title}
-                </h4>
-                <p className="mt-3">
-                  {model.desc}
-                </p>
-              </article>
-            ))}
-          </div>
-          <Link
-            href="/service-veeva"
-            className="mt-6 inline-flex items-center gap-2 text-[16px] font-semibold text-[#2f7f88]"
-          >
-            Talk to Us About Managed Services
-            <ArrowRightIcon />
-          </Link>
-        </div>
-      </section>
+      <VerticalTabsSection
+        kicker="How We Work With You"
+        title="Partnership Models"
+        items={WORK_MODELS}
+        ctaText="Talk to Us About Managed Services"
+        ctaLink="/service-veeva"
+      />
 
       <section className="site-section-alt">
         <div className="site-container">
@@ -694,9 +656,7 @@ export default function ServiceVeevaPage() {
                 <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#173652]">
                   {item.question}
                 </summary>
-                <p className="mt-3">
-                  {item.answer}
-                </p>
+                <p className="mt-3">{item.answer}</p>
               </details>
             ))}
           </div>
@@ -729,5 +689,5 @@ export default function ServiceVeevaPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }

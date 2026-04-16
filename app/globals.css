@@ -18,6 +18,18 @@
   --radius-pill: 999px;
   --shadow-soft: 0 10px 26px rgba(10, 37, 64, 0.08);
   --shadow-lift: 0 16px 34px rgba(10, 37, 64, 0.12);
+
+  --white: #ffffff;
+  --navy: #0b2744;
+  --teal: #1d9e75;
+  --teal-light: #2bc091;
+  --teal-pale: #e6f5f0;
+  --text-mid: #5c728a;
+  --text-faint: #8da4ba;
+  --border: #d7dde4;
+  --radius: 28px;
+  --shadow-sm: 0 8px 20px rgba(8, 43, 74, 0.03);
+  --shadow-lg: 0 22px 38px rgba(8, 43, 74, 0.08);
 }
 
 @theme inline {
@@ -300,6 +312,276 @@ h3 {
   z-index: 1;
 }
 
+ /* ─── CARD ─── */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 44px 38px 38px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition:
+        transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Top accent bar — animates in on hover */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-light));
+      transform: scaleX(0.28);
+      transform-origin: left center;
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      border-radius: 0 3px 0 0;
+    }
+
+    /* Subtle corner glow */
+    .card::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(29,158,117,0.07) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-lg);
+    }
+    .card:hover::before { transform: scaleX(1); }
+    .card:hover::after  { opacity: 1; }
+
+    /* Card number badge */
+    .card-number {
+      position: absolute;
+      top: 34px;
+      right: 34px;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(11,39,68,0.1);
+      letter-spacing: 0.5px;
+      font-variant-numeric: tabular-nums;
+      transition: color 0.35s;
+    }
+    .card:hover .card-number { color: var(--teal-light); }
+
+    /* Icon container */
+    .card-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 15px;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+      transition: background 0.32s ease, transform 0.32s cubic-bezier(0.22,1,0.36,1);
+      position: relative;
+      z-index: 1;
+    }
+    .card:hover .card-icon {
+      background: var(--teal);
+      transform: scale(1.1) rotate(-4deg);
+    }
+    .card-icon svg {
+      width: 22px; height: 22px;
+      stroke: var(--teal-light);
+      fill: none;
+      stroke-width: 1.7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: stroke 0.3s;
+    }
+    .card:hover .card-icon svg { stroke: #fff; }
+
+    /* Card title */
+    .card-title {
+      
+      /*font-family: 'Playfair Display', Georgia, serif;*/
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.28;
+      color: var(--navy);
+      margin-bottom: 14px;
+      transition: color 0.25s;
+    }
+    .card:hover .card-title { color: var(--teal); }
+
+    /* Card body */
+    .card-body {
+      font-size: 14.5px;
+      line-height: 1.78;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+
+    /* Domain tags (card 3) */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 26px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--teal);
+      background: var(--teal-pale);
+      padding: 4px 11px;
+      border-radius: 7px;
+      letter-spacing: 0.2px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .card:hover .tag {
+      background: var(--teal);
+      color: var(--white);
+    }
+
+    /* Card CTA */
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-faint);
+      text-decoration: none;
+      position: relative;
+      z-index: 1;
+      transition: color 0.25s, gap 0.25s;
+    }
+    .card:hover .card-link { color: var(--teal); gap: 11px; }
+
+    
+   /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .cards-grid .card:nth-child(1) { transition-delay: 0.05s; }
+    .cards-grid .card:nth-child(2) { transition-delay: 0.17s; }
+    .cards-grid .card:nth-child(3) { transition-delay: 0.29s; }
+    .section-meta { transition-delay: 0.1s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+  
+      .cards-grid { grid-template-columns: 1fr; max-width: 560px; }
+     
+    }
+
+
+    /* ─── WHY WOLVIO: CUSTOM ANIMATIONS & ICONS ─── */
+
+/* Credibility List Checkmarks */
+.ww-cred-chip::before {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--teal-pale); /* or #e0f5ed */
+  border: 1.5px solid rgba(29, 158, 117, 0.3);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D9E75' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: 11px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Pillar Hover States & Animated Border */
+.ww-pillar {
+  position: relative;
+  transition: background 0.25s ease;
+}
+
+.ww-pillar::before {
+  content: '';
+  position: absolute;
+  left: -16px; /* Adjusted for mobile */
+  top: 0; 
+  bottom: 0;
+  width: 3px;
+  background: var(--teal); /* or #1D9E75 */
+  border-radius: 3px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 768px) {
+  .ww-pillar::before { left: -24px; }
+}
+
+.ww-pillar:hover { background: rgba(29, 158, 117, 0.03); }
+.ww-pillar:hover::before { transform: scaleY(1); }
+
+/* Icon Box Animation */
+.ww-pillar-icon {
+  transition: background 0.3s, border-color 0.3s, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.ww-pillar:hover .ww-pillar-icon {
+  background: var(--navy); /* or #071e3d */
+  border-color: var(--navy);
+  transform: scale(1.08) rotate(-4deg);
+}
+.ww-pillar-icon svg { transition: stroke 0.3s; }
+.ww-pillar:hover .ww-pillar-icon svg { stroke: var(--teal-light); /* or #5DCAA5 */ }
+
+/* Expandable Tag Detail Container */
+.ww-pillar-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+}
+.ww-pillar:hover .ww-pillar-detail {
+  max-height: 120px;
+  opacity: 1;
+}
+
+/* ─── WHY WOLVIO ANIMATIONS ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ww-cred-chip::before {
+  content: '';
+  display: block;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #e0f5ed;
+  border: 1.5px solid rgba(29, 158, 117, 0.3);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D9E75' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+  background-size: 11px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
 @keyframes riseFade {
   from {
     opacity: 0;
@@ -390,6 +672,34 @@ h3 {
   .site-btn-link {
     transition: none;
   }
+}
+
+/* ─── TAB ANIMATIONS ─── */
+/* ─── TAB ANIMATIONS ─── */
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-tab {
+  animation: tabFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-tab {
+  animation: tabFadeIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-tab {
+  animation: tabFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-tab {
+  animation: tabFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes slideInRight {

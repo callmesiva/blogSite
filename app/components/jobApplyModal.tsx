@@ -126,7 +126,6 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
       onClick={handleBackdrop}
     >
       <div className="w-full max-w-[520px] rounded-[16px] border border-[#dce6ef] bg-white">
-
         {/* Header */}
         <div className="flex items-start justify-between gap-3 border-b border-[#dce6ef] px-6 py-5">
           <div>
@@ -144,14 +143,18 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
             className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg border border-[#dce6ef] bg-[#f5f8fb] text-[#486173] hover:bg-[#eef3f8]"
           >
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-              <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              <path
+                d="M1 1l10 10M11 1L1 11"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
             </svg>
           </button>
         </div>
 
         {/* Body */}
         <div className="flex flex-col gap-4 px-6 py-5">
-
           {/* Name + Phone row */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <Field label="Full name" required error={errors.name}>
@@ -159,7 +162,9 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
                 type="text"
                 placeholder="John Doe"
                 value={form.name}
-                onChange={e => setForm(p => ({ ...p, name: e.target.value }))}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, name: e.target.value }))
+                }
                 className={inputCls(!!errors.name)}
               />
             </Field>
@@ -169,7 +174,12 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
                 placeholder="10-digit number"
                 value={form.phone}
                 maxLength={10}
-                onChange={e => setForm(p => ({ ...p, phone: e.target.value.replace(/\D/g, "") }))}
+                onChange={(e) =>
+                  setForm((p) => ({
+                    ...p,
+                    phone: e.target.value.replace(/\D/g, ""),
+                  }))
+                }
                 className={inputCls(!!errors.phone)}
               />
             </Field>
@@ -181,7 +191,9 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
               type="email"
               placeholder="john@example.com"
               value={form.email}
-              onChange={e => setForm(p => ({ ...p, email: e.target.value }))}
+              onChange={(e) =>
+                setForm((p) => ({ ...p, email: e.target.value }))
+              }
               className={inputCls(!!errors.email)}
             />
           </Field>
@@ -193,29 +205,60 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
               type="file"
               accept=".pdf,.doc,.docx"
               className="hidden"
-              onChange={e => handleFile(e.target.files?.[0] ?? null)}
+              onChange={(e) => handleFile(e.target.files?.[0] ?? null)}
             />
             <div
               onClick={() => fileInputRef.current?.click()}
               className={`cursor-pointer rounded-[10px] border-[1.5px] border-dashed px-4 py-4 text-center transition-colors
-                ${form.resume
-                  ? "border-[#2f7f88] bg-[#f0faf8]"
-                  : errors.resume
-                  ? "border-[#e24b4a] bg-[#fef9f9]"
-                  : "border-[#c8d8e8] bg-[#fafcfe] hover:border-[#2f7f88] hover:bg-[#f0f8f8]"
+                ${
+                  form.resume
+                    ? "border-[#2f7f88] bg-[#f0faf8]"
+                    : errors.resume
+                      ? "border-[#e24b4a] bg-[#fef9f9]"
+                      : "border-[#c8d8e8] bg-[#fafcfe] hover:border-[#2f7f88] hover:bg-[#f0f8f8]"
                 }`}
             >
-              <svg className="mx-auto mb-1.5" width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <rect x="5" y="3" width="14" height="18" rx="2" stroke={form.resume ? "#2f7f88" : "#9ab0c0"} strokeWidth="1.5"/>
-                <path d="M15 3v6h6" stroke={form.resume ? "#2f7f88" : "#9ab0c0"} strokeWidth="1.5" strokeLinecap="round"/>
-                <path d="M9 13h8M9 17h5" stroke={form.resume ? "#2f7f88" : "#9ab0c0"} strokeWidth="1.5" strokeLinecap="round"/>
+              <svg
+                className="mx-auto mb-1.5"
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                fill="none"
+              >
+                <rect
+                  x="5"
+                  y="3"
+                  width="14"
+                  height="18"
+                  rx="2"
+                  stroke={form.resume ? "#2f7f88" : "#9ab0c0"}
+                  strokeWidth="1.5"
+                />
+                <path
+                  d="M15 3v6h6"
+                  stroke={form.resume ? "#2f7f88" : "#9ab0c0"}
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
+                <path
+                  d="M9 13h8M9 17h5"
+                  stroke={form.resume ? "#2f7f88" : "#9ab0c0"}
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                />
               </svg>
               {form.resume ? (
-                <p className="text-[13px] font-medium text-[#173652]">{form.resume.name}</p>
+                <p className="text-[13px] font-medium text-[#173652]">
+                  {form.resume.name}
+                </p>
               ) : (
-                <p className="text-[13px] text-[#486173]">Click to upload your resume</p>
+                <p className="text-[13px] text-[#486173]">
+                  Click to upload your resume
+                </p>
               )}
-              <p className="mt-1 text-[11px] text-[#9ab0c0]">PDF, DOC, DOCX · max 2 MB</p>
+              <p className="mt-1 text-[11px] text-[#9ab0c0]">
+                PDF, DOC, DOCX · max 2 MB
+              </p>
             </div>
           </Field>
 
@@ -225,7 +268,9 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
               rows={3}
               placeholder="Tell us why you're a great fit for this role..."
               value={form.coverLetter}
-              onChange={e => setForm(p => ({ ...p, coverLetter: e.target.value }))}
+              onChange={(e) =>
+                setForm((p) => ({ ...p, coverLetter: e.target.value }))
+              }
               className="w-full resize-y rounded-lg border border-[#c8d8e8] bg-white px-3 py-2.5 text-[14px] text-[#173652] outline-none placeholder:text-[#aab8c2] focus:border-[#2f7f88] focus:ring-2 focus:ring-[#2f7f88]/10"
             />
           </Field>
@@ -250,18 +295,32 @@ export function JobApplyModal({ job, onClose, onSuccess }: Props) {
           <button
             onClick={handleSubmit}
             disabled={isSubmitting}
-            className="flex items-center gap-2 rounded-lg bg-[#0b3a63] px-6 py-2.5 text-[14px] font-medium text-white hover:bg-[#0e4a7a] disabled:opacity-60"
+            className="flex items-center gap-2 !rounded-lg site-btn-primary px-6 py-2.5  disabled:opacity-60"
           >
             {isSubmitting && (
-              <svg className="h-4 w-4 animate-spin" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="8" r="6" stroke="rgba(255,255,255,0.3)" strokeWidth="2"/>
-                <path d="M8 2a6 6 0 016 6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+              <svg
+                className="h-4 w-4 animate-spin"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <circle
+                  cx="8"
+                  cy="8"
+                  r="6"
+                  stroke="rgba(255,255,255,0.3)"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M8 2a6 6 0 016 6"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
               </svg>
             )}
             {isSubmitting ? "Submitting..." : "Submit application"}
           </button>
         </div>
-
       </div>
     </div>
   );

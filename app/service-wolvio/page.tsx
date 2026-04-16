@@ -1,6 +1,7 @@
 "use client";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { title } from "process";
 import { useState } from "react";
 
 type UseCaseCard = {
@@ -115,15 +116,14 @@ export default function ServiceWolvioPage() {
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
         <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
-          <p className="site-kicker">
-            Wolvio Intelligence
-          </p>
+          <p className="site-kicker">Wolvio Intelligence</p>
           <h1 className="mt-4 max-w-[960px]">
             AI automation services across industries
           </h1>
           <p className="site-subheading mt-5 max-w-[900px]">
-            AI systems built for how your business actually runs. We design and deploy AI agents, automation systems,
-            and intelligent workflows that solve operational problems in production today.
+            AI systems built for how your business actually runs. We design and
+            deploy AI agents, automation systems, and intelligent workflows that
+            solve operational problems in production today.
           </p>
           <Link
             href="/#contact"
@@ -138,14 +138,13 @@ export default function ServiceWolvioPage() {
       <section className="site-section">
         <div className="site-container">
           <p className="site-kicker">What We Do</p>
-          <h2 className="mt-4 max-w-[900px]">
-            AI Transformation & Automation
-          </h2>
+          <h2 className="mt-4 max-w-[900px]">AI Transformation & Automation</h2>
           <p className="site-body mt-6 max-w-[1060px]">
-            Wolvio Intelligence is the AI Transformation & Automation practice of Wolvio Solutions. Through targeted AI
-            automation services we deliver intelligent agents, document processing systems, voice AI, and workflow
-            automation that drive measurable outcomes across healthcare, logistics, enterprise operations, and customer
-            support.
+            Wolvio Intelligence is the AI Transformation & Automation practice
+            of Wolvio Solutions. Through targeted AI automation services we
+            deliver intelligent agents, document processing systems, voice AI,
+            and workflow automation that drive measurable outcomes across
+            healthcare, logistics, enterprise operations, and customer support.
           </p>
         </div>
       </section>
@@ -160,153 +159,122 @@ export default function ServiceWolvioPage() {
             Five systems. Each one solves a problem you already have.
           </p>
 
-         {/* <div className="mt-8 grid gap-6">
-            {useCases.map((card, index) => (
-              <article
-                key={card.title}
-                className="site-card relative overflow-hidden p-6 sm:p-7"
-              >
-                <div
-                  className={`absolute left-0 top-0 h-[5px] w-full ${
-                    index % 2 === 0 ? "bg-[#0b3a63]" : "bg-[#2f8b92]"
-                  }`}
-                />
-                <div className="flex flex-col gap-5 lg:grid lg:grid-cols-[1.2fr_1fr]">
+  
+          <div className="mt-8">
+            <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
+              {/* Tab Bar */}
+              <div className="flex overflow-x-auto border-b border-[#dce6ef] scrollbar-hide">
+                {useCases.map((card, index) => (
+                  <button
+                    key={card.title}
+                    onClick={() => setActiveTab(index)}
+                    className={`
+              relative flex-1 min-w-[130px] px-4 py-4  text-center
+              whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
+              ${
+                activeTab === index
+                  ? "bg-white text-[#173652]"
+                  : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
+              }
+            `}
+                  >
+                    <p>{card.title}</p>
+                    {/* Active indicator bar */}
+                    {activeTab === index && (
+                      <span
+                        className="absolute bottom-0 left-0 w-full h-[2.5px]"
+                        style={{
+                          background: index % 2 === 0 ? "#0b3a63" : "#2f8b92",
+                        }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+
+              {/* Tab Content */}
+              <div className="p-6 ">
+                {/* Top color accent bar */}
+                {/* <div
+          className="mb-6 h-[4px] w-12 rounded-full"
+          style={{ background: activeTab % 2 === 0 ? "#0b3a63" : "#2f8b92" }}
+        />*/}
+
+                <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[1.2fr_1fr]">
+                  {/* Left: Text content */}
                   <div>
-                    <h3 className="text-[22px] font-semibold leading-[1.25] tracking-[-0.02em] text-[#173652]">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 text-[15px] font-medium leading-[1.6] text-[#173652]">{card.pain}</p>
-                    <p className="mt-3 text-[15px] font-semibold leading-[1.6] text-[#2f7f88]">{card.summary}</p>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{card.details}</p>
+                    <h3 className="">{activeCard.title}</h3>
+                    <p className="mt-3">{activeCard.pain}</p>
+                    <p className="mt-3">{activeCard.summary}</p>
+                    <p className="mt-3">{activeCard.details}</p>
                   </div>
+
+                  {/* Right: Capabilities */}
                   <div className="site-card-muted rounded-[22px] p-5">
-                    <p className="site-kicker text-[12px]">
-                      Capabilities
-                    </p>
+                    <p className="site-kicker">Capabilities</p>
                     <ul className="mt-3 space-y-2 text-[14px] text-[#486173]">
-                      {card.bullets.map(bullet => (
+                      {activeCard.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
-                          <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92]" />
+                          <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92] flex-shrink-0" />
                           <span>{bullet}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              </article>
-            ))}
-          </div> */} 
-
-
-
-  <div className="mt-8">
-    <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
-      
-      {/* Tab Bar */}
-      <div className="flex overflow-x-auto border-b border-[#dce6ef] scrollbar-hide">
-        {useCases.map((card, index) => (
-          <button
-            key={card.title}
-            onClick={() => setActiveTab(index)}
-            className={`
-              relative flex-1 min-w-[130px] px-4 py-4  text-center
-              whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
-              ${activeTab === index
-                ? "bg-white text-[#173652]"
-                : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
-              }
-            `}
-          >
-           <p>{card.title}</p> 
-            {/* Active indicator bar */}
-            {activeTab === index && (
-              <span
-                className="absolute bottom-0 left-0 w-full h-[2.5px]"
-                style={{ background: index % 2 === 0 ? "#0b3a63" : "#2f8b92" }}
-              />
-            )}
-          </button>
-        ))}
-      </div>
-
-      {/* Tab Content */}
-      <div className="p-6 ">
-        {/* Top color accent bar */}
-       {/* <div
-          className="mb-6 h-[4px] w-12 rounded-full"
-          style={{ background: activeTab % 2 === 0 ? "#0b3a63" : "#2f8b92" }}
-        />*/}
-
-        <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[1.2fr_1fr]">
-          {/* Left: Text content */}
-          <div>
-            <h3 className="">
-              {activeCard.title}
-            </h3>
-            <p className="mt-3">
-              {activeCard.pain}
-            </p>
-            <p className="mt-3">
-              {activeCard.summary}
-            </p>
-            <p className="mt-3">
-              {activeCard.details}
-            </p>
+              </div>
+            </div>
           </div>
-
-          {/* Right: Capabilities */}
-          <div className="site-card-muted rounded-[22px] p-5">
-            <p className="site-kicker">Capabilities</p>
-            <ul className="mt-3 space-y-2 text-[14px] text-[#486173]">
-              {activeCard.bullets.map(bullet => (
-                <li key={bullet} className="flex items-start gap-2">
-                  <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92] flex-shrink-0" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-
         </div>
       </section>
 
-      <section className="site-section">
+      <section className="site-section-alt">
         <div className="site-container">
-          <p className="site-kicker">
-            Why Wolvio Intelligence
-          </p>
-          <h2 className="mt-4 max-w-[940px]">
-            How we&apos;re different from typical AI consultancies
+          <p className="site-kicker">Why Wolvio Intelligence</p>
+          <h2 className="mt-4 max-w-[880px]">
+              How we&apos;re different from typical AI consultancies
           </h2>
+   
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             {[
               {
-                title: "01 - We demo before we pitch",
+                number : "01",
+                title: "We demo before we pitch",
                 body: "Every conversation starts with a working system, not a slide deck, so you see practical fit before commitment.",
+                  accent: "bg-[#163f7d]",
               },
               {
-                title: "02 - Production-proven, not prototype-stage",
+                number : "02",
+                title: "Production-proven, not prototype-stage",
                 body: "10+ AI systems deployed in real environments. We build to operate sustainably, not just to showcase.",
+                  accent: "bg-[#2f8b92]",
               },
+              
               {
-                title: "03 - Cross-industry, global-ready",
+                number : "03",
+                title: "Cross-industry, global-ready",
                 body: "Deployments across healthcare, logistics, enterprise IT, and support, including regional language and India-first automation contexts.",
+                 accent: "bg-[#163f7d]",
               },
               {
-                title: "04 - Built to measure, not to impress",
+                number : "04",
+                title: "Built to measure, not to impress",
                 body: "Every delivery includes governance, logging, and performance tracking for accuracy, resolution, and time saved.",
+                accent: "bg-[#2f8b92]",
               },
-            ].map(item => (
-              <article key={item.title} className="site-card p-6">
-                <h3 className="">{item.title}</h3>
-                <p className="mt-3 ">{item.body}</p>
+            ].map((card, index) => (
+              <article
+                key={card.number}
+                className="site-card relative overflow-hidden bg-white p-6 sm:p-7"
+              >
+                <div
+                  className={`absolute left-0 top-0 h-[5px] w-full ${card.accent}`}
+                />
+                <p className="text-[42px] font-semibold leading-none text-[#dbe3e8]">
+                  {card.number}
+                </p>
+                <h3 className="mt-3">{card.title}</h3>
+                <p className="mt-3">{card.body}</p>
               </article>
             ))}
           </div>
@@ -316,19 +284,23 @@ export default function ServiceWolvioPage() {
       <section className="site-section-alt">
         <div className="site-container">
           <p className="site-kicker">FAQ</p>
-          <h2 className="mt-4">
-            Questions we hear before every engagement
-          </h2>
+          <h2 className="mt-4">Questions we hear before every engagement</h2>
           <p className="site-body mt-4 max-w-[900px]">
-            These are the real concerns that usually stop buyers from reaching out. We answer them directly.
+            These are the real concerns that usually stop buyers from reaching
+            out. We answer them directly.
           </p>
           <div className="mt-8 space-y-4">
             {faqs.map((item, index) => (
-              <details key={item.question} className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}>
+              <details
+                key={item.question}
+                className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}
+              >
                 <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#173652]">
                   {item.question}
                 </summary>
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{item.answer}</p>
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+                  {item.answer}
+                </p>
               </details>
             ))}
           </div>
@@ -344,8 +316,8 @@ export default function ServiceWolvioPage() {
                 Ready to Put Intelligence to Work?
               </span>
               <h2 className="mx-auto mt-7 max-w-[900px] text-[26px] font-semibold leading-[1.18] tracking-[-0.03em] text-white">
-                Start with the problem that matters most. We will show you a working system before asking for
-                commitment.
+                Start with the problem that matters most. We will show you a
+                working system before asking for commitment.
               </h2>
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
                 <Link

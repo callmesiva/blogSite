@@ -1,38 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TestimonialsSection } from "../components/testimonials";
+import VerticalTabsSection from "../components/HowWeWorkSection";
 
 type Differentiator = {
-  number: string;
+  id: string;
   title: string;
-  body: string;
+  desc: string;
 };
 
 const differentiators: Differentiator[] = [
   {
-    number: "01",
+    id: "01",
     title: "Depth Over Breadth. Always.",
-    body: "Every consultant and engineer at Wolvio has chosen depth over platform rotation. You work with people who have spent their careers in the space they operate in. That focus is why clients trust us with high-impact work.",
+    desc: "Every consultant and engineer at Wolvio has chosen depth over platform rotation. You work with people who have spent their careers in the space they operate in. That focus is why clients trust us with high-impact work.",
   },
   {
-    number: "02",
+    id: "02",
     title: "The People You Meet Are the People Who Deliver.",
-    body: "We do not pitch with seniors and hand off to juniors. The person who scopes with you is the one accountable through delivery and beyond. No hidden handoffs and no surprises on engagement ownership.",
+    desc: "We do not pitch with seniors and hand off to juniors. The person who scopes with you is the one accountable through delivery and beyond. No hidden handoffs and no surprises on engagement ownership.",
   },
   {
-    number: "03",
+    id: "03",
     title: "Speed Without Cutting Corners.",
-    body: "Fast delivery and high standards are compatible when work is structured correctly. We move quickly where we can and deliberately where we must, so timelines improve without reducing confidence in outcomes.",
+    desc: "Fast delivery and high standards are compatible when work is structured correctly. We move quickly where we can and deliberately where we must, so timelines improve without reducing confidence in outcomes.",
   },
   {
-    number: "04",
+    id: "04",
     title: "Standards Built In. Not Bolted On.",
-    body: "In life sciences we embed GxP, CSV, and 21 CFR Part 11 from day one. In AI we design privacy, security, and responsible deployment into the architecture itself. Compliance is part of build, not a final checklist.",
+    desc: "In life sciences we embed GxP, CSV, and 21 CFR Part 11 from day one. In AI we design privacy, security, and responsible deployment into the architecture itself. Compliance is part of build, not a final checklist.",
   },
   {
-    number: "05",
+    id: "05",
     title: "Expertise That Shows Up in the Room.",
-    body: "When teams ask difficult questions, we answer directly. When delivery risks surface, we have seen them before. That depth reduces surprises and keeps momentum through complex engagements.",
+    desc: "When teams ask difficult questions, we answer directly. When delivery risks surface, we have seen them before. That depth reduces surprises and keeps momentum through complex engagements.",
   },
 ];
 
@@ -60,19 +61,39 @@ export const metadata: Metadata = {
     "Understand what sets Wolvio apart across Veeva consulting and AI automation services in regulated and operationally complex environments.",
 };
 
+const services = [
+  {
+    number: "01",
+    accent: "bg-[#2f8b92]", // Your primary teal accent
+    title: "Wolvio Life Sciences - Veeva Consulting & Managed Services",
+    description:
+      "For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations from the inside. From first implementation to migration and integration, we follow a structured discovery-to-validation methodology with GxP embedded at every stage.",
+    href: "/service-veeva",
+    linkText: "Explore now",
+  },
+  {
+    number: "02",
+    accent: "bg-[#0b3a63]", // Your secondary navy accent
+    title: "Wolvio Intelligence - AI & Automation Services",
+    description:
+      "For organizations that need intelligent automation that runs in production. We start from operational problems before technology choices, because the right tool on the wrong foundation still fails.",
+    href: "/service-wolvio",
+    linkText: "Explore now",
+  },
+];
+
 export default function WhyWolvioPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
         <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Why Wolvio</p>
-          <h1 className="mt-4 max-w-[930px]">
-            Why choose Wolvio Solutions?
-          </h1>
+          <h1 className="mt-4 max-w-[930px]">Why choose Wolvio Solutions?</h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
-            In regulated environments, the wrong Veeva partner does not just slow you down. It creates compliance debt
-            that surfaces months after project closure. In AI, the wrong partner delivers a proof of concept that never
-            reaches production.
+            In regulated environments, the wrong Veeva partner does not just
+            slow you down. It creates compliance debt that surfaces months after
+            project closure. In AI, the wrong partner delivers a proof of
+            concept that never reaches production.
           </p>
         </div>
       </section>
@@ -80,28 +101,13 @@ export default function WhyWolvioPage() {
       <section className="site-section-alt">
         <div className="site-container">
           <p className="site-kicker">Our Differentiators</p>
-          <h2 className="mt-4">
-            What Sets Us Apart
-          </h2>
+          <h2 className="mt-4">What Sets Us Apart</h2>
           <p className="site-body mt-5 max-w-[980px]">
-            Choosing the right firm is rarely about price. It is about whether the people across the table actually
-            know your problem and whether they remain accountable when delivery becomes hard.
+            Choosing the right firm is rarely about price. It is about whether
+            the people across the table actually know your problem and whether
+            they remain accountable when delivery becomes hard.
           </p>
-          <div className="mt-8 grid gap-5">
-            {differentiators.map((item, index) => (
-              <article key={item.number} className={`site-card p-6 sm:p-7 ${index % 2 ? "bg-[#f8fafc]" : "bg-white"}`}>
-                <div className="flex items-start gap-4">
-                  <span className="rounded-full border border-[#c7d7df] bg-[#eef5f7] px-3 py-1 text-[13px] font-semibold text-[#2f7f88]">
-                    {item.number}
-                  </span>
-                  <div>
-                    <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">{item.title}</h3>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">{item.body}</p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <VerticalTabsSection items={differentiators} ctaLink="" ctaText=""/>
         </div>
       </section>
 
@@ -111,46 +117,50 @@ export default function WhyWolvioPage() {
             Two Practices. One Standard. No Shortcuts.
           </p>
           <p className="site-body mt-5 max-w-[980px]">
-            Wolvio operates two focused practices, and our delivery model is identical across both: senior ownership,
-            standards embedded from the start, and accountability through final handover.
+            Wolvio operates two focused practices, and our delivery model is
+            identical across both: senior ownership, standards embedded from the
+            start, and accountability through final handover.
           </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            <article className="site-card p-6 sm:p-7">
-              <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">
-                Wolvio Life Sciences - Veeva Consulting & Managed Services
-              </h3>
-              <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
-                For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations
-                from the inside. From first implementation to migration and integration, we follow a structured
-                discovery-to-validation methodology with GxP embedded at every stage.
-              </p>
-              <Link href="/service-veeva" className="mt-5 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]">
-                Explore now
-                <ArrowRightIcon />
-              </Link>
-            </article>
-            <article className="site-card p-6 sm:p-7">
-              <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">
-                Wolvio Intelligence - AI & Automation Services
-              </h3>
-              <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
-                For organizations that need intelligent automation that runs in production. We start from operational
-                problems before technology choices, because the right tool on the wrong foundation still fails.
-              </p>
-              <Link href="/service-wolvio" className="mt-5 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]">
-                Explore now
-                <ArrowRightIcon />
-              </Link>
-            </article>
+            {services.map((card) => (
+              <article
+                key={card.number}
+                className="site-card relative overflow-hidden bg-white p-6 sm:p-7"
+              >
+                {/* Top Accent Bar */}
+                <div
+                  className={`absolute left-0 top-0 h-[5px] w-full ${card.accent}`}
+                />
+
+                {/* Large Background Number */}
+                <p className="text-[42px] font-semibold leading-none text-[#dbe3e8]">
+                  {card.number}
+                </p>
+
+                {/* Content */}
+                <h3 className="mt-3 text-[20px] font-semibold leading-[1.25] text-[#173652]">
+                  {card.title}
+                </h3>
+
+                <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
+                  {card.description}
+                </p>
+
+                {/* CTA Link */}
+                <Link
+                  href={card.href}
+                  className="mt-5 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88] transition-colors hover:text-[#173652]"
+                >
+                  {card.linkText}
+                  <ArrowRightIcon />
+                </Link>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      
-       
-          <TestimonialsSection/>
-     
-      
+      <TestimonialsSection />
 
       <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
         <div className="site-container">
@@ -164,8 +174,9 @@ export default function WhyWolvioPage() {
                 The Right Partner Gives You a Straight Answer.
               </h2>
               <p className="mx-auto mt-4 max-w-[860px]">
-                Whether you are evaluating Veeva partners or exploring AI automation, we will tell you directly if we
-                are the right fit. Just an honest conversation with someone who knows the space.
+                Whether you are evaluating Veeva partners or exploring AI
+                automation, we will tell you directly if we are the right fit.
+                Just an honest conversation with someone who knows the space.
               </p>
               <div className="mt-8 flex justify-center">
                 <Link
@@ -177,7 +188,8 @@ export default function WhyWolvioPage() {
                 </Link>
               </div>
               <p className="mt-5 text-[14px] text-[#9eb8cc]">
-                30 minutes with a founding consultant. We respond to all enquiries within 48 business hours.
+                30 minutes with a founding consultant. We respond to all
+                enquiries within 48 business hours.
               </p>
             </div>
           </div>

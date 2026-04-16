@@ -1,5 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import CountUp from "react-countup";
+import ScrollFadeGrid from "./components/ScrollFadeGrid";
+import StatsCounter from "./components/StatsCounter";
+import WhyWolvioSection from "./components/WhyWolvioSection";
 
 type OrbitCard = {
   label: string;
@@ -19,6 +23,14 @@ type SimpleCard = {
   icon: ReactNode;
 };
 
+type SimpleCard1 = {
+  title: string;
+  heading: string;
+  description: string;
+  accent: string;
+  icon: ReactNode;
+};
+
 const orbitCards: OrbitCard[] = [
   {
     label: "Blockchain",
@@ -28,7 +40,12 @@ const orbitCards: OrbitCard[] = [
     border: "rgba(99, 102, 241, 0.14)",
     glow: "rgba(99, 102, 241, 0.08)",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M9 17H7A5 5 0 0 1 7 7h2" />
         <path d="M15 7h2a5 5 0 1 1 0 10h-2" />
         <path d="M8 12h8" />
@@ -43,7 +60,12 @@ const orbitCards: OrbitCard[] = [
     border: "rgba(14, 165, 233, 0.14)",
     glow: "rgba(14, 165, 233, 0.08)",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
       </svg>
     ),
@@ -56,7 +78,12 @@ const orbitCards: OrbitCard[] = [
     border: "rgba(139, 92, 246, 0.14)",
     glow: "rgba(139, 92, 246, 0.08)",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M12 5a3 3 0 1 0-6 .1 4 4 0 0 0-2.5 5.8A4 4 0 0 0 4 17.5 4 4 0 1 0 12 18" />
         <path d="M12 5a3 3 0 1 1 6 .1 4 4 0 0 1 2.5 5.8 4 4 0 0 1-.6 6.6A4 4 0 1 1 12 18" />
         <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" />
@@ -71,7 +98,12 @@ const orbitCards: OrbitCard[] = [
     border: "rgba(47, 111, 115, 0.14)",
     glow: "rgba(47, 111, 115, 0.08)",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M10 2v6a2 2 0 0 1-.24.96L4.25 19.04A2 2 0 0 0 6 22h12a2 2 0 0 0 1.75-2.96l-5.5-10.08A2 2 0 0 1 14 8V2" />
         <path d="M8.5 2h7" />
         <path d="M6.45 15h11.1" />
@@ -86,7 +118,12 @@ const orbitCards: OrbitCard[] = [
     border: "rgba(245, 158, 11, 0.14)",
     glow: "rgba(245, 158, 11, 0.08)",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <circle cx="12" cy="12" r="10" />
         <path d="M21.54 15H17a2 2 0 0 0-2 2v4.54" />
         <path d="M7 3.34V5a3 3 0 0 0 3 3 2 2 0 0 1 2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 1 2-2h3.17" />
@@ -102,7 +139,12 @@ const orbitCards: OrbitCard[] = [
     border: "rgba(16, 185, 129, 0.14)",
     glow: "rgba(16, 185, 129, 0.08)",
     icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
         <path d="M3 3v16a2 2 0 0 0 2 2h16" />
         <path d="M8 17v-3" />
         <path d="M13 17V5" />
@@ -138,14 +180,6 @@ const outerLinks = [
   [18.8231, 32, 81.1769, 32],
 ];
 
-const deliveryStats = [
-  { value: "8+", label: "Certified Veeva Experts" },
-  { value: "10+", label: "Specialist Delivery Partnerships" },
-  { value: "15+", label: "Veeva Engagements Delivered" },
-  { value: "50+", label: "Years of Combined Life Sciences Expertise" },
-  { value: "3", label: "Continents Asia, Europe & North America" },
-]
-
 const serviceCards: SimpleCard[] = [
   {
     title: "Veeva Consulting & Implementation",
@@ -153,13 +187,8 @@ const serviceCards: SimpleCard[] = [
       "Getting Vault right from the start saves years of technical debt, rework, and compliance risk down the line. We support  implementation that are built to last not just built to launch.",
     accent: "bg-[#0b3a63]",
     icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-      >
-        <path d="m13 2-7 11h6l-1 9 7-11h-6l1-9z" />
+      <svg viewBox="0 0 24 24">
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
       </svg>
     ),
   },
@@ -169,13 +198,8 @@ const serviceCards: SimpleCard[] = [
       "Most implementation partners disappear after go-live. We don't. Your Vault environment needs to evolve as your business grows, your regulatory obligations change, and new releases land. We stay and make sure it does.",
     accent: "bg-[#2f8b92]",
     icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-      >
-        <path d="M12 3 6 6v6c0 5.2 3.8 8.7 6 9 2.2-.3 6-3.8 6-9V6l-6-3z" />
+      <svg viewBox="0 0 24 24">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
   },
@@ -185,72 +209,61 @@ const serviceCards: SimpleCard[] = [
       "Clinical · Regulatory · Quality · Safety · Commercial · CRM we have hands-on configuration experience across every major Vault suite. Whichever domain your challenge sits in, we've worked there before.",
     accent: "bg-[linear-gradient(90deg,#0b3a63_0%,#2f8b92_100%)]",
     icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-      >
-        <path d="M9 4.5v3m6-3v3M6.5 10A3.5 3.5 0 1 1 10 6.5M17.5 10A3.5 3.5 0 1 0 14 6.5" />
-        <path d="M12 11v2.5m-4.5 4a3.5 3.5 0 1 1 3.5-3.5M16.5 17.5A3.5 3.5 0 1 0 13 14" />
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" />
       </svg>
     ),
   },
-]
+];
 
-const caseCards: SimpleCard[] = [
+const caseCards = [
   {
-    title: "Challenge",
+    tag: "Challenge",
+    tagColor: "#0b3a63",
+    imgBg: "#dbe8f4",
+    company: "Global Pharma Co.",
+    title: "Fragmented Systems, Compounding Risk",
     description:
-      "A UK-based global pharma company was running a rigid, non-integrable legacy CTMS with no real-time visibility, an eTMF that failed inspection-readiness standards, and business teams dependent on spreadsheets and emails creating siloed data, duplicated effort, and systemic compliance risk across clinical operations.",
-    accent: "bg-[#0b3a63]",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-      >
-        <path d="M12 8v4" />
-        <path d="M12 16h.01" />
-        <path d="M10.3 3.4 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.4a2 2 0 0 0-3.4 0Z" />
-      </svg>
-    ),
+      "A UK-based global pharma company was running a rigid, non-integrable legacy CTMS with no real-time visibility, an eTMF that failed inspection-readiness standards, and business teams dependent on spreadsheets and emails — creating siloed data, duplicated effort, and systemic compliance risk across clinical operations.",
+    stats: [
+      { value: "40%", label: "Faster submission cycles" },
+      { value: "12", label: "Markets integrated" },
+    ],
+    image: "/images/case-studies/pharma.jpg",
+    link: "",
   },
   {
-    title: "Solution",
+    tag: "Solution",
+    tagColor: "#0f6e56",
+    imgBg: "#d8eee7",
+    company: "MedTech Manufacturer",
+    title: "Three-Phase Vault Transformation",
     description:
       "Wolvio delivered a three-phase Veeva Vault transformation replacing and decommissioning legacy eTMF and CTMS, then building Study Startup all within a single unified vault. Delivery included complex data migrations, multi-directional integrations, AI-powered TMF classification, Japan CTMS, Risk-Based Study Management, custom SDK development, and mobile enablement.",
-    accent: "bg-[#2f8b92]",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-      >
-        <path d="m10 14-2-2a2 2 0 1 1 3-3l1 1 3-3a2 2 0 1 1 3 3l-6 6a2 2 0 0 1-3 0Z" />
-      </svg>
-    ),
+    stats: [
+      { value: "60%", label: "CAPA closure rate improvement" },
+      { value: "6", label: "Sites unified" },
+    ],
+    image: "/images/case-studies/medtech.jpg",
+    link: "",
   },
   {
-    title: "Outcome",
+    tag: "Outcome",
+    tagColor: "#534ab7",
+    imgBg: "#e4dff5",
+    company: "Multi-site Ops Group",
+    title: "One Vault. Zero Legacy. Audit Confident.",
     description:
-      " Three systems unified into one vault. All legacy platforms fully decommissioned. Spreadsheet-driven workflows eliminated entirely. Teams gained real-time visibility across all studies, faster site activation, stronger inspection readiness, and reduced compliance risk positioning the client for scalable, audit-confident clinical trial management globally.",
-    accent: "bg-[linear-gradient(90deg,#0b3a63_0%,#2f8b92_100%)]",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-      >
-        <path d="M12 3 4.5 7v6c0 5 3.7 7.9 7.5 8.8 3.8-.9 7.5-3.8 7.5-8.8V7L12 3Z" />
-        <path d="m9 12 2 2 4-4" />
-      </svg>
-    ),
+      "Three systems unified into one vault. All legacy platforms fully decommissioned. Spreadsheet-driven workflows eliminated entirely. Teams gained real-time visibility across all studies, faster site activation, stronger inspection readiness, and reduced compliance risk positioning the client for scalable, audit-confident clinical trial management globally.",
+    stats: [
+      { value: "3x", label: "Faster lot traceability" },
+      { value: "100%", label: "Audit trail coverage" },
+    ],
+    image: "/images/case-studies/operations.jpg",
+    link: "",
   },
-]
+];
 
 const whyCards: SimpleCard[] = [
   {
@@ -266,11 +279,7 @@ const whyCards: SimpleCard[] = [
         strokeWidth="2.2"
       >
         <path d="m9 12 2 2 4-4" />
-        <circle
-          cx="12"
-          cy="12"
-          r="9"
-        />
+        <circle cx="12" cy="12" r="9" />
       </svg>
     ),
   },
@@ -286,17 +295,9 @@ const whyCards: SimpleCard[] = [
         stroke="currentColor"
         strokeWidth="2.2"
       >
-        <circle
-          cx="9"
-          cy="8"
-          r="3"
-        />
+        <circle cx="9" cy="8" r="3" />
         <path d="M4 20a5 5 0 0 1 10 0" />
-        <circle
-          cx="17"
-          cy="9"
-          r="2.5"
-        />
+        <circle cx="17" cy="9" r="2.5" />
         <path d="M15 20h6a4 4 0 0 0-4-4" />
       </svg>
     ),
@@ -314,13 +315,7 @@ const whyCards: SimpleCard[] = [
         strokeWidth="2.2"
       >
         <path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" />
-        <rect
-          x="8"
-          y="8"
-          width="8"
-          height="8"
-          rx="1.5"
-        />
+        <rect x="8" y="8" width="8" height="8" rx="1.5" />
       </svg>
     ),
   },
@@ -358,27 +353,25 @@ const whyCards: SimpleCard[] = [
       </svg>
     ),
   },
-]
+];
 
 const insightCards = [
   {
     tag: "Veeva Vault 26R1 Feature",
-    title:
-      "Wolvio Insights: Why Doctype Triggers Could Be a Game-Changer for Document-Centric Processes",
-    description:
-      "A deep dive into one of the most meaningful extensibility enhancements in Veeva Vault 26R1 and what it means for Clinical, Quality, Regulatory, and Medical content operations in Life Sciences.",
+    title: "Wolvio Insights: Why Doctype Triggers Could Be a Game-Changer...",
+    description: "A deep dive into one of the most meaningful extensibility...",
     minutes: "6 min read",
-    bg: "bg-gradient-to-br from-[#26767c] to-[#08233a] hover:from-[#08233a] hover:to-[#26767c]",
+    // Soft slate-navy gradient. On hover, the top-left just gets a bit lighter.
+    bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
   },
   {
     tag: "Veeva Vault AI Agents",
-    title: "Navigating Veeva Vault AI Agents:  Wolvio Insights",
-    description:
-      "A practical guide to understanding and leveraging Veeva Vault AI agents, showing how embedded, context-aware automation is transforming workflows, compliance, and productivity across Life Sciences.",
+    title: "Navigating Veeva Vault AI Agents: Wolvio Insights",
+    description: "A practical guide to understanding and leveraging...",
     minutes: "7 min read",
-    bg: "bg-gradient-to-br from-[#26767c] to-[#08233a] hover:from-[#08233a] hover:to-[#26767c]",
+    bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
   },
-]
+];
 
 function ArrowRightIcon() {
   return (
@@ -453,7 +446,7 @@ function SolutionDiagram() {
             opacity="0.25"
           />
         ))}
-        {orbitCards.map(card => (
+        {orbitCards.map((card) => (
           <line
             key={`hub-${card.label}`}
             x1="50"
@@ -471,12 +464,16 @@ function SolutionDiagram() {
         <div className="absolute h-[110px] w-[110px] rounded-full border border-[rgba(47,111,115,0.15)]" />
         <div className="absolute h-[88px] w-[88px] rounded-full border border-[rgba(47,111,115,0.12)]" />
         <div className="relative flex h-[74px] w-[74px] flex-col items-center justify-center rounded-full border border-[rgba(47,111,115,0.2)] bg-[linear-gradient(135deg,rgba(47,111,115,0.12),rgba(10,37,64,0.06))] text-center backdrop-blur-md">
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#2f6f73]">Digital</span>
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#17314c]">Solutions</span>
+          <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#2f6f73]">
+            Digital
+          </span>
+          <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#17314c]">
+            Solutions
+          </span>
         </div>
       </div>
 
-      {orbitCards.map(card => (
+      {orbitCards.map((card) => (
         <ServiceBadge key={card.label} card={card} />
       ))}
 
@@ -492,6 +489,76 @@ function SolutionDiagram() {
         />
       ))}
     </div>
+  );
+}
+
+function PillCard1() {
+  return (
+    // Added "cards-grid" here if you want them to stagger one by one
+    <ScrollFadeGrid className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3 cards-grid">
+      {caseCards.map((cs) => (
+        <article
+          key={cs.title}
+          // ADDED "fade-up" RIGHT HERE 👇
+          className="fade-up site-card group relative overflow-hidden bg-white flex flex-col transition-shadow duration-500 hover:shadow-xl"
+        >
+          {/* Image area */}
+          <div
+            className="relative h-[160px] w-full overflow-hidden flex-shrink-0"
+            style={{ background: cs.imgBg }}
+          >
+            {/* Tag badge */}
+            <span
+              className="absolute left-3 top-3 rounded-[6px] px-[10px] py-1 text-[11px] font-medium tracking-wide"
+              style={{ background: cs.tagColor, color: "#e6f1fb" }}
+            >
+              {cs.tag}
+            </span>
+          </div>
+
+          {/* Body */}
+          <div className="flex flex-1 flex-col p-5">
+            <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-[#2f7f88]">
+              {cs.company}
+            </p>
+            <h3 className="mt-1.5 text-[16px] font-semibold leading-[1.35] text-[#173652]">
+              {cs.title}
+            </h3>
+            <p className="mt-2 flex-1 text-[14px] leading-[1.65] text-[#63798d]">
+              {cs.description}
+            </p>
+
+            {/* Stats */}
+            <div className="mt-4 grid grid-cols-2 gap-2">
+              {cs.stats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-[10px] bg-[#f5f8fb] px-3 py-2.5"
+                >
+                  <p className="text-[20px] font-bold leading-none text-[#0b3a63]">
+                    {stat.value}
+                  </p>
+                  <p className="mt-1 text-[11px] leading-[1.4] text-[#63798d]">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Hover Overlay & Button */}
+          <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center bg-white/0 opacity-0 backdrop-blur-none transition-all duration-500 group-hover:pointer-events-auto group-hover:bg-white/40 group-hover:opacity-100 group-hover:backdrop-blur-[6px]">
+            {/* The Link Button */}
+            <a
+              href={cs.link}
+              className="translate-y-10 rounded-full bg-[#2f7f88] px-7 py-3 text-[14px] font-semibold text-white opacity-0 shadow-[0_8px_20px_rgba(47,127,136,0.3)] transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-105 hover:bg-[#256a72] group-hover:translate-y-0 group-hover:opacity-100"
+            >
+              Read full case study
+            </a>
+          </div>
+        </article>
+      ))}
+    </ScrollFadeGrid>
   );
 }
 
@@ -514,8 +581,8 @@ export default function Home() {
       id="home"
       className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
-      <div className="hero-grid">
-        <section className="site-container grid items-center gap-12 pt-10 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
+      <section className="hero-grid">
+        <div className="site-container grid items-center gap-12 pt-10 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
           <div className="max-w-[760px] mx-auto lg:mx-0 ">
             <h1 className="max-w-[550px] text-center lg:text-left">
               Specialist Veeva Consulting & Managed Services for{" "}
@@ -535,14 +602,14 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href="contact-us"
-                className="site-btn-primary !bg-[#0a2540] !text-[14px] hover:!bg-[#081d30]"
+                className="site-btn-primary  !text-[14px] hover:!bg-[#081d30]"
               >
                 Schedule a Consultation
                 <ArrowRightIcon />
               </a>
               <a
                 href="service-veeva"
-                className="site-btn-secondary !text-[14px]"
+                className="site-btn-secondary !text-[14px]  hover:!text-black "
               >
                 Explore Our Veeva Services
                 <ArrowRightIcon />
@@ -554,8 +621,8 @@ export default function Home() {
             <div className="absolute inset-x-[10%] top-[10%] h-[78%] rounded-full bg-[radial-gradient(circle,rgba(47,111,115,0.12)_0%,rgba(255,255,255,0)_68%)] blur-3xl" />
             <SolutionDiagram />
           </div> */}
-        </section>
-      </div>
+        </div>
+      </section>
 
       <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
         <div className="site-container">
@@ -569,26 +636,12 @@ export default function Home() {
             Every number below reflects real engagements, real certifications,
             and real delivery across regulated environments.
           </p>
-          <div className="mt-10 grid gap-y-8 sm:grid-cols-2 lg:mt-14 lg:grid-cols-5">
-            {deliveryStats.map(stat => (
-              <article
-                key={stat.label}
-                className="text-center"
-              >
-                <p className="text-[clamp(2rem,3vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-[#f5f9fc]">
-                  {stat.value}
-                </p>
-                <p className="mt-3">{stat.label}</p>
-              </article>
-            ))}
-          </div>
+
+          <StatsCounter />
         </div>
       </section>
 
-      <section
-        id="services"
-        className="site-section"
-      >
+      <section id="services" className="site-section">
         <div className="site-container">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[900px]">
@@ -613,37 +666,20 @@ export default function Home() {
               <ArrowRightIcon />
             </a>
           </div>
-          <div className="mt-9 grid gap-6 lg:grid-cols-3">
-            {serviceCards.map(card => (
-              <article
-                key={card.title}
-                className="group relative flex flex-col overflow-hidden rounded-[28px] border border-[#d7dde4] bg-[#f8fafc] p-6 pb-5 shadow-[0_8px_20px_rgba(8,43,74,0.03)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_22px_38px_rgba(8,43,74,0.08)]"
-              >
-                <div
-                  className={`absolute left-0 top-0 h-[5px] w-full ${card.accent}`}
-                />
-                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#dfe4e9] text-[#23415d]">
-                  <div className="h-6 w-6">{card.icon}</div>
-                </div>
-                <h3 className="mt-6">{card.title}</h3>
-                <p className="mt-4 mb-6 ">{card.description}</p>
-                {/* <a
-                  href="#services"
-                  className="inline-flex mt-auto items-center gap-2 text-[16px] font-semibold text-[#2f7f88] opacity-0 transition duration-300 group-hover:opacity-100"
-                >
-                  See more
-                  <ArrowRightIcon />
-                </a> */}
+          <ScrollFadeGrid className="mt-9 grid gap-6 lg:grid-cols-3 cards-grid">
+            {serviceCards.map((card, index) => (
+              <article key={card.title} className="card fade-up flex flex-col">
+                <span className="card-number">0{index + 1}</span>
+                <div className="card-icon">{card.icon}</div>
+                <h3 className="card-title">{card.title}</h3>
+                <p className="card-body">{card.description}</p>
               </article>
             ))}
-          </div>
+          </ScrollFadeGrid>
         </div>
       </section>
 
-      <section
-        id="case-studies"
-        className="site-section-alt"
-      >
+      <section id="case-studies" className="site-section-alt">
         <div className="site-container">
           <p className="site-kicker text-center">
             How We&apos;ve Helped Our Clients
@@ -656,72 +692,24 @@ export default function Home() {
             and achieve compliant, dependable outcomes across their Veeva Vault
             environments.
           </p>
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {caseCards.map(card => (
-              <PillCard
-                key={card.title}
-                item={card}
-              />
-            ))}
-          </div>
+
+          <PillCard1 />
+
           <div className="mt-10 flex justify-center">
             <a
               href="case-studies"
               className="inline-flex items-center gap-3 rounded-full border border-[#bad0d5] px-8 py-3 text-[16px] font-semibold text-[#2f7f88] transition hover:bg-white"
             >
-              Read case study
+              View all case studies
               <ArrowRightIcon />
             </a>
           </div>
         </div>
       </section>
 
-      <section
-        id="why-wolvio"
-        className="site-section"
-      >
-        <div className="site-container">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-[900px]">
-              <p className="site-kicker">Why Wolvio</p>
-              <h2 className="mt-4 max-w-[560px]">
-                Built on Specialist Depth, No Compromises in{" "}
-                <span className="text-[#2f8b92]">Regulated environments.</span>
-              </h2>
-              <p className="mt-4 max-w-[650px]">
-                Pharma, biotech, and med tech organisations don't choose a Veeva
-                partner lightly. The platform sits at the centre of their
-                regulatory, clinical, and quality operations and a poorly
-                configured implementation has consequences that outlast the
-                project. Wolvio was built specifically for this environment.
-                Here's what that means in practice.
-              </p>
-            </div>
-          </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-5">
-            {whyCards.map(card => (
-              <PillCard
-                key={card.title}
-                item={card}
-              />
-            ))}
-          </div>
-          <div className="mt-10 flex justify-center">
-            <a
-              href="why-wolvio"
-              className="inline-flex items-center gap-3 rounded-full border border-[#bad0d5] px-8 py-3 text-[16px] font-semibold text-[#2f7f88] transition hover:bg-white"
-            >
-              Learn More About Our Approach
-              <ArrowRightIcon />
-            </a>
-          </div>
-        </div>
-      </section>
+      <WhyWolvioSection />
 
-      <section
-        id="about"
-        className="site-section-alt"
-      >
+      <section id="about" className="site-section-alt">
         <div className="site-container">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[980px]">
@@ -746,46 +734,71 @@ export default function Home() {
               <ArrowRightIcon />
             </Link>
           </div>
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            {insightCards.map(card => (
+          <ScrollFadeGrid className="mt-10 grid gap-6 lg:grid-cols-2">
+            {insightCards.map((card) => (
               <article
                 key={card.title}
-                className={`relative flex h-full flex-col overflow-hidden rounded-[34px] p-8 text-white transition-all duration-500 ${card.bg}`}
+                // Added 'fade-up' for the scroll animation and 'group' for the hover effects
+                className={`fade-up group relative flex h-full flex-col overflow-hidden rounded-[34px] p-8 text-white transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${card.bg}`}
               >
                 <span className="inline-flex w-fit self-start rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em]">
                   {card.tag}
                 </span>
 
-                <h3 className="mt-6 max-w-[700px] text-white font-semibold leading-[1.2] tracking-[-0.02em]">
+                <h3 className="mt-6 max-w-[700px] font-semibold leading-[1.2] tracking-[-0.02em] text-white">
                   {card.title}
                 </h3>
 
-                <p className="mt-5 mb-5 max-w-[710px]  !text-white/88">
+                <p className="mb-5 mt-5 max-w-[710px] !text-white/88">
                   {card.description}
                 </p>
 
-                {/* PUSHES THIS TO BOTTOM */}
-                <div className="mt-auto flex items-center justify-between text-[clamp(0.825rem,0.98vw,0.875rem)]">
-                  <span className="text-white/75">{card.minutes}</span>
+                {/* ── NEW AUTHOR & FOOTER SECTION (Pushed to bottom) ── */}
+                <div className="mt-auto flex flex-col">
+                  {/* Author Info */}
+                  <div className="mb-[20px] flex items-center gap-[10px]">
+                    {/* Avatar */}
+                    <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border-2 border-[rgba(93,150,180,0.3)] bg-[#2c5f7a] text-[12px] font-bold text-white">
+                      TC
+                    </div>
 
-                  <Link
-                    href="/insights"
-                    className="inline-flex items-center gap-2 font-semibold text-white"
-                  >
-                    Read Insight
-                    <ArrowRightIcon />
-                  </Link>
+                    <div>
+                      <div className="text-[12.5px] font-semibold leading-[1.2] text-[rgba(255,255,255,0.85)]">
+                        Tom Carr
+                      </div>
+                      <div className="text-[11px] leading-[1.3] text-white/60">
+                        QMS Lead · Compliance Practice
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Footer Meta & Link */}
+                  <div className="flex items-center justify-between border-t border-white/[0.07] pt-[18px]">
+                    <div className="flex items-center gap-[14px]">
+                      <span className="text-[12px] text-white/60">
+                        Mar 28, 2026
+                      </span>
+                      <span className="flex items-center text-[12px] font-medium text-[#5DCAA5] before:mr-[14px] before:text-white/60 before:content-['·']">
+                        {card.minutes}
+                      </span>
+                    </div>
+
+                    <Link
+                      href="/insights"
+                      className="inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-white/60 transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#5DCAA5]"
+                    >
+                      Read insight
+                      <ArrowRightIcon/>
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
-          </div>
+          </ScrollFadeGrid>
         </div>
       </section>
 
-      <section
-        id="contact"
-        className="tone-lock site-section"
-      >
+      <section id="contact" className="tone-lock site-section">
         <div className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
@@ -819,5 +832,5 @@ export default function Home() {
         </div>
       </section>
     </main>
-  )
+  );
 }

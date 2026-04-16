@@ -229,7 +229,7 @@ export default function CareersClient() {
             <p className="text-[14px] font-medium text-[#5f7388]">
               {pageLabel}
             </p>
-            <div className="flex w-full max-w-[460px] flex-col gap-3 sm:flex-row">
+            <div className="flex w-full max-w-[300px] flex-col gap-3 sm:flex-row">
               <input
                 type="search"
                 value={queryInput}
@@ -254,8 +254,8 @@ export default function CareersClient() {
           ) : null}
 
           {isLoading ? (
-            <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-              {Array.from({ length: 6 }).map((_, index) => (
+            <div className="mt-7 grid gap-5 md:grid-cols-2  lg:grid-cols-3">
+              {Array.from({ length: 3 }).map((_, index) => (
                 <div
                   key={`job-skeleton-${index}`}
                   className="site-card bg-white p-6"
@@ -269,7 +269,7 @@ export default function CareersClient() {
             </div>
           ) : null}
 
-          {!isLoading && jobs.length === 0 ? (
+        {/*  {!isLoading && jobs.length === 0 ? (
             <div className="site-card mt-7 bg-white px-6 py-10 text-center">
               <p className="text-[19px] font-semibold text-[#173652]">
                 No matching positions at the moment
@@ -286,7 +286,7 @@ export default function CareersClient() {
                 <ArrowRightIcon />
               </Link>
             </div>
-          ) : null}
+          ) : null} */}
 
           {!isLoading && jobs.length > 0 ? (
             <>

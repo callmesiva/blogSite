@@ -94,6 +94,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
+      
       <section className="hero-grid">
         <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">About Wolvio</p>

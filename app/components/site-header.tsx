@@ -130,7 +130,7 @@ export default function SiteHeader() {
         <div className="flex items-center gap-3">
           <nav
             aria-label="Primary"
-            className="hidden justify-items-start gap-5 pr-5 text-[14px] font-medium text-[#0f172a] xl:flex"
+            className="hidden justify-items-start gap-5 pr-7 text-[14px] font-medium text-[#0f172a] xl:flex"
           >
             {navItems.map(item => {
               const isActive =

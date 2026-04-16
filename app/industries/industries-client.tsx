@@ -201,7 +201,7 @@ const industryTabs: IndustryTab[] = [
   },
 ];
 
-  const caseStudies = [
+const caseStudies = [
   {
     tag: "Consulting",
     tagColor: "#0b3a63",
@@ -267,7 +267,7 @@ function ArrowRightIcon() {
 export default function IndustriesClient() {
   const [activeTab, setActiveTab] = useState(industryTabs[0].id);
   const currentTab = useMemo(
-    () => industryTabs.find(tab => tab.id === activeTab) ?? industryTabs[0],
+    () => industryTabs.find((tab) => tab.id === activeTab) ?? industryTabs[0],
     [activeTab],
   );
 
@@ -277,11 +277,13 @@ export default function IndustriesClient() {
         <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Industries</p>
           <h1 className="mt-4 max-w-[1020px]">
-            Veeva Consulting for Regulated Industries. Delivered by People Who Know Them.
+            Veeva Consulting for Regulated Industries. Delivered by People Who
+            Know Them.
           </h1>
           <p className="site-subheading mt-5 max-w-[930px]">
-            From global pharma submissions to food safety compliance, if your industry is regulated and your
-            operations run on Veeva, we have been here before.
+            From global pharma submissions to food safety compliance, if your
+            industry is regulated and your operations run on Veeva, we have been
+            here before.
           </p>
         </div>
       </section>
@@ -294,14 +296,16 @@ export default function IndustriesClient() {
           </h2>
           <div className="site-body mt-6 max-w-[1040px] space-y-4">
             <p>
-              Most consultancies treat compliance as a constraint. In regulated industries, it is the foundation
-              everything is built on. From system configurations to data structures, each decision carries implications
-              across GxP, 21 CFR Part 11, and IDMP requirements.
+              Most consultancies treat compliance as a constraint. In regulated
+              industries, it is the foundation everything is built on. From
+              system configurations to data structures, each decision carries
+              implications across GxP, 21 CFR Part 11, and IDMP requirements.
             </p>
             <p>
-              Generalist firms learn these constraints on your engagement. Wolvio does not. Our practice is built
-              around regulatory, quality, and commercial technology demands where poor configuration leads to delayed
-              submissions, failed audits, and missed timelines.
+              Generalist firms learn these constraints on your engagement.
+              Wolvio does not. Our practice is built around regulatory, quality,
+              and commercial technology demands where poor configuration leads
+              to delayed submissions, failed audits, and missed timelines.
             </p>
           </div>
         </div>
@@ -309,48 +313,76 @@ export default function IndustriesClient() {
 
       <section className="site-section">
         <div className="site-container">
-          <div className="grid gap-6 lg:grid-cols-[280px_1fr]">
-            <aside className="site-card h-fit p-4">
-              <p className="px-3 pb-3 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#8fa2b8]">
-                Industry Tabs
-              </p>
-              <div className="space-y-2">
-                {industryTabs.map(tab => {
-                  const isActive = tab.id === currentTab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      type="button"
-                      onClick={() => setActiveTab(tab.id)}
-                      className={`w-full rounded-[18px] px-3 py-3 text-left transition ${
-                        isActive ? "bg-[#e9f2f5]" : "hover:bg-[#f1f6fa]"
+          <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
+            {/* ── TAB BAR ── */}
+            <div className="flex overflow-x-auto border-b border-[#dce6ef] scrollbar-hide">
+              {industryTabs.map((tab, index) => {
+                const isActive = tab.id === currentTab.id;
+
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`
+                relative flex-1 min-w-[200px] px-4 py-4 text-center
+                whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
+                ${
+                  isActive
+                    ? "bg-white text-[#173652]"
+                    : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
+                }
+              `}
+                  >
+                    <p className="text-[15px] font-semibold">{tab.label}</p>
+                    <p
+                      className={`mt-1 text-[12px] ${
+                        isActive ? "text-[#5d748b]" : "text-[#8fa2b8]"
                       }`}
                     >
-                      <p className={`text-[15px] font-semibold ${isActive ? "text-[#2f7f88]" : "text-[#173652]"}`}>
-                        {tab.label}
-                      </p>
-                      <p className="mt-1 text-[12px] text-[#6c8196]">{tab.subtitle}</p>
-                    </button>
-                  );
-                })}
-              </div>
-            </aside>
+                      {tab.subtitle}
+                    </p>
 
-            <div className="site-card p-6 sm:p-7">
-              <p className="site-kicker">
-                {currentTab.label}
+                    {/* Active indicator bar */}
+                    {isActive && (
+                      <span
+                        className="absolute bottom-0 left-0 w-full h-[2.5px]"
+                        style={{
+                          background: index % 2 === 0 ? "#0b3a63" : "#2f8b92",
+                        }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* ── TAB CONTENT ── */}
+            <div className="p-6 sm:p-8">
+              <p className="site-kicker">{currentTab.label}</p>
+              <p className="mt-1 text-[14px] font-medium text-[#5d748b]">
+                {currentTab.subtitle}
               </p>
-              <p className="mt-1 text-[14px] font-medium text-[#5d748b]">{currentTab.subtitle}</p>
-              <p className="mt-4 text-[15px] leading-[1.65] text-[#63798d]">{currentTab.intro}</p>
-              <div className="mt-7 grid gap-5">
-                {currentTab.blocks.map(block => (
-                  <article key={block.title} className="site-card rounded-[24px] bg-white p-5 sm:p-6">
-                    <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">{block.title}</h3>
-                    <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">{block.description}</p>
+              <p className="mt-4 max-w-[900px] text-[15px] leading-[1.65] text-[#63798d]">
+                {currentTab.intro}
+              </p>
+
+              <div className="mt-7 grid gap-5 lg:grid-cols-2">
+                {currentTab.blocks.map((block) => (
+                  <article
+                    key={block.title}
+                    // Swapped to a muted background so it stands out against the white wrapper
+                    className="site-card rounded-[24px] bg-[#f8fafc] p-5 sm:p-6"
+                  >
+                    <h3 className="text-[20px] font-semibold leading-[1.25] text-[#173652]">
+                      {block.title}
+                    </h3>
+                    <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
+                      {block.description}
+                    </p>
                     <ul className="mt-4 space-y-2 text-[15px] leading-[1.6] text-[#546b82]">
-                      {block.bullets.map(bullet => (
+                      {block.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
-                          <span className="mt-[8px] h-1.5 w-1.5 rounded-full bg-[#2f8b92]" />
+                          <span className="mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2f8b92]" />
                           <span>{bullet}</span>
                         </li>
                       ))}
@@ -363,81 +395,78 @@ export default function IndustriesClient() {
         </div>
       </section>
 
+      <section className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker">Relevant Case Studies</p>
+          <h2 className="mt-4">Real results across regulated industries</h2>
 
-
-<section className="site-section-alt">
-  <div className="site-container">
-    <p className="site-kicker">Relevant Case Studies</p>
-    <h2 className="mt-4">Real results across regulated industries</h2>
-
-    <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      {caseStudies.map((cs) => (
-        <article
-          key={cs.title}
-          className="site-card overflow-hidden bg-white flex flex-col"
-        >
-          {/* Image area */}
-          <div
-            className="relative h-[160px] w-full overflow-hidden flex-shrink-0"
-            style={{ background: cs.imgBg }}
-          >
-            {/*<img
+          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {caseStudies.map((cs) => (
+              <article
+                key={cs.title}
+                className="site-card overflow-hidden bg-white flex flex-col"
+              >
+                {/* Image area */}
+                <div
+                  className="relative h-[160px] w-full overflow-hidden flex-shrink-0"
+                  style={{ background: cs.imgBg }}
+                >
+                  {/*<img
               src={cs.image}
               alt={cs.title}
               className="h-full w-full object-cover"
             /> */}
-            {/* Tag badge */}
-            <span
-              className="absolute left-3 top-3 rounded-[6px] px-[10px] py-1 text-[11px] font-medium tracking-wide"
-              style={{ background: cs.tagColor, color: "#e6f1fb" }}
-            >
-              {cs.tag}
-            </span>
-          </div>
-
-          {/* Body */}
-          <div className="flex flex-1 flex-col p-5">
-            <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-[#2f7f88]">
-              {cs.company}
-            </p>
-            <h3 className="mt-1.5 text-[16px] font-semibold leading-[1.35] text-[#173652]">
-              {cs.title}
-            </h3>
-            <p className="mt-2 flex-1 text-[14px] leading-[1.65] text-[#63798d]">
-              {cs.description}
-            </p>
-
-            {/* Stats */}
-            <div className="mt-4 grid grid-cols-2 gap-2">
-              {cs.stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-[10px] bg-[#f5f8fb] px-3 py-2.5"
-                >
-                  <p className="text-[20px] font-bold leading-none text-[#0b3a63]">
-                    {stat.value}
-                  </p>
-                  <p className="mt-1 text-[11px] leading-[1.4] text-[#63798d]">
-                    {stat.label}
-                  </p>
+                  {/* Tag badge */}
+                  <span
+                    className="absolute left-3 top-3 rounded-[6px] px-[10px] py-1 text-[11px] font-medium tracking-wide"
+                    style={{ background: cs.tagColor, color: "#e6f1fb" }}
+                  >
+                    {cs.tag}
+                  </span>
                 </div>
-              ))}
-            </div>
-          </div>
-        </article>
-      ))}
-    </div>
 
-    <Link
-      href="/case-studies"
-      className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]"
-    >
-      Explore case studies
-      <ArrowRightIcon />
-    </Link>
-  </div>
-</section>
-      
+                {/* Body */}
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-[#2f7f88]">
+                    {cs.company}
+                  </p>
+                  <h3 className="mt-1.5 text-[16px] font-semibold leading-[1.35] text-[#173652]">
+                    {cs.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-[14px] leading-[1.65] text-[#63798d]">
+                    {cs.description}
+                  </p>
+
+                  {/* Stats */}
+                  <div className="mt-4 grid grid-cols-2 gap-2">
+                    {cs.stats.map((stat) => (
+                      <div
+                        key={stat.label}
+                        className="rounded-[10px] bg-[#f5f8fb] px-3 py-2.5"
+                      >
+                        <p className="text-[20px] font-bold leading-none text-[#0b3a63]">
+                          {stat.value}
+                        </p>
+                        <p className="mt-1 text-[11px] leading-[1.4] text-[#63798d]">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <Link
+            href="/case-studies"
+            className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]"
+          >
+            Explore case studies
+            <ArrowRightIcon />
+          </Link>
+        </div>
+      </section>
 
       <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
         <div className="site-container">
@@ -451,8 +480,10 @@ export default function IndustriesClient() {
                 Serving life sciences exclusively, from day one.
               </h2>
               <p className="mx-auto mt-4 max-w-[840px] text-[16px] leading-[1.65] text-[#b6c9da]">
-                Every Wolvio engagement is led by consultants who understand your regulatory environment, your Veeva
-                platform, and the compliance expectations your organization operates under. Let&apos;s talk about yours.
+                Every Wolvio engagement is led by consultants who understand
+                your regulatory environment, your Veeva platform, and the
+                compliance expectations your organization operates under.
+                Let&apos;s talk about yours.
               </p>
               <div className="mt-8 flex justify-center">
                 <Link
