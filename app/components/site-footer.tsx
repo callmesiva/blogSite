@@ -102,7 +102,7 @@ export default function SiteFooter() {
           </div>
 
           {/* COL 2: Services */}
-          <div className="fade-up flex flex-col gap-5 opacity-0 translate-y-5 transition-all duration-700 ease-out delay-[120ms]">
+          <div className="fade-up flex flex-col gap-2 opacity-0 translate-y-5 transition-all duration-700 ease-out delay-[120ms]">
             <div>
               <div className="mb-5 border-b border-white/10 pb-3 text-[10.5px] font-bold uppercase tracking-[2px] text-[#5DCAA5]">
                 Services
@@ -140,7 +140,7 @@ export default function SiteFooter() {
             </div>
 
             <div>
-              <div className="mb-5 border-b border-white/10 pb-3 text-[10.5px] font-bold uppercase tracking-[2px] text-[#5DCAA5]">
+              <div className=" border-b border-white/10 pb-3 text-[10.5px] font-bold uppercase tracking-[2px] text-[#5DCAA5]">
                 Resources
               </div>
               <ul className="flex flex-col">
@@ -184,7 +184,6 @@ export default function SiteFooter() {
                 { label: "About Wolvio", href: "/about" },
                 { label: "Why Wolvio", href: "/why-wolvio" },
                 { label: "Industries", href: "/industries" },
-                { label: "Case Studies", href: "/#case-studies" },
                 { label: "Careers", href: "/careers" },
                 { label: "Contact", href: "/contact-us" },
               ].map((link) => (

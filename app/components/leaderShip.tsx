@@ -6,28 +6,23 @@ import { useEffect, useRef, useState } from "react"
 const leaders = [
   {
     image: "/founder1.jpg",
-    name: "Arjun Mehta",
+    name: "Arjun",
     designation: "Chief Executive Officer",
     tag: "Founder",
   },
   {
     image: "/founder2.jpg",
-    name: "Priya Nair",
+    name: "Rajesh",
     designation: "Chief Technology Officer",
     tag: "Co-Founder",
   },
   {
     image: "/founder3.jpg",
-    name: "Daniel Osei",
+    name: "David",
     designation: "Chief Strategy Officer",
     tag: "Co-Founder",
   },
-  {
-    image: "/founder4.jpg",
-    name: "Sophie Laurent",
-    designation: "Head of AI & Innovation",
-    tag: "Co-Founder",
-  },
+
 ]
 
 function LeaderCard({ leader }: { leader: (typeof leaders)[number] }) {
@@ -178,7 +173,7 @@ export default function LeadershipSection() {
       `}</style>
 
       {/* Grid */}
-      <div className=" grid grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className=" grid grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
         {leaders.map(leader => (
           <LeaderCard
             key={leader.name}
