@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const leaders = [
   {
@@ -22,68 +22,68 @@ const leaders = [
     designation: "Chief Strategy Officer",
     tag: "Co-Founder",
   },
-
-]
+];
 
 function LeaderCard({ leader }: { leader: (typeof leaders)[number] }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-  const cursorRef = useRef<HTMLDivElement>(null)
-  const [hovered, setHovered] = useState(false)
+  const cardRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
 
   // Magnetic + cursor tracking
   useEffect(() => {
-    const card = cardRef.current
-    const cursor = cursorRef.current
-    if (!card || !cursor) return
+    const card = cardRef.current;
+    const cursor = cursorRef.current;
+    if (!card) return;
 
-    let raf: number
+    let raf: number;
 
     const onMove = (e: MouseEvent) => {
-      const rect = card.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
 
-      const cx = rect.width / 2
-      const cy = rect.height / 2
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
 
-      const tiltX = ((y - cy) / cy) * 6
-      const tiltY = ((x - cx) / cx) * -6
+      const tiltX = ((y - cy) / cy) * 6;
+      const tiltY = ((x - cx) / cx) * -6;
 
-      cancelAnimationFrame(raf)
-
-      raf = requestAnimationFrame(() => {
-        // smooth cursor
-        cursor.style.transform = `translate3d(${x - 24}px, ${y - 24}px, 0)`
-
-        // smooth tilt
-        card.style.setProperty("--tilt-x", `${tiltX}deg`)
-        card.style.setProperty("--tilt-y", `${tiltY}deg`)
-      })
-
-      let currentX = 0
-      let currentY = 0
+      cancelAnimationFrame(raf);
 
       raf = requestAnimationFrame(() => {
-        currentX += (x - currentX) * 0.2
-        currentY += (y - currentY) * 0.2
+        if (cursor) {
+          cursor.style.transform = `translate3d(${x - 24}px, ${y - 24}px, 0)`;
+        }
+        card.style.setProperty("--tilt-x", `${tiltX}deg`);
+        card.style.setProperty("--tilt-y", `${tiltY}deg`);
+      });
 
-        cursor.style.transform = `translate3d(${currentX - 24}px, ${currentY - 24}px, 0)`
-      })
-    }
+      let currentX = 0;
+      let currentY = 0;
+
+      raf = requestAnimationFrame(() => {
+        currentX += (x - currentX) * 0.2;
+        currentY += (y - currentY) * 0.2;
+
+        if (cursor) {
+          cursor.style.transform = `translate3d(${currentX - 24}px, ${currentY - 24}px, 0)`;
+        }
+      });
+    };
 
     const onLeave = () => {
-      card.style.setProperty("--tilt-x", "0deg")
-      card.style.setProperty("--tilt-y", "0deg")
-    }
+      card.style.setProperty("--tilt-x", "0deg");
+      card.style.setProperty("--tilt-y", "0deg");
+    };
 
-    card.addEventListener("mousemove", onMove)
-    card.addEventListener("mouseleave", onLeave)
+    card.addEventListener("mousemove", onMove);
+    card.addEventListener("mouseleave", onLeave);
     return () => {
-      card.removeEventListener("mousemove", onMove)
-      card.removeEventListener("mouseleave", onLeave)
-      cancelAnimationFrame(raf)
-    }
-  }, [])
+      card.removeEventListener("mousemove", onMove);
+      card.removeEventListener("mouseleave", onLeave);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   return (
     <div
@@ -93,23 +93,6 @@ function LeaderCard({ leader }: { leader: (typeof leaders)[number] }) {
       onMouseLeave={() => setHovered(false)}
       style={{ perspective: "800px" }}
     >
-      {/* Custom emoji cursor */}
-      {/* <div
-        ref={cursorRef}
-        className={`pointer-events-none absolute z-50 flex h-12 w-12 items-center justify-center will-change-transform will-change-opacity ${
-          hovered
-            ? "opacity-100 scale-100 rotate-0"
-            : "opacity-0 scale-75 rotate-[-8deg]"
-        }`}
-        style={{
-          transform: "translate3d(0,0,0)",
-          transition:
-            "opacity 220ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1)",
-        }}
-      >
-        <span className="select-none text-[1.6rem]">👋</span>
-      </div> */}
-
       {/* Image card with tilt */}
       <div
         className="relative overflow-hidden rounded-[28px] transition-transform duration-200 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -118,14 +101,15 @@ function LeaderCard({ leader }: { leader: (typeof leaders)[number] }) {
             "rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg))",
         }}
       >
-        {/* Aspect container */}
-        <div className="relative aspect-[3/4] w-full bg-[#dce8ee]">
+        {/* FIX #2: Changed aspect-[3/4] to aspect-[4/5] to make them slightly less tall. 
+            If you want perfect squares, change it to: aspect-square */}
+        <div className="relative aspect-[4/5] w-full bg-[#dce8ee]">
           <Image
             src={leader.image}
             alt={leader.name}
             fill
             className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-            sizes="(max-width: 639px) 80vw, (max-width: 1023px) 45vw, 25vw"
+            sizes="(max-width: 639px) 80vw, (max-width: 1023px) 45vw, 33vw"
           />
 
           {/* Bottom gradient scrim — slides up on hover */}
@@ -159,7 +143,7 @@ function LeaderCard({ leader }: { leader: (typeof leaders)[number] }) {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
 export default function LeadershipSection() {
@@ -172,15 +156,13 @@ export default function LeadershipSection() {
         }
       `}</style>
 
-      {/* Grid */}
-      <div className=" grid grid-cols-2 gap-x-5 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
-        {leaders.map(leader => (
-          <LeaderCard
-            key={leader.name}
-            leader={leader}
-          />
+      {/* FIX #1: Added `max-w-5xl mx-auto` to cap the maximum size of the entire grid, 
+          preventing the images from getting massive on wide monitors. */}
+      <div className="mx-auto max-w-5xl grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 px-4">
+        {leaders.map((leader) => (
+          <LeaderCard key={leader.name} leader={leader} />
         ))}
       </div>
     </section>
-  )
+  );
 }

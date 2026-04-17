@@ -159,7 +159,6 @@ export default function ServiceWolvioPage() {
             Five systems. Each one solves a problem you already have.
           </p>
 
-  
           <div className="mt-8">
             <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
               {/* Tab Bar */}
@@ -169,24 +168,28 @@ export default function ServiceWolvioPage() {
                     key={card.title}
                     onClick={() => setActiveTab(index)}
                     className={`
-              relative flex-1 min-w-[130px] px-4 py-4  text-center
+              relative flex-1 min-w-[130px] px-4 py-4  text-center 
               whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
               ${
                 activeTab === index
-                  ? "bg-white text-[#173652]"
+                  ? "bg-[#2f6f73] text-white"
                   : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
               }
             `}
                   >
-                    <p>{card.title}</p>
+                    <h3
+                      className={`text-[16px] font-bold lg:text-[18px] ${
+                        activeTab === index
+                          ? " text-white"
+                          : " text-[#63798d] hover:bg-[#eef3f8]"
+                      }`}
+                    >
+                      {" "}
+                      {card.title}
+                    </h3>
                     {/* Active indicator bar */}
                     {activeTab === index && (
-                      <span
-                        className="absolute bottom-0 left-0 w-full h-[2.5px]"
-                        style={{
-                          background: index % 2 === 0 ? "#0b3a63" : "#2f8b92",
-                        }}
-                      />
+                      <span className="absolute bottom-0 left-0 w-full h-[2.5px]" />
                     )}
                   </button>
                 ))}
@@ -232,32 +235,32 @@ export default function ServiceWolvioPage() {
         <div className="site-container">
           <p className="site-kicker">Why Wolvio Intelligence</p>
           <h2 className="mt-4 max-w-[880px]">
-              How we&apos;re different from typical AI consultancies
+            How we&apos;re different from typical AI consultancies
           </h2>
-   
+
           <div className="mt-8 grid gap-6 lg:grid-cols-2">
             {[
               {
-                number : "01",
+                number: "01",
                 title: "We demo before we pitch",
                 body: "Every conversation starts with a working system, not a slide deck, so you see practical fit before commitment.",
-                  accent: "bg-[#163f7d]",
+                accent: "bg-[#163f7d]",
               },
               {
-                number : "02",
+                number: "02",
                 title: "Production-proven, not prototype-stage",
                 body: "10+ AI systems deployed in real environments. We build to operate sustainably, not just to showcase.",
-                  accent: "bg-[#2f8b92]",
+                accent: "bg-[#2f8b92]",
               },
-              
+
               {
-                number : "03",
+                number: "03",
                 title: "Cross-industry, global-ready",
                 body: "Deployments across healthcare, logistics, enterprise IT, and support, including regional language and India-first automation contexts.",
-                 accent: "bg-[#163f7d]",
+                accent: "bg-[#163f7d]",
               },
               {
-                number : "04",
+                number: "04",
                 title: "Built to measure, not to impress",
                 body: "Every delivery includes governance, logging, and performance tracking for accuracy, resolution, and time saved.",
                 accent: "bg-[#2f8b92]",

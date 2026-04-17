@@ -314,8 +314,9 @@ export default function IndustriesClient() {
       <section className="site-section">
         <div className="site-container">
           <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
+
             {/* ── TAB BAR ── */}
-            <div className="flex overflow-x-auto border-b border-[#dce6ef] scrollbar-hide">
+            <div className="flex overflow-x-auto  scrollbar-hide">
               {industryTabs.map((tab, index) => {
                 const isActive = tab.id === currentTab.id;
 
@@ -325,18 +326,22 @@ export default function IndustriesClient() {
                     onClick={() => setActiveTab(tab.id)}
                     className={`
                 relative flex-1 min-w-[200px] px-4 py-4 text-center
-                whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
+                whitespace-nowrap 
                 ${
                   isActive
-                    ? "bg-white text-[#173652]"
-                    : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
+                    ? "bg-[#2f6f73] !text-white"
+                    : "bg-white text-[#2f6f73] hover:bg-[#eef3f8]"
                 }
               `}
                   >
-                    <p className="text-[15px] font-semibold">{tab.label}</p>
+                    <h3
+                      className={`text-[16px] font-semibold ${isActive ? "text-white" : "text-[#2f6f73]"}`}
+                    >
+                      {tab.label}
+                    </h3>
                     <p
                       className={`mt-1 text-[12px] ${
-                        isActive ? "text-[#5d748b]" : "text-[#8fa2b8]"
+                        isActive ? "text-white" : "text-[#2f6f73]"
                       }`}
                     >
                       {tab.subtitle}
@@ -344,12 +349,7 @@ export default function IndustriesClient() {
 
                     {/* Active indicator bar */}
                     {isActive && (
-                      <span
-                        className="absolute bottom-0 left-0 w-full h-[2.5px]"
-                        style={{
-                          background: index % 2 === 0 ? "#0b3a63" : "#2f8b92",
-                        }}
-                      />
+                      <span className="absolute bottom-0 left-0 w-full h-[2.5px]" />
                     )}
                   </button>
                 );

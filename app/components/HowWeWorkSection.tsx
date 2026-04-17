@@ -62,12 +62,10 @@ export default function VerticalTabsSection({
       <div className="site-container mx-auto max-w-[1100px]">
         {/* ── DYNAMIC HEADER ── */}
         <div className="mb-10 lg:mb-14 text-center lg:text-left">
-          <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#1D9E75] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#1D9E75]">
+          <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
             {kicker}
           </p>
-          <h2 className="text-[32px] font-bold tracking-[-0.5px] text-[#071e3d] lg:text-[40px]">
-            {title}
-          </h2>
+          <h2>{title}</h2>
         </div>
 
         <div className="flex flex-col overflow-hidden rounded-[24px] border border-[#d7dde4] bg-white shadow-[0_12px_32px_rgba(7,30,61,0.05)] lg:flex-row lg:rounded-[32px]">
@@ -81,19 +79,17 @@ export default function VerticalTabsSection({
                   key={model.id}
                   onClick={() => setActiveTabId(model.id)}
                   className={`group relative flex w-[240px] shrink-0 flex-col items-start p-6 text-left transition-colors duration-300 lg:w-full lg:p-7 lg:border-b lg:border-[#d7dde4]/50 lg:last:border-none ${
-                    isActive ? "bg-white" : "hover:bg-[#eef2f6]"
+                    isActive ? "bg-[#2f6f73]" : "hover:bg-[#eef2f6]"
                   }`}
                 >
                   <div
-                    className={`absolute bottom-0 left-0 right-0 h-1 bg-[#1D9E75] transition-transform duration-300 origin-left lg:bottom-0 lg:left-0 lg:right-auto lg:top-0 lg:h-auto lg:w-1 lg:origin-top ${
+                    className={`absolute bottom-0 left-0 right-0 h-1 transition-transform duration-300 origin-left lg:bottom-0 lg:left-0 lg:right-auto lg:top-0 lg:h-auto lg:w-1 lg:origin-top ${
                       isActive ? "scale-100" : "scale-0"
                     }`}
                   ></div>
                   <h3
                     className={`text-[16px] font-bold leading-[1.35] transition-colors duration-300 lg:text-[18px] ${
-                      isActive
-                        ? "text-[#071e3d]"
-                        : "text-[#5c728a] group-hover:text-[#071e3d]"
+                      isActive ? "text-white" : "text-[#2f6f73]"
                     }`}
                   >
                     {model.title}
@@ -109,7 +105,7 @@ export default function VerticalTabsSection({
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[16px] bg-[#e0f5ed]">
                 <svg
                   viewBox="0 0 24 24"
-                  className="h-6 w-6 fill-none stroke-[#1D9E75] stroke-[1.8] strokeLinecap-round strokeLinejoin-round"
+                  className="h-6 w-6 fill-none stroke-[#2f6f73] stroke-[1.8] strokeLinecap-round strokeLinejoin-round"
                 >
                   <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                 </svg>
@@ -128,15 +124,15 @@ export default function VerticalTabsSection({
 
         {/* ── DYNAMIC CTA BUTTON ── */}
         {ctaLink && ctaText && (
-        <div className="mt-10 flex justify-center lg:mt-12 lg:justify-start">
-          <Link
-            href={ctaLink}
-            className="group inline-flex items-center gap-2.5 rounded-full border border-[#d7dde4] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#1D9E75] shadow-sm transition-all duration-300 hover:gap-3.5 hover:border-[#1D9E75] hover:bg-[#1D9E75] hover:text-white"
-          >
-            {ctaText}
-            <ArrowRightIcon />
-          </Link>
-        </div>
+          <div className="mt-10 flex justify-center lg:mt-12 lg:justify-start">
+            <Link
+              href={ctaLink}
+              className="group inline-flex items-center gap-2.5 rounded-full border border-[#d7dde4] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#2f6f73] shadow-sm transition-all duration-300 hover:gap-3.5 hover:border-[#1D9E75] hover:bg-[#4f8f92] hover:text-white"
+            >
+              {ctaText}
+              <ArrowRightIcon />
+            </Link>
+          </div>
         )}
       </div>
     </section>

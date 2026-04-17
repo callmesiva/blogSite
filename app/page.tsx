@@ -5,6 +5,7 @@ import ScrollFadeGrid from "./components/ScrollFadeGrid";
 import StatsCounter from "./components/StatsCounter";
 import WhyWolvioSection from "./components/WhyWolvioSection";
 import CaseStudyCarousel from "./components/CaseStudyCarousel";
+import SolutionDiagram from "./components/SolutionDiagram"; 
 
 type OrbitCard = {
   label: string;
@@ -419,80 +420,6 @@ function ServiceBadge({ card }: { card: OrbitCard }) {
   );
 }
 
-function SolutionDiagram() {
-  return (
-    <div className="relative mx-auto aspect-square w-full max-w-[620px]">
-      <svg
-        className="absolute inset-0 h-full w-full"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        <defs>
-          <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#2f6f73" stopOpacity="0.15" />
-            <stop offset="100%" stopColor="#2f6f73" stopOpacity="0" />
-          </radialGradient>
-        </defs>
-        <circle cx="50" cy="50" r="28" fill="url(#hubGlow)" />
-        {outerLinks.map(([x1, y1, x2, y2]) => (
-          <line
-            key={`${x1}-${y1}-${x2}-${y2}`}
-            x1={x1}
-            y1={y1}
-            x2={x2}
-            y2={y2}
-            stroke="#2f6f73"
-            strokeWidth="0.15"
-            strokeDasharray="1 1.5"
-            opacity="0.25"
-          />
-        ))}
-        {orbitCards.map((card) => (
-          <line
-            key={`hub-${card.label}`}
-            x1="50"
-            y1="50"
-            x2={card.x}
-            y2={card.y}
-            stroke="#73aeb0"
-            strokeWidth="0.2"
-            opacity="0.55"
-          />
-        ))}
-      </svg>
-
-      <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
-        <div className="absolute h-[110px] w-[110px] rounded-full border border-[rgba(47,111,115,0.15)]" />
-        <div className="absolute h-[88px] w-[88px] rounded-full border border-[rgba(47,111,115,0.12)]" />
-        <div className="relative flex h-[74px] w-[74px] flex-col items-center justify-center rounded-full border border-[rgba(47,111,115,0.2)] bg-[linear-gradient(135deg,rgba(47,111,115,0.12),rgba(10,37,64,0.06))] text-center backdrop-blur-md">
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#2f6f73]">
-            Digital
-          </span>
-          <span className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#17314c]">
-            Solutions
-          </span>
-        </div>
-      </div>
-
-      {orbitCards.map((card) => (
-        <ServiceBadge key={card.label} card={card} />
-      ))}
-
-      {stars.map((star, index) => (
-        <div
-          key={`${star.left}-${star.top}-${index}`}
-          className="absolute h-[3px] w-[3px] rounded-full bg-[#78c7c9]"
-          style={{
-            left: star.left,
-            top: star.top,
-            transform: `scale(${star.scale})`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 function PillCard1() {
   return (
     // Added "cards-grid" here if you want them to stagger one by one
@@ -618,10 +545,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* <div className="relative">
+          <div className="relative">
             <div className="absolute inset-x-[10%] top-[10%] h-[78%] rounded-full bg-[radial-gradient(circle,rgba(47,111,115,0.12)_0%,rgba(255,255,255,0)_68%)] blur-3xl" />
             <SolutionDiagram />
-          </div> */}
+          </div>
         </div>
       </section>
 

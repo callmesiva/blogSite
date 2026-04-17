@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import selectDropDown from "../components/selectDropDown";
 import SelectDropDown from "../components/selectDropDown";
 
 type InsightPost = {
@@ -25,13 +24,6 @@ type PostsResponse = {
   totalPages: number;
   message?: string;
 };
-
-const FILTER_OPTIONS = [
-  { label: "All Types", value: "all" },
-  { label: "White Space", value: "white-space" },
-  { label: "Blog", value: "blog" },
-  { label: "Uncategorized", value: "uncategorized" },
-];
 
 function stripHtml(html: string) {
   return html
@@ -61,24 +53,14 @@ function getSummary(post: InsightPost) {
 
 function ArrowIcon() {
   return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="m13 5 7 7-7 7" />
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14" /><path d="m13 5 7 7-7 7" />
     </svg>
   );
 }
 
-function getInternalReadUrl(externalUrl: string) {
-  return `/insights?url=${encodeURIComponent(externalUrl)}`;
+function getInternalReadUrl(postId: number) {
+  return `/insights?postId=${postId}`;
 }
 
 function isValidHttpUrl(value: string) {
@@ -91,8 +73,11 @@ function isValidHttpUrl(value: string) {
 }
 
 export default function InsightsClient() {
+  // ─── 1. ALL HOOKS MUST GO HERE AT THE TOP ───
   const searchParams = useSearchParams();
+  const postIdParam = searchParams.get("postId");
   const readUrlParam = searchParams.get("url") ?? "";
+
   const safeReadUrl = useMemo(() => {
     if (!readUrlParam || !isValidHttpUrl(readUrlParam)) {
       return null;
@@ -113,33 +98,47 @@ export default function InsightsClient() {
 
   const [filterOptions, setFilterOptions] = useState([
     { label: "All Types", value: "all" },
-  ])
+  ]);
 
+  const [activePost, setActivePost] = useState<InsightPost | null>(null);
+
+  // Active Post Logic
+  useEffect(() => {
+    if (!postIdParam) {
+      setActivePost(null);
+      return;
+    }
+    const postInState = posts.find((p) => p.id.toString() === postIdParam);
+    if (postInState) {
+      setActivePost(postInState);
+    }
+  }, [postIdParam, posts]);
+
+  // Categories Fetch
   useEffect(() => {
     fetch("/api/insights/categories")
-      .then(r => r.json())
-      .then(data => {
+      .then((r) => r.json())
+      .then((data) => {
         const dynamic = (
           data.categories as Array<{ slug: string; name: string }>
-        ).map(cat => ({
+        ).map((cat) => ({
           label: cat.name,
           value: cat.slug,
-        }))
-        setFilterOptions([{ label: "All Types", value: "all" }, ...dynamic])
+        }));
+        setFilterOptions([{ label: "All Types", value: "all" }, ...dynamic]);
       })
-      .catch(() => {}) // silently keep "All Types" only on failure
-  }, [])
+      .catch(() => {});
+  }, []);
 
+  // Debounce Search
   useEffect(() => {
     const timer = window.setTimeout(() => {
       setSearchTerm(query.trim());
     }, 350);
-
-    return () => {
-      window.clearTimeout(timer);
-    };
+    return () => window.clearTimeout(timer);
   }, [query]);
 
+  // Load Posts Logic
   const loadPosts = useCallback(
     async (nextPage: number) => {
       if (nextPage > 1) {
@@ -166,12 +165,10 @@ export default function InsightsClient() {
         }
 
         setHasMore(data.hasMore);
-        setPosts(current => {
-          if (nextPage === 1) {
-            return data.posts;
-          }
-          const ids = new Set(current.map(post => post.id));
-          const incoming = data.posts.filter(post => !ids.has(post.id));
+        setPosts((current) => {
+          if (nextPage === 1) return data.posts;
+          const ids = new Set(current.map((post) => post.id));
+          const incoming = data.posts.filter((post) => !ids.has(post.id));
           return [...current, ...incoming];
         });
       } catch (requestError) {
@@ -185,9 +182,10 @@ export default function InsightsClient() {
         setIsLoadingMore(false);
       }
     },
-    [searchTerm, type],
+    [searchTerm, type]
   );
 
+  // Trigger loads
   useEffect(() => {
     setPage(1);
     setPosts([]);
@@ -198,20 +196,19 @@ export default function InsightsClient() {
     void loadPosts(page);
   }, [loadPosts, page]);
 
+  // Infinite Scroll Observer
   useEffect(() => {
     const node = loaderRef.current;
-    if (!node || !hasMore || isLoading || isLoadingMore) {
-      return;
-    }
+    if (!node || !hasMore || isLoading || isLoadingMore) return;
 
     const observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
-          setPage(currentPage => currentPage + 1);
+          setPage((currentPage) => currentPage + 1);
         }
       },
-      { rootMargin: "250px 0px" },
+      { rootMargin: "250px 0px" }
     );
 
     observer.observe(node);
@@ -226,25 +223,72 @@ export default function InsightsClient() {
     return `Showing ${posts.length} insight${posts.length === 1 ? "" : "s"}`;
   }, [hasPosts, isLoading, posts.length]);
 
+
+  // ─── 2. EARLY RETURNS GO HERE, AFTER ALL HOOKS ───
+  
+  // NATIVE DETAIL VIEW
+ if (postIdParam) {
+   return (
+     <main className="min-h-screen bg-[#f8fafc] text-[#0f172a]">
+
+       <div className="mx-auto w-full max-w-[1400px]  lg:px-8 lg:py-20">
+         {activePost ? (
+           <article className="rounded-[24px] p-8 shadow-[0_12px_32px_rgba(7,30,61,0.04)] sm:p-12 lg:p-16 bg-white w-full overflow-hidden">
+             <div className="mb-10 !text-center">
+               <p className="mb-4 text-[14px] font-bold uppercase tracking-widest text-[#2f6f73]">
+                 {activePost.type}
+               </p>
+
+               <h1
+                 className="mb-6 text-center text-[32px] font-bold leading-[1.2] text-[#0a2540] sm:text-[40px] break-words"
+                 dangerouslySetInnerHTML={{ __html: activePost.title }}
+               />
+
+               <p className="text-[14px] text-[#64748b]">
+                 {formatDate(activePost.date)}
+               </p>
+             </div>
+
+             {activePost.image && (
+               <div className="relative mb-12 w-full overflow-hidden rounded-[16px] bg-[#eaf2f5] aspect-[16/9]">
+                 <Image
+                   src={activePost.image}
+                   alt="Featured image"
+                   fill
+                   className="object-cover"
+                 />
+               </div>
+             )}
+
+             {/* Added: w-full, break-words, and rules for images/iframes/pre/tables */}
+             <div
+               className="mx-auto w-full max-w-[760px] text-[17px] leading-[1.8] text-[#475569] break-words 
+                           [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-6
+                           [&_iframe]:max-w-full [&_iframe]:rounded-lg
+                           [&_pre]:max-w-full [&_pre]:overflow-x-auto
+                           [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full
+                           [&>h2]:mb-4 [&>h2]:mt-10 [&>h2]:text-[24px] [&>h2]:font-bold [&>h2]:text-[#0a2540] 
+                           [&>h3]:mb-3 [&>h3]:mt-8 [&>h3]:text-[20px] [&>h3]:font-bold [&>h3]:text-[#0a2540]
+                           [&>p]:mb-6 
+                           [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6
+                           [&>ol]:mb-6 [&>ol]:list-decimal [&>ol]:pl-6"
+               dangerouslySetInnerHTML={{ __html: activePost.content }}
+             />
+           </article>
+         ) : (
+           <div className="flex h-[400px] items-center justify-center">
+             <p className="text-[#64748b]">Loading insight...</p>
+           </div>
+         )}
+       </div>
+     </main>
+   );
+ }
+  // IFRAME FALLBACK VIEW
   if (safeReadUrl) {
     return (
       <main className="min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
         <section className="w-full bg-white">
-          {/* <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#dde6ec] px-5 py-3 sm:px-8 lg:px-20">
-            <Link href="/insights" className="inline-flex items-center gap-2 text-[14px] font-semibold text-[#2f7f88]">
-              <ArrowIcon />
-              Back to Insights
-            </Link>
-            <a
-              href={safeReadUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-[#c9dbe3] bg-[#f4f9fa] px-4 py-2 text-[13px] font-semibold text-[#2f7f88]"
-            >
-              Open in new tab
-              <ArrowIcon />
-            </a>
-          </div> */}
           <iframe
             title="Insight content"
             src={safeReadUrl}
@@ -257,6 +301,7 @@ export default function InsightsClient() {
     );
   }
 
+  // ─── 3. MAIN LIST VIEW ───
   return (
     <main className="polish-layout min-h-screen bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
@@ -278,7 +323,7 @@ export default function InsightsClient() {
               <input
                 type="search"
                 value={query}
-                onChange={event => setQuery(event.target.value)}
+                onChange={(event) => setQuery(event.target.value)}
                 placeholder="Search by post title or content..."
                 className="h-12 rounded-2xl border border-[#d1e0e5] bg-white px-4 text-[15px] text-[#0f172a] outline-none ring-[#2f6f73]/25 transition focus:ring-4"
                 aria-label="Search insights by title and content"
@@ -329,7 +374,7 @@ export default function InsightsClient() {
 
           {hasPosts ? (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {posts.map(post => (
+              {posts.map((post) => (
                 <article
                   key={post.id}
                   className="site-card group flex h-full flex-col overflow-hidden bg-white shadow-[0_10px_28px_rgba(15,23,42,0.06)] transition hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.1)]"
@@ -360,12 +405,12 @@ export default function InsightsClient() {
                     <p className="mt-3 line-clamp-4 text-[16px] leading-[1.65] text-[#475569]">
                       {getSummary(post)}
                     </p>
-                    <div className="mt-5 flex items-center justify-between gap-3">
+                    <div className="mt-auto flex items-center justify-between gap-3 pt-5">
                       <span className="rounded-full border border-[#cde0e2] bg-[#f4f9fa] px-3 py-1 text-[13px] font-medium text-[#2f6f73]">
                         {post.type}
                       </span>
                       <Link
-                        href={getInternalReadUrl(post.link)}
+                        href={getInternalReadUrl(post.id)}
                         className="inline-flex items-center gap-2 text-[14px] font-medium text-[#0a2540] transition hover:text-[#2f6f73]"
                       >
                         Read more
@@ -425,5 +470,5 @@ export default function InsightsClient() {
         </div>
       </section>
     </main>
-  )
+  );
 }

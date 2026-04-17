@@ -46,11 +46,11 @@ const testimonials = [
 
 const DURATION = 5000;
 
-export function TestimonialsSection() {
+export default function TestimonialsSection() {
   const [current, setCurrent] = useState(0);
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
-  const [prevIndex, setPrevIndex] = useState<number | null>(null);
   const [progress, setProgress] = useState(0);
+
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const rafRef = useRef<number | null>(null);
   const startRef = useRef<number>(Date.now());
@@ -58,13 +58,12 @@ export function TestimonialsSection() {
   const remainingRef = useRef(DURATION);
 
   const goTo = useCallback((next: number, dir: "left" | "right") => {
-    setPrevIndex(current);
     setAnimDir(dir);
     setCurrent(next);
     setProgress(0);
     startRef.current = Date.now();
     remainingRef.current = DURATION;
-  }, [current]);
+  }, []);
 
   const goNext = useCallback(() => {
     goTo((current + 1) % testimonials.length, "left");
@@ -77,6 +76,7 @@ export function TestimonialsSection() {
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
     timerRef.current = setTimeout(goNext, remainingRef.current);
+
     const tick = () => {
       if (!pausedRef.current) {
         const elapsed = Date.now() - startRef.current;
@@ -85,6 +85,7 @@ export function TestimonialsSection() {
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
+
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
@@ -106,105 +107,121 @@ export function TestimonialsSection() {
   const t = testimonials[current];
 
   return (
-    <section className="site-section-alt">
-      <div className="site-container">
-        <p className="site-kicker">Testimonials</p>
-        <h2 className="mt-4">What clients say about working with us</h2>
+    <section>
+      
+        
+        {/* Local Keyframes for unified animations */}
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes slideInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+          @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        `}} />
 
-        <div
-          className="mt-8 relative overflow-hidden"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {/* Card */}
+  
+        {/* ── UNIFIED WRAPPER ── */}
+        <div className="mx-auto mt-10 max-w-[960px]">
+          
           <div
-            key={current}
-            className="site-card relative overflow-hidden p-7 transition-all"
-            style={{
-              animation: animDir
-                ? `slideIn${animDir === "left" ? "Right" : "Left"} 0.55s cubic-bezier(.4,0,.2,1) forwards`
-                : undefined,
-            }}
+            className="relative overflow-hidden rounded-[24px] bg-white shadow-[0_12px_32px_rgba(7,30,61,0.06)]"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            {/* Top accent */}
+            {/* Top accent border */}
             <div
-              className="absolute left-0 top-0 h-[4px] w-full"
+              className="absolute left-0 top-0 h-[4px] w-full transition-colors duration-500"
               style={{ background: t.accent }}
             />
 
-            {/* Stars */}
-            <div className="flex gap-1 mt-1">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <svg key={i} className="w-[14px] h-[14px]" viewBox="0 0 14 14">
-                  <polygon
-                    points="7,1 8.8,5.4 13.5,5.9 10.1,9 11.1,13.6 7,11.2 2.9,13.6 3.9,9 0.5,5.9 5.2,5.4"
-                    fill={i < t.stars ? "#f0a500" : "#dce6ef"}
-                  />
-                </svg>
-              ))}
-            </div>
-
-            {/* Quote mark */}
-            <div className="mt-3 text-[52px] leading-none font-serif text-[#dce6ef]">"</div>
-
-            {/* Quote */}
-            <p className="mt-1 text-[16px] italic leading-[1.75] text-[#4a6478]">
-              {t.quote}
-            </p>
-
-            {/* Divider + Attribution */}
-            <div className="mt-6 border-t border-[#dce6ef] pt-5">
-              <p className="text-[14px] font-semibold text-[#173652]">{t.name}</p>
-              <p className="mt-0.5 text-[13px] text-[#63798d]">{t.role}</p>
-            </div>
-          </div>
-
-          {/* Progress bar */}
-          <div className="mt-4 h-[2px] w-full overflow-hidden rounded-full bg-[#eef3f8]">
+            {/* Content Container (Animated) */}
             <div
-              className="h-full rounded-full bg-[#0b3a63] transition-none"
-              style={{ width: `${progress}%` }}
-            />
+              key={current}
+              className="p-8 pb-10 sm:p-12 sm:pb-14 md:p-14 md:pb-16"
+              style={{
+                animation: animDir
+                  ? `slideIn${animDir === "left" ? "Right" : "Left"} 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards`
+                  : undefined,
+              }}
+            >
+              {/* Stars */}
+              <div className="flex gap-1.5 mt-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg key={i} className="w-[18px] h-[18px]" viewBox="0 0 14 14">
+                    <polygon
+                      points="7,1 8.8,5.4 13.5,5.9 10.1,9 11.1,13.6 7,11.2 2.9,13.6 3.9,9 0.5,5.9 5.2,5.4"
+                      fill={i < t.stars ? "#f0a500" : "#dce6ef"}
+                    />
+                  </svg>
+                ))}
+              </div>
+
+              {/* Quote mark */}
+              <div className="mt-4 text-[64px] leading-none text-[#eef3f8]">"</div>
+
+              {/* Quote */}
+              <p className="mt-2 text-[18px] sm:text-[20px] italic leading-[1.75] text-[#4a6478]">
+                {t.quote}
+              </p>
+
+              {/* Divider + Attribution */}
+              <div className="mt-8 border-t border-[#eef3f8] pt-6">
+                <p className="text-[16px] font-bold text-[#173652]">{t.name}</p>
+                <p className="mt-1 text-[14px] text-[#63798d]">{t.role}</p>
+              </div>
+            </div>
+
+            {/* ── PROGRESS BAR (As Bottom Border) ── */}
+            <div className="absolute bottom-0 left-0 h-1.5 w-full bg-[#f0f4f8]">
+              <div
+                className="h-full transition-none"
+                style={{ 
+                  width: `${progress}%`,
+                  background: t.accent // Color matches the card accent!
+                }}
+              />
+            </div>
           </div>
 
-          {/* Controls */}
-          <div className="mt-4 flex items-center justify-between">
-            <div className="flex gap-2">
+          {/* ── UNIFIED CONTROLS ── */}
+          <div className="mt-6 flex items-center justify-between px-2 sm:px-4">
+            {/* Dots */}
+            <div className="flex gap-2.5">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i, i > current ? "left" : "right")}
-                  className={`h-2 w-2 rounded-full border-none transition-all duration-300 ${
+                  aria-label={`Go to testimonial ${i + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                     i === current
-                      ? "scale-125 bg-[#0b3a63]"
-                      : "bg-[#dce6ef] hover:bg-[#b0c4d8]"
+                      ? "w-8"
+                      : "w-2.5 bg-[#cbd5e1] hover:bg-[#94a3b8]"
                   }`}
+                  style={{ backgroundColor: i === current ? t.accent : undefined }}
                 />
               ))}
             </div>
-            <div className="flex gap-2.5">
+
+            {/* Arrows */}
+            <div className="flex gap-3">
               <button
                 onClick={goPrev}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#dce6ef] bg-white transition hover:bg-[#f0f5fa]"
+                className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#dce6ef] bg-white text-[#63798d] transition-all hover:border-[#173652] hover:text-[#173652]"
               >
-                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                  <path d="M10 12L6 8l4-4" stroke="#173652" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <svg className="w-5 h-5 transition-transform group-hover:-translate-x-0.5" viewBox="0 0 16 16" fill="none">
+                  <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
               <button
                 onClick={goNext}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#dce6ef] bg-white transition hover:bg-[#f0f5fa]"
+                className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#dce6ef] bg-white text-[#63798d] transition-all hover:border-[#173652] hover:text-[#173652]"
               >
-                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                  <path d="M6 4l4 4-4 4" stroke="#173652" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                <svg className="w-5 h-5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 16 16" fill="none">
+                  <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </div>
           </div>
-        </div>
-      </div>
 
-    
+        </div>
+      
     </section>
   );
 }

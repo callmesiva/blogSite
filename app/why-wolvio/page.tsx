@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { TestimonialsSection } from "../components/testimonials";
+import TestimonialsSection from "../components/testimonials";
 import VerticalTabsSection from "../components/HowWeWorkSection";
 
 type Differentiator = {
@@ -63,24 +63,45 @@ export const metadata: Metadata = {
 
 const services = [
   {
-    number: "01",
-    accent: "bg-[#2f8b92]", // Your primary teal accent
-    title: "Wolvio Life Sciences - Veeva Consulting & Managed Services",
-    description:
-      "For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations from the inside. From first implementation to migration and integration, we follow a structured discovery-to-validation methodology with GxP embedded at every stage.",
+    id: "life-sciences",
+    theme: "dark",
+    badge: "Practice One",
+    title: "Wolvio Life Sciences",
+    subtitle: "Veeva Consulting & Managed Services",
+    description: "For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations from the inside. From first implementation to migration and integration, we follow a structured discovery-to-validation methodology with GxP embedded at every stage.",
     href: "/service-veeva",
     linkText: "Explore now",
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        className="h-[22px] w-[22px] fill-none stroke-[1.7px] stroke-current strokeLinecap-round strokeLinejoin-round"
+      >
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
   },
   {
-    number: "02",
-    accent: "bg-[#0b3a63]", // Your secondary navy accent
-    title: "Wolvio Intelligence - AI & Automation Services",
+    id: "intelligence",
+    theme: "light",
+    badge: "Practice Two",
+    title: "Wolvio Intelligence",
+    subtitle: "AI & Automation Services",
     description:
       "For organizations that need intelligent automation that runs in production. We start from operational problems before technology choices, because the right tool on the wrong foundation still fails.",
     href: "/service-wolvio",
     linkText: "Explore now",
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        className="h-[22px] w-[22px] fill-none stroke-[1.7px] stroke-current strokeLinecap-round strokeLinejoin-round"
+      >
+        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+      </svg>
+    ),
   },
 ];
+
+
 
 export default function WhyWolvioPage() {
   return (
@@ -107,7 +128,7 @@ export default function WhyWolvioPage() {
             the people across the table actually know your problem and whether
             they remain accountable when delivery becomes hard.
           </p>
-          <VerticalTabsSection items={differentiators} ctaLink="" ctaText=""/>
+          <VerticalTabsSection items={differentiators} ctaLink="" ctaText="" />
         </div>
       </section>
 
@@ -121,46 +142,147 @@ export default function WhyWolvioPage() {
             identical across both: senior ownership, standards embedded from the
             start, and accountability through final handover.
           </p>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
-            {services.map((card) => (
-              <article
-                key={card.number}
-                className="site-card relative overflow-hidden bg-white p-6 sm:p-7"
-              >
-                {/* Top Accent Bar */}
-                <div
-                  className={`absolute left-0 top-0 h-[5px] w-full ${card.accent}`}
-                />
+          <div className="mt-8 grid gap-6 md:grid-cols-2 items-start">
+            {/* Local style block for the custom blinking dot animation */}
+            <style
+              dangerouslySetInnerHTML={{
+                __html: `
+    @keyframes blinkDot {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+  `,
+              }}
+            />
 
-                {/* Large Background Number */}
-                <p className="text-[42px] font-semibold leading-none text-[#dbe3e8]">
-                  {card.number}
-                </p>
+            {services.map((card) => {
+              const isDark = card.theme === "dark";
 
-                {/* Content */}
-                <h3 className="mt-3 text-[20px] font-semibold leading-[1.25] text-[#173652]">
-                  {card.title}
-                </h3>
-
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#546b82]">
-                  {card.description}
-                </p>
-
-                {/* CTA Link */}
-                <Link
-                  href={card.href}
-                  className="mt-5 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88] transition-colors hover:text-[#173652]"
+              return (
+                <article
+                  key={card.id}
+                  // Base card styling + hover translation and shadow
+                  className={`group relative flex flex-col overflow-hidden rounded-[24px] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_36px_72px_rgba(7,30,61,0.18)] ${
+                    isDark
+                      ? "bg-[#071e3d] text-white"
+                      : "bg-white border border-[rgba(11,39,68,0.08)] text-[#071e3d]"
+                  }`}
                 >
-                  {card.linkText}
-                  <ArrowRightIcon />
-                </Link>
-              </article>
-            ))}
+                  {/* ── BACKGROUND TEXTURES ── */}
+                  {isDark ? (
+                    <>
+                      {/* Dot grid texture */}
+                      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(rgba(93,202,165,0.09)_1px,transparent_1px)] bg-[size:26px_26px]"></div>
+                      {/* Orbit ring decoration */}
+                      <div className="pointer-events-none absolute -bottom-[100px] -right-[100px] h-[300px] w-[300px] rounded-full border border-[rgba(93,202,165,0.08)]"></div>
+                    </>
+                  ) : (
+                    <>
+                      {/* Amber glow decoration */}
+                      <div className="pointer-events-none absolute -right-[60px] -top-[60px] h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(212,130,26,0.07)_0%,transparent_70%)]"></div>
+                    </>
+                  )}
+
+                  {/* ── CARD CONTENT INNER ── */}
+                  <div className="relative z-10 flex h-full flex-col p-8 sm:p-10 lg:p-11">
+                    {/* Badge + Icon Row */}
+                    <div className="mb-8 flex items-center justify-between gap-3">
+                      <div
+                        className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[1.8px] ${
+                          isDark
+                            ? "border-[#5DCAA5]/20 bg-[#5DCAA5]/10 text-[#5DCAA5]"
+                            : "border-[#5DCAA5]/20 bg-[#5DCAA5]/10  text-[#2f6f73]"
+                        }`}
+                      >
+                        <span
+                          className="h-1.5 w-1.5 rounded-full bg-[#5DCAA5]"
+                          style={{
+                            animation: "blinkDot 2s ease-in-out infinite",
+                          }}
+                        />
+                        {card.badge}
+                      </div>
+
+                      <div
+                        className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-[14px] border ${
+                          isDark
+                            ? "border-[#5DCAA5]/20 bg-[#5DCAA5]/10 text-[#5DCAA5]"
+                            : "border-[#5DCAA5]/20 bg-[#5DCAA5]/10 text-[#2f6f73]"
+                        }`}
+                      >
+                        {card.icon}
+                      </div>
+                    </div>
+
+                    {/* Name & Subtitle */}
+                    <h3
+                      className={`mb-1.5 text-[28px] font-bold leading-[1.15] tracking-[-0.3px] ${
+                        isDark ? "text-white" : "text-[#071e3d]"
+                      }`}
+                    >
+                      {card.title}
+                    </h3>
+                    <p
+                      className={`mb-5 text-[13px] font-medium tracking-[0.3px] ${
+                        isDark ? "text-white/60" : "text-[#2f6f73]"
+                      }`}
+                    >
+                      {card.subtitle}
+                    </p>
+
+                    {/* Divider */}
+                    <div
+                      className={`mb-5 h-[1px] w-full ${
+                        isDark ? "bg-white/10" : "bg-[rgba(11,39,68,0.08)]"
+                      }`}
+                    ></div>
+
+                    {/* Description */}
+                    <p
+                      className={`mb-7 h-24 text-[15px] font-light leading-[1.78] ${
+                        isDark ? "text-white" : "text-[#445f72]"
+                      }`}
+                    >
+                      {card.description}
+                    </p>
+
+                    {/* Footer & CTA */}
+                    <div
+                      className={`mt-auto flex items-center justify-between gap-4 border-t pt-6 ${
+                        isDark
+                          ? "border-white/10"
+                          : "border-[rgba(11,39,68,0.08)]"
+                      }`}
+                    >
+                      <Link
+                        href={card.href}
+                        className={`inline-flex items-center gap-2 rounded-[26px] px-5 py-3 text-[13.5px] font-semibold whitespace-nowrap transition-all duration-250 hover:gap-3 ${
+                          isDark
+                            ? "bg-[#2f6f73] text-white hover:bg-[#4f8f92]"
+                            : "bg-[#2f6f73] text-white hover:bg-[#4f8f92]"
+                        }`}
+                      >
+                        {card.linkText}
+                        <ArrowRightIcon />
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <TestimonialsSection />
+      <section id="case-studies" className="site-section-alt">
+        <div className="site-container">
+          <p className="site-kicker text-center">Testimonials</p>
+          <h2 className="mt-3 text-center">
+            What clients say about working with us
+          </h2>
+          <TestimonialsSection />
+        </div>
+      </section>
 
       <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
         <div className="site-container">

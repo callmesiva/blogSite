@@ -182,7 +182,10 @@ export default function CareersClient() {
             agents, and workflow automation.
           </p>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
-            <article className="site-card bg-white p-6">
+            <article className="site-card group relative overflow-hidden bg-white p-6 sm:p-7">
+              <div
+                className={`absolute left-0 top-0 h-[5px] w-full bg-[#0b3a63]`}
+              />
               <h3 className="text-[19px] font-semibold leading-[1.3] text-[#173652]">
                 Culture & Values
               </h3>
@@ -192,7 +195,10 @@ export default function CareersClient() {
                 voice is heard because the team is small enough to hear it.
               </p>
             </article>
-            <article className="site-card bg-white p-6">
+            <article className="site-card group relative overflow-hidden bg-white p-6 sm:p-7">
+              <div
+                className={`absolute left-0 top-0 h-[5px] w-full bg-[#2f8b92]`}
+              />
               <h3 className="text-[19px] font-semibold leading-[1.3] text-[#173652]">
                 Expert-Led Environment
               </h3>
@@ -202,7 +208,10 @@ export default function CareersClient() {
                 of management disconnected from delivery.
               </p>
             </article>
-            <article className="site-card bg-white p-6">
+            <article className="site-card group relative overflow-hidden bg-white p-6 sm:p-7">
+              <div
+                className={`absolute left-0 top-0 h-[5px] w-full bg-[#0b3a63]`}
+              />
               <h3 className="text-[19px] font-semibold leading-[1.3] text-[#173652]">
                 Growth & Learning
               </h3>
@@ -269,7 +278,7 @@ export default function CareersClient() {
             </div>
           ) : null}
 
-        {/*  {!isLoading && jobs.length === 0 ? (
+          {/*  {!isLoading && jobs.length === 0 ? (
             <div className="site-card mt-7 bg-white px-6 py-10 text-center">
               <p className="text-[19px] font-semibold text-[#173652]">
                 No matching positions at the moment
