@@ -215,7 +215,7 @@ export default function SiteHeader() {
                       </div>
                       <div className="mt-3 flex items-center justify-between border-t border-[#d6e0e8] px-4 pb-2 pt-4">
                         <p className="!text-[12px] font-medium text-[#95a7ba]">Not sure where to start?</p>
-                        <Link href="/contact-us" className="site-btn-link !text-[12px]">
+                        <Link href="/contact-us" className="site-btn-link">
                           Talk to us
                           <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M7 17 17 7" />

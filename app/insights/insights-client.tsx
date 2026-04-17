@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SelectDropDown from "../components/selectDropDown";
+import ScrollReveal from "../components/ScrollReveal";
 
 type InsightPost = {
   id: number;
@@ -305,18 +306,18 @@ export default function InsightsClient() {
   return (
     <main className="polish-layout min-h-screen bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Insights</p>
           <h1 className="mt-4 max-w-[860px]">Knowledge Center</h1>
           <p className="site-subheading mt-5 max-w-[940px]">
             Practitioner-led perspectives on Veeva platform delivery, regulated
             operations, and AI-enabled transformation.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <div className="mb-9 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <p className="text-[15px] text-[#5f7388]">{headingNote}</p>
             <div className="grid w-full grid-cols-1 gap-3 md:w-auto md:grid-cols-[minmax(340px,1fr)_200px]">
@@ -438,11 +439,11 @@ export default function InsightsClient() {
               </p>
             ) : null}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
-        <div className="site-container">
+      <section className="tone-lock site-section">
+        <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
@@ -467,7 +468,7 @@ export default function InsightsClient() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

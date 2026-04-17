@@ -3,6 +3,7 @@
 import Link from "next/link";
 import BookingWidget from "../components/NimbusEmbed";
 import { useState } from "react";
+import ScrollReveal from "../components/ScrollReveal";
 
 function ArrowRightIcon() {
   return (
@@ -47,7 +48,7 @@ export default function ContactUsPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Contact Us</p>
           <h1 className="mt-4 max-w-[920px]">
             Good work starts with an honest conversation
@@ -57,11 +58,11 @@ export default function ContactUsPage() {
             automation services, a direct conversation is where every engagement
             starts.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="site-section pb-10 pt-8 sm:pb-12 font-['DM_Sans',sans-serif]">
-        <div className="site-container">
+      <section className="site-section font-['DM_Sans',sans-serif]">
+        <ScrollReveal className="site-container">
           {/* Inline styles for custom fonts and complex animation keyframes */}
           <style
             dangerouslySetInnerHTML={{
@@ -202,7 +203,7 @@ export default function ContactUsPage() {
               )}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
     </main>

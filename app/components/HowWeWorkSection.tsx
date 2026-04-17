@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import ScrollReveal from "./ScrollReveal";
 
 function ArrowRightIcon() {
   return (
@@ -60,8 +61,8 @@ export default function VerticalTabsSection({
   if (!items || items.length === 0) return null;
 
   return (
-    <section className="site-section bg-[#f2f8f5] py-[72px] lg:py-[100px]">
-      <div className="site-container mx-auto max-w-[1100px]">
+    <section className="site-section bg-[#f2f8f5]">
+      <ScrollReveal className="site-container mx-auto max-w-[1100px]">
         {/* ── DYNAMIC HEADER ── */}
           <div className="mb-10 lg:mb-14 text-center lg:text-left">
             <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
@@ -139,7 +140,7 @@ export default function VerticalTabsSection({
             </Link>
           </div>
         )}
-      </div>
+      </ScrollReveal>
     </section>
   );
 }

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import TestimonialsSection from "../components/testimonials";
 import VerticalTabsSection from "../components/HowWeWorkSection";
+import ScrollReveal from "../components/ScrollReveal";
 
 type Differentiator = {
   id: string;
@@ -108,7 +109,7 @@ export default function WhyWolvioPage() {
 
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Why Wolvio</p>
           <h1 className="mt-4 max-w-[930px]">Why choose Wolvio Solutions?</h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
@@ -117,7 +118,7 @@ export default function WhyWolvioPage() {
             project closure. In AI, the wrong partner delivers a proof of
             concept that never reaches production.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       <VerticalTabsSection
@@ -132,7 +133,7 @@ export default function WhyWolvioPage() {
       />
 
       <section className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">
             Two Practices. One Standard. No Shortcuts.
           </p>
@@ -270,28 +271,28 @@ export default function WhyWolvioPage() {
               );
             })}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section id="case-studies" className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker text-center">Testimonials</p>
           <h2 className="mt-3 text-center">
             What clients say about working with us
           </h2>
           <TestimonialsSection />
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
-        <div className="site-container">
+      <section className="tone-lock site-section">
+        <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[920px] !text-[26px]">
+              <h2 className="mx-auto mt-7 max-w-[920px]">
                 The Right Partner Gives You a Straight Answer.
               </h2>
               <p className="mx-auto mt-4 max-w-[860px]">
@@ -314,7 +315,7 @@ export default function WhyWolvioPage() {
               </p>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

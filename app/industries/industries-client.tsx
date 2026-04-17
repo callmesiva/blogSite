@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import ScrollReveal from "../components/ScrollReveal";
 
 type IndustryBlock = {
   title: string;
@@ -274,7 +275,7 @@ export default function IndustriesClient() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Industries</p>
           <h1 className="mt-4 max-w-[1020px]">
             Veeva Consulting for Regulated Industries. Delivered by People Who
@@ -285,11 +286,11 @@ export default function IndustriesClient() {
             industry is regulated and your operations run on Veeva, we have been
             here before.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Industry Overview</p>
           <h2 className="mt-4 max-w-[820px]">
             Why do regulated industries need a specialist partner?
@@ -308,11 +309,11 @@ export default function IndustriesClient() {
               to delayed submissions, failed audits, and missed timelines.
             </p>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
 
             {/* ── TAB BAR ── */}
@@ -392,11 +393,11 @@ export default function IndustriesClient() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Relevant Case Studies</p>
           <h2 className="mt-4">Real results across regulated industries</h2>
 
@@ -465,18 +466,18 @@ export default function IndustriesClient() {
             Explore case studies
             <ArrowRightIcon />
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="tone-lock site-section pb-16 pt-10 sm:pb-20">
-        <div className="site-container">
+      <section className="tone-lock site-section">
+        <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[13px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[920px] !text-[26px] ">
+              <h2 className="mx-auto mt-7 max-w-[920px] ">
                 Serving life sciences exclusively, from day one.
               </h2>
               <p className="mx-auto mt-4 max-w-[840px] text-[16px] leading-[1.65] text-[#b6c9da]">
@@ -496,7 +497,7 @@ export default function IndustriesClient() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

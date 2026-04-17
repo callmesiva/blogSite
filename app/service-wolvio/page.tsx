@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { title } from "process";
 import { useState } from "react";
+import ScrollReveal from "../components/ScrollReveal";
 
 type UseCaseCard = {
   title: string;
@@ -115,7 +116,7 @@ export default function ServiceWolvioPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Wolvio Intelligence</p>
           <h1 className="mt-4 max-w-[960px]">
             AI automation services across industries
@@ -132,11 +133,11 @@ export default function ServiceWolvioPage() {
             Explore Use Cases
             <ArrowRightIcon />
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">What We Do</p>
           <h2 className="mt-4 max-w-[900px]">AI Transformation & Automation</h2>
           <p className="site-body mt-6 max-w-[1060px]">
@@ -146,11 +147,11 @@ export default function ServiceWolvioPage() {
             and workflow automation that drive measurable outcomes across
             healthcare, logistics, enterprise operations, and customer support.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Business Use Cases</p>
           <h2 className="mt-4 max-w-[900px]">
             What can AI actually do for your business?
@@ -228,11 +229,11 @@ export default function ServiceWolvioPage() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Why Wolvio Intelligence</p>
           <h2 className="mt-4 max-w-[880px]">
             How we&apos;re different from typical AI consultancies
@@ -281,11 +282,11 @@ export default function ServiceWolvioPage() {
               </article>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">FAQ</p>
           <h2 className="mt-4">Questions we hear before every engagement</h2>
           <p className="site-body mt-4 max-w-[900px]">
@@ -307,11 +308,11 @@ export default function ServiceWolvioPage() {
               </details>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="tone-lock site-section pb-16 pt-8 sm:pb-20">
-        <div className="site-container">
+      <section className="tone-lock site-section">
+        <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
@@ -339,7 +340,7 @@ export default function ServiceWolvioPage() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

@@ -2,7 +2,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useState } from "react";
-import VerticalTabsSection from "../components/HowWeWorkSection"; 
+import VerticalTabsSection from "../components/HowWeWorkSection";
+import ScrollReveal from "../components/ScrollReveal"; 
 
 type DeliveryCard = {
   title: string;
@@ -252,7 +253,7 @@ export default function ServiceVeevaPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Veeva Consulting</p>
           <h1 className="mt-4 max-w-[1050px]">
             Veeva Implementation Partner That Knows Vault. Not Just as a
@@ -269,11 +270,11 @@ export default function ServiceVeevaPage() {
             Talk to a Veeva Specialist
             <ArrowRightIcon />
           </Link>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">What We Do</p>
           <h2 className="mt-4 max-w-[860px]">
             Built at the Intersection of{" "}
@@ -310,11 +311,11 @@ export default function ServiceVeevaPage() {
               </article>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           {/* ── Two-column editorial split ── */}
           <div className="mt-6 grid gap-12 lg:grid-cols-[1fr_1.55fr] lg:gap-16 xl:gap-20">
             {/* LEFT — sticky context column */}
@@ -462,11 +463,11 @@ export default function ServiceVeevaPage() {
               )}
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <div className="mt-6 grid gap-12 lg:grid-cols-[1.55fr_1fr] lg:gap-16 xl:gap-20">
             {/* LEFT — paginated cards */}
             <div className="order-2 flex flex-col gap-5 lg:order-1">
@@ -602,11 +603,11 @@ export default function ServiceVeevaPage() {
               </Link>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Vault Domain Coverage</p>
           <h2 className="mt-4 max-w-[880px]">
             Every suite. Every domain. Hands-on, not in theory.
@@ -632,7 +633,7 @@ export default function ServiceVeevaPage() {
               </article>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <VerticalTabsSection
@@ -645,7 +646,7 @@ export default function ServiceVeevaPage() {
       />
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">FAQs</p>
           <h2 className="mt-4">Questions we hear before every engagement</h2>
           <div className="mt-8 space-y-4">
@@ -661,18 +662,18 @@ export default function ServiceVeevaPage() {
               </details>
             ))}
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
-      <section className="tone-lock site-section pb-16 pt-8 sm:pb-20">
-        <div className="site-container">
+      <section className="tone-lock site-section">
+        <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Get Started
               </span>
-              <h2 className="mx-auto mt-7 max-w-[900px] !text-[26px]">
+              <h2 className="mx-auto mt-7 max-w-[900px]">
                 Discuss your Veeva platform goals with specialists who deliver
                 in regulated environments every day.
               </h2>
@@ -687,7 +688,7 @@ export default function ServiceVeevaPage() {
               </div>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

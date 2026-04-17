@@ -5,7 +5,8 @@ import ScrollFadeGrid from "./components/ScrollFadeGrid";
 import StatsCounter from "./components/StatsCounter";
 import WhyWolvioSection from "./components/WhyWolvioSection";
 import CaseStudyCarousel from "./components/CaseStudyCarousel";
-import SolutionDiagram from "./components/SolutionDiagram"; 
+import SolutionDiagram from "./components/SolutionDiagram";
+import ScrollReveal from "./components/ScrollReveal";
 
 type OrbitCard = {
   label: string;
@@ -510,7 +511,7 @@ export default function Home() {
       className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
       <section className="hero-grid">
-        <div className="site-container grid items-center gap-12 pt-10 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
+        <ScrollReveal className="site-container grid items-center gap-12 pt-10 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
           <div className="max-w-[760px] mx-auto lg:mx-0 ">
             <h1 className="max-w-[550px] text-center lg:text-left">
               Specialist Veeva Consulting & Managed Services for{" "}
@@ -530,14 +531,14 @@ export default function Home() {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
               <a
                 href="contact-us"
-                className="site-btn-primary  !text-[14px] hover:!bg-[#4f8f92]"
+                className="site-btn-primary"
               >
                 Schedule a Consultation
                 <ArrowRightIcon />
               </a>
               <a
                 href="service-veeva"
-                className="site-btn-secondary !text-[14px]  hover:!text-[#4f8f92]"
+                className="site-btn-secondary"
               >
                 Explore Our Veeva Services
                 <ArrowRightIcon />
@@ -549,11 +550,11 @@ export default function Home() {
             <div className="absolute inset-x-[10%] top-[10%] h-[78%] rounded-full bg-[radial-gradient(circle,rgba(47,111,115,0.12)_0%,rgba(255,255,255,0)_68%)] blur-3xl" />
             <SolutionDiagram />
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker text-center !text-[#2c9aa5]">
             Why do clients trust us?
           </p>
@@ -566,11 +567,11 @@ export default function Home() {
           </p>
 
           <StatsCounter />
-        </div>
+        </ScrollReveal>
       </section>
 
       <section id="services" className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[900px]">
               <p className="site-kicker">What We Do</p>
@@ -604,11 +605,11 @@ export default function Home() {
               </article>
             ))}
           </ScrollFadeGrid>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section id="case-studies" className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker text-center">
             How We&apos;ve Helped Our Clients
           </p>
@@ -623,13 +624,13 @@ export default function Home() {
 
           <CaseStudyCarousel />
           
-        </div>
+        </ScrollReveal>
       </section>
 
       <WhyWolvioSection />
 
       <section id="about" className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-[980px]">
               <p className="site-kicker">Insights & Perspectives</p>
@@ -714,18 +715,18 @@ export default function Home() {
               </article>
             ))}
           </ScrollFadeGrid>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section id="contact" className="tone-lock site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%),radial-gradient(circle_at_30px_30px,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[length:auto,auto,34px_34px]" />
             <div className="relative text-center">
               <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
                 Start a Conversation
               </span>
-              <h2 className="mx-auto mt-7 max-w-[900px] !text-[26px]">
+              <h2 className="mx-auto mt-7 max-w-[900px]">
                 A Focused Conversation Is Where Every Veeva Engagement Starts.
               </h2>
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
@@ -748,7 +749,7 @@ export default function Home() {
               </p>
             </div>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </main>
   );

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 
 import { JobApplyModal } from "../components/jobApplyModal"
 import { Toast } from "../components/toast";
+import ScrollReveal from "../components/ScrollReveal";
 
 type Job = {
   _id: string;
@@ -159,7 +160,7 @@ export default function CareersClient() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Careers</p>
           <h1 className="mt-4 max-w-[960px]">
             Build Your Career at the Intersection of Life Sciences and AI.
@@ -169,11 +170,11 @@ export default function CareersClient() {
             colleagues who have genuinely done it before, and a team small
             enough that your contribution actually shows.
           </p>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section-alt">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Why Join Wolvio?</p>
           <p className="site-body mt-4 max-w-[1040px]">
             Wolvio runs two focused practices: Veeva consulting and managed
@@ -222,11 +223,11 @@ export default function CareersClient() {
               </p>
             </article>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="site-section">
-        <div className="site-container">
+        <ScrollReveal className="site-container">
           <p className="site-kicker">Open Positions</p>
           <h2 className="mt-4">Explore our current openings</h2>
           <p className="site-body mt-4 max-w-[1040px]">
@@ -371,7 +372,7 @@ export default function CareersClient() {
               </div>
             </>
           ) : null}
-        </div>
+        </ScrollReveal>
       </section>
 
       {applyJob && (
