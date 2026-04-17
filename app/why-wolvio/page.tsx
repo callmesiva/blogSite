@@ -105,6 +105,7 @@ const services = [
 
 export default function WhyWolvioPage() {
   return (
+
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
         <div className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
@@ -119,18 +120,16 @@ export default function WhyWolvioPage() {
         </div>
       </section>
 
-      <section className="site-section-alt">
-        <div className="site-container">
-          <p className="site-kicker">Our Differentiators</p>
-          <h2 className="mt-4">What Sets Us Apart</h2>
-          <p className="site-body mt-5 max-w-[980px]">
-            Choosing the right firm is rarely about price. It is about whether
+      <VerticalTabsSection
+        kicker="Our Differentiators"
+        title="What Sets Us Apart"
+        description="Choosing the right firm is rarely about price. It is about whether
             the people across the table actually know your problem and whether
-            they remain accountable when delivery becomes hard.
-          </p>
-          <VerticalTabsSection items={differentiators} ctaLink="" ctaText="" />
-        </div>
-      </section>
+            they remain accountable when delivery becomes hard."
+        items={differentiators}
+        ctaText=""
+        ctaLink=""
+      />
 
       <section className="site-section">
         <div className="site-container">

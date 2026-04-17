@@ -638,6 +638,7 @@ export default function ServiceVeevaPage() {
       <VerticalTabsSection
         kicker="How We Work With You"
         title="Partnership Models"
+        description=""
         items={WORK_MODELS}
         ctaText="Talk to Us About Managed Services"
         ctaLink="/service-veeva"

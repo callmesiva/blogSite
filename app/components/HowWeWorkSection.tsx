@@ -29,16 +29,18 @@ export interface TabItem {
 
 // 2. Define all the props the component can accept
 interface VerticalTabsSectionProps {
-  kicker?: string; // e.g., "How We Work With You"
-  title?: string; // e.g., "Partnership Models"
-  items: TabItem[]; // The array of tab data
-  ctaText?: string; // Button text
-  ctaLink?: string; // Button destination
+  kicker: string; 
+  title: string;
+  description?: string;
+  items: TabItem[];
+  ctaText?: string;
+  ctaLink?: string;
 }
 
 export default function VerticalTabsSection({
-  kicker = "How We Work With You",
-  title = "Partnership Models",
+  kicker,
+  title,
+  description = "",
   items,
   ctaText = "Talk to Us About Managed Services",
   ctaLink = "/service-veeva",
@@ -61,12 +63,15 @@ export default function VerticalTabsSection({
     <section className="site-section bg-[#f2f8f5] py-[72px] lg:py-[100px]">
       <div className="site-container mx-auto max-w-[1100px]">
         {/* ── DYNAMIC HEADER ── */}
-        <div className="mb-10 lg:mb-14 text-center lg:text-left">
-          <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
-            {kicker}
-          </p>
-          <h2>{title}</h2>
-        </div>
+          <div className="mb-10 lg:mb-14 text-center lg:text-left">
+            <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
+              {kicker}
+            </p>
+            <h2>{title}</h2>
+            {description && (
+              <p className="site-body mt-5 max-w-[980px]">{description}</p>
+            )}
+          </div>
 
         <div className="flex flex-col overflow-hidden rounded-[24px] border border-[#d7dde4] bg-white shadow-[0_12px_32px_rgba(7,30,61,0.05)] lg:flex-row lg:rounded-[32px]">
           {/* ── LEFT: DYNAMIC TABS ── */}
