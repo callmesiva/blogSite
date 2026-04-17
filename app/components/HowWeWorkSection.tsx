@@ -65,7 +65,7 @@ export default function VerticalTabsSection({
       <ScrollReveal className="site-container mx-auto max-w-[1100px]">
         {/* ── DYNAMIC HEADER ── */}
           <div className="mb-10 lg:mb-14 text-center lg:text-left">
-            <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
+            <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73]">
               {kicker}
             </p>
             <h2>{title}</h2>

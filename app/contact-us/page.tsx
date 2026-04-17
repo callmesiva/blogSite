@@ -1,7 +1,7 @@
 "use client";
 //import type { Metadata } from "next";
 import Link from "next/link";
-import BookingWidget from "../components/NimbusEmbed";
+import ZohoEmbed from "../components/ZohoEmbed";
 import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
 
@@ -112,7 +112,7 @@ export default function ContactUsPage() {
                   Prefer a Direct Conversation?
                 </span>
 
-                <h2 className="mt-5 text-[clamp(1.55rem,2.2vw,2.4rem)] font-normal italic leading-[1.25] text-white animate-[fadeSlideDown_0.5s_0.35s_cubic-bezier(0.22,1,0.36,1)_both]">
+                <h2 className="mt-5 text-white animate-[fadeSlideDown_0.5s_0.35s_cubic-bezier(0.22,1,0.36,1)_both]">
                   Book a 30-minute call with our founding consultant.
                 </h2>
 
@@ -140,15 +140,15 @@ export default function ContactUsPage() {
             </div>
 
             {/* ── RIGHT CARD ── */}
-            <div className="relative flex flex-col max-h-[480px] overflow-hidden rounded-[28px] sm:rounded-[34px] border-[0.5px] border-[#e2e2e0] bg-[#f4f4f2] animate-[cardReveal_0.7s_0.15s_cubic-bezier(0.22,1,0.36,1)_both] box-border">
-              {/* Conditional Rendering: Show UI or actual Embed */}
-              {showWidget ? (
-                <div className="h-full w-full flex-1">
-                  {/* Your actual booking component renders here */}
-                  <BookingWidget />
-                </div>
-              ) : (
-                <div className="flex flex-1 flex-col items-center justify-center p-8 sm:p-10 gap-5">
+            <div className={`relative flex flex-col h-[480px] max-h-[480px] rounded-[28px] sm:rounded-[34px] border-[0.5px] border-[#e2e2e0] bg-[#f4f4f2] animate-[cardReveal_0.7s_0.15s_cubic-bezier(0.22,1,0.36,1)_both] box-border transition-all duration-500 ease-in-out ${showWidget ? "overflow-y-auto" : "overflow-hidden"}`}>
+              
+              {/* Actual Embed - Always Rendered to load in background, but visually hidden until clicked */}
+              <div className={`w-full transition-opacity duration-500 z-0 ${showWidget ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+                <ZohoEmbed />
+              </div>
+
+              {/* Placeholder UI - overlaid absolutely so it perfectly centers and never breaks layout during fade transition */}
+              <div className={`absolute inset-0 flex flex-col items-center justify-center p-8 sm:p-10 gap-5 transition-[opacity,visibility] duration-300 z-10 ${showWidget ? "opacity-0 invisible pointer-events-none" : "opacity-100 visible"}`}>
                   <div className="flex h-[52px] w-[52px] items-center justify-center rounded-[16px] bg-[linear-gradient(135deg,#082744,#0b2f52)]">
                     <svg
                       viewBox="0 0 24 24"
@@ -165,7 +165,7 @@ export default function ContactUsPage() {
                     <p className="mb-1 text-[13px] font-medium uppercase tracking-[0.06em] text-[#6b7280]">
                       Schedule a call
                     </p>
-                    <p className="text-[1.45rem] font-normal italic leading-[1.3] text-[#111827]">
+                    <p className="text-[1.45rem] leading-[1.3] text-[#111827]">
                       Pick a time that
                       <br />
                       works for you
@@ -200,7 +200,6 @@ export default function ContactUsPage() {
                     <span>Usually responds within a few hours</span>
                   </div>
                 </div>
-              )}
             </div>
           </div>
         </ScrollReveal>

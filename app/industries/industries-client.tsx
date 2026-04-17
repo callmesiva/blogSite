@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
+import TypewriterBox from "../components/TypewriterBox";
 
 type IndustryBlock = {
   title: string;
@@ -289,25 +290,31 @@ export default function IndustriesClient() {
         </ScrollReveal>
       </section>
 
-      <section className="site-section-alt">
+     <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
         <ScrollReveal className="site-container">
-          <p className="site-kicker">Industry Overview</p>
-          <h2 className="mt-4 max-w-[820px]">
-            Why do regulated industries need a specialist partner?
-          </h2>
-          <div className="site-body mt-6 max-w-[1040px] space-y-4">
-            <p>
-              Most consultancies treat compliance as a constraint. In regulated
-              industries, it is the foundation everything is built on. From
-              system configurations to data structures, each decision carries
-              implications across GxP, 21 CFR Part 11, and IDMP requirements.
-            </p>
-            <p>
-              Generalist firms learn these constraints on your engagement.
-              Wolvio does not. Our practice is built around regulatory, quality,
-              and commercial technology demands where poor configuration leads
-              to delayed submissions, failed audits, and missed timelines.
-            </p>
+          <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-12 lg:gap-16 items-start">
+            {/* Left side: Kicker, Header, and First Paragraph */}
+            <div>
+              <p className="site-kicker text-[#7ec4c7]">Industry Overview</p>
+              <h2 className="mt-4 max-w-[820px] text-white">
+                Why do regulated industries need a specialist partner?
+              </h2>
+              <p className="mt-6 text-[17px] leading-[1.65] text-[#b6c9da]">
+                Most consultancies treat compliance as a constraint. In regulated
+                industries, it is the foundation everything is built on. From
+                system configurations to data structures, each decision carries
+                implications across GxP, 21 CFR Part 11, and IDMP requirements.
+              </p>
+            </div>
+
+            {/* Right side: Typewriter Input Box for the final paragraph */}
+            <div className="pt-2">
+              <TypewriterBox 
+                text="Generalist firms learn these constraints on your engagement. Wolvio does not. Our practice is built around regulatory, quality, and commercial technology demands where poor configuration leads to delayed submissions, failed audits, and missed timelines."
+                delay={1000}
+                speed={20}
+              />
+            </div>
           </div>
         </ScrollReveal>
       </section>

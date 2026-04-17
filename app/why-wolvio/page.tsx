@@ -66,7 +66,7 @@ const services = [
   {
     id: "life-sciences",
     theme: "dark",
-    badge: "Practice One",
+    badge: "VEEVA",
     title: "Wolvio Life Sciences",
     subtitle: "Veeva Consulting & Managed Services",
     description: "For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations from the inside. From first implementation to migration and integration, we follow a structured discovery-to-validation methodology with GxP embedded at every stage.",
@@ -84,7 +84,7 @@ const services = [
   {
     id: "intelligence",
     theme: "light",
-    badge: "Practice Two",
+    badge: "ARTIFICIAL INTELLIGENCE",
     title: "Wolvio Intelligence",
     subtitle: "AI & Automation Services",
     description:

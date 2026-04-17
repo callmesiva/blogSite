@@ -219,8 +219,9 @@ useEffect(() => {
       <div className="mx-auto max-w-[1300px]">
         <div className="grid items-start gap-12 lg:grid-cols-[380px_1fr] lg:gap-[80px]">
           {/* ── LEFT: STICKY HEADER ── */}
+          
           <div className="fade-up lg:sticky lg:top-12">
-            <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73] before:h-[2px] before:w-[22px] before:rounded-[2px] before:bg-[#2f6f73]">
+            <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73]">
               <p className="site-kicker text-center"> why Wolvio </p>
             </div>
 

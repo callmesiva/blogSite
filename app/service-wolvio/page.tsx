@@ -4,6 +4,10 @@ import Link from "next/link";
 import { title } from "process";
 import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
+import FaqAccordion from "../components/FaqAccordion";
+import TypewriterBox from "../components/TypewriterBox";
+import OrbitalCanvas from "../components/OrbitalCanvas";
+import HeroSection from "../components/HeroSection";
 
 type UseCaseCard = {
   title: string;
@@ -22,26 +26,47 @@ const useCases: UseCaseCard[] = [
   {
     title: "AI Knowledge Assistant",
     pain: "Your team spends hours searching for answers buried in documents.",
-    summary: "Ask your company data and get accurate answers with source citations in seconds.",
+    summary:
+      "Ask your company data and get accurate answers with source citations in seconds.",
     details:
       "A retrieval-augmented generation system connected to your policies, SOPs, and knowledge bases so teams ask in plain language and receive precise, cited responses.",
-    bullets: ["Document ingestion", "Vector search", "Source citations", "Role-based access", "Continuous learning"],
+    bullets: [
+      "Document ingestion",
+      "Vector search",
+      "Source citations",
+      "Role-based access",
+      "Continuous learning",
+    ],
   },
   {
     title: "AI Support Agent",
     pain: "Your support team is overwhelmed and most queries are repetitive.",
-    summary: "Automate 60-80% of support queries with smart routing and human escalation.",
+    summary:
+      "Automate 60-80% of support queries with smart routing and human escalation.",
     details:
       "An intelligent support agent that classifies intent, drafts responses, routes issues, and escalates low-confidence cases with full governance logging.",
-    bullets: ["Intent classification", "Smart routing", "AI-drafted responses", "Confidence scoring", "Full audit trail"],
+    bullets: [
+      "Intent classification",
+      "Smart routing",
+      "AI-drafted responses",
+      "Confidence scoring",
+      "Full audit trail",
+    ],
   },
   {
     title: "Document Intelligence",
     pain: "Your team manually extracts data from documents invoice by invoice.",
-    summary: "Extract, validate, and process documents in seconds rather than hours.",
+    summary:
+      "Extract, validate, and process documents in seconds rather than hours.",
     details:
       "AI-powered document processing for invoices, contracts, forms, and reports with rule-based validation, exception handling, and ERP-ready structured output.",
-    bullets: ["OCR + field extraction", "Business-rule validation", "Exception flagging", "ERP integration", "India-specific formats"],
+    bullets: [
+      "OCR + field extraction",
+      "Business-rule validation",
+      "Exception flagging",
+      "ERP integration",
+      "India-specific formats",
+    ],
   },
   {
     title: "Workflow Automation",
@@ -49,7 +74,13 @@ const useCases: UseCaseCard[] = [
     summary: "Convert manual processes into intelligent automated workflows.",
     details:
       "End-to-end flows with AI decision nodes, approvals, exception logic, and system integrations, plus live monitoring for operational visibility.",
-    bullets: ["Event-driven triggers", "AI decision nodes", "CRM/ERP integration", "Error handling", "Live dashboards"],
+    bullets: [
+      "Event-driven triggers",
+      "AI decision nodes",
+      "CRM/ERP integration",
+      "Error handling",
+      "Live dashboards",
+    ],
   },
   {
     title: "Voice AI Agent",
@@ -57,7 +88,13 @@ const useCases: UseCaseCard[] = [
     summary: "A multilingual AI voice agent that responds in real time 24/7.",
     details:
       "Voice automation for inbound calls with natural response handling, appointment booking, escalation, and support for regional Indian language interactions.",
-    bullets: ["Real-time speech-to-text", "Telephony / SIP / IVR", "Appointment booking", "Human handoff", "WhatsApp automation"],
+    bullets: [
+      "Real-time speech-to-text",
+      "Telephony / SIP / IVR",
+      "Appointment booking",
+      "Human handoff",
+      "WhatsApp automation",
+    ],
   },
 ];
 
@@ -107,46 +144,55 @@ function ArrowRightIcon() {
   );
 }
 
-
-
 export default function ServiceWolvioPage() {
   const [activeTab, setActiveTab] = useState(0);
- const activeCard = useCases[activeTab];
+  const activeCard = useCases[activeTab];
 
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
-      <section className="hero-grid">
-        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
-          <p className="site-kicker">Wolvio Intelligence</p>
-          <h1 className="mt-4 max-w-[960px]">
-            AI automation services across industries
-          </h1>
-          <p className="site-subheading mt-5 max-w-[900px]">
-            AI systems built for how your business actually runs. We design and
-            deploy AI agents, automation systems, and intelligent workflows that
-            solve operational problems in production today.
-          </p>
-          <Link
-            href="/#contact"
-            className="mt-8 inline-flex items-center gap-3 rounded-full border border-[#c7d7df] bg-white px-6 py-3 text-[15px] font-semibold text-[#2f6f73] transition hover:bg-[#f4f9fa]"
-          >
-            Explore Use Cases
-            <ArrowRightIcon />
-          </Link>
-        </ScrollReveal>
-      </section>
+      <HeroSection 
+        kicker="Wolvio Intelligence"
+        title={
+          <>AI automation services across industries</>
+        }
+        description={
+          <>
+            AI systems built for how your business actually runs. We design
+            and deploy AI agents, automation systems, and intelligent
+            workflows that solve operational problems in production today.
+          </>
+        }
+        buttons={[
+          { label: "Explore Use Cases", href: "/#contact", variant: "outline" }
+        ]}
+        svgGraphic={<OrbitalCanvas />}
+      />
 
-      <section className="site-section">
+      <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
         <ScrollReveal className="site-container">
-          <p className="site-kicker">What We Do</p>
-          <h2 className="mt-4 max-w-[900px]">AI Transformation & Automation</h2>
-          <p className="site-body mt-6 max-w-[1060px]">
-            Wolvio Intelligence is the AI Transformation & Automation practice
-            of Wolvio Solutions. Through targeted AI automation services we
-            deliver intelligent agents, document processing systems, voice AI,
-            and workflow automation that drive measurable outcomes across
-            healthcare, logistics, enterprise operations, and customer support.
-          </p>
+          <div className="grid lg:grid-cols-[1fr_1.3fr] min-h-[300px] gap-12 lg:gap-16 items-start">
+            {/* Left side: Kicker & Header */}
+            <div>
+              <p className="site-kicker text-[#7ec4c7]">What We Do</p>
+              <h2 className="mt-4 max-w-[900px] text-white">
+                AI Transformation & Automation
+              </h2>
+              <p className="mt-6 text-[17px] leading-[1.65] text-[#b6c9da]">
+                Delivering intelligent AI automation solutions agents, voice AI,
+                and workflow systems that drive measurable outcomes across
+                industries.
+              </p>
+            </div>
+
+            {/* Right side: Typewriter Input Box */}
+            <div>
+              <TypewriterBox
+                text="Wolvio Intelligence is the AI Transformation & Automation practice of Wolvio Solutions. Through targeted AI automation services we deliver intelligent agents, document processing systems, voice AI, and workflow automation that drive measurable outcomes across healthcare, logistics, enterprise operations, and customer support."
+                delay={1000}
+                speed={20}
+              />
+            </div>
+          </div>
         </ScrollReveal>
       </section>
 
@@ -293,21 +339,7 @@ export default function ServiceWolvioPage() {
             These are the real concerns that usually stop buyers from reaching
             out. We answer them directly.
           </p>
-          <div className="mt-8 space-y-4">
-            {faqs.map((item, index) => (
-              <details
-                key={item.question}
-                className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}
-              >
-                <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#173652]">
-                  {item.question}
-                </summary>
-                <p className="mt-3 text-[15px] leading-[1.65] text-[#63798d]">
-                  {item.answer}
-                </p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion items={faqs} />
         </ScrollReveal>
       </section>
 

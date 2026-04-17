@@ -7,6 +7,7 @@ import WhyWolvioSection from "./components/WhyWolvioSection";
 import CaseStudyCarousel from "./components/CaseStudyCarousel";
 import SolutionDiagram from "./components/SolutionDiagram";
 import ScrollReveal from "./components/ScrollReveal";
+import HeroSection from "./components/HeroSection";
 
 type OrbitCard = {
   label: string;
@@ -510,48 +511,30 @@ export default function Home() {
       id="home"
       className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
-      <section className="hero-grid">
-        <ScrollReveal className="site-container grid items-center gap-12 pt-10 pb-16 px-16 lg:grid-cols-[minmax(0,1.02fr)_minmax(540px,0.98fr)] lg:pb-24">
-          <div className="max-w-[760px] mx-auto lg:mx-0 ">
-            <h1 className="max-w-[550px] text-center lg:text-left">
-              Specialist Veeva Consulting & Managed Services for{" "}
-              <span className=" text-[#2f6f73]">Life Sciences</span>
-            </h1>
-            <p className="site-subheading mt-7 max-w-[450px] text-center lg:text-left">
-              Expert-led Veeva consulting services spanning Vault assessment,
-              implementation, migration, integration, validation, and
-              post-go-live support for{" "}
-              <strong className="font-semibold text-[#0f172a]">
-                pharma, biotech{" "}
-              </strong>
-              and{" "}
-              <strong className="font-semibold text-[#0f172a]">medtech </strong>
-              organisations that require compliant, dependable delivery.
-            </p>
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-              <a
-                href="contact-us"
-                className="site-btn-primary"
-              >
-                Schedule a Consultation
-                <ArrowRightIcon />
-              </a>
-              <a
-                href="service-veeva"
-                className="site-btn-secondary"
-              >
-                Explore Our Veeva Services
-                <ArrowRightIcon />
-              </a>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="absolute inset-x-[10%] top-[10%] h-[78%] rounded-full bg-[radial-gradient(circle,rgba(47,111,115,0.12)_0%,rgba(255,255,255,0)_68%)] blur-3xl" />
-            <SolutionDiagram />
-          </div>
-        </ScrollReveal>
-      </section>
+      <HeroSection 
+        kicker=""
+        title={
+          <>Specialist Veeva Consulting & Managed Services for <span className="text-[#2f6f73]">Life Sciences</span></>
+        }
+        description={
+          <>
+            Expert-led Veeva consulting services spanning Vault assessment,
+            implementation, migration, integration, validation, and
+            post-go-live support for{" "}
+            <strong className="font-semibold text-[#0f172a]">
+              pharma, biotech{" "}
+            </strong>
+            and{" "}
+            <strong className="font-semibold text-[#0f172a]">medtech </strong>
+            organisations that require compliant, dependable delivery.
+          </>
+        }
+        buttons={[
+          { label: "Schedule a Consultation", href: "contact-us", variant: "primary" },
+          { label: "Explore Our Veeva Services", href: "service-veeva", variant: "secondary" }
+        ]}
+        svgGraphic={<SolutionDiagram />}
+      />
 
       <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
         <ScrollReveal className="site-container">
@@ -623,7 +606,6 @@ export default function Home() {
           </p>
 
           <CaseStudyCarousel />
-          
         </ScrollReveal>
       </section>
 

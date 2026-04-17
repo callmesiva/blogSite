@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { useState } from "react";
 import VerticalTabsSection from "../components/HowWeWorkSection";
-import ScrollReveal from "../components/ScrollReveal"; 
+import ScrollReveal from "../components/ScrollReveal";
+import FaqAccordion from "../components/FaqAccordion";
 
 type DeliveryCard = {
   title: string;
@@ -649,19 +650,7 @@ export default function ServiceVeevaPage() {
         <ScrollReveal className="site-container">
           <p className="site-kicker">FAQs</p>
           <h2 className="mt-4">Questions we hear before every engagement</h2>
-          <div className="mt-8 space-y-4">
-            {faqs.map((item, index) => (
-              <details
-                key={item.question}
-                className={`site-card px-5 py-4 ${index % 2 ? "bg-[#f8fafc]" : ""}`}
-              >
-                <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#173652]">
-                  {item.question}
-                </summary>
-                <p className="mt-3">{item.answer}</p>
-              </details>
-            ))}
-          </div>
+          <FaqAccordion items={faqs} />
         </ScrollReveal>
       </section>
 

@@ -35,7 +35,7 @@ const navItems: NavItem[] = [
   { label: "Why Wolvio", href: "/why-wolvio" },
   { label: "Insights", href: "/insights" },
   { label: "Careers", href: "/careers" },
-]
+];
 
 function ArrowRightIcon() {
   return (
@@ -132,23 +132,24 @@ export default function SiteHeader() {
             aria-label="Primary"
             className="hidden justify-items-start gap-5 pr-7 text-[14px] font-medium text-[#0f172a] xl:flex"
           >
-            {navItems.map(item => {
+            {navItems.map((item) => {
               const isActive =
                 item.href === "/"
                   ? pathname === "/"
                   : item.label === "Services"
-                    ? pathname === "/service-veeva" || pathname === "/service-wolvio"
-                  : item.href === "/industries"
-                    ? pathname === "/industries"
-                  : item.href === "/why-wolvio"
-                    ? pathname === "/why-wolvio"
-                  : item.href === "/careers"
-                    ? pathname === "/careers"
-                  : item.href === "/about"
-                    ? pathname === "/about"
-                  : item.href === "/insights"
-                    ? pathname === "/insights"
-                    : false;
+                    ? pathname === "/service-veeva" ||
+                      pathname === "/service-wolvio"
+                    : item.href === "/industries"
+                      ? pathname === "/industries"
+                      : item.href === "/why-wolvio"
+                        ? pathname === "/why-wolvio"
+                        : item.href === "/careers"
+                          ? pathname === "/careers"
+                          : item.href === "/about"
+                            ? pathname === "/about"
+                            : item.href === "/insights"
+                              ? pathname === "/insights"
+                              : false;
 
               return (
                 <div key={item.label} className="group relative">
@@ -186,9 +187,21 @@ export default function SiteHeader() {
                                     <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
                                   ) : (
                                     <>
-                                      <rect x="4.5" y="4.5" width="15" height="15" rx="2.5" />
+                                      <rect
+                                        x="4.5"
+                                        y="4.5"
+                                        width="15"
+                                        height="15"
+                                        rx="2.5"
+                                      />
                                       <path d="M9 1.5v3M15 1.5v3M9 19.5v3M15 19.5v3M1.5 9h3M1.5 15h3M19.5 9h3M19.5 15h3" />
-                                      <rect x="9" y="9" width="6" height="6" rx="1.2" />
+                                      <rect
+                                        x="9"
+                                        y="9"
+                                        width="6"
+                                        height="6"
+                                        rx="1.2"
+                                      />
                                     </>
                                   )}
                                 </svg>
@@ -197,7 +210,7 @@ export default function SiteHeader() {
                                 <p className="text-[13px] font-semibold text-[#17314c]">
                                   {child.label}
                                   {child.note ? (
-                                    <span className="ml-2 rounded-full bg-[#e8eeff] px-2 py-1 text-[12px] font-semibold text-[#3158c9]">
+                                    <span className="inline-flex ml-1 items-center gap-2 rounded-full border px-1.5 py-1 text-[8px] font-bold uppercase tracking-[1.8px] border-[#5DCAA5]/20 bg-[#5DCAA5]/10 text-[#2f6f73]">
                                       {child.note}
                                     </span>
                                   ) : null}
@@ -214,10 +227,18 @@ export default function SiteHeader() {
                         ))}
                       </div>
                       <div className="mt-3 flex items-center justify-between border-t border-[#d6e0e8] px-4 pb-2 pt-4">
-                        <p className="!text-[12px] font-medium text-[#95a7ba]">Not sure where to start?</p>
+                        <p className="!text-[12px] font-medium text-[#95a7ba]">
+                          Not sure where to start?
+                        </p>
                         <Link href="/contact-us" className="site-btn-link">
                           Talk to us
-                          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg
+                            viewBox="0 0 24 24"
+                            className="h-4 w-4"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                          >
                             <path d="M7 17 17 7" />
                             <path d="M9 7h8v8" />
                           </svg>
@@ -229,14 +250,17 @@ export default function SiteHeader() {
               );
             })}
           </nav>
-          <Link href="/contact-us" className="site-btn-primary !hidden md:!inline-flex">
+          <Link
+            href="/contact-us"
+            className="site-btn-primary !hidden md:!inline-flex"
+          >
             Contact us
             <ArrowRightIcon />
           </Link>
 
           <button
             type="button"
-            onClick={() => setIsMobileMenuOpen(open => !open)}
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             className="flex h-11 w-11 items-center justify-center rounded-full border border-[#dce7ec] bg-white text-[#0a2540] transition hover:border-[#2f6f73] hover:text-[#2f6f73] xl:hidden"
           >
@@ -250,7 +274,7 @@ export default function SiteHeader() {
           <div className="site-container py-4">
             <div className="rounded-[24px] border border-[#dce7ec] bg-white p-3 shadow-[0_16px_34px_rgba(10,37,64,0.1)]">
               <div className="flex flex-col gap-1">
-                {navItems.map(item => (
+                {navItems.map((item) => (
                   <div key={item.label} className="rounded-2xl">
                     <Link
                       href={item.href}
@@ -262,7 +286,7 @@ export default function SiteHeader() {
                     </Link>
                     {item.children ? (
                       <div className="mt-1 flex flex-col gap-1 px-3 pb-2">
-                        {item.children.map(child => (
+                        {item.children.map((child) => (
                           <Link
                             key={child.label}
                             href={child.href}
