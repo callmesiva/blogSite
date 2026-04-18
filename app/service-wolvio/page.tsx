@@ -20,7 +20,8 @@ type UseCaseCard = {
 
 type FaqItem = {
   question: string;
-  answer: string;
+  answer1: string;
+  answer2?: string;
 };
 
 const useCases: UseCaseCard[] = [
@@ -101,29 +102,34 @@ const useCases: UseCaseCard[] = [
 
 const faqs: FaqItem[] = [
   {
-    question: "What is the best way to start with AI in our organisation?",
-    answer:
-      "Start with one high-impact problem, not a broad AI strategy deck. We identify where measurable outcomes can be delivered in weeks, then build your first production-grade system.",
+    question:
+      "What's the best way to start with AI in my organisation?",
+    answer1: "The most common mistake organisations make is trying to deploy AI everywhere at once. Broad strategies sound ambitious but rarely deliver results they spread effort thin and make it hard to measure success. We begin with a focused operational assessment typically a 1–2 week process to surface where AI can genuinely move the needle. This might be reducing manual processing time, accelerating a customer response workflow, or improving accuracy in a recurring task. The goal is to identify a problem where AI can show demonstrable results within weeks, not quarters.",
+     answer2: "",
   },
   {
-    question: "How do your AI systems integrate with our existing tools?",
-    answer:
-      "We integrate with your existing stack through APIs, webhooks, and middleware so AI fits your workflow across CRM, ERP, messaging, telephony, and cloud systems.",
+    question:
+      "How do your AI systems integrate with our existing tools and platforms?",
+    answer1: `Our systems are built to connect with what you already use CRM, ERP, messaging platforms, databases, telephony, and cloud services. We use standard APIs, webhook integrations, and middleware layers so AI fits into your existing workflow rather than replacing it.`,
+    answer2: "",
   },
   {
-    question: "How do you handle data privacy and security?",
-    answer:
-      "Deployments follow privacy-first architecture with encryption in transit and at rest, role-based access, and complete audit logs aligned to compliance requirements.",
+    question:
+      "How do you handle data privacy and security?",
+    answer1: `Every deployment follows a privacy-first architecture. Your data stays within your infrastructure or approved cloud environments. We implement role-based access, encryption at rest and in transit, and full audit logging.`,
+    answer2: `For regulated industries, we align with relevant compliance requirements.`,
   },
   {
-    question: "How long does deployment usually take?",
-    answer:
-      "Well-scoped pilots typically launch in 4-6 weeks. Production deployments with governance and deeper integration typically take 8-12 weeks.",
+    question:
+      "How long does it take to deploy an AI system?",
+    answer1: `Timeline depends heavily on scope, and we are direct about this from the first conversation. A well-scoped, focused use case — one clear input, one clear output, integrating with one or two existing tools — can reach a working pilot in 4–6 weeks. That pilot is a real system running on real data, not a demo or prototype.`,
+    answer2: `Production deployments are a different scope. Full integration across multiple systems, governance frameworks, human-in-the-loop review processes, monitoring dashboards, and staff onboarding typically takes 8–12 weeks. These timelines are realistic, not padded — we have seen what happens when AI projects are rushed to launch without proper testing or change management, and the recovery cost is always higher than the time saved.`,
   },
   {
-    question: "How do you measure whether the AI system is working?",
-    answer:
-      "Every system ships with performance tracking for resolution rates, accuracy, processing time, error rate, and business-specific KPIs. If it is not measurable, we do not ship it.",
+    question:
+      "How do you measure whether an AI system is actually working?",
+    answer1: `Every system we deploy includes built-in performance tracking — accuracy rates, resolution rates, processing times, error rates, and business-specific KPIs. We share this data transparently and use it to continuously improve the system. If we can't measure it, we don't ship it.`,
+answer2: "",
   },
 ];
 
@@ -321,9 +327,9 @@ export default function ServiceWolvioPage() {
 
       <section className="site-section-alt">
         <ScrollReveal className="site-container">
-          <p className="site-kicker">FAQ</p>
-          <h2 className="mt-4">Questions we hear before every engagement</h2>
-          <p className="site-body mt-4 max-w-[900px]">
+          <p className="site-kicker text-center">FAQ</p>
+          <h2 className="mt-4 text-center">Questions we hear before every engagement</h2>
+          <p className="site-body mt-4 text-center">
             These are the real concerns that usually stop buyers from reaching
             out. We answer them directly.
           </p>

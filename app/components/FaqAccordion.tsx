@@ -4,7 +4,8 @@ import { useState } from "react";
 
 type FaqItem = {
   question: string;
-  answer: string;
+  answer1: string;
+  answer2?: string;
 };
 
 interface FaqAccordionProps {
@@ -19,7 +20,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
   };
 
   return (
-    <div className="mt-8 space-y-4">
+    <div className="mt-8 lg:w-[80%] mx-auto space-y-4">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
         const numberText = String(index + 1).padStart(2, "0");
@@ -82,12 +83,15 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
             {/* Expandable Answer */}
             <div
               className={`grid transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                isOpen
+                  ? "grid-rows-[1fr] opacity-100"
+                  : "grid-rows-[0fr] opacity-0"
               }`}
             >
               <div className="overflow-hidden">
-                <div className="pl-[64px] pt-4 pb-2 text-[15px] leading-[1.65] text-[#4a6070]">
-                  {item.answer}
+                <div className="pl-[64px] pt-4 pb-2 text-[17px] leading-[1.65] text-[#4a6070]">
+                  <p className="mb-3">{item.answer1}</p>
+                  <p>{item.answer2}</p>
                 </div>
               </div>
             </div>

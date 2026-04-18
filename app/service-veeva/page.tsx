@@ -20,7 +20,8 @@ type DomainCard = {
 
 type FaqItem = {
   question: string;
-  answer: string;
+  answer1: string;
+  answer2: string;
 };
 
 const deliveryCards: DeliveryCard[] = [
@@ -128,32 +129,32 @@ const domains: DomainCard[] = [
 const faqs: FaqItem[] = [
   {
     question:
-      "We have an internal IT team that manages Vault day to day. Where does Wolvio fit?",
-    answer:
-      "Your team knows your business. We add cross-client implementation depth, validation rigor, release assessment expertise, and specialist support during audits and high-risk change windows.",
+      "We have an internal IT team that manages our Vault day to day. Where does Wolvio fit alongside them?",
+    answer1: `Your internal team knows your business. What they typically lack is cross-client implementation depth, regulatory validation expertise, and bandwidth for complex release assessments on top of everything else.`,
+    answer2: `We fill that gap release management, validation documentation, complex integrations, configuration remediation, and expert input when audit or regulatory questions need a defensible answer. We work alongside your team, not over them.`,
   },
   {
     question:
-      "How do we know your consultants actually know Veeva and not just know about it?",
-    answer:
-      "Our consultants have delivered real regulated implementations, executed IQ/OQ/PQ, and built complex integrations. A 30-minute technical discussion usually makes that depth obvious immediately.",
+      "How do we know your consultants actually know Veeva — and not just know about it?",
+    answer1: `Our consultants have delivered real Vault implementations in regulated environments written validation protocols, executed IQ/OQ/PQ, configured complex security models, built integrations. That depth shows up immediately in the questions we ask, the risks we name unprompted, and the decisions we challenge early.`,
+    answer2: `Start with a 30-minute technical conversation. You will know within the first ten minutes.`,
+  },
+  {
+    question: "How does Wolvio handle regulatory changes that affect our Vault configuration — and how quickly can you respond?",
+    answer1: "Managed services clients receive proactive regulatory change assessments we track relevant developments, assess the impact on your specific configuration, and flag issues before they become compliance gaps. For project clients, we build regulatory change management into scoping from the start.",
+    answer2: `For urgent situations — a health authority deadline or inspection finding we treat it as a priority regardless of the day or time.`,
   },
   {
     question:
-      "How do you handle regulatory changes that affect our Vault configuration?",
-    answer:
-      "For managed clients, we run proactive impact assessments and plan controlled updates. For projects, regulatory change handling is included in scope design from the start.",
-  },
-  {
-    question: "We are a small biotech. Can you work at our scale?",
-    answer:
-      "Yes. We support early-stage biotech through Veeva Basics and scale through enterprise programs. Engagement size is matched to your current stage and risk profile.",
+      "We are a small biotech. Is Wolvio set up to work with companies at our scale?",
+    answer1: `Yes and the stakes at that stage are higher than they look. Wrong initial configuration follows you through every regulatory submission that comes after.`,
+    answer2: `We work with early-stage biotechs through Veeva Basics and with larger organisations through full enterprise implementations. The engagement is sized to where you are.`,
   },
   {
     question:
-      "How can we evaluate if our current Veeva environment is healthy before committing?",
-    answer:
-      "We offer a standalone platform assessment reviewing configuration, validation evidence, release history, and compliance posture, with a clear written risk and improvement view.",
+      "How do we evaluate whether our current Veeva environment is healthy before committing to a partner?",
+    answer1: `Configuration drift, outdated validation documentation, and informally evolved security models are not visible from inside the system. They require someone who knows what good looks like.`,
+    answer2: `We offer a standalone platform assessment — no further commitment required. We review your configuration, validation documentation, release history, and compliance posture, and deliver a clear written picture of what is working, what carries risk, and what needs attention.`,
   },
 ];
 
@@ -656,8 +657,8 @@ export default function ServiceVeevaPage() {
 
       <section className="site-section-alt">
         <ScrollReveal className="site-container">
-          <p className="site-kicker">FAQs</p>
-          <h2 className="mt-4">Questions we hear before every engagement</h2>
+          <p className="site-kicker text-center">FAQs</p>
+          <h2 className="mt-4 text-center">Questions we hear before every engagement</h2>
           <FaqAccordion items={faqs} />
         </ScrollReveal>
       </section>

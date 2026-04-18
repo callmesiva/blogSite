@@ -375,6 +375,13 @@ const insightCards = [
     minutes: "7 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
   },
+  {
+    tag: "Veeva Vault AI Integration",
+    title: "Navigating Veeva Vault AI Agents",
+    description: "A practical guide to understanding and leveraging...",
+    minutes: "7 min read",
+    bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
+  },  
 ];
 
 function ArrowRightIcon() {
@@ -511,16 +518,19 @@ export default function Home() {
       id="home"
       className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
-      <HeroSection 
+      <HeroSection
         kicker=""
         title={
-          <>Specialist Veeva Consulting & Managed Services for <span className="text-[#2f6f73]">Life Sciences</span></>
+          <>
+            Specialist Veeva Consulting & Managed Services for{" "}
+            <span className="text-[#2f6f73]">Life Sciences</span>
+          </>
         }
         description={
           <>
             Expert-led Veeva consulting services spanning Vault assessment,
-            implementation, migration, integration, validation, and
-            post-go-live support for{" "}
+            implementation, migration, integration, validation, and post-go-live
+            support for{" "}
             <strong className="font-semibold text-[#0f172a]">
               pharma, biotech{" "}
             </strong>
@@ -530,27 +540,60 @@ export default function Home() {
           </>
         }
         buttons={[
-          { label: "Schedule a Consultation", href: "contact-us", variant: "primary" },
-          { label: "Explore Our Veeva Services", href: "service-veeva", variant: "secondary" }
+          {
+            label: "Schedule a Consultation",
+            href: "contact-us",
+            variant: "primary",
+          },
+          {
+            label: "Explore Our Veeva Services",
+            href: "service-veeva",
+            variant: "secondary",
+          },
         ]}
         svgGraphic={<SolutionDiagram />}
       />
 
-      <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
-        <ScrollReveal className="site-container">
-          <p className="site-kicker text-center !text-[#2c9aa5]">
-            Why do clients trust us?
-          </p>
-          <h2 className="mt-3 text-center">We've Been Here Before</h2>
-          <p className="mx-auto mt-5 max-w-[760px] text-center">
-            When your regulatory operations run on Veeva Vault, implementation
-            experience isn't a nice-to-have, it's the only thing that matters.
-            Every number below reflects real engagements, real certifications,
-            and real delivery across regulated environments.
-          </p>
+      <section className="tone-lock relative w-full overflow-hidden bg-[#082b4a] py-16 sm:py-20 lg:py-28">
+        {/* 1. The Background Image (Now filling the whole section) */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/banner1.jpg"
+            alt="Wolvio implementation experience"
+            className="h-full w-full object-cover object-center"
+          />
+        </div>
 
-          <StatsCounter />
-        </ScrollReveal>
+        {/* 2. The Blue Fade Overlay (Also filling the whole section) */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#082b4a]/90 via-[#082b4a]/80 to-[#082b4a]" />
+
+        {/* 3. The Content (Z-index 20 keeps it above the background) */}
+        <div className="relative z-20">
+          <ScrollReveal className="site-container">
+            <div className="flex flex-col items-center">
+              <p className="site-kicker text-center !text-[#2c9aa5]">
+                Why do clients trust us?
+              </p>
+
+              <h2 className="mt-3 text-center text-white">
+                We've Been Here Before
+              </h2>
+
+              <p className="mx-auto mt-5 max-w-[760px] text-center text-[#b6c9da] leading-[1.65]">
+                When your regulatory operations run on Veeva Vault,
+                implementation experience isn't a nice-to-have, it's the only
+                thing that matters. Every number below reflects real
+                engagements, real certifications, and real delivery across
+                regulated environments.
+              </p>
+
+              {/* Stats Counter Wrapper */}
+              <div className="mt-16 w-full">
+                <StatsCounter />
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
       </section>
 
       <section id="services" className="site-section">
@@ -636,62 +679,86 @@ export default function Home() {
               <ArrowRightIcon />
             </Link>
           </div>
-          <ScrollFadeGrid className="mt-10 grid gap-6 lg:grid-cols-2">
+
+          <ScrollFadeGrid className="mt-10 grid gap-6 lg:grid-cols-3">
             {insightCards.map((card) => (
               <article
                 key={card.title}
-                // Added 'fade-up' for the scroll animation and 'group' for the hover effects
-                className={`fade-up group relative flex h-full flex-col overflow-hidden rounded-[34px] p-8 text-white transition-all duration-500 hover:-translate-y-1 hover:shadow-xl ${card.bg}`}
+                className="fade-up group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-[#e2e8f0] bg-white shadow-[0_10px_28px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)]"
               >
-                <span className="inline-flex w-fit self-start rounded-full bg-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-[0.08em]">
-                  {card.tag}
-                </span>
-
-                <h3 className="mt-6 max-w-[700px] font-semibold leading-[1.2] tracking-[-0.02em] text-white">
-                  {card.title}
-                </h3>
-
-                <p className="mb-5 mt-5 max-w-[710px] !text-white/88">
-                  {card.description}
-                </p>
-
-                {/* ── NEW AUTHOR & FOOTER SECTION (Pushed to bottom) ── */}
-                <div className="mt-auto flex flex-col">
-                  {/* Author Info */}
-                  <div className="mb-[20px] flex items-center gap-[10px]">
-                    {/* Avatar */}
-                    <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border-2 border-[rgba(93,150,180,0.3)] bg-[#2c5f7a] text-[12px] font-bold text-white">
-                      TC
-                    </div>
-
-                    <div>
-                      <div className="text-[12.5px] font-semibold leading-[1.2] text-[rgba(255,255,255,0.85)]">
-                        Tom Carr
-                      </div>
-                      <div className="text-[11px] leading-[1.3] text-white/60">
-                        QMS Lead · Compliance Practice
-                      </div>
-                    </div>
+                {/* ── IMAGE SECTION ── 
+          HOW TO REDUCE HEIGHT FURTHER: 
+          Change `aspect-[16/9]` to `aspect-[2/1]` or `aspect-[21/9]` to make the image banner thinner. 
+      */}
+                <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#eaf2f5]">
+                  <div className="flex h-full items-center justify-center bg-[linear-gradient(130deg,#e8f0f3,#f7fafc)] text-[14px] text-[#607283]">
+                    No image available
                   </div>
+                </div>
 
-                  {/* Footer Meta & Link */}
-                  <div className="flex items-center justify-between border-t border-white/[0.07] pt-[18px]">
-                    <div className="flex items-center gap-[14px]">
-                      <span className="text-[12px] text-white/60">
-                        Mar 28, 2026
-                      </span>
-                      <span className="flex items-center text-[12px] font-medium text-[#5DCAA5] before:mr-[14px] before:text-white/60 before:content-['·']">
-                        {card.minutes}
-                      </span>
+                {/* ── CONTENT SECTION ── 
+          HOW TO REDUCE HEIGHT FURTHER: 
+          Change `p-6` to `p-5` or `p-4` to shrink the white space inside the card.
+      */}
+                <div className="flex h-full flex-col p-6">
+                  {/* Category Tag */}
+                  <span className="inline-flex w-fit self-start rounded-full border border-[#cde0e2] bg-[#f4f9fa] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#2f6f73]">
+                    {card.tag}
+                  </span>
+
+                  {/* Title 
+            Locked to exactly 2 lines of space. If it exceeds 2 lines, it adds ...
+        */}
+                  <h3 className="mt-4 line-clamp-2 min-h-[56px] text-[22px] font-bold leading-[1.25] tracking-[-0.02em] text-[#0a2540]">
+                    {card.title}
+                  </h3>
+
+                  {/* Summary 
+            Locked to exactly 3 lines of space. If it exceeds 3 lines, it adds ... 
+            HOW TO REDUCE HEIGHT FURTHER: 
+            Change `line-clamp-3` to `line-clamp-2` and change `min-h-[74px]` to `min-h-[50px]`.
+        */}
+                  <p className="mb-6 mt-3 line-clamp-3 min-h-[74px] text-[15px] leading-[1.65] text-[#475569]">
+                    {card.description}
+                  </p>
+
+                  {/* ── AUTHOR & FOOTER SECTION (Pushed to bottom) ── */}
+                  <div className="mt-auto flex flex-col">
+                    {/* Author Info */}
+                    <div className="mb-[16px] flex items-center gap-[10px]">
+                      <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full border-2 border-[#dce6ef] bg-[#f0f5fa] text-[13px] font-bold text-[#173652]">
+                        TC
+                      </div>
+
+                      <div>
+                        <div className="text-[12.5px] font-semibold leading-[1.2] text-[#0a2540]">
+                          Tom Carr
+                        </div>
+                        <div className="text-[11px] leading-[1.3] text-[#64748b]">
+                          QMS Lead · Compliance Practice
+                        </div>
+                      </div>
                     </div>
 
-                    <Link
-                      href="/insights"
-                      className="inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-white/60 transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#5DCAA5]"
-                    >
-                      Read insight
-                      <ArrowRightIcon />
-                    </Link>
+                    {/* Footer Meta & Link */}
+                    <div className="flex items-center justify-between border-t border-[#f1f5f9] pt-[16px]">
+                      <div className="flex items-center gap-[8px]">
+                        <span className="text-[12px] font-medium text-[#64748b]">
+                          Mar 28, 2026
+                        </span>
+                        <span className="flex items-center text-[12px] font-medium text-[#2f6f73] before:text-[19px] before:text-[#cbd5e1] before:content-['·']">
+                          {card.minutes}
+                        </span>
+                      </div>
+
+                      <Link
+                        href="/insights"
+                        className="inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-[#0a2540] transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#2f6f73]"
+                      >
+                        Read insight
+                        <ArrowRightIcon />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </article>
