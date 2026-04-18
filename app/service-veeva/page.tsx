@@ -1,10 +1,12 @@
-"use client"
+"use client";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useState } from "react";
 import VerticalTabsSection from "../components/HowWeWorkSection";
 import ScrollReveal from "../components/ScrollReveal";
 import FaqAccordion from "../components/FaqAccordion";
+import HeroSection from "../components/HeroSection";
+import OrbitalCanvas from "../components/OrbitalCanvas";
 
 type DeliveryCard = {
   title: string;
@@ -253,7 +255,7 @@ export default function ServiceVeevaPage() {
   }
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
-      <section className="hero-grid">
+      {/* <section className="hero-grid">
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Veeva Consulting</p>
           <h1 className="mt-4 max-w-[1050px]">
@@ -272,7 +274,26 @@ export default function ServiceVeevaPage() {
             <ArrowRightIcon />
           </Link>
         </ScrollReveal>
-      </section>
+      </section> */}
+
+      <HeroSection
+        kicker="Veeva Consulting"
+        title={<>AI automation services across industries</>}
+        description={
+          <>
+            Veeva Implementation Partner That Knows Vault. Not Just as a
+            Platform. As a Practice.
+          </>
+        }
+        buttons={[
+          {
+            label: "Talk to a Veeva Specialist",
+            href: "/#contact",
+            variant: "outline",
+          },
+        ]}
+        svgGraphic={<OrbitalCanvas />}
+      />
 
       <section className="site-section">
         <ScrollReveal className="site-container">

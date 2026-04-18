@@ -150,22 +150,22 @@ export default function ServiceWolvioPage() {
 
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
-      <HeroSection 
+      <HeroSection
         kicker="Wolvio Intelligence"
         title={
           <>AI automation services across industries</>
         }
         description={
           <>
-            AI systems built for how your business actually runs. We design
-            and deploy AI agents, automation systems, and intelligent
-            workflows that solve operational problems in production today.
+            AI systems built for how your business actually runs. We design and
+            deploy AI agents, automation systems, and intelligent workflows that
+            solve operational problems in production today.
           </>
         }
         buttons={[
-          { label: "Explore Use Cases", href: "/#contact", variant: "outline" }
+          { label: "Explore Use Cases", href: "/#contact", variant: "outline" },
         ]}
-        svgGraphic={<OrbitalCanvas />}
+        svgGraphic={<></>}
       />
 
       <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">

@@ -152,9 +152,9 @@ const OrbitalCanvas = () => {
           <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Clinical</text>
         </g>
         <g id="n11">
-          <circle r="42" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.38)" strokeWidth="1.5"/>
+          <circle r="48" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.38)" strokeWidth="1.5"/>
           <text y="-3" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Safety</text>
-          <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Pharmacovig.</text>
+          <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Pharmacovig</text>
         </g>
         <g id="n12">
           <circle r="42" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.38)" strokeWidth="1.5"/>

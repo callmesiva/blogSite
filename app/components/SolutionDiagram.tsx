@@ -441,7 +441,7 @@ export default function SolutionDiagram() {
       {/* Regulatory */}
       <g transform="translate(632,210)" filter="url(#outerShadow)">
         <circle
-          r="36"
+          r="41"
           fill="#F8FAFC"
           stroke="#2F6F73"
           strokeWidth="0.9"
@@ -498,6 +498,7 @@ export default function SolutionDiagram() {
         />
         <text
           y="22"
+          dy="2"
           textAnchor="middle"
           fontFamily="-apple-system,BlinkMacSystemFont,'DM Sans',sans-serif"
           fontSize="9"
@@ -546,6 +547,7 @@ export default function SolutionDiagram() {
         />
         <text
           y="22"
+          dy="4"
           textAnchor="middle"
           fontFamily="-apple-system,BlinkMacSystemFont,'DM Sans',sans-serif"
           fontSize="9.5"

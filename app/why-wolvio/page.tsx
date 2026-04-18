@@ -69,7 +69,8 @@ const services = [
     badge: "VEEVA",
     title: "Wolvio Life Sciences",
     subtitle: "Veeva Consulting & Managed Services",
-    description: "For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations from the inside. From first implementation to migration and integration, we follow a structured discovery-to-validation methodology with GxP embedded at every stage.",
+    description:
+      "For pharma, biotech, and med tech teams that need a Vault partner who understands regulated operations from the inside. From first implementation to migration and integration, we follow a structured discovery-to-validation methodology with GxP embedded at every stage.",
     href: "/service-veeva",
     linkText: "Explore now",
     icon: (
@@ -102,11 +103,8 @@ const services = [
   },
 ];
 
-
-
 export default function WhyWolvioPage() {
   return (
-
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
