@@ -4,43 +4,35 @@ import { useState, useEffect, useRef, useCallback } from "react";
 const testimonials = [
   {
     quote:
-      "Their team understood our regulatory landscape from day one. The Vault RIM rollout was delivered on time across three regions — something we'd struggled to achieve with two previous vendors.",
-    name: "VP Regulatory Affairs",
-    role: "Global Pharma, Switzerland",
+      "Wolvio has consistently stood out as a flexible and reliable delivery partner. Their ability to support different roles, work across domains, adapt to varying team structures, and mobilise quickly has made collaboration smooth and effective. That responsiveness, combined with their willingness to step in where needed, is what makes Wolvio a trusted partner for us.",
+    name: "CEO",
+    role: "Veeva Certified Migration Partner",
     accent: "#0b3a63",
     stars: 5,
   },
   {
     quote:
-      "We moved our entire quality management to Veeva QualityOne in under four months. The managed services model means we never worry about upgrades, validations, or support gaps — it just works.",
-    name: "Head of Quality Systems",
-    role: "MedTech Manufacturer, India",
+      "Wolvio brought a level of flexibility, ownership, and delivery discipline that was critical to the success of this programme. From implementation through migration, validation support, and go-live readiness, they consistently adapted to the engagement's needs and worked effectively across teams. Their ability to step into different roles, align quickly, and keep delivery moving made them a valuable part of the programme.",
+    name: "Veeva Quality One Program Lead",
+    role: "Global Consumer Goods Leader",
     accent: "#2f8b92",
     stars: 5,
   },
   {
     quote:
-      "The AI automation layer they built on top of our existing stack cut our document processing time by 70%. Our ops team went from drowning in manual work to focusing on actual decisions.",
-    name: "Chief Operating Officer",
-    role: "Life Sciences Group, Bangalore",
+      "Wolvio supported this migration with a strong understanding of both Veeva Regulatory Vault and the realities of complex regulatory data transition. Their approach to planning, validation, and execution helped us manage critical object relationships, reduce migration risk, and move into production with greater confidence.",
+    name: "RIM Program Lead",
+    role: "Global Pharmaceutical Company ",
     accent: "#534ab7",
     stars: 5,
   },
   {
     quote:
-      "What impressed us most was how quickly they got up to speed on our processes. Within two weeks they were running our support queue, and within six they had redesigned the escalation flow entirely.",
-    name: "Director of Customer Operations",
-    role: "Diagnostics Company, Mumbai",
+      "Wolvio quickly understood where our clinical operations team would experience friction if the setup wasn’t right. They were practical in workshops, thoughtful in configuration decisions, and very steady during UAT and cutover. It felt like working with a team that understood both the system and the day-to-day pressure on our clinical users.",
+    name: "Associate Director",
+    role: "Clinical Operations, MNC Pharma",
     accent: "#0b3a63",
     stars: 4,
-  },
-  {
-    quote:
-      "Partnering with them on our recall readiness programme was the right call. We went from a 4-day average traceability exercise to same-day. That's not an optimisation — that's a transformation.",
-    name: "SVP Supply Chain",
-    role: "FMCG Conglomerate, Chennai",
-    accent: "#2f8b92",
-    stars: 5,
   },
 ];
 

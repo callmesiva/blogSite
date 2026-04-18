@@ -25,7 +25,7 @@ export async function GET() {
 
   return NextResponse.json({
     categories: data
-      .filter(cat => cat.slug !== "uncategorized")
+      .filter(cat => cat.slug !== "uncategorized" && cat.slug !== "case-study")
       .map(cat => ({ id: cat.id, slug: cat.slug, name: cat.name })),
   })
 }

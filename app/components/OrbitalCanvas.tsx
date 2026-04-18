@@ -140,9 +140,9 @@ const OrbitalCanvas = () => {
           <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Regulatory</text>
         </g>
         <g id="n01">
-          <circle r="40" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.45)" strokeWidth="1.5"/>
-          <text y="-3" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif" letterSpacing="0.5">QMS</text>
-          <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Quality</text>
+          <circle r="38" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.45)" strokeWidth="1.5"/>
+          <text y="-3" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif" letterSpacing="0.5">CRM</text>
+          <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="12" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Commercial</text>
         </g>
 
         {/* ── ORBIT 1 NODES — middle ── */}
@@ -152,9 +152,9 @@ const OrbitalCanvas = () => {
           <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Clinical</text>
         </g>
         <g id="n11">
-          <circle r="48" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.38)" strokeWidth="1.5"/>
+          <circle r="43" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.38)" strokeWidth="1.5"/>
           <text y="-3" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Safety</text>
-          <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Pharmacovig</text>
+          <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="12" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Pharmacovig</text>
         </g>
         <g id="n12">
           <circle r="42" fill="rgba(7,30,61,0.92)" stroke="rgba(93,202,165,0.38)" strokeWidth="1.5"/>
@@ -164,18 +164,18 @@ const OrbitalCanvas = () => {
 
         {/* ── ORBIT 2 NODES — outer ── */}
         <g id="n20">
-          <circle r="46" fill="rgba(7,30,61,0.9)" stroke="rgba(93,202,165,0.28)" strokeWidth="1.5"/>
+          <circle r="34" fill="rgba(7,30,61,0.9)" stroke="rgba(93,202,165,0.28)" strokeWidth="1.5"/>
           <text y="-4" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Promo</text>
           <text y="10" textAnchor="middle" fill="#5DCAA5" fontSize="14" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Mats</text>
         </g>
 
         <g id="n21">
-         <circle r="46" fill="rgba(7,30,61,0.9)" stroke="rgba(93,202,165,0.28)" strokeWidth="1.5"/>
-         <text y="-3" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">CRM</text>
-        <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Commercial</text>
+         <circle r="40" fill="rgba(7,30,61,0.9)" stroke="rgba(93,202,165,0.28)" strokeWidth="1.5"/>
+         <text y="-3" style={{ width: '100%', height: '100%', position: 'absolute' }} textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">QMS</text>
+        <text y="11" textAnchor="middle" fill="rgba(255,255,255,0.38)" fontSize="14" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Quality</text>
         </g>
         <g id="n22">
-          <circle r="46" fill="rgba(7,30,61,0.9)" stroke="rgba(93,202,165,0.28)" strokeWidth="1.5"/>
+          <circle r="34" fill="rgba(7,30,61,0.9)" stroke="rgba(93,202,165,0.28)" strokeWidth="1.5"/>
           <text y="-4" textAnchor="middle" fill="#5DCAA5" fontSize="16" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Site</text>
           <text y="10" textAnchor="middle" fill="#5DCAA5" fontSize="14" fontWeight="700" fontFamily="-apple-system,BlinkMacSystemFont,sans-serif">Vault</text>
         </g>

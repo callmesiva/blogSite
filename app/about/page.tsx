@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
 import LeadershipSection from "../components/leaderShip"
+import AnimatedUnderline from "../components/AnimatedUnderline";
 
 type PracticeCard = {
   title: string;
@@ -99,7 +100,7 @@ export default function AboutPage() {
       <section className="hero-grid">
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">About Wolvio</p>
-          <h1 className="mt-4 max-w-[960px]">People Behind the Platform.</h1>
+          <h1 className="mt-4 max-w-[960px]">People <AnimatedUnderline>Behind</AnimatedUnderline> the Platform.</h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
             A specialist technology firm with two focused practices: Veeva
             consulting for life sciences, and AI and automation for businesses

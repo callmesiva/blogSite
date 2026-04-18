@@ -43,7 +43,7 @@ const whyPillars = [
     title: "Veeva Platform Depth",
     desc: "Our team carries hands-on experience across different Veeva Vault suites and applications ensuring the right expertise is applied every time.",
     tags: ["Vault RIM", "QMS", "eTMF", "CDMS", "Safety", "PromoMats"],
-    link: "#",
+    link: "/why-wolvio",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -60,7 +60,7 @@ const whyPillars = [
     title: "Compliance-First Execution",
     desc: "Validation, GxP discipline, and audit-readiness are built into our delivery methodology not added as an afterthought when go-live approaches.",
     tags: ["IQ / OQ / PQ", "21 CFR Part 11", "Annex 11", "Audit Trail"],
-    link: "#",
+    link: "/why-wolvio",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -76,7 +76,7 @@ const whyPillars = [
     title: "Cross-Functional Delivery Strength",
     desc: "We bring together configuration, integration & data governance, user support, and change management covering every dimension of a successful Veeva Vault deployment.",
     tags: ["Configuration", "Integration", "Data Migration", "Change Mgmt"],
-    link: "#",
+    link: "/why-wolvio",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -98,7 +98,7 @@ const whyPillars = [
       "Platform Maturity",
       "SLA-backed",
     ],
-    link: "#",
+    link: "/why-wolvio",
     icon: (
       <svg
         viewBox="0 0 24 24"

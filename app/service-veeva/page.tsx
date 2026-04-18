@@ -25,73 +25,76 @@ type FaqItem = {
 
 const deliveryCards: DeliveryCard[] = [
   {
-    title: "Implementation Support & Execution",
-    description:
-      "Before we touch a single configuration, we understand your environment — your SOPs, regulatory obligations, compliance history, and operational reality. What we design reflects your organisation. Not a template built for someone else.",
+    title: "Discovery & Solution Design ",
+    description:"We start with your operating reality SOPs, compliance requirements, business processes, and platform constraints so the solution is designed for your environment, not adapted from a generic template."
+  },
+  {
+    title: "Vault Implementation Execution",
+    description:"End-to-end implementation support across planning, configuration, testing, deployment, and cutover delivered with a focus on long-term stability, usability, and inspection readiness."
   },
   {
     title: "Vault Configuration & Customisation",
-    description:
-      "Workflows, lifecycles, and security models your teams actually use — and that hold up when the auditor arrives. Not a default setup with your name on it.",
+    description:"Workflows, lifecycles, object models, security, and business rules configured to reflect how your teams actually operate built to withstand both daily use and regulatory scrutiny."
   },
   {
     title: "System Integration & Vault Connections",
-    description:
-      "We connect Vault to your ERP, LIMS, safety systems, and wider technology landscape — including Vault Connections, Veeva's native integration framework that removes the need for custom code between Vault applications.",
+    description:"Integration of Vault with ERP, LIMS, safety systems, and adjacent platforms including Vault Connections and fit-for-purpose integration patterns that reduce unnecessary customisation."
   },
   {
-    title: "Data Migration",
-    description:
-      "Legacy data migration is where implementations quietly unravel. Incomplete records, broken metadata, validation gaps. We manage the full migration — validated data, audit-ready documentation, no surprises after cutover.",
+    title : "Data Migration & Legacy Transition",
+    description:"Structured migration of legacy records, metadata, and documents into Vault with mapping discipline, reconciliation control, and audit-ready documentation that supports confident cutover."
   },
   {
-    title: "Validation & Testing",
-    description:
-      "IQ/OQ/PQ delivered by the consultants who configured the system — not a separate team reading your setup for the first time. Every deviation handled. Every document inspection-ready before go-live.",
+    title: "Validation, Testing & Documentation",
+    description:"IQ/OQ/PQ, traceability, test execution, deviation handling, and validation documentation delivered by the same team that configured the platform ensuring accuracy, continuity, and compliance confidence.",
   },
   {
-    title: "Go-Live & Hypercare",
-    description:
-      " Structured cutover planning, hands-on user training, and immediate availability when questions surface. The people who built your Vault stay close — because that is when you need them most.",
+    title: "Go-Live, Cutover & Hypercare",
+    description:"Controlled deployment planning, user readiness, cutover coordination, and post-go-live support from the consultants who built the solution when real-world questions and edge cases surface fastest.",
   },
   {
-    title: "Vault Suites We Work In",
-    description:
-      "Vault Clinical · Vault Quality · Vault RIM · Vault Commercial · Vault Safety · Vault CRM",
+    title: "Vault Suite Coverage",
+    description:"Delivery experience across Vault Clinical, Vault Quality, Vault RIM, Vault Safety, Vault Commercial, and Vault CRM with cross-functional understanding of how regulated processes connect across the platform.",
   },
 ]
 
 const managedCards: DeliveryCard[] = [
   {
-    title: "General Release Management & Impact Assessment",
+    title: "General Release Management",
     description:
-      "Each Veeva release is assessed against your validated setup; updates are applied, validated, and documented so compliance stays intact without creating a side project.",
+      "Every Veeva release is assessed against your validated environment, with impact analysis, change planning, regression considerations, and controlled updates that protect release stability and compliance.",
   },
   {
-    title: "System Administration",
+    title: "Release Impact Assessment & Validation Support",
     description:
-      "User management, security configuration, object maintenance, and workflow changes managed by consultants who know your environment in depth.",
+      "We identify what changes, what needs revalidation, what documentation must be updated, and what can remain untouched — so every release is handled with clarity, not uncertainty.",
   },
   {
-    title: "Platform Optimisation",
+    title: "Vault System Administration",
     description:
-      "Proactive identification of workflow friction and manual workarounds, replaced with controlled platform improvements aligned to your business.",
+      "User access, security roles, object maintenance, workflow updates, configuration controls, and day-to-day administration managed by consultants who understand your live environment and governance expectations.",
   },
   {
-    title: "Helpdesk & Issue Resolution",
+    title: "Platform Optimisation & Continuous Improvement",
     description:
-      "Support from specialists who already understand your Vault configuration, not a generic queue reading your system from tickets.",
+      "We help your Vault evolve with your business by identifying workflow friction, replacing manual workarounds, and implementing controlled improvements that strengthen usability without compromising validation discipline..",
   },
   {
-    title: "User Training & Enablement",
-    description:
-      "Role-specific training delivered by the build team, so your users learn your actual process design, not a generic product walkthrough.",
+    title: "Incident Support & Issue Resolution",
+    description:"When something breaks or behaves unexpectedly, you work with specialists who know your Vault — not a generic support queue trying to reconstruct context from a ticket summary.",
   },
   {
-    title: "Regulatory Update Management",
-    description:
-      "Ongoing review of regulatory updates that impact configuration, with controlled implementation and minimal disruption to live operations.",
+    title: " User Support, Training & Enablement",
+    description:"Role-specific guidance, admin support, refresher training, and practical enablement delivered against how your Vault is actually configured — not generic product training detached from your environment.",
   },
+  {
+    title: "Regulatory Change & Compliance Alignment",
+    description:"As regulatory expectations evolve, we assess the impact on your Vault configuration, documentation, and operating model — helping you adapt changes without disrupting validated operations.",
+  },
+  {
+    title: "Managed Services Governance & Advisory",
+    description:"Structured support governance with prioritisation, review cadences, enhancement oversight, and expert advisory input — giving your teams a dependable operating model, not just reactive ticket handling.",
+  }
 ];
 
 const domains: DomainCard[] = [
@@ -221,7 +224,7 @@ export default function ServiceVeevaPage() {
     cardPage * CARDS_PER_PAGE + CARDS_PER_PAGE,
   )
 
-  const MANAGED_PER_PAGE = 3
+  const MANAGED_PER_PAGE = 4
   const [managedPage, setManagedPage] = useState(0)
   const [managedAnimating, setManagedAnimating] = useState(false)
   const [managedDirection, setManagedDirection] = useState<"next" | "prev">(
@@ -255,27 +258,6 @@ export default function ServiceVeevaPage() {
   }
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
-      {/* <section className="hero-grid">
-        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
-          <p className="site-kicker">Veeva Consulting</p>
-          <h1 className="mt-4 max-w-[1050px]">
-            Veeva Implementation Partner That Knows Vault. Not Just as a
-            Platform. As a Practice.
-          </h1>
-          <p className="site-subheading mt-5 max-w-[820px]">
-            From the first implementation conversation to managed services, we
-            are the Veeva implementation partner organisations come back to.
-          </p>
-          <Link
-            href="/contact-us"
-            className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#2f6f73] px-6 py-3 text-[15px] font-semibold text-white shadow-[0_12px_30px_rgba(47,111,115,0.2)] transition hover:bg-[#285f62]"
-          >
-            Talk to a Veeva Specialist
-            <ArrowRightIcon />
-          </Link>
-        </ScrollReveal>
-      </section> */}
-
       <HeroSection
         kicker="Veeva Consulting"
         title={<>AI automation services across industries</>}
@@ -370,6 +352,7 @@ export default function ServiceVeevaPage() {
                 <ArrowRightIcon />
               </Link>
             </div>
+
 
             {/* RIGHT — paginated cards */}
             <div className="flex flex-col gap-5">
@@ -491,10 +474,11 @@ export default function ServiceVeevaPage() {
       <section className="site-section">
         <ScrollReveal className="site-container">
           <div className="mt-6 grid gap-12 lg:grid-cols-[1.55fr_1fr] lg:gap-16 xl:gap-20">
+
             {/* LEFT — paginated cards */}
-            <div className="order-2 flex flex-col gap-5 lg:order-1">
+            <div className="flex flex-col gap-5">
               <div
-                className="grid gap-4 sm:grid-cols-2 [&>article:last-child:nth-child(odd)]:col-span-2 [&>article:last-child:nth-child(odd)]:mx-auto [&>article:last-child:nth-child(odd)]:w-1/2"
+                className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2"
                 style={{
                   opacity: managedAnimating ? 0 : 1,
                   transform: managedAnimating
@@ -514,6 +498,9 @@ export default function ServiceVeevaPage() {
                         "0",
                       )}
                     </span>
+
+
+
                     <div>
                       <h3 className="text-[17px] font-semibold leading-[1.3] tracking-[-0.02em] text-[#173652]">
                         {card.title}

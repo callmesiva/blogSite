@@ -31,57 +31,27 @@ interface CaseCard {
   link: string;
 }
 
-const caseCards: CaseCard[] = [
-  {
-    tag: "Challenge",
-    tagColor: "#0b3a63",
-    imgBg: "#dbe8f4",
-    company: "Global Pharma Co.",
-    title: "Fragmented Systems, Compounding Risk",
-    description:
-      "A UK-based global pharma company was running a rigid, non-integrable legacy CTMS with no real-time visibility, an eTMF that failed inspection-readiness standards, and business teams dependent on spreadsheets and emails — creating siloed data, duplicated effort, and systemic compliance risk across clinical operations.",
-    stats: [
-      { value: "40%", label: "Faster submission cycles" },
-      { value: "12", label: "Markets integrated" },
-    ],
-    image: "/images/case-studies/pharma.jpg",
-    link: "#",
-  },
-  {
-    tag: "Solution",
-    tagColor: "#0f6e56",
-    imgBg: "#d8eee7",
-    company: "MedTech Manufacturer",
-    title: "Three-Phase Vault Transformation",
-    description:
-      "Wolvio delivered a three-phase Veeva Vault transformation replacing and decommissioning legacy eTMF and CTMS, then building Study Startup all within a single unified vault. Delivery included complex data migrations, multi-directional integrations, AI-powered TMF classification, Japan CTMS, Risk-Based Study Management, custom SDK development, and mobile enablement.",
-    stats: [
-      { value: "60%", label: "CAPA closure rate improvement" },
-      { value: "6", label: "Sites unified" },
-    ],
-    image: "/images/case-studies/medtech.jpg",
-    link: "#",
-  },
-  {
-    tag: "Outcome",
-    tagColor: "#534ab7",
-    imgBg: "#e4dff5",
-    company: "Multi-site Ops Group",
-    title: "One Vault. Zero Legacy. Audit Confident.",
-    description:
-      "Three systems unified into one vault. All legacy platforms fully decommissioned. Spreadsheet-driven workflows eliminated entirely. Teams gained real-time visibility across all studies, faster site activation, stronger inspection readiness, and reduced compliance risk positioning the client for scalable, audit-confident clinical trial management globally.",
-    stats: [
-      { value: "3x", label: "Faster lot traceability" },
-      { value: "100%", label: "Audit trail coverage" },
-    ],
-    image: "/images/case-studies/operations.jpg",
-    link: "#",
-  },
+const THEMES = [
+  { tagColor: "#0b3a63", imgBg: "#dbe8f4" },
+  { tagColor: "#0f6e56", imgBg: "#d8eee7" },
+  { tagColor: "#534ab7", imgBg: "#e4dff5" },
 ];
 
 const DURATION = 5000;
 
+function stripHtml(html: string) {
+  return html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&#8217;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 export default function CaseStudyCarousel() {
+  const [caseCards, setCaseCards] = useState<CaseCard[]>([]);
+  const [loading, setLoading] = useState(true);
   const [current, setCurrent] = useState(0);
   const [animDir, setAnimDir] = useState<"left" | "right" | null>(null);
   const [progress, setProgress] = useState(0);
@@ -101,12 +71,45 @@ export default function CaseStudyCarousel() {
   }, []);
 
   const goNext = useCallback(() => {
+    if (caseCards.length === 0) return;
     goTo((current + 1) % caseCards.length, "left");
-  }, [current, goTo]);
+  }, [current, goTo, caseCards.length]);
 
   const goPrev = useCallback(() => {
+    if (caseCards.length === 0) return;
     goTo((current - 1 + caseCards.length) % caseCards.length, "right");
-  }, [current, goTo]);
+  }, [current, goTo, caseCards.length]);
+
+  useEffect(() => {
+    const fetchCaseStudies = async () => {
+      try {
+        const res = await fetch("/api/insights/posts?type=case-study&per_page=5");
+        const data = await res.json();
+        if (data.posts && Array.isArray(data.posts)) {
+          const fetchedCards: CaseCard[] = data.posts.map((post: any, index: number) => {
+             const theme = THEMES[index % THEMES.length];
+             return {
+                tag: "Case Study",
+                tagColor: theme.tagColor,
+                imgBg: theme.imgBg,
+                company: "Client Success",
+                title: stripHtml(post.title || ""),
+                description: stripHtml(post.excerpt || post.content || ""),
+                stats: [],
+                image: post.image || "",
+                link: `/case-studies?postId=${post.id}`,
+             };
+          });
+          setCaseCards(fetchedCards);
+        }
+      } catch (err) {
+        console.error("Failed to load case studies:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCaseStudies();
+  }, []);
 
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
@@ -143,7 +146,19 @@ export default function CaseStudyCarousel() {
   };
 
   const cs = caseCards[current];
-  if (!cs) return null;
+  if (loading) {
+    return (
+      <section className="py-16">
+        <div className="mx-auto max-w-[960px] px-6 lg:px-8">
+           <div className="flex h-[320px] items-center justify-center rounded-[24px] bg-white shadow-[0_12px_32px_rgba(7,30,61,0.06)]">
+             <p className="text-[#64748b]">Loading case studies...</p>
+           </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!cs || caseCards.length === 0) return null;
 
   return (
     <section className="py-16">
@@ -179,6 +194,13 @@ export default function CaseStudyCarousel() {
                 className="relative h-[200px] w-full shrink-0 overflow-hidden md:h-auto md:w-[340px]"
                 style={{ background: cs.imgBg }}
               >
+                {cs.image && (
+                  <img
+                    src={cs.image}
+                    alt="Case Study"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                )}
                 <span
                   className="absolute left-6 top-6 rounded-[6px] px-3 py-1.5 text-[11px] font-bold tracking-wide uppercase shadow-sm"
                   style={{ background: cs.tagColor, color: "#e6f1fb" }}
@@ -195,29 +217,31 @@ export default function CaseStudyCarousel() {
                 >
                   {cs.company}
                 </p>
-                <h3 className="mt-2 text-[24px] font-bold leading-[1.3] text-[#173652] sm:text-[28px]">
+                <h3 className="mt-2 text-[24px] font-bold leading-[1.3] text-[#173652] sm:text-[28px] line-clamp-3">
                   {cs.title}
                 </h3>
-                <p className="mt-3 text-[15.5px] font-light leading-[1.7] text-[#63798d]">
+                <p className="mt-3 text-[15.5px] font-light leading-[1.7] text-[#63798d] line-clamp-4">
                   {cs.description}
                 </p>
 
                 {/* Stats Grid */}
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                  {cs.stats.map((stat) => (
-                    <div
-                      key={stat.label}
-                      className="rounded-[12px] border border-[#e6f1fb] bg-[#f5f8fb] px-5 py-4"
-                    >
-                      <p className="text-[26px] font-bold leading-none text-[#0b3a63]">
-                        {stat.value}
-                      </p>
-                      <p className="mt-1.5 text-[12px] leading-[1.4] text-[#63798d]">
-                        {stat.label}
-                      </p>
-                    </div>
-                  ))}
-                </div>
+                {cs.stats && cs.stats.length > 0 && (
+                  <div className="mt-8 grid grid-cols-2 gap-4">
+                    {cs.stats.map((stat) => (
+                      <div
+                        key={stat.label}
+                        className="rounded-[12px] border border-[#e6f1fb] bg-[#f5f8fb] px-5 py-4"
+                      >
+                        <p className="text-[26px] font-bold leading-none text-[#0b3a63]">
+                          {stat.value}
+                        </p>
+                        <p className="mt-1.5 text-[12px] leading-[1.4] text-[#63798d]">
+                          {stat.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </article>
           </div>
@@ -235,66 +259,68 @@ export default function CaseStudyCarousel() {
         </div>
 
         {/* ── UNIFIED CONTROLS ── */}
-        <div className="mt-6 flex items-center justify-between px-2 sm:px-4">
-          {/* Dots */}
-          <div className="flex gap-2.5">
-            {caseCards.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i, i > current ? "left" : "right")}
-                aria-label={`Go to case study ${i + 1}`}
-                className={`h-2.5 rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                  i === current
-                    ? "w-8"
-                    : "w-2.5 bg-[#cbd5e1] hover:bg-[#94a3b8]"
-                }`}
-                style={{
-                  backgroundColor: i === current ? cs.tagColor : undefined,
-                }}
-              />
-            ))}
-          </div>
+        {caseCards.length > 1 && (
+          <div className="mt-6 flex items-center justify-between px-2 sm:px-4">
+            {/* Dots */}
+            <div className="flex gap-2.5">
+              {caseCards.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i, i > current ? "left" : "right")}
+                  aria-label={`Go to case study ${i + 1}`}
+                  className={`h-2.5 rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                    i === current
+                      ? "w-8"
+                      : "w-2.5 bg-[#cbd5e1] hover:bg-[#94a3b8]"
+                  }`}
+                  style={{
+                    backgroundColor: i === current ? cs.tagColor : undefined,
+                  }}
+                />
+              ))}
+            </div>
 
-          {/* Arrows */}
-          <div className="flex gap-3">
-            <button
-              onClick={goPrev}
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#dce6ef] bg-white text-[#63798d] transition-all hover:border-[#173652] hover:text-[#173652]"
-            >
-              <svg
-                className="w-5 h-5 transition-transform group-hover:-translate-x-0.5"
-                viewBox="0 0 16 16"
-                fill="none"
+            {/* Arrows */}
+            <div className="flex gap-3">
+              <button
+                onClick={goPrev}
+                className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#dce6ef] bg-white text-[#63798d] transition-all hover:border-[#173652] hover:text-[#173652]"
               >
-                <path
-                  d="M10 12L6 8l4-4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
-            <button
-              onClick={goNext}
-              className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#dce6ef] bg-white text-[#63798d] transition-all hover:border-[#173652] hover:text-[#173652]"
-            >
-              <svg
-                className="w-5 h-5 transition-transform group-hover:translate-x-0.5"
-                viewBox="0 0 16 16"
-                fill="none"
+                <svg
+                  className="w-5 h-5 transition-transform group-hover:-translate-x-0.5"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M10 12L6 8l4-4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={goNext}
+                className="group flex h-11 w-11 items-center justify-center rounded-full border border-[#dce6ef] bg-white text-[#63798d] transition-all hover:border-[#173652] hover:text-[#173652]"
               >
-                <path
-                  d="M6 4l4 4-4 4"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </button>
+                <svg
+                  className="w-5 h-5 transition-transform group-hover:translate-x-0.5"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M6 4l4 4-4 4"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
         {/* ── BOTTOM CTA BLOCK ── */}
         <div className="mt-10 flex flex-col justify-between gap-6 rounded-[24px] bg-[#071e3d] p-7 sm:p-10 md:flex-row md:items-center">

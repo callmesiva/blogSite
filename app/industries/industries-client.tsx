@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
 import TypewriterBox from "../components/TypewriterBox";
+import AnimatedUnderline from "../components/AnimatedUnderline";
 
 type IndustryBlock = {
   title: string;
@@ -279,8 +280,8 @@ export default function IndustriesClient() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Industries</p>
           <h1 className="mt-4 max-w-[1020px]">
-            Veeva Consulting for Regulated Industries. Delivered by People Who
-            Know Them.
+            <AnimatedUnderline>Veeva Consulting</AnimatedUnderline> for
+            Regulated Industries. Delivered by People Who Know Them.
           </h1>
           <p className="site-subheading mt-5 max-w-[930px]">
             From global pharma submissions to food safety compliance, if your
@@ -290,7 +291,7 @@ export default function IndustriesClient() {
         </ScrollReveal>
       </section>
 
-     <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
+      <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
         <ScrollReveal className="site-container">
           <div className="grid lg:grid-cols-[1.1fr_1.3fr] gap-12 lg:gap-16 items-start">
             {/* Left side: Kicker, Header, and First Paragraph */}
@@ -300,16 +301,17 @@ export default function IndustriesClient() {
                 Why do regulated industries need a specialist partner?
               </h2>
               <p className="mt-6 text-[17px] leading-[1.65] text-[#b6c9da]">
-                Most consultancies treat compliance as a constraint. In regulated
-                industries, it is the foundation everything is built on. From
-                system configurations to data structures, each decision carries
-                implications across GxP, 21 CFR Part 11, and IDMP requirements.
+                Most consultancies treat compliance as a constraint. In
+                regulated industries, it is the foundation everything is built
+                on. From system configurations to data structures, each decision
+                carries implications across GxP, 21 CFR Part 11, and IDMP
+                requirements.
               </p>
             </div>
 
             {/* Right side: Typewriter Input Box for the final paragraph */}
             <div className="pt-2">
-              <TypewriterBox 
+              <TypewriterBox
                 text="Generalist firms learn these constraints on your engagement. Wolvio does not. Our practice is built around regulatory, quality, and commercial technology demands where poor configuration leads to delayed submissions, failed audits, and missed timelines."
                 delay={1000}
                 speed={20}
@@ -322,9 +324,8 @@ export default function IndustriesClient() {
       <section className="site-section">
         <ScrollReveal className="site-container">
           <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
-
             {/* ── TAB BAR ── */}
-            <div className="flex overflow-x-auto  scrollbar-hide">
+            <div className="flex w-full overflow-x-auto overflow-y-hidden scroll-smooth scrollbar-hide">
               {industryTabs.map((tab, index) => {
                 const isActive = tab.id === currentTab.id;
 
@@ -332,23 +333,26 @@ export default function IndustriesClient() {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
+                    // FIXED: Replaced `flex-1` with `grow shrink-0`
                     className={`
-                relative flex-1 min-w-[200px] px-4 py-4 text-center
-                whitespace-nowrap 
-                ${
-                  isActive
-                    ? "bg-[#2f6f73] !text-white"
-                    : "bg-white text-[#2f6f73] hover:bg-[#eef3f8]"
-                }
-              `}
+          relative grow shrink-0 min-w-[200px] px-4 py-4 text-center
+          whitespace-nowrap transition-colors duration-150
+          ${
+            isActive
+              ? "bg-[#2f6f73] !text-white"
+              : "bg-white text-[#2f6f73] hover:bg-[#eef3f8]"
+          }
+        `}
                   >
                     <h3
-                      className={`text-[16px] font-semibold ${isActive ? "text-white" : "text-[#2f6f73]"}`}
+                      className={`text-[16px] font-semibold transition-colors ${
+                        isActive ? "text-white" : "text-[#2f6f73]"
+                      }`}
                     >
                       {tab.label}
                     </h3>
                     <p
-                      className={`mt-1 text-[12px] ${
+                      className={`mt-1 text-[12px] transition-colors ${
                         isActive ? "text-white" : "text-[#2f6f73]"
                       }`}
                     >
@@ -357,7 +361,7 @@ export default function IndustriesClient() {
 
                     {/* Active indicator bar */}
                     {isActive && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2.5px]" />
+                      <span className="absolute bottom-0 left-0 w-full h-[2.5px] bg-white/20" />
                     )}
                   </button>
                 );

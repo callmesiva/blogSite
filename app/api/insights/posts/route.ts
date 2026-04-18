@@ -90,6 +90,12 @@ export async function GET(request: Request) {
           hasMore: false,
         });
       }
+    } else {
+      // Exclude "case-study" category for Insights view
+      const excludedCategoryId = await fetchCategoryIdBySlug("case-study");
+      if (excludedCategoryId) {
+        wpParams.set("categories_exclude", String(excludedCategoryId));
+      }
     }
 
     const response = await fetch(`${WORDPRESS_BASE_URL}/posts?${wpParams.toString()}`, {

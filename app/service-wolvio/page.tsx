@@ -8,6 +8,7 @@ import FaqAccordion from "../components/FaqAccordion";
 import TypewriterBox from "../components/TypewriterBox";
 import OrbitalCanvas from "../components/OrbitalCanvas";
 import HeroSection from "../components/HeroSection";
+import AiServiceGraphic from "../components/AiServiceGraphic";
 
 type UseCaseCard = {
   title: string;
@@ -150,22 +151,19 @@ export default function ServiceWolvioPage() {
 
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
+
       <HeroSection
         kicker="Wolvio Intelligence"
-        title={
-          <>AI automation services across industries</>
-        }
-        description={
-          <>
-            AI systems built for how your business actually runs. We design and
-            deploy AI agents, automation systems, and intelligent workflows that
-            solve operational problems in production today.
-          </>
-        }
+        title={<>AI automation services across industries</>}
+        description={<>AI automation services across industries</>}
         buttons={[
-          { label: "Explore Use Cases", href: "/#contact", variant: "outline" },
+          {
+            label: "Explore Use Cases",
+            href: "/case-studies",
+            variant: "outline",
+          },
         ]}
-        svgGraphic={<></>}
+        svgGraphic={<AiServiceGraphic />}
       />
 
       <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
@@ -209,34 +207,30 @@ export default function ServiceWolvioPage() {
           <div className="mt-8">
             <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
               {/* Tab Bar */}
-              <div className="flex overflow-x-auto border-b border-[#dce6ef] scrollbar-hide">
+              <div className="flex w-full overflow-x-auto overflow-y-hidden scroll-smooth border-b border-[#dce6ef] scrollbar-hide">
                 {useCases.map((card, index) => (
                   <button
                     key={card.title}
                     onClick={() => setActiveTab(index)}
-                    className={`
-              relative flex-1 min-w-[130px] px-4 py-4  text-center 
-              whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0
-              ${
-                activeTab === index
-                  ? "bg-[#2f6f73] text-white"
-                  : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
-              }
-            `}
+                    // FIXED: Replaced `flex-1` with `grow shrink-0` to force horizontal scrolling on small screens
+                    className={`relative grow shrink-0 min-w-[130px] px-4 py-4 text-center whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0 ${
+                      activeTab === index
+                        ? "bg-[#2f6f73] text-white"
+                        : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
+                    }`}
                   >
                     <h3
-                      className={`text-[16px] font-bold lg:text-[18px] ${
+                      className={`text-[16px] font-bold lg:text-[18px] transition-colors ${
                         activeTab === index
-                          ? " text-white"
-                          : " text-[#63798d] hover:bg-[#eef3f8]"
+                          ? "text-white"
+                          : "text-[#63798d] group-hover:text-[#173652]"
                       }`}
                     >
-                      {" "}
                       {card.title}
                     </h3>
                     {/* Active indicator bar */}
                     {activeTab === index && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2.5px]" />
+                      <span className="absolute bottom-0 left-0 h-[2.5px] w-full bg-white/20" />
                     )}
                   </button>
                 ))}
@@ -244,12 +238,6 @@ export default function ServiceWolvioPage() {
 
               {/* Tab Content */}
               <div className="p-6 ">
-                {/* Top color accent bar */}
-                {/* <div
-          className="mb-6 h-[4px] w-12 rounded-full"
-          style={{ background: activeTab % 2 === 0 ? "#0b3a63" : "#2f8b92" }}
-        />*/}
-
                 <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[1.2fr_1fr]">
                   {/* Left: Text content */}
                   <div>

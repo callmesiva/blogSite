@@ -29,11 +29,11 @@ interface HeroSectionProps {
 
 export default function HeroSection({ kicker, title, description, buttons, svgGraphic }: HeroSectionProps) {
   return (
-    <section className="hero-grid relative overflow-visible">
-      <ScrollReveal className="site-container grid items-center gap-12 pt-10 pb-16 lg:pb-24 lg:grid-cols-[minmax(0,1.02fr)_minmax(480px,0.98fr)] px-6 sm:px-8 lg:px-16">
+    <section className="hero-grid relative overflow-visible  pt-10 lg:pt-0 lg:h-[90vh]">
+      <ScrollReveal className="site-container grid items-center gap-12 pb-16 lg:pb-24 lg:grid-cols-[minmax(0,1.02fr)_minmax(480px,0.98fr)] px-6 sm:px-8 lg:px-16">
         
         {/* Left Content */}
-        <div className="mx-auto max-w-[760px] lg:mx-0 relative z-10 flex flex-col justify-center text-center lg:text-left">
+        <div className=" relative z-10 flex flex-col text-left">
           <p className="site-kicker">{kicker}</p>
           <h1 className="mt-4 max-w-[960px]">{title}</h1>
           <p className="site-subheading mt-5 max-w-[900px]">
@@ -42,7 +42,7 @@ export default function HeroSection({ kicker, title, description, buttons, svgGr
           
           {/* Buttons */}
           {buttons && buttons.length > 0 && (
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row justify-center lg:justify-start">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row justify-start">
               {buttons.map((btn, i) => (
                 <Link
                   key={i}
@@ -65,9 +65,7 @@ export default function HeroSection({ kicker, title, description, buttons, svgGr
 
         {/* Right SVG Graphic */}
         <div className="relative z-50 pointer-events-none flex items-center justify-center w-full mx-auto">
-          {/* We use a large relative wrapper and 'overflow-visible' to ensure any rotating 
-              SVG elements do not get clipped by strict container bounding boxes. */}
-          <div className="relative w-full aspect-square flex items-center justify-center overflow-visible scale-110 lg:scale-[1.15]">
+          <div className="relative w-full aspect-square flex items-center sm:mx-auto justify-center overflow-visible scale-100 lg:scale-[1]">
             {svgGraphic}
           </div>
         </div>

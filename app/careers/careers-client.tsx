@@ -6,6 +6,7 @@ import { useEffect, useMemo, useState } from "react";
 import { JobApplyModal } from "../components/jobApplyModal"
 import { Toast } from "../components/toast";
 import ScrollReveal from "../components/ScrollReveal";
+import AnimatedUnderline from "../components/AnimatedUnderline";
 
 type Job = {
   _id: string;
@@ -163,7 +164,7 @@ export default function CareersClient() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Careers</p>
           <h1 className="mt-4 max-w-[960px]">
-            Build Your Career at the Intersection of Life Sciences and AI.
+            Build Your <AnimatedUnderline>Career</AnimatedUnderline> at the Intersection of Life Sciences and AI.
           </h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
             Two specialist practices. One firm. Work that is meaningful,

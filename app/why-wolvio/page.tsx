@@ -3,6 +3,7 @@ import Link from "next/link";
 import TestimonialsSection from "../components/testimonials";
 import VerticalTabsSection from "../components/HowWeWorkSection";
 import ScrollReveal from "../components/ScrollReveal";
+import AnimatedUnderline from "../components/AnimatedUnderline";
 
 type Differentiator = {
   id: string;
@@ -109,7 +110,9 @@ export default function WhyWolvioPage() {
       <section className="hero-grid">
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Why Wolvio</p>
-          <h1 className="mt-4 max-w-[930px]">Why choose Wolvio Solutions?</h1>
+          <h1 className="mt-4 max-w-[930px]">
+            Why choose <AnimatedUnderline>Wolvio Solutions?</AnimatedUnderline>
+          </h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
             In regulated environments, the wrong Veeva partner does not just
             slow you down. It creates compliance debt that surfaces months after
@@ -140,27 +143,22 @@ export default function WhyWolvioPage() {
             identical across both: senior ownership, standards embedded from the
             start, and accountability through final handover.
           </p>
+
           <div className="mt-8 grid gap-6 md:grid-cols-2 items-start">
             {/* Local style block for the custom blinking dot animation */}
             <style
               dangerouslySetInnerHTML={{
-                __html: `
-    @keyframes blinkDot {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.5); }
-    }
-  `,
+                __html: `@keyframes blinkDot { 0%, 100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.5); }}`,
               }}
             />
 
             {services.map((card) => {
               const isDark = card.theme === "dark";
-
               return (
                 <article
                   key={card.id}
                   // Base card styling + hover translation and shadow
-                  className={`group relative flex flex-col overflow-hidden rounded-[24px] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_36px_72px_rgba(7,30,61,0.18)] ${
+                  className={`group relative flex flex-col overflow-hidden rounded-[24px] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-2 hover:shadow-[0_36px_72px_rgba(7,30,61,0.18)] h-full ${
                     isDark
                       ? "bg-[#071e3d] text-white"
                       : "bg-white border border-[rgba(11,39,68,0.08)] text-[#071e3d]"
@@ -235,9 +233,9 @@ export default function WhyWolvioPage() {
                       }`}
                     ></div>
 
-                    {/* Description */}
+                    {/* Description - FIXED: Removed h-24 */}
                     <p
-                      className={`mb-7 h-24 text-[15px] font-light leading-[1.78] ${
+                      className={`mb-7 text-[15px] font-light leading-[1.78] ${
                         isDark ? "text-white" : "text-[#445f72]"
                       }`}
                     >

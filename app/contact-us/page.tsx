@@ -4,6 +4,7 @@ import Link from "next/link";
 import ZohoEmbed from "../components/ZohoEmbed";
 import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
+import AnimatedUnderline from "../components/AnimatedUnderline";
 
 function ArrowRightIcon() {
   return (
@@ -51,7 +52,7 @@ export default function ContactUsPage() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
           <p className="site-kicker">Contact Us</p>
           <h1 className="mt-4 max-w-[920px]">
-            Good work starts with an honest conversation
+            Good work <AnimatedUnderline>starts</AnimatedUnderline> with an honest conversation
           </h1>
           <p className="site-subheading mt-5 max-w-[980px]">
             Whether you are here about our Veeva practice or our AI and
