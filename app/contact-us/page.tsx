@@ -49,7 +49,7 @@ export default function ContactUsPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Contact Us</p>
           <h1 className="mt-4 max-w-[920px]">
             Good work <AnimatedUnderline>starts</AnimatedUnderline> with an honest conversation

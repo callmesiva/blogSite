@@ -45,7 +45,7 @@ export default function InsightsReadClient() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f2f4f7] text-[#0f172a]">
       <section className="hero-grid">
-        <div className="mx-auto w-full max-w-[1660px] px-5 pb-12 pt-10 sm:px-8 lg:px-24 lg:pb-16 lg:pt-14">
+        <div className="mx-auto w-full max-w-[1660px] px-5 pb-12 pt-10 sm:px-8 lg:px-24 lg:pb-16 lg:pt-14 flex flex-col items-center text-center">
           <p className="text-[13px] font-semibold uppercase tracking-[0.16em] text-[#2d7a83]">Insight Reader</p>
           <h1 className="mt-3 text-[clamp(1.75rem,2.6vw,2.8rem)] font-semibold leading-[1.14] tracking-[-0.03em] text-[#0c2d4d]">
             Reading insight inside Wolvio

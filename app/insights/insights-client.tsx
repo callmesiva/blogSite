@@ -306,7 +306,7 @@ export default function InsightsClient() {
   return (
     <main className="polish-layout min-h-screen bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Insights</p>
           <h1 className="mt-4 max-w-[860px]">Knowledge Center</h1>
           <p className="site-subheading mt-5 max-w-[940px]">

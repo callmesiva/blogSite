@@ -244,7 +244,7 @@ export default function CaseStudiesClient() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
       <section className="hero-grid">
-        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Case Studies Wolvio</p>
           <h1 className="mt-4 max-w-[960px]">
             Proven <AnimatedUnderline>Outcomes</AnimatedUnderline> in Complex
