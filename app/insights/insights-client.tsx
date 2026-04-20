@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SelectDropDown from "../components/selectDropDown";
 import ScrollReveal from "../components/ScrollReveal";
+import AnimatedUnderline from "../components/AnimatedUnderline";
 
 type InsightPost = {
   id: number;
@@ -308,7 +309,7 @@ export default function InsightsClient() {
       <section className="hero-grid">
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Insights</p>
-          <h1 className="mt-4 max-w-[860px]">Knowledge Center</h1>
+          <h1 className="mt-4 max-w-[860px]"><AnimatedUnderline>Knowledge</AnimatedUnderline> Center</h1>
           <p className="site-subheading mt-5 max-w-[940px]">
             Practitioner-led perspectives on Veeva platform delivery, regulated
             operations, and AI-enabled transformation.

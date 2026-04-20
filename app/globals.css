@@ -715,5 +715,5 @@ h3 {
 }
 
 .animate-marquee {
-  animation: customMarquee 30s linear infinite;
+  animation: customMarquee 60s linear infinite;
 }

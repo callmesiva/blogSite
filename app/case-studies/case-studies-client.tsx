@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
-import AnimatedUnderline from "../components/AnimatedUnderline";
+import AnimatedUnderline from "../components/AnimatedUnderline";    
 
 function ArrowRightIcon() {
   return (
@@ -245,7 +245,8 @@ export default function CaseStudiesClient() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Case Studies Wolvio</p>
           <h1 className="mt-4 max-w-[960px]">
-            Real Results Delivered Through Expert Veeva Consulting
+            <AnimatedUnderline>Real Results </AnimatedUnderline> Delivered
+            Through Expert Veeva Consulting
           </h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
             Measurable outcomes across implementations, regulatory programs, and

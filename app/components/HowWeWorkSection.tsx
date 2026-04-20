@@ -26,6 +26,7 @@ export interface TabItem {
   id: string;
   title: string;
   desc: string;
+  points?: string[];
 }
 
 interface VerticalTabsSectionProps {
@@ -45,33 +46,28 @@ export default function VerticalTabsSection({
   ctaText = "Talk to Us About Managed Services",
   ctaLink = "/service-veeva",
 }: VerticalTabsSectionProps) {
-  // 3. Initialize state with the first item's ID safely
   const [activeTabId, setActiveTabId] = useState(items[0]?.id);
 
-  // If items change (e.g., loaded from an API), reset the active tab
   useEffect(() => {
     if (items.length > 0) setActiveTabId(items[0].id);
   }, [items]);
 
-  // Find the currently selected data
   const activeModel = items.find((model) => model.id === activeTabId);
 
-  // Fallback if no items are passed
   if (!items || items.length === 0) return null;
 
   return (
     <section className="site-section bg-[#f2f8f5]">
       <ScrollReveal className="site-container mx-auto max-w-[1100px]">
-        {/* ── DYNAMIC HEADER ── */}
-          <div className="mb-10 lg:mb-14 text-center lg:text-left">
-            <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73]">
-              {kicker}
-            </p>
-            <h2>{title}</h2>
-            {description && (
-              <p className="site-body mt-5 max-w-[980px]">{description}</p>
-            )}
-          </div>
+        <div className="mb-10 lg:mb-14 text-center lg:text-left">
+          <p className="site-kicker mb-4 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73]">
+            {kicker}
+          </p>
+          <h2>{title}</h2>
+          {description && (
+            <p className="site-body mt-5 max-w-[980px]">{description}</p>
+          )}
+        </div>
 
         <div className="flex flex-col overflow-hidden rounded-[24px] border border-[#d7dde4] bg-white shadow-[0_12px_32px_rgba(7,30,61,0.05)] lg:flex-row lg:rounded-[32px]">
           {/* ── LEFT: DYNAMIC TABS ── */}
@@ -83,7 +79,7 @@ export default function VerticalTabsSection({
                 <button
                   key={model.id}
                   onClick={() => setActiveTabId(model.id)}
-                  className={`group relative flex w-[240px] shrink-0 flex-col items-start p-6 text-left transition-colors duration-300 lg:w-full lg:p-7 lg:border-b lg:border-[#d7dde4]/50 lg:last:border-none ${
+                  className={`group relative flex w-[240px] shrink-0 flex-col border-r border-[#d7dde4]/50 items-start p-6 text-left transition-colors duration-300 lg:w-full lg:p-7 lg:border-b lg:border-[#d7dde4]/50 lg:last:border-none ${
                     isActive ? "bg-[#2f6f73]" : "hover:bg-[#eef2f6]"
                   }`}
                 >
@@ -105,7 +101,7 @@ export default function VerticalTabsSection({
           </div>
 
           {/* ── RIGHT: DYNAMIC CONTENT ── */}
-          <div className="relative flex flex-1 flex-col justify-center bg-white p-8 lg:min-h-[360px] lg:p-14">
+          <div className="relative flex flex-1 flex-col justify-center bg-white p-8 lg:min-h-[360px]">
             <div key={activeModel?.id} className="animate-tab flex flex-col">
               <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-[16px] bg-[#e0f5ed]">
                 <svg
@@ -116,29 +112,24 @@ export default function VerticalTabsSection({
                 </svg>
               </div>
 
-              <h3 className="mb-4  text-[24px] font-bold leading-[1.2] text-[#071e3d] lg:text-[30px]">
-                {activeModel?.title}
-              </h3>
+              <h2 className="mb-4">{activeModel?.title}</h2>
 
-              <p className="max-w-[650px] text-[15.5px] font-light leading-[1.85] text-[#4a6070] lg:text-[16.5px]">
-                {activeModel?.desc}
-              </p>
+              <p className="max-w-[650px]">{activeModel?.desc}</p>
+              {activeModel?.points && (
+                <div className="site-card-muted rounded-[22px] mt-5 p-5 max-w-[650px]">
+                  <ul className=" space-y-2 text-[14px] text-[#486173]">
+                    {activeModel?.points?.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2">
+                        <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92] flex-shrink-0" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>
-
-        {/* ── DYNAMIC CTA BUTTON ── */}
-        {ctaLink && ctaText && (
-          <div className="mt-10 flex justify-center lg:mt-12 lg:justify-start">
-            <Link
-              href={ctaLink}
-              className="group inline-flex items-center gap-2.5 rounded-full border border-[#d7dde4] bg-white px-8 py-3.5 text-[15px] font-semibold text-[#2f6f73] shadow-sm transition-all duration-300 hover:gap-3.5 hover:border-[#1D9E75] hover:bg-[#4f8f92] hover:text-white"
-            >
-              {ctaText}
-              <ArrowRightIcon />
-            </Link>
-          </div>
-        )}
       </ScrollReveal>
     </section>
   );

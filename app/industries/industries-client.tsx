@@ -81,8 +81,9 @@ export default function IndustriesClient() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Industries</p>
           <h1 className="mt-4 max-w-[1020px]">
-            <AnimatedUnderline>Veeva Consulting</AnimatedUnderline> for
-            Regulated Industries. Delivered by People Who Know Them.
+            Veeva Consulting for {' '}
+            <AnimatedUnderline>Regulated Industries.</AnimatedUnderline>{" "}
+            Delivered by People Who Know Them.
           </h1>
           <p className="site-subheading mt-5 max-w-[930px]">
             From global pharma submissions to food safety compliance, if your

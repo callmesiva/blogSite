@@ -30,24 +30,22 @@ export default function AnimatedUnderline({
   return (
     <span ref={ref} className="relative inline-block whitespace-nowrap">
       <span className="relative z-10">{children}</span>
-
-      {/* TOP BRISTLE: Ends a little early, keeps color until 90% */}
-      <span
-        className="absolute left-0 -bottom-[2px] z-0 h-[1.5px] rounded-l-sm bg-[linear-gradient(to_right,#2f8b92_0%,#2f8b92_90%,transparent_100%)] transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-        style={{ width: isVisible ? "96%" : "0%" }}
-      />
-
-      {/* MAIN CORE: The thickest part, short fade starting at 85% */}
-      <span
-        className="absolute left-0 -bottom-1 z-0 h-[2px] rounded-l-sm bg-[linear-gradient(to_right,#2f8b92_0%,#2f8b92_85%,transparent_100%)] transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-        style={{ width: isVisible ? "100%" : "0%" }}
-      />
-
-      {/* BOTTOM BRISTLE: Thinnest, slightly longer for a streaky tail, very sharp fade */}
-      <span
-        className="absolute left-0 -bottom-[5px] z-0 h-[1px] rounded-l-sm bg-[linear-gradient(to_right,#2f8b92_0%,#2f8b92_95%,transparent_100%)] transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
-        style={{ width: isVisible ? "102%" : "0%" }}
-      />
+      <svg
+        className="absolute left-0 -bottom-1 z-0 w-full overflow-visible"
+        height="6"
+        viewBox="0 0 100 6"
+        preserveAspectRatio="none"
+        style={{
+          /* clipPath reveals the SVG from left to right like a mask */
+          clipPath: isVisible
+            ? "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+            : "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+          transition: "clip-path 700ms cubic-bezier(0.22,1,0.36,1)",
+        }}
+      >
+        {/* A wedge shape: thicker on the left, pinches to a thin point on the right */}
+        <path d="M0,2 Q50,2 100,1 L100,2 Q50,5 0,5 Z" fill="#2f8b92" />
+      </svg>
     </span>
   );
 }
