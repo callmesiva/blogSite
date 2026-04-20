@@ -172,13 +172,13 @@ export default function ServiceVeevaPage() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Veeva Consulting</p>
           <h1 className="mt-4 font-bold text-[var(--primary)] leading-[1.12] tracking-[-0.03em] [font-size:clamp(2rem,3vw,3rem)]">
-            <span className="block">
+            
               Veeva Vault specialists who understand
-            </span>
-            <span className="block text-[0.9em]">
+        
+            <br/>
               who know vault inside out
-            </span>
-            <span className="block text-[0.82em] leading-snug mt-1">
+        
+            <span className="block text-[0.65em] leading-snug mt-1">
               Not just as a platform. As a practice.
             </span>
           </h1>

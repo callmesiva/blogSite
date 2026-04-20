@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ScrollReveal from "../components/ScrollReveal";
 import AnimatedUnderline from "../components/AnimatedUnderline";
+import Link from "next/link";
+import ContactModel from "../components/ContactModel";
 
 export const metadata: Metadata = {
   title: "Contact Wolvio | Start a Conversation With Us",
@@ -8,12 +10,32 @@ export const metadata: Metadata = {
     "Reach out to Wolvio's specialist team for Veeva consulting or AI automation. Book a 30-minute call, visit our Chennai or Coimbatore office, or email us directly.",
 };
 
+function ArrowRightIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M5 12h14" />
+      <path d="m13 5 7 7-7 7" />
+    </svg>
+  );
+}
+
 export default function ContactUsPage() {
   const benefits = [
     "A focused conversation about your specific challenge",
     "A clear view of how Wolvio approaches engagements",
     "An honest steer on whether we are the right fit",
   ];
+
+
 
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
@@ -111,7 +133,7 @@ export default function ContactUsPage() {
                 </div>
 
                 <a
-                  href="https://forms.zohopublic.in/wolviosolutions/form/ContactUs/formperma/5lXrF3naIqH5J_NNih7iPLLas8x8miLIRA1_xKOL8og?zf_rszfm=1"
+                  href="https://meetus.wolviosolutions.com/#/wolviosolutions"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block text-center w-full max-w-[260px] rounded-full bg-[linear-gradient(135deg,#082744,#0e3a66)] px-6 py-3.5 font-['DM_Sans',sans-serif] text-[14.5px] font-medium tracking-[0.02em] text-white transition-all duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.04] active:scale-[0.98]"
@@ -128,6 +150,8 @@ export default function ContactUsPage() {
           </div>
         </ScrollReveal>
       </section>
+      
+      <ContactModel />
     </main>
   );
 }

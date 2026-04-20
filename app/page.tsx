@@ -5,6 +5,7 @@ import WhyWolvioSection from "./components/WhyWolvioSection";
 import CaseStudyCarousel from "./components/CaseStudyCarousel";
 import ScrollReveal from "./components/ScrollReveal";
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title:
@@ -61,25 +62,32 @@ const serviceCards: SimpleCard[] = [
 const insightCards = [
   {
     tag: "Veeva Vault 26R1 Feature",
-    title: "Wolvio Insights: Why Doctype Triggers Could Be a Game-Changer...",
-    description: "A deep dive into one of the most meaningful extensibility...",
+    title:
+      "Intelligent Change Control Workflow Design in Vault Quality – Moving...",
+    description:
+      "Change control is a foundational process in Vault Quality that ensures modifications -whether to documents, procedures, systems, or products &#8211; are introduced in a controlled,...",
     minutes: "6 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
+    image : "/InsightImages/insight1.jpeg"
   },
   {
     tag: "Veeva Vault AI Agents",
-    title: "Navigating Veeva Vault AI Agents: Wolvio Insights",
-    description: "A practical guide to understanding and leveraging...",
+    title: "From eTMF Completeness to eTMF Quality Excellence",
+    description:
+      "The Completeness Mindset: Where It All Began For years, the primary benchmark for a healthy Trial Master File was straightforward: Is everything there? Regulators asked for it. Ins...",
     minutes: "7 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
+    image : "/InsightImages/insight2.jpeg"
   },
   {
     tag: "Veeva Vault AI Integration",
-    title: "Navigating Veeva Vault AI Agents",
-    description: "A practical guide to understanding and leveraging...",
+    title: "Veeva Vault 26R1: Why Doctype Triggers Could Be a Game-Changer",
+    description:
+      "A powerful new step in making Vault documents smarter, more connected, and more business-driven When people first look at Doctype Triggers in Veeva Vault 26R1, it may seem like jus...",
     minutes: "7 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
-  },  
+    image : "/InsightImages/insight3.jpeg"
+  },
 ];
 
 function ArrowRightIcon() {
@@ -116,7 +124,6 @@ let buttons = [
 export default function Home() {
 
   const defaultStats = [
-    { value: "", label: "Veeva Certified Consultants pool" },
     { value: "10+", label: "Specialist Delivery Partnerships" },
     { value: "25+", label: "Veeva Vault Engagements" },
     { value: "50+", label: "Years of Combined Life Sciences Expertise" },
@@ -300,12 +307,22 @@ export default function Home() {
                 className="fade-up group relative flex h-full flex-col overflow-hidden rounded-[30px] border border-[#e2e8f0] bg-white shadow-[0_10px_28px_rgba(15,23,42,0.04)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(15,23,42,0.08)]"
               >
                 <div className="relative aspect-[16/9] w-full overflow-hidden bg-[#eaf2f5]">
-                  <div className="flex h-full items-center justify-center bg-[linear-gradient(130deg,#e8f0f3,#f7fafc)] text-[14px] text-[#607283]">
-                    No image available
-                  </div>
+                  {card.image ? (
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover transition duration-300 group-hover:scale-[1.03]"
+                      sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 33vw"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center bg-[linear-gradient(130deg,#e8f0f3,#f7fafc)] text-[14px] text-[#607283]">
+                      No image available
+                    </div>
+                  )}
                 </div>
 
-                <div className="flex h-full flex-col p-6">
+                <div className="flex flex-col p-6">
                   {/* Category Tag */}
                   <span className="inline-flex w-fit self-start rounded-full border border-[#cde0e2] bg-[#f4f9fa] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#2f6f73]">
                     {card.tag}
@@ -360,7 +377,7 @@ export default function Home() {
           </ScrollFadeGrid>
         </ScrollReveal>
       </section>
-      
+
       <section id="contact" className="tone-lock site-section">
         <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">

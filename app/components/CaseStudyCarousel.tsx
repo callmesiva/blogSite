@@ -247,7 +247,7 @@ export default function CaseStudyCarousel() {
           </div>
 
           {/* ── PROGRESS BAR (As Bottom Border) ── */}
-          <div className="absolute bottom-0 left-0 h-1.5 w-full bg-[#f0f4f8]">
+          {/* <div className="absolute bottom-0 left-0 h-1.5 w-full bg-[#f0f4f8]">
             <div
               className="h-full transition-none"
               style={{
@@ -255,7 +255,7 @@ export default function CaseStudyCarousel() {
                 background: cs.tagColor, // Adapts to the card's active color!
               }}
             />
-          </div>
+          </div> */}
         </div>
 
         {/* ── UNIFIED CONTROLS ── */}
