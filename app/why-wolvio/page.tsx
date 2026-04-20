@@ -15,27 +15,27 @@ const differentiators: Differentiator[] = [
   {
     id: "01",
     title: "Depth Over Breadth. Always.",
-    desc: "Every consultant and engineer at Wolvio has chosen depth over platform rotation. You work with people who have spent their careers in the space they operate in. That focus is why clients trust us with high-impact work.",
+    desc: "Every consultant and engineer at Wolvio has chosen depth over platform rotation. You work with people who have spent their careers inside Veeva Vault — not generalists who rotate across platforms each quarter. That focused expertise is why clients trust us with their highest-stakes implementations: eTMF inspections, RIM submission windows, and QMS audits where there is no margin for learning on the job.",
   },
   {
     id: "02",
     title: "The People You Meet Are the People Who Deliver.",
-    desc: "We do not pitch with seniors and hand off to juniors. The person who scopes with you is the one accountable through delivery and beyond. No hidden handoffs and no surprises on engagement ownership.",
+    desc: "The consultant who scopes your engagement is the consultant who delivers it. No bait and switch. No handover to a junior team once the contract is signed. Every senior commitment made in the sales process is a delivery commitment that holds.",
   },
   {
     id: "03",
     title: "Speed Without Cutting Corners.",
-    desc: "Fast delivery and high standards are compatible when work is structured correctly. We move quickly where we can and deliberately where we must, so timelines improve without reducing confidence in outcomes.",
+    desc: "We move fast because we know what good looks like — not because we skip validation steps, defer documentation, or use generic templates that create rework downstream. Speed in a regulated environment comes from getting decisions right the first time, not from making them quickly and fixing them later.",
   },
   {
     id: "04",
     title: "Standards Built In. Not Bolted On.",
-    desc: "In life sciences we embed GxP, CSV, and 21 CFR Part 11 from day one. In AI we design privacy, security, and responsible deployment into the architecture itself. Compliance is part of build, not a final checklist.",
+    desc: "GxP discipline, audit-readiness, and compliance documentation are part of our delivery methodology from day one — not a review that happens at the end when it is too late to change anything. When the auditor arrives, your Vault environment holds up because it was designed to, not because you remediated it the week before.",
   },
   {
     id: "05",
     title: "Expertise That Shows Up in the Room.",
-    desc: "When teams ask difficult questions, we answer directly. When delivery risks surface, we have seen them before. That depth reduces surprises and keeps momentum through complex engagements.",
+    desc: "Our consultants contribute immediately in regulatory, quality, and clinical conversations — not after a ramp-up period. That visible domain knowledge is what changes the dynamic in client workshops, builds confidence with your internal teams, and earns credibility with your QA and regulatory functions early in the engagement.",
   },
 ];
 

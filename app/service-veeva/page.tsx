@@ -102,27 +102,27 @@ const WORK_MODELS = [
   {
     id: "consulting",
     title: "Veeva Consulting Engagements",
-    desc: "Defined projects with clear scope, deliverables, and timelines for implementation, migration, integration, and targeted configuration programs delivered by senior consultants end-to-end.",
+    desc: "Defined projects with clear scope, deliverables, and timelines for implementation, migration, integration, and targeted configuration programs — delivered by senior consultants end-to-end. Fixed-scope or milestone-based pricing — cost certainty before work begins, Senior consultant lead from scoping through to handover — no bait and switch, Validation documentation included as standard — IQ, OQ, PQ where required, Structured handover to your team or directly into managed services",
   },
   {
     id: "managed",
     title: "Veeva Managed Services",
-    desc: "Once live, your platform demands shift to release stability, compliance updates, and operational evolution. We provide structured long-term support models based on your in-house capability.",
+    desc: "Ongoing platform support covering releases, administration, compliance monitoring, and continuous improvement — delivered by consultants who know your environment inside out. Monthly retainer with defined scope — no surprise billing, no ambiguous hours, Covers all three Veeva general releases per year with impact assessment, Named consultant team — the same people, every engagement, every release, Available whether we implemented your Vault or inherited it",
   },
   {
     id: "platform-partner",
     title: "Platform Partner",
-    desc: "Full operational ownership with proactive release management, compliance monitoring, helpdesk support, and strategic platform evolution.",
+    desc: "A longer-term strategic relationship covering platform roadmap, configuration strategy, and capability planning — for organisations that want a trusted advisor embedded in their Vault evolution. Quarterly roadmap reviews aligned to regulatory and business changes, Strategic configuration advice ahead of Veeva releases and regulatory updates",
   },
   {
     id: "release-cover",
     title: "Release & Compliance Cover",
-    desc: "Ideal for teams with internal admins who need specialist support for impact assessments, validation updates, and high-risk escalations.",
+    desc: "Focused support for each Veeva general release — impact assessment, change planning, regression testing, and validation documentation managed without pulling your internal team off core work. Per-release engagement with clear deliverables and sign-off documentation, Suitable for teams without dedicated release management capacity",
   },
   {
     id: "expert-on-call",
     title: "Expert On-Call",
-    desc: "Senior specialist input on demand for complex issues, architecture decisions, validation review, or critical integration questions.",
+    desc: "Access to a named Vault consultant for time-sensitive questions, audit support, inspection preparation, or configuration challenges — without committing to a full engagement. Pre-purchased hours with fast response SLA — typically within 4 hours, Ideal for internal teams facing an inspection, audit, or regulatory deadline",
   },
 ];
 
