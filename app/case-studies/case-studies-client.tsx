@@ -92,9 +92,7 @@ export default function CaseStudiesClient() {
     if (postInState) {
       setActivePost(postInState);
     } else {
-       // if we go straight to a URL with postId, and it's not in the loaded posts, we might want to fetch it individually.
-       // For now, if we don't have it, we show loading. It will be found if they navigate from the list.
-       fetch(`/api/insights/posts?type=case-study&search=${postIdParam}`) // this might not match id, but works as a dirty fallback or they just load all on list page
+       fetch(`/api/insights/posts?type=case-study&search=${postIdParam}`)
          .then(res => res.json())
          .then(data => {
             const p = data.posts?.find((x: any) => x.id.toString() === postIdParam);
@@ -247,13 +245,11 @@ export default function CaseStudiesClient() {
         <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
           <p className="site-kicker">Case Studies Wolvio</p>
           <h1 className="mt-4 max-w-[960px]">
-            Proven <AnimatedUnderline>Outcomes</AnimatedUnderline> in Complex
-            Environments.
+            Real Results Delivered Through Expert Veeva Consulting
           </h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
-            Explore how we've helped clients navigate complexity, reduce risk,
-            and achieve compliant, dependable outcomes across their Veeva Vault
-            environments.
+            Measurable outcomes across implementations, regulatory programs, and
+            managed services
           </p>
         </ScrollReveal>
       </section>

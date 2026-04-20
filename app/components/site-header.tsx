@@ -19,12 +19,12 @@ const navItems: NavItem[] = [
     href: "/service-veeva",
     children: [
       {
-        label: "Digital Cloud - Veeva",
+        label: "Veeva Consulting & Managed Services",
         href: "/service-veeva",
         note: "Life Sciences",
       },
       {
-        label: "Wolvia Intelligence",
+        label: "Wolvio Intelligence",
         href: "/service-wolvio",
         note: "Strategy",
       },
@@ -163,11 +163,11 @@ export default function SiteHeader() {
                     {item.children ? <ChevronDownIcon /> : null}
                   </Link>
                   {item.children && item.label === "Services" ? (
-                    <div className="invisible absolute left-1/2 top-full z-20 mt-4 w-[450px] -translate-x-1/2 rounded-[34px] border border-[#dce7ec] bg-white p-4 opacity-0 shadow-[0_24px_60px_rgba(10,37,64,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="invisible absolute left-1/2 top-full z-20 mt-4 w-[500px] -translate-x-1/2 rounded-[34px] border border-[#dce7ec] bg-white p-4 opacity-0 shadow-[0_24px_60px_rgba(10,37,64,0.12)] transition-all duration-200 group-hover:visible group-hover:opacity-100">
                       <p className="px-4 pb-4 pt-2 text-[12px] font-semibold uppercase tracking-[0.14em] text-[#92a2b8]">
                         What We Do
                       </p>
-                      <div className="space-y-3">
+                      <div className="space-y-3 ">
                         {item.children.map((child, index) => (
                           <Link
                             key={child.label}
@@ -217,8 +217,8 @@ export default function SiteHeader() {
                                 </p>
                                 <p className="mt-1 text-[12px] text-[#60758d]">
                                   {index === 0
-                                    ? "End-to-end Veeva platform implementation for life sciences."
-                                    : "Technology-led transformation strategy for modern enterprises."}
+                                    ? "End-to-End Veeva Vault Implement to Post-Go-Live support."
+                                    : "AI & Automation Services for regulated life sciences environments."}
                                 </p>
                               </div>
                             </div>

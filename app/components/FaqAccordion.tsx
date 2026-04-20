@@ -36,7 +36,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
             <div className="flex items-center gap-5">
               {/* Left Number Box */}
               <div
-                className={`flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[12px] border-[1.5px] font-semibold text-[15px] transition-all duration-300 ${
+                className={`flex size-6 text-[12px] rounded-[5px] md:size-10 md:rounded-[12px] md:text-[15px] shrink-0 items-center justify-center border-[1.5px] font-semibold transition-all duration-300 ${
                   isOpen
                     ? "border-[#2f8b92] bg-[#2f8b92] text-white shadow-[0_4px_12px_rgba(47,139,146,0.3)]"
                     : "border-[#2f8b92] bg-transparent text-[#2f8b92] group-hover:bg-[#eef6f7]"
@@ -47,7 +47,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
 
               {/* Question Text */}
               <h3
-                className={`flex-1 text-[17px] font-semibold leading-[1.3] transition-colors duration-300 ${
+                className={`flex-1 text-[15px] nd:text-[17px] font-semibold leading-[1.3] transition-colors duration-300 ${
                   isOpen
                     ? "text-[#2f8b92]"
                     : "text-[#173652] group-hover:text-[#2f8b92]"
@@ -58,7 +58,7 @@ export default function FaqAccordion({ items }: FaqAccordionProps) {
 
               {/* Right Arrow Circle */}
               <div
-                className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-[1.5px] transition-all duration-300 ${
+                className={`flex size-6 text-[12px] md:size-10 md:rounded-[12px] shrink-0 items-center justify-center rounded-full border-[1.5px] transition-all duration-300 ${
                   isOpen
                     ? "border-[#2f8b92] bg-[#2f8b92] text-white shadow-[0_4px_12px_rgba(47,139,146,0.3)]"
                     : "border-[#2f8b92] bg-transparent text-[#2f8b92] group-hover:bg-[#eef6f7]"

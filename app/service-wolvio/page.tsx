@@ -1,22 +1,9 @@
-"use client";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { title } from "process";
-import { useState } from "react";
 import ScrollReveal from "../components/ScrollReveal";
 import FaqAccordion from "../components/FaqAccordion";
 import TypewriterBox from "../components/TypewriterBox";
-import OrbitalCanvas from "../components/OrbitalCanvas";
-import HeroSection from "../components/HeroSection";
-import AiServiceGraphic from "../components/AiServiceGraphic";
-
-type UseCaseCard = {
-  title: string;
-  pain: string;
-  summary: string;
-  details: string;
-  bullets: string[];
-};
+import BusinessUseCase from "../components/Service-wolvio/BusinessUseCase";
 
 type FaqItem = {
   question: string;
@@ -24,88 +11,12 @@ type FaqItem = {
   answer2?: string;
 };
 
-const useCases: UseCaseCard[] = [
-  {
-    title: "AI Knowledge Assistant",
-    pain: "Your team spends hours searching for answers buried in documents.",
-    summary:
-      "Ask your company data and get accurate answers with source citations in seconds.",
-    details:
-      "A retrieval-augmented generation system connected to your policies, SOPs, and knowledge bases so teams ask in plain language and receive precise, cited responses.",
-    bullets: [
-      "Document ingestion",
-      "Vector search",
-      "Source citations",
-      "Role-based access",
-      "Continuous learning",
-    ],
-  },
-  {
-    title: "AI Support Agent",
-    pain: "Your support team is overwhelmed and most queries are repetitive.",
-    summary:
-      "Automate 60-80% of support queries with smart routing and human escalation.",
-    details:
-      "An intelligent support agent that classifies intent, drafts responses, routes issues, and escalates low-confidence cases with full governance logging.",
-    bullets: [
-      "Intent classification",
-      "Smart routing",
-      "AI-drafted responses",
-      "Confidence scoring",
-      "Full audit trail",
-    ],
-  },
-  {
-    title: "Document Intelligence",
-    pain: "Your team manually extracts data from documents invoice by invoice.",
-    summary:
-      "Extract, validate, and process documents in seconds rather than hours.",
-    details:
-      "AI-powered document processing for invoices, contracts, forms, and reports with rule-based validation, exception handling, and ERP-ready structured output.",
-    bullets: [
-      "OCR + field extraction",
-      "Business-rule validation",
-      "Exception flagging",
-      "ERP integration",
-      "India-specific formats",
-    ],
-  },
-  {
-    title: "Workflow Automation",
-    pain: "Your operations run on manual steps, spreadsheets, and email chains.",
-    summary: "Convert manual processes into intelligent automated workflows.",
-    details:
-      "End-to-end flows with AI decision nodes, approvals, exception logic, and system integrations, plus live monitoring for operational visibility.",
-    bullets: [
-      "Event-driven triggers",
-      "AI decision nodes",
-      "CRM/ERP integration",
-      "Error handling",
-      "Live dashboards",
-    ],
-  },
-  {
-    title: "Voice AI Agent",
-    pain: "Customers call, nobody picks up, or they wait too long.",
-    summary: "A multilingual AI voice agent that responds in real time 24/7.",
-    details:
-      "Voice automation for inbound calls with natural response handling, appointment booking, escalation, and support for regional Indian language interactions.",
-    bullets: [
-      "Real-time speech-to-text",
-      "Telephony / SIP / IVR",
-      "Appointment booking",
-      "Human handoff",
-      "WhatsApp automation",
-    ],
-  },
-];
-
 const faqs: FaqItem[] = [
   {
-    question:
-      "What's the best way to start with AI in my organisation?",
-    answer1: "The most common mistake organisations make is trying to deploy AI everywhere at once. Broad strategies sound ambitious but rarely deliver results they spread effort thin and make it hard to measure success. We begin with a focused operational assessment typically a 1–2 week process to surface where AI can genuinely move the needle. This might be reducing manual processing time, accelerating a customer response workflow, or improving accuracy in a recurring task. The goal is to identify a problem where AI can show demonstrable results within weeks, not quarters.",
-     answer2: "",
+    question: "What's the best way to start with AI in my organisation?",
+    answer1:
+      "The most common mistake organisations make is trying to deploy AI everywhere at once. Broad strategies sound ambitious but rarely deliver results they spread effort thin and make it hard to measure success. We begin with a focused operational assessment typically a 1–2 week process to surface where AI can genuinely move the needle. This might be reducing manual processing time, accelerating a customer response workflow, or improving accuracy in a recurring task. The goal is to identify a problem where AI can show demonstrable results within weeks, not quarters.",
+    answer2: "",
   },
   {
     question:
@@ -114,22 +25,19 @@ const faqs: FaqItem[] = [
     answer2: "",
   },
   {
-    question:
-      "How do you handle data privacy and security?",
+    question: "How do you handle data privacy and security?",
     answer1: `Every deployment follows a privacy-first architecture. Your data stays within your infrastructure or approved cloud environments. We implement role-based access, encryption at rest and in transit, and full audit logging.`,
     answer2: `For regulated industries, we align with relevant compliance requirements.`,
   },
   {
-    question:
-      "How long does it take to deploy an AI system?",
+    question: "How long does it take to deploy an AI system?",
     answer1: `Timeline depends heavily on scope, and we are direct about this from the first conversation. A well-scoped, focused use case — one clear input, one clear output, integrating with one or two existing tools — can reach a working pilot in 4–6 weeks. That pilot is a real system running on real data, not a demo or prototype.`,
     answer2: `Production deployments are a different scope. Full integration across multiple systems, governance frameworks, human-in-the-loop review processes, monitoring dashboards, and staff onboarding typically takes 8–12 weeks. These timelines are realistic, not padded — we have seen what happens when AI projects are rushed to launch without proper testing or change management, and the recovery cost is always higher than the time saved.`,
   },
   {
-    question:
-      "How do you measure whether an AI system is actually working?",
+    question: "How do you measure whether an AI system is actually working?",
     answer1: `Every system we deploy includes built-in performance tracking — accuracy rates, resolution rates, processing times, error rates, and business-specific KPIs. We share this data transparently and use it to continuously improve the system. If we can't measure it, we don't ship it.`,
-answer2: "",
+    answer2: "",
   },
 ];
 
@@ -151,30 +59,59 @@ function ArrowRightIcon() {
   );
 }
 
-export default function ServiceWolvioPage() {
-  const [activeTab, setActiveTab] = useState(0);
-  const activeCard = useCases[activeTab];
+let buttons = [
+  {
+    label: "Explore Use Cases",
+    href: "/case-studies",
+    variant: "outline",
+  },
+];
 
+export const metadata: Metadata = {
+  title: "AI Automation Services & Intelligent Agents | Wolvio  ",
+  description:
+    "Wolvio Intelligence builds AI agents, document processing, voice AI,workflow automation for business operations. Production-proven systems across industries.",
+};
+
+export default function ServiceWolvioPage() {
   return (
     <main className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]">
+      <section className="hero-grid">
+        <ScrollReveal className="site-container pb-14 pt-12 lg:pb-20 lg:pt-16 flex flex-col items-center text-center">
+          <p className="site-kicker">Wolvio Intelligence</p>
+          <h1 className="mt-4">AI automation services across industries</h1>
 
-      <HeroSection
-        kicker="Wolvio Intelligence"
-        title={<>AI automation services across industries</>}
-        description={<>AI automation services across industries</>}
-        buttons={[
-          {
-            label: "Explore Use Cases",
-            href: "/case-studies",
-            variant: "outline",
-          },
-        ]}
-        svgGraphic={<AiServiceGraphic />}
-      />
+          <p className="site-subheading mt-5  max-w-[700px]">
+            AI systems built for the way your business actually runs. We design
+            and deliver AI automation services, building and deploying AI
+            agents, automation systems, and intelligent workflows that solve
+            real operational problems — across industries, in production, today.
+          </p>
+
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            {buttons.map((btn, i) => (
+              <Link
+                key={i}
+                href={btn.href}
+                className={
+                  btn.variant === "primary"
+                    ? "site-btn-primary whitespace-nowrap"
+                    : btn.variant === "secondary"
+                      ? "site-btn-secondary whitespace-nowrap"
+                      : "inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-[#c7d7df] bg-white px-6 py-3 text-[15px] font-semibold text-[#2f6f73] transition hover:bg-[#f4f9fa]"
+                }
+              >
+                {btn.label}
+                <ArrowRightIcon />
+              </Link>
+            ))}
+          </div>
+        </ScrollReveal>
+      </section>
 
       <section className="tone-lock w-full bg-[#082b4a] py-14 sm:py-16 lg:py-20">
         <ScrollReveal className="site-container">
-          <div className="grid lg:grid-cols-[1fr_1.3fr] min-h-[300px] gap-12 lg:gap-16 items-start">
+          <div className="grid lg:grid-cols-[1fr_1.3fr] min-h-[240px] gap-12 lg:gap-16 items-start">
             {/* Left side: Kicker & Header */}
             <div>
               <p className="site-kicker text-[#7ec4c7]">What We Do</p>
@@ -200,77 +137,7 @@ export default function ServiceWolvioPage() {
         </ScrollReveal>
       </section>
 
-      <section className="site-section-alt">
-        <ScrollReveal className="site-container">
-          <p className="site-kicker">Business Use Cases</p>
-          <h2 className="mt-4 max-w-[900px]">
-            What can AI actually do for your business?
-          </h2>
-          <p className="site-body mt-5 max-w-[760px]">
-            Five systems. Each one solves a problem you already have.
-          </p>
-
-          <div className="mt-8">
-            <div className="overflow-hidden rounded-[16px] border border-[#dce6ef] bg-white">
-              {/* Tab Bar */}
-              <div className="flex w-full overflow-x-auto overflow-y-hidden scroll-smooth border-b border-[#dce6ef] scrollbar-hide">
-                {useCases.map((card, index) => (
-                  <button
-                    key={card.title}
-                    onClick={() => setActiveTab(index)}
-                    // FIXED: Replaced `flex-1` with `grow shrink-0` to force horizontal scrolling on small screens
-                    className={`relative grow shrink-0 min-w-[130px] px-4 py-4 text-center whitespace-nowrap transition-colors duration-150 border-r border-[#dce6ef] last:border-r-0 ${
-                      activeTab === index
-                        ? "bg-[#2f6f73] text-white"
-                        : "bg-[#f5f8fb] text-[#63798d] hover:bg-[#eef3f8] hover:text-[#173652]"
-                    }`}
-                  >
-                    <h3
-                      className={`text-[16px] font-bold lg:text-[18px] transition-colors ${
-                        activeTab === index
-                          ? "text-white"
-                          : "text-[#63798d] group-hover:text-[#173652]"
-                      }`}
-                    >
-                      {card.title}
-                    </h3>
-                    {/* Active indicator bar */}
-                    {activeTab === index && (
-                      <span className="absolute bottom-0 left-0 h-[2.5px] w-full bg-white/20" />
-                    )}
-                  </button>
-                ))}
-              </div>
-
-              {/* Tab Content */}
-              <div className="p-6 ">
-                <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[1.2fr_1fr]">
-                  {/* Left: Text content */}
-                  <div>
-                    <h3 className="">{activeCard.title}</h3>
-                    <p className="mt-3">{activeCard.pain}</p>
-                    <p className="mt-3">{activeCard.summary}</p>
-                    <p className="mt-3">{activeCard.details}</p>
-                  </div>
-
-                  {/* Right: Capabilities */}
-                  <div className="site-card-muted rounded-[22px] p-5">
-                    <p className="site-kicker">Capabilities</p>
-                    <ul className="mt-3 space-y-2 text-[14px] text-[#486173]">
-                      {activeCard.bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-2">
-                          <span className="mt-[7px] h-1.5 w-1.5 rounded-full bg-[#2f8b92] flex-shrink-0" />
-                          <span>{bullet}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </section>
+      <BusinessUseCase />
 
       <section className="site-section-alt">
         <ScrollReveal className="site-container">
@@ -328,7 +195,9 @@ export default function ServiceWolvioPage() {
       <section className="site-section-alt">
         <ScrollReveal className="site-container">
           <p className="site-kicker text-center">FAQ</p>
-          <h2 className="mt-4 text-center">Questions we hear before every engagement</h2>
+          <h2 className="mt-4 text-center">
+            Questions we hear before every engagement
+          </h2>
           <p className="site-body mt-4 text-center">
             These are the real concerns that usually stop buyers from reaching
             out. We answer them directly.
@@ -351,14 +220,14 @@ export default function ServiceWolvioPage() {
               </h2>
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center gap-3 rounded-full bg-[#3a8f90] px-10 py-4 text-[16px] font-semibold text-white transition hover:bg-[#347f80]"
                 >
                   Schedule a Demo
                   <ArrowRightIcon />
                 </Link>
                 <Link
-                  href="/#contact"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-full border border-white/30 px-10 py-4 text-[16px] font-semibold text-white transition hover:bg-white/10"
                 >
                   Talk to the Team

@@ -216,7 +216,6 @@ useEffect(() => {
     >
       <div className="mx-auto max-w-[1300px] ">
         <div className="grid items-start gap-12 lg:grid-cols-[500px_1fr] lg:gap-[80px]">
-
           {/* ── LEFT: STICKY HEADER ── */}
           <div className="fade-up lg:sticky lg:top-12">
             <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73]">
@@ -224,7 +223,8 @@ useEffect(() => {
             </div>
 
             <h2 className="mb-6 text-[34px] font-bold leading-[1.1] tracking-[-0.5px] text-[#071e3d] lg:text-[40px]">
-              Built on Specialist Depth.<br/> No Compromises in{" "} <br/>
+              Built on Specialist Depth.
+              <br /> No Compromises in <br />
               <em className="text-[#2f6f73] not-italic lg:italic">
                 Regulated Environments.
               </em>
@@ -240,8 +240,8 @@ useEffect(() => {
             </p>
 
             <a
-              href="#"
-              className="group inline-flex items-center gap-2 rounded-[28px] bg-[#071e3d] px-6 py-3 text-[13.5px] font-semibold text-white transition-all duration-300 hover:gap-[13px] hover:bg-[#2f6f73]"
+              href="/why-wolvio"
+              className="site-btn-primary whitespace-nowrap"
             >
               Learn more about our approach <ArrowRightIcon />
             </a>

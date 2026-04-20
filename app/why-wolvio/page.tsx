@@ -58,9 +58,8 @@ function ArrowRightIcon() {
 }
 
 export const metadata: Metadata = {
-  title: "Why Wolvio | Wolvio",
-  description:
-    "Understand what sets Wolvio apart across Veeva consulting and AI automation services in regulated and operationally complex environments.",
+  title: "Why Choose Wolvio | Veeva & AI Automation Experts",
+  description:"Discover what sets Wolvio apart — senior consultants who deliver, standards built in from day one, and deep expertise across Veeva consulting and AI automation."
 };
 
 const services = [

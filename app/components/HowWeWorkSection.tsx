@@ -28,7 +28,6 @@ export interface TabItem {
   desc: string;
 }
 
-// 2. Define all the props the component can accept
 interface VerticalTabsSectionProps {
   kicker: string; 
   title: string;

@@ -116,7 +116,7 @@ let buttons = [
 export default function Home() {
 
   const defaultStats = [
-    { value: "", label: "Certified Consultants Pool" },
+    { value: "", label: "Veeva Certified Consultants pool" },
     { value: "10+", label: "Specialist Delivery Partnerships" },
     { value: "25+", label: "Veeva Vault Engagements" },
     { value: "50+", label: "Years of Combined Life Sciences Expertise" },
@@ -130,7 +130,7 @@ export default function Home() {
       id="home"
       className="polish-layout min-h-screen overflow-x-hidden bg-[#f8fafc] text-[#0f172a]"
     >
-      <section className="hero-grid relative flex flex-col min-h-[90vh] pt-10 items-center justify-center overflow-hidden ">
+      <section className="hero-grid relative flex flex-col min-h-[90vh] pt-3 md:pt-10 items-center justify-center overflow-hidden ">
         {/* home content */}
         <ScrollReveal className="site-container flex flex-col items-center justify-center text-center lg:mb-24">
           <h4 className="site-kicker"></h4>
@@ -360,6 +360,7 @@ export default function Home() {
           </ScrollFadeGrid>
         </ScrollReveal>
       </section>
+      
       <section id="contact" className="tone-lock site-section">
         <ScrollReveal className="site-container">
           <div className="relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14">

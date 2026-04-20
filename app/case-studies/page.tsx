@@ -3,9 +3,9 @@ import { Suspense } from "react";
 import CaseStudiesClient from "./case-studies-client";
 
 export const metadata: Metadata = {
-  title: "Case Studies | Wolvio",
+  title: "Veeva Consulting Case Studies & Results | Wolvio",
   description:
-    "Explore how we've helped clients navigate complexity, reduce risk, and achieve compliant, dependable outcomes across their Veeva Vault environments.",
+    "Explore Wolvio's Veeva consulting case studies across pharma, biotech, and regulated industries. Real outcomes, delivered by specialist consultants.",
 };
 
 function CaseStudiesFallback() {
