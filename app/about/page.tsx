@@ -23,16 +23,16 @@ const practices: PracticeCard[] = [
   {
     title: "Wolvio Life Sciences",
     description:
-      "Our core practice. Specialist Veeva consulting and managed services for pharma, biotech, and med tech organisations operating in regulated environments. Every engagement is led by expert consultants with deep GxP expertise and hands-on Vault experience.",
-    ctaLabel: "Explore",
+      "Our core practice. Specialist Veeva consulting and managed services for pharma, biotech, and medtech organisations operating in regulated environments. Every engagement is led by expert consultants with deep GxP expertise and hands-on Vault experience.",
+    ctaLabel: "Explore Veeva Services",
     ctaHref: "/service-veeva",
     accent: "bg-[#0b3a63]",
   },
   {
     title: "Wolvio Intelligence",
     description:
-      "Our AI and automation practice. Cross-industry intelligent automation solutions, from private knowledge assistants and document intelligence to workflow automation and voice AI agents. Built for businesses that want to move faster without adding headcount.",
-    ctaLabel: "Explore",
+      "Our AI and automation practice. Cross-industry intelligent automation solutions, from private knowledge assistants and document intelligence to workflow automation and voice AI agents. Built for businesses that want to move and ready to solve problems with AI.",
+    ctaLabel: "Explore AI Services",
     ctaHref: "/service-wolvio",
     accent: "bg-[#2f8b92]",
   },
@@ -88,7 +88,7 @@ function ArrowRightIcon() {
 }
 
 export const metadata: Metadata = {
-  title: "About | Wolvio",
+  title: "About Wolvio | Veeva Consulting & AI Automation Specialists",
   description:
     "Learn about Wolvio, our two focused practices, mission, vision, specialist operating model, and leadership.",
 };
@@ -102,7 +102,7 @@ export default function AboutPage() {
           <p className="site-kicker">About Wolvio</p>
           <h1 className="mt-4 max-w-[960px]">People <AnimatedUnderline>Behind</AnimatedUnderline> the Platform.</h1>
           <p className="site-subheading mt-5 max-w-[1040px]">
-            A specialist technology firm with two focused practices: Veeva
+            A specialist technology firm with two focused practices - Veeva
             consulting for life sciences, and AI and automation for businesses
             that need to move faster.
           </p>
@@ -318,7 +318,7 @@ export default function AboutPage() {
         </ScrollReveal>
       </section>
 
-      <section className="site-section">
+      {/* <section className="site-section">
         <ScrollReveal className="site-container">
           <p className="site-kicker">Leadership</p>
           <h2 className="mt-4 max-w-[700px]">The team behind Wolvio</h2>
@@ -328,7 +328,7 @@ export default function AboutPage() {
           </p>
           <LeadershipSection />
         </ScrollReveal>
-      </section>
+      </section> */}
 
       <section className="tone-lock site-section">
         <ScrollReveal className="site-container">

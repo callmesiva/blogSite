@@ -135,8 +135,8 @@ export default function Home() {
         <ScrollReveal className="site-container flex flex-col items-center justify-center text-center lg:mb-24">
           <h4 className="site-kicker"></h4>
 
-          <h1 className="max-w-[700px] lg:max-w-[600px]">
-            Specialist Veeva Consulting & Managed Services for
+          <h1 className="">
+            Specialist Veeva Consulting <br /> & Managed Services for
             <br />
             <span className="text-[#2f6f73]">Life Sciences</span>
           </h1>
