@@ -149,7 +149,7 @@ export default function CaseStudyCarousel() {
   if (loading) {
     return (
       <section className="py-16">
-        <div className="mx-auto max-w-[960px] px-6 lg:px-8">
+        <div className="mx-auto max-w-[960px] px-3 lg:px-8">
            <div className="flex h-[320px] items-center justify-center rounded-[24px] bg-white shadow-[0_12px_32px_rgba(7,30,61,0.06)]">
              <p className="text-[#64748b]">Loading case studies...</p>
            </div>
@@ -161,8 +161,8 @@ export default function CaseStudyCarousel() {
   if (!cs || caseCards.length === 0) return null;
 
   return (
-    <section className="py-16">
-      <div className="mx-auto max-w-[960px] px-6 lg:px-8">
+    <section className="pt-16">
+      <div className="mx-auto max-w-[960px] px-3 lg:px-8">
         {/* Local Keyframes for unified animations */}
         <style
           dangerouslySetInnerHTML={{

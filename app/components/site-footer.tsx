@@ -131,9 +131,9 @@ export default function SiteFooter() {
                   >
                     <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
                     Wolvio Intelligence
-                    <span className="ml-2 inline-block rounded-[5px] border border-[rgba(93,202,165,0.2)] bg-[rgba(93,202,165,0.1)] px-[7px] py-[1px] text-[9.5px] font-bold tracking-[0.5px] text-[#5DCAA5]">
+                    {/* <span className="ml-2 inline-block rounded-[5px] border border-[rgba(93,202,165,0.2)] bg-[rgba(93,202,165,0.1)] px-[7px] py-[1px] text-[9.5px] font-bold tracking-[0.5px] text-[#5DCAA5]">
                       New
-                    </span>
+                    </span> */}
                   </Link>
                 </li>
               </ul>

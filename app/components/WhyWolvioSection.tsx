@@ -2,8 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 
-
-
 function ArrowRightIcon() {
   return (
     <svg
@@ -216,17 +214,17 @@ useEffect(() => {
       id="why-wolvio"
       className="bg-[#f2f8f5] py-[56px] px-6 lg:py-[100px] lg:px-[72px] min-h-[60vh]"
     >
-      <div className="mx-auto max-w-[1300px]">
-        <div className="grid items-start gap-12 lg:grid-cols-[380px_1fr] lg:gap-[80px]">
+      <div className="mx-auto max-w-[1300px] ">
+        <div className="grid items-start gap-12 lg:grid-cols-[500px_1fr] lg:gap-[80px]">
+
           {/* ── LEFT: STICKY HEADER ── */}
-          
           <div className="fade-up lg:sticky lg:top-12">
             <div className="mb-5 inline-flex items-center gap-2.5 text-[11px] font-semibold uppercase tracking-[2.2px] text-[#2f6f73]">
               <p className="site-kicker text-center"> why Wolvio </p>
             </div>
 
-            <h2 className="mb-6 text-[34px] font-bold leading-[1.1] tracking-[-0.5px] text-[#071e3d] lg:text-[42px]">
-              Built on Specialist Depth. No Compromises in{" "}
+            <h2 className="mb-6 text-[34px] font-bold leading-[1.1] tracking-[-0.5px] text-[#071e3d] lg:text-[40px]">
+              Built on Specialist Depth.<br/> No Compromises in{" "} <br/>
               <em className="text-[#2f6f73] not-italic lg:italic">
                 Regulated Environments.
               </em>
@@ -253,7 +251,7 @@ useEffect(() => {
           {/* THE FIX: Added max-h, overflow-y-auto, overscroll-y-auto, and hid scrollbar UI */}
           <div
             ref={listRef}
-            className="flex flex-col lg:max-h-[60vh] lg:overflow-y-auto lg:overscroll-y-auto lg:pr-6 pl-8 -ml-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            className="flex flex-col lg:max-h-[500px] lg:overflow-y-auto lg:overscroll-y-auto lg:pr-6 pl-8 -ml-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
           >
             {whyPillars.map((pillar, index) => {
               const isHovered = hoveredIndex === index;
@@ -287,33 +285,6 @@ useEffect(() => {
                     <p className="max-w-[540px] text-[14.5px] font-light leading-[1.78] text-[#4a6070]">
                       {pillar.desc}
                     </p>
-
-                    {/* Expandable Detail Box */}
-                    <div
-                      className={`overflow-hidden transition-all duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] ${
-                        isHovered
-                          ? "max-h-[120px] opacity-100"
-                          : "max-h-0 opacity-0"
-                      }`}
-                    >
-                      {/* <div className="mt-[14px] flex flex-wrap gap-[6px]">
-                        {pillar.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-[6px] bg-[#e0f5ed] px-2.5 py-1 text-[11px] font-semibold text-[#2f6f73]"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div> */}
-                    </div>
-
-                    <a
-                      href={pillar.link}
-                      className="mt-[14px] inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-[#8aa4b8] transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#2f6f73]"
-                    >
-                      How we work <ArrowRightIcon />
-                    </a>
                   </div>
                 </div>
               );
