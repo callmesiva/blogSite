@@ -148,14 +148,14 @@ export default function Home() {
             <span className="text-[#2f6f73]">Life Sciences</span>
           </h1>
 
-          <p className="site-subheading mt-5 max-w-[700px]">
+          <p className="site-subheading mt-3 md:mt-5 max-w-[700px]">
             Expert-led Veeva consulting for pharma, biotech and medtech -
             spanning Vault assessment, implementation, migration, integration,
             validation, and post-go-live managed services. Built for
             organisations that can't afford to get compliance wrong
           </p>
 
-          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+          <div className="mt-4 md:mt-8 flex flex-col justify-center gap-4 sm:flex-row">
             {buttons.map((btn, i) => (
               <Link
                 key={i}
