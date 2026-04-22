@@ -68,7 +68,8 @@ const insightCards = [
       "Change control is a foundational process in Vault Quality that ensures modifications -whether to documents, procedures, systems, or products &#8211; are introduced in a controlled,...",
     minutes: "6 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
-    image : "/InsightImages/insight1.jpeg"
+    image: "/InsightImages/insight1.jpeg",
+    link: "/insights/intelligent-change-control-workflow-design-in-vault-quality-moving-beyond-basic-automation",
   },
   {
     tag: "Veeva Vault AI Agents",
@@ -77,7 +78,8 @@ const insightCards = [
       "The Completeness Mindset: Where It All Began For years, the primary benchmark for a healthy Trial Master File was straightforward: Is everything there? Regulators asked for it. Ins...",
     minutes: "7 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
-    image : "/InsightImages/insight2.jpeg"
+    image: "/InsightImages/insight2.jpeg",
+    link: "/insights/from-etmf-completeness-to-etmf-quality-excellence",
   },
   {
     tag: "Veeva Vault AI Integration",
@@ -86,7 +88,8 @@ const insightCards = [
       "A powerful new step in making Vault documents smarter, more connected, and more business-driven When people first look at Doctype Triggers in Veeva Vault 26R1, it may seem like jus...",
     minutes: "7 min read",
     bg: "bg-[#0c2a4a] bg-gradient-to-br from-white/5 to-transparent hover:from-white/10",
-    image : "/InsightImages/insight3.jpeg"
+    image: "/InsightImages/insight3.jpeg",
+    link: "/insights/veeva-vault-26r1-why-doctype-triggers-could-be-a-game-changer-for-document-centric-processes-4",
   },
 ];
 
@@ -363,7 +366,7 @@ export default function Home() {
                       </div>
 
                       <Link
-                        href="/insights"
+                        href={card.link}
                         className="inline-flex items-center gap-[5px] text-[12.5px] font-semibold text-[#0a2540] transition-all duration-200 group-hover:gap-[9px] group-hover:text-[#2f6f73]"
                       >
                         Read insight
