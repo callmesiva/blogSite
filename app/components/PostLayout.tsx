@@ -72,16 +72,7 @@ export default function PostLayout({
 
           {/* Main Content Body */}
           <div
-            className="mx-auto w-full max-w-[1000px] text-[17px] leading-[1.8] text-[#475569] break-words 
-                       [&_img]:max-w-full [&_img]:h-auto [&_img]:rounded-lg [&_img]:my-6
-                       [&_iframe]:max-w-full [&_iframe]:rounded-lg
-                       [&_pre]:max-w-full [&_pre]:overflow-x-auto
-                       [&_table]:block [&_table]:overflow-x-auto [&_table]:max-w-full
-                       [&>h2]:mb-4 [&>h2]:mt-10 [&>h2]:text-[24px] [&>h2]:font-bold [&>h2]:text-[#0a2540] 
-                       [&>h3]:mb-3 [&>h3]:mt-8 [&>h3]:text-[20px] [&>h3]:font-bold [&>h3]:text-[#0a2540]
-                       [&>p]:mb-6 
-                       [&>ul]:mb-6 [&>ul]:list-disc [&>ul]:pl-6
-                       [&>ol]:mb-6 [&>ol]:list-decimal [&>ol]:pl-6"
+            className="wp-content mx-auto w-full max-w-[1000px] text-[17px] leading-[1.8] text-[#475569] break-words"
             dangerouslySetInnerHTML={{ __html: data.content }}
           />
 
