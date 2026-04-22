@@ -4,6 +4,7 @@ import TypewriterBox from "../components/TypewriterBox";
 import AnimatedUnderline from "../components/AnimatedUnderline";
 import { Metadata } from "next";
 import HorizontalTab from "../components/Industry/HorizontalTab";
+import CaseStudyCarousel from "../components/CaseStudyCarousel";
 
 const caseStudies = [
   {
@@ -125,76 +126,14 @@ export default function IndustriesClient() {
 
       <HorizontalTab />
 
-      <section className="site-section-alt">
+      <section id="case-studies" className="site-section-alt">
         <ScrollReveal className="site-container">
-          <p className="site-kicker">Relevant Case Studies</p>
-          <h2 className="mt-4">Real results across regulated industries</h2>
-
-          <div className="mt-7 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {caseStudies.map((cs) => (
-              <article
-                key={cs.title}
-                className="site-card overflow-hidden bg-white flex flex-col"
-              >
-                {/* Image area */}
-                <div
-                  className="relative h-[160px] w-full overflow-hidden flex-shrink-0"
-                  style={{ background: cs.imgBg }}
-                >
-                  {/*<img
-              src={cs.image}
-              alt={cs.title}
-              className="h-full w-full object-cover"
-            /> */}
-                  {/* Tag badge */}
-                  <span
-                    className="absolute left-3 top-3 rounded-[6px] px-[10px] py-1 text-[11px] font-medium tracking-wide"
-                    style={{ background: cs.tagColor, color: "#e6f1fb" }}
-                  >
-                    {cs.tag}
-                  </span>
-                </div>
-
-                {/* Body */}
-                <div className="flex flex-1 flex-col p-5">
-                  <p className="text-[12px] font-medium uppercase tracking-[0.05em] text-[#2f7f88]">
-                    {cs.company}
-                  </p>
-                  <h3 className="mt-1.5 text-[16px] font-semibold leading-[1.35] text-[#173652]">
-                    {cs.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-[14px] leading-[1.65] text-[#63798d]">
-                    {cs.description}
-                  </p>
-
-                  {/* Stats */}
-                  <div className="mt-4 grid grid-cols-2 gap-2">
-                    {cs.stats.map((stat) => (
-                      <div
-                        key={stat.label}
-                        className="rounded-[10px] bg-[#f5f8fb] px-3 py-2.5"
-                      >
-                        <p className="text-[20px] font-bold leading-none text-[#0b3a63]">
-                          {stat.value}
-                        </p>
-                        <p className="mt-1 text-[11px] leading-[1.4] text-[#63798d]">
-                          {stat.label}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          <Link
-            href="/case-studies"
-            className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold text-[#2f7f88]"
-          >
-            Explore case studies
-            <ArrowRightIcon />
-          </Link>
+          <p className="site-kicker text-center">Relevant Case Studies</p>
+          <h2 className="mt-3 text-center">
+            Real results across regulated industrie
+          </h2>
+      
+          <CaseStudyCarousel />
         </ScrollReveal>
       </section>
 
