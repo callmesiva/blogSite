@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const WORDPRESS_BASE_URL =
-  "https://public-api.wordpress.com/wp/v2/sites/contactab062e1ea9-lcymt.wordpress.com";
+  "https://wolviosolution.wpcomstaging.com/wp-json/wp/v2";
 
 const TYPE_SLUGS = ["white-space", "blog", "uncategorized"] as const;
 
@@ -9,6 +9,7 @@ type SupportedType = (typeof TYPE_SLUGS)[number] | "all";
 
 type WordPressPost = {
   id: number;
+  slug: string;
   link: string;
   date: string;
   title?: { rendered?: string };
@@ -69,7 +70,10 @@ export async function GET(request: Request) {
 
     const wpParams = new URLSearchParams();
     wpParams.set("page", String(Number.isFinite(page) && page > 0 ? page : 1));
-    wpParams.set("per_page", String(Number.isFinite(perPage) && perPage > 0 ? perPage : 9));
+    wpParams.set(
+      "per_page",
+      String(Number.isFinite(perPage) && perPage > 0 ? perPage : 9),
+    );
     wpParams.set("_embed", "1");
     wpParams.set("orderby", "date");
     wpParams.set("order", "desc");
@@ -98,9 +102,12 @@ export async function GET(request: Request) {
       }
     }
 
-    const response = await fetch(`${WORDPRESS_BASE_URL}/posts?${wpParams.toString()}`, {
-      next: { revalidate: 120 },
-    });
+    const response = await fetch(
+      `${WORDPRESS_BASE_URL}/posts?${wpParams.toString()}`,
+      {
+        next: { revalidate: 120 },
+      },
+    );
 
     if (!response.ok) {
       return NextResponse.json(
@@ -118,8 +125,9 @@ export async function GET(request: Request) {
       page: currentPage,
       totalPages,
       hasMore: currentPage < totalPages,
-      posts: posts.map(post => ({
+      posts: posts.map((post) => ({
         id: post.id,
+        slug: post.slug,
         link: post.link,
         date: post.date,
         title: post.title?.rendered ?? "",

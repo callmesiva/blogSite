@@ -40,6 +40,7 @@ type InsightPost = {
   excerpt: string;
   image: string | null;
   type: string;
+  slug: string;
 };
 
 type PostsResponse = {
@@ -256,7 +257,7 @@ export default function CaseStudiesClient() {
       </section>
 
       <section className="site-section-alt">
-        <ScrollReveal className="site-container">
+        <div className="site-container">
           <p className="site-kicker">Relevant Case Studies</p>
           <h2 className="mt-4">Real results across regulated industries</h2>
 
@@ -336,7 +337,7 @@ export default function CaseStudiesClient() {
 
                       <div className="mt-6 flex items-center pt-2 border-t border-[#f0f4f8]">
                         <Link
-                          href={`/case-studies?postId=${post.id}`}
+                          href={`/case-studies/${post.slug}`}
                           className="inline-flex items-center gap-2 text-[14px] font-medium text-[#0a2540] transition hover:text-[#2f6f73]"
                         >
                           Read full case study
@@ -358,7 +359,7 @@ export default function CaseStudiesClient() {
               <p className="text-[14px] text-[#617387]">Loading more...</p>
             ) : null}
           </div>
-        </ScrollReveal>
+        </div>
       </section>
 
       <section className="tone-lock site-section">

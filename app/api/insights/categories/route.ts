@@ -1,8 +1,7 @@
-// Add a new GET endpoint: /api/insights/categories/route.ts
 import { NextResponse } from "next/server"
 
 const WORDPRESS_BASE_URL =
-  "https://public-api.wordpress.com/wp/v2/sites/contactab062e1ea9-lcymt.wordpress.com"
+  "https://wolviosolution.wpcomstaging.com/wp-json/wp/v2";
 
 export async function GET() {
   const response = await fetch(

@@ -97,7 +97,7 @@ export default function CaseStudyCarousel() {
                 description: stripHtml(post.excerpt || post.content || ""),
                 stats: [],
                 image: post.image || "",
-                link: `/case-studies?postId=${post.id}`,
+                link: `/case-studies/${post.slug}`,
              };
           });
           setCaseCards(fetchedCards);

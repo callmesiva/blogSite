@@ -1,15 +1,16 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**.files.wordpress.com",
+        hostname: "wolviosolution.wpcomstaging.com",
+        pathname: "**",
       },
       {
         protocol: "https",
-        hostname: "**.wordpress.com",
+        hostname: "wolviosolutions.com",
+        pathname: "**",
       },
     ],
   },
