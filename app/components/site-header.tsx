@@ -25,7 +25,7 @@ const navItems: NavItem[] = [
       },
       {
         label: "Wolvio Intelligence",
-        href: "/service-wolvio",
+        href: "https://intelligence.wolviosolutions.com",
         note: "Strategy",
       },
     ],
@@ -172,7 +172,15 @@ export default function SiteHeader() {
                           <Link
                             key={child.label}
                             href={child.href}
-                            className={`group/item flex items-center justify-between rounded-[28px] px-2 py-2 transition hover:bg-[#eef3f7]`}
+                            target={
+                              child.href.startsWith("http") ? "_blank" : "_self"
+                            }
+                            rel={
+                              child.href.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
+                            className="group/item flex items-center justify-between rounded-[28px] px-2 py-2 transition hover:bg-[#eef3f7]"
                           >
                             <div className="flex items-center gap-4">
                               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#dde6ed] text-[#2f6f73]">

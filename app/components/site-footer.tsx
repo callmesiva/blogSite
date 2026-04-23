@@ -74,7 +74,9 @@ export default function SiteFooter() {
 
             <div className="flex gap-2.5">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/wolvio-solutions/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex h-9 w-9 items-center justify-center rounded-[9px] border border-white/10 bg-white/5 transition-all duration-250 hover:-translate-y-1 hover:border-[#1D9E75] hover:bg-[#1D9E75]"
                 aria-label="LinkedIn"
               >
@@ -87,7 +89,9 @@ export default function SiteFooter() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://x.com/wolviosolutions"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex h-9 w-9 items-center justify-center rounded-[9px] border border-white/10 bg-white/5 transition-all duration-250 hover:-translate-y-1 hover:border-[#1D9E75] hover:bg-[#1D9E75]"
                 aria-label="X (Twitter)"
               >
@@ -126,7 +130,9 @@ export default function SiteFooter() {
                 ))}
                 <li>
                   <Link
-                    href="/service-wolvio"
+                    href="https://intelligence.wolviosolutions.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group relative block py-[7px] text-[13.5px] font-light text-white/50 transition-all duration-200 hover:pl-3 hover:text-white"
                   >
                     <span className="absolute left-[-12px] top-1/2 h-1 w-1 -translate-y-1/2 rounded-full bg-[#5DCAA5] opacity-0 transition-opacity duration-200 group-hover:opacity-100"></span>
