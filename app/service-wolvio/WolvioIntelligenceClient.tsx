@@ -2,6 +2,8 @@
 
 import "./wolvio-intelligence.css";
 
+import AnimatedUnderline from "../components/AnimatedUnderline";
+
 import Link from "next/link";
 import {
   useEffect,
@@ -94,6 +96,12 @@ const WORKSHOP = [
   { k: "SHAPE", t: "A practical AI roadmap" },
 ];
 
+const buttons = [
+  { label: "Start Your AI Transformation", href: "/contact-us", variant: "primary" },
+  { label: "Explore Our Capabilities", href: "#capabilities", variant: "outline" },
+];
+
+
 /* ------------------------------------------------------------------ */
 /*  Animation helpers                                                  */
 /* ------------------------------------------------------------------ */
@@ -130,6 +138,8 @@ function SplitText({
   id,
   delay = 0,
   onMount = false,
+  mark,
+  renderMark,
 }: {
   lines: string[];
   as?: "h1" | "h2";
@@ -137,6 +147,9 @@ function SplitText({
   id?: string;
   delay?: number;
   onMount?: boolean;
+  /** Phrase inside `lines` to wrap with `renderMark` (e.g. an underline component). */
+  mark?: string;
+  renderMark?: (children: ReactNode) => ReactNode;
 }) {
   const wordV: Variants = {
     hidden: { y: "115%", rotate: 5 },
@@ -149,19 +162,40 @@ function SplitText({
     initial: "hidden",
     ...(onMount ? { animate: "show" } : { whileInView: "show", viewport: VIEW }),
   };
-  const body = lines.map((line, li) => (
-    <span key={li} style={{ display: "block" }}>
-      {line.split(" ").map((w, wi) => (
-        <span key={wi}>
-          <span className="wi-word">
-            <motion.span variants={wordV} className="wi-word-in">
-              {w}
-            </motion.span>
-          </span>{" "}
-        </span>
-      ))}
+  const renderWord = (w: string, key: string, space = true) => (
+    <span key={key}>
+      <span className="wi-word">
+        <motion.span variants={wordV} className="wi-word-in">
+          {w}
+        </motion.span>
+      </span>
+      {space ? " " : null}
     </span>
-  ));
+  );
+  const markWords = mark ? mark.split(" ") : [];
+  const strip = (w: string) => w.replace(/[.,;:!?]+$/, "");
+  const body = lines.map((line, li) => {
+    const words = line.split(" ");
+    const at = markWords.length ? words.findIndex((_, i) => markWords.every((m, k) => strip(words[i + k] ?? "") === m)) : -1;
+    const out: ReactNode[] = [];
+    for (let i = 0; i < words.length; i++) {
+      if (i === at) {
+        const last = words[i + markWords.length - 1];
+        const tail = last.slice(strip(last).length); // trailing punctuation stays outside the mark
+        const inner = markWords.map((w, k) => renderWord(w, `${i}-${k}`, k < markWords.length - 1));
+        out.push(<span key={`mark-${i}`}>{renderMark ? renderMark(inner) : inner}</span>);
+        out.push(tail ? renderWord(tail, `tail-${i}`) : " ");
+        i += markWords.length - 1;
+      } else {
+        out.push(renderWord(words[i], String(i)));
+      }
+    }
+    return (
+      <span key={li} style={{ display: "block" }}>
+        {out}
+      </span>
+    );
+  });
   return as === "h1" ? <motion.h1 {...props}>{body}</motion.h1> : <motion.h2 {...props}>{body}</motion.h2>;
 }
 
@@ -219,26 +253,6 @@ function Tilt({
   );
 }
 
-function CtaLink({ href, children, variant = "primary" }: { href: string; children: ReactNode; variant?: "primary" | "ghost" }) {
-  return (
-    <Magnetic>
-      <Link href={href} className={`wi-btn wi-btn-${variant}`}>
-        <span>{children}</span>
-        {variant === "primary" && <span className="wi-arrow" aria-hidden="true">→</span>}
-      </Link>
-    </Magnetic>
-  );
-}
-
-function TextLink({ href, children, dark = false }: { href: string; children: ReactNode; dark?: boolean }) {
-  return (
-    <Link href={href} className={`wi-tlink ${dark ? "is-dark" : ""}`}>
-      {children}
-      <span className="wi-arrow" aria-hidden="true">→</span>
-    </Link>
-  );
-}
-
 /* ------------------------------------------------------------------ */
 /*  Interactive hero network (canvas)                                  */
 /* ------------------------------------------------------------------ */
@@ -272,7 +286,7 @@ function NetworkCanvas() {
           const b = nodes[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < LINK) {
-            ctx.strokeStyle = `rgba(53,208,194,${(1 - d / LINK) * 0.28})`;
+            ctx.strokeStyle = `rgba(47,139,146,${(1 - d / LINK) * 0.3})`;
             ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -282,7 +296,7 @@ function NetworkCanvas() {
         }
         const dm = Math.hypot(a.x - mouse.x, a.y - mouse.y);
         if (dm < 210) {
-          ctx.strokeStyle = `rgba(95,224,212,${(1 - dm / 210) * 0.75})`;
+          ctx.strokeStyle = `rgba(22,63,125,${(1 - dm / 210) * 0.55})`;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(mouse.x, mouse.y);
@@ -291,18 +305,18 @@ function NetworkCanvas() {
       }
       for (const n of nodes) {
         if (n.hub) {
-          ctx.fillStyle = "rgba(53,208,194,0.12)";
+          ctx.fillStyle = "rgba(47,139,146,0.14)";
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.r * 4.2, 0, Math.PI * 2);
           ctx.fill();
         }
-        ctx.fillStyle = n.hub ? "#5FE0D4" : "rgba(159,180,200,0.75)";
+        ctx.fillStyle = n.hub ? "#2f8b92" : "rgba(23,54,82,0.38)";
         ctx.beginPath();
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
         ctx.fill();
       }
       for (const r of rings) {
-        ctx.strokeStyle = `rgba(53,208,194,${r.a})`;
+        ctx.strokeStyle = `rgba(47,139,146,${r.a})`;
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
@@ -409,6 +423,65 @@ function NetworkCanvas() {
   return <canvas ref={ref} className="wi-canvas" aria-hidden="true" />;
 }
 
+function ArrowRightIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14" />
+      <path d="m13 5 7 7-7 7" />
+    </svg>
+  );
+}
+
+type Variant = "primary" | "outline" | "solid" | "ghostDark";
+const BTN: Record<Variant, string> = {
+  primary: "site-btn-primary wi-pulse inline-flex items-center justify-center gap-3 whitespace-nowrap",
+  outline: "inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-[#c7d7df] bg-white px-6 py-3 text-[15px] font-semibold text-[#2f6f73] transition hover:bg-[#f4f9fa]",
+  solid: "wi-pulse inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full bg-[#3a8f90] px-10 py-4 text-[16px] font-semibold text-white transition hover:bg-[#347f80]",
+  ghostDark: "inline-flex items-center justify-center whitespace-nowrap rounded-full border border-white/30 px-10 py-4 text-[16px] font-semibold text-white transition hover:bg-white/10",
+};
+
+function CtaLink({ href, children, variant = "primary" }: { href: string; children: ReactNode; variant?: Variant }) {
+  return (
+    <Magnetic>
+      <Link href={href} className={`wi-btn ${BTN[variant]}`}>
+        {children}
+        {variant !== "ghostDark" && <span className="wi-arrow"><ArrowRightIcon /></span>}
+      </Link>
+    </Magnetic>
+  );
+}
+
+function TextLink({ href, children, dark = false }: { href: string; children: ReactNode; dark?: boolean }) {
+  return (
+    <Link href={href} className={`wi-tlink inline-flex items-center gap-2 text-[15.5px] font-semibold ${dark ? "is-dark text-[#7ec4c7]" : "text-[#2f6f73]"}`}>
+      {children}
+      <span className="wi-arrow"><ArrowRightIcon /></span>
+    </Link>
+  );
+}
+
+function Kicker({ children, dark = false, center = false }: { children: ReactNode; dark?: boolean; center?: boolean }) {
+  return (
+    <motion.p
+      className={`site-kicker ${dark ? "text-[#7ec4c7]" : ""} ${center ? "text-center" : ""}`}
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={VIEW}
+      transition={{ duration: 0.7, ease: EASE }}
+    >
+      {children}
+    </motion.p>
+  );
+}
+
+function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div className={className} initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEW} transition={{ duration: 0.8, delay, ease: EASE }}>
+      {children}
+    </motion.div>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Sections                                                           */
 /* ------------------------------------------------------------------ */
@@ -420,8 +493,8 @@ function Hero() {
   const [paused, setPaused] = useState(false);
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], [0, 140]);
-  const fade = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
+  const fade = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   useEffect(() => {
     if (paused || reduce) return;
@@ -436,35 +509,48 @@ function Hero() {
   };
 
   return (
-    <section ref={ref} className="wi-hero" aria-labelledby="hero-h" onMouseMove={spot}>
-      <NetworkCanvas />
+    <section ref={ref} className="hero-grid wi-hero relative overflow-hidden" aria-labelledby="hero-h" onMouseMove={spot}>
+      {/* <NetworkCanvas />
       <div className="wi-hero-glow" />
-      <div className="wi-hero-spot" />
-      <motion.div className="wi-wrap wi-hero-in" style={{ y, opacity: fade }}>
+      <div className="wi-hero-spot" /> */}
+      <motion.div className="wi-hero-in site-container relative z-[1] flex flex-col items-center pb-10 pt-12 text-center lg:pt-16" style={{ y, opacity: fade }}>
+        <Kicker>Wolvio Intelligence</Kicker>
+
+        <SplitText as="h1" id="hero-h" className="mt-4 font-bold text-[var(--primary)] leading-[1.12] tracking-[-0.03em] [font-size:clamp(2rem,3vw,3rem)]" lines={["From AI ambition", "to enterprise impact."]} mark="enterprise impact" renderMark={(c) => <AnimatedUnderline>{c}</AnimatedUnderline>} delay={0.3} onMount />
+
         <motion.p
-          className="wi-eyebrow"
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: EASE }}
+          className="site-subheading mt-5 max-w-[700px]"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 1.0, ease: EASE }}
         >
-          WOLVIO INTELLIGENCE
+          Wolvio Intelligence helps enterprises discover, build and scale AI — combining strategy, intelligent engineering, agentic automation and enterprise expertise to turn AI into measurable business value.
         </motion.p>
 
-        <SplitText as="h1" id="hero-h" className="wi-h1" lines={["From AI ambition", "to enterprise impact."]} delay={0.3} onMount />
+
 
         <motion.div
-          className="wi-split wi-hero-split"
-          initial={{ opacity: 0, y: 28 }}
+          className="mt-4 md:mt-8 flex flex-col justify-center gap-4 sm:flex-row"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.05, ease: EASE }}
+          transition={{ duration: 0.9, delay: 1.15, ease: EASE }}
         >
-          <p className="wi-lead is-dark">
-            Wolvio Intelligence helps enterprises discover, build and scale AI — combining strategy, intelligent engineering, agentic automation and enterprise expertise to turn AI into measurable business value.
-          </p>
-          <div className="wi-cta-row">
-            <CtaLink href="/contact-us">Start Your AI Transformation</CtaLink>
-            <CtaLink href="#capabilities" variant="ghost">Explore Our Capabilities</CtaLink>
-          </div>
+          {buttons.map((btn, i) => (
+            <Link
+              key={i}
+              href={btn.href}
+              className={
+                btn.variant === "primary"
+                  ? "site-btn-primary whitespace-nowrap"
+                  : btn.variant === "secondary"
+                    ? "site-btn-secondary whitespace-nowrap"
+                    : "inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-[#c7d7df] bg-white px-6 py-3 text-[15px] font-semibold text-[#2f6f73] transition hover:bg-[#f4f9fa]"
+              }
+            >
+              {btn.label}
+              <ArrowRightIcon />
+            </Link>
+          ))}
         </motion.div>
 
         <div className="wi-stages" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
@@ -478,16 +564,12 @@ function Hero() {
               onClick={() => setStage(i)}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 1.35 + i * 0.12, ease: EASE }}
+              transition={{ duration: 0.7, delay: 1.4 + i * 0.12, ease: EASE }}
             >
               <span className="wi-stage-bar">
-                <motion.i
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 1.6 + i * 0.35, ease: EASE }}
-                />
+                <motion.i initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ duration: 0.8, delay: 1.7 + i * 0.35, ease: EASE }} />
               </span>
-              <span className="wi-stage-k">{s.n} &nbsp; {s.k}</span>
+              <span className="wi-stage-k">{s.n} · {s.k}</span>
               <span className="wi-stage-t">{s.t}</span>
             </motion.button>
           ))}
@@ -507,19 +589,15 @@ function Hero() {
 
 function Value() {
   return (
-    <section className="wi-sec wi-bd" aria-labelledby="s2-h">
-      <div className="wi-wrap">
-        <div className="wi-split wi-split-end wi-mb-lg">
-          <div>
-            <motion.p className="wi-eyebrow is-teal" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEW} transition={{ duration: 0.7, ease: EASE }}>
-              02 / ENTERPRISE VALUE
-            </motion.p>
-            <SplitText id="s2-h" className="wi-h2" lines={["AI is easy to experiment with.", "Harder to make matter."]} />
-          </div>
-          <motion.p className="wi-lead" initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEW} transition={{ duration: 0.9, delay: 0.25, ease: EASE }}>
+    <section className="site-section" aria-labelledby="s2-h">
+      <div className="site-container">
+        <Kicker>Enterprise Value</Kicker>
+        <SplitText id="s2-h" className="mt-4 max-w-[880px]" lines={["AI is easy to experiment with.", "Harder to make matter."]} />
+        <Reveal delay={0.15}>
+          <p className="site-body mt-5 max-w-[980px]">
             Wolvio Intelligence bridges the gap between AI possibilities and enterprise value — connecting intelligence with your data, knowledge, systems and workflows.
-          </motion.p>
-        </div>
+          </p>
+        </Reveal>
 
         <div className="wi-ledhead wi-desktop-only" aria-hidden="true">
           <p>WHERE AI STALLS</p>
@@ -539,24 +617,16 @@ function Value() {
                 <p>{g.close}</p>
               </div>
               <div role="cell" className="wi-cell wi-cell-gain">
-                <span className="wi-gain-arrow" aria-hidden="true">→</span>
+                <span className="wi-gain-arrow"><ArrowRightIcon /></span>
                 <p>{g.gain}</p>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-        <Reveal className="wi-mt"><TextLink href="/contact-us">Discover Where AI Can Create Value</TextLink></Reveal>
+        <Reveal className="mt-8"><TextLink href="/contact-us">Discover Where AI Can Create Value</TextLink></Reveal>
       </div>
     </section>
-  );
-}
-
-function Reveal({ children, className, delay = 0 }: { children: ReactNode; className?: string; delay?: number }) {
-  return (
-    <motion.div className={className} initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={VIEW} transition={{ duration: 0.8, delay, ease: EASE }}>
-      {children}
-    </motion.div>
   );
 }
 
@@ -566,15 +636,16 @@ function Capabilities() {
   const { scrollYProgress } = useScroll({ target: railRef, offset: ["start 88%", "end 52%"] });
   const rail = useSpring(scrollYProgress, { stiffness: 90, damping: 22 });
   const head = useTransform(rail, (v) => `${v * 100}%`);
+  const accents = ["bg-[#163f7d]", "bg-[#2f8b92]", "bg-[#163f7d]", "bg-[#2f8b92]"];
 
   return (
-    <section id="capabilities" className="wi-sec wi-alt wi-bd" aria-labelledby="s3-h">
-      <div className="wi-wrap">
-        <motion.p className="wi-eyebrow is-teal" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEW} transition={{ duration: 0.7, ease: EASE }}>
-          03 / CORE CAPABILITIES
-        </motion.p>
-        <SplitText id="s3-h" className="wi-h2 wi-h2-wide" lines={["One intelligence partner.", "From strategy to scale."]} />
-        <Reveal className="wi-sub"><p className="wi-lead">A single connected lifecycle — each stage builds on the last, from where AI creates value to running it securely at enterprise scale.</p></Reveal>
+    <section id="capabilities" className="site-section-alt" aria-labelledby="s3-h">
+      <div className="site-container">
+        <Kicker>Core Capabilities</Kicker>
+        <SplitText id="s3-h" className="mt-4 max-w-[880px]" lines={["One intelligence partner.", "From strategy to scale."]} />
+        <Reveal delay={0.15}>
+          <p className="site-body mt-4 max-w-[980px]">A single connected lifecycle — each stage builds on the last, from where AI creates value to running it securely at enterprise scale.</p>
+        </Reveal>
 
         <div ref={railRef} className="wi-rail wi-desktop-only" aria-hidden="true">
           <motion.div className="wi-rail-fill" style={{ scaleX: rail }} />
@@ -584,14 +655,15 @@ function Capabilities() {
         <motion.div className="wi-cards" variants={stagger(0.15)} initial="hidden" whileInView="show" viewport={VIEW}>
           {SERVICES.map((s, i) => (
             <motion.div key={s.k} variants={{ hidden: { opacity: 0, y: 60, scale: 0.94 }, show: { opacity: 1, y: 0, scale: 1, transition: { type: "spring", stiffness: 90, damping: 16 } } }}>
-              <Tilt className={`wi-svc ${active === i ? "is-on" : ""}`} tabIndex={0} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)}>
+              <Tilt className={`wi-svc site-card relative overflow-hidden bg-white p-6 sm:p-7 ${active === i ? "is-on" : ""}`} tabIndex={0} onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)}>
+                <div className={`absolute left-0 top-0 h-[5px] w-full ${accents[i % 4]}`} />
                 <div className="wi-svc-top">
-                  <span className="wi-dot" />
-                  <span className="wi-svc-k">{s.k}</span>
+                  <p className="text-[42px] font-semibold leading-none text-[#dbe3e8]">{String(i + 1).padStart(2, "0")}</p>
+                  <span className="wi-svc-k"><span className="wi-dot" />{s.k}</span>
                 </div>
-                <h3>{s.title}</h3>
-                <p className="wi-svc-sub">{s.sub}</p>
-                <ul>
+                <h3 className="mt-3">{s.title}</h3>
+                <p className="mt-3">{s.sub}</p>
+                <ul className="wi-list">
                   {s.items.map((it, n) => (
                     <li key={it} style={{ "--i": n } as CSSProperties}>{it}</li>
                   ))}
@@ -602,7 +674,7 @@ function Capabilities() {
           ))}
         </motion.div>
 
-        <Reveal className="wi-mt"><TextLink href="/contact-us">Explore AI Capabilities</TextLink></Reveal>
+        <Reveal className="mt-8"><TextLink href="/contact-us">Explore AI Capabilities</TextLink></Reveal>
       </div>
     </section>
   );
@@ -632,14 +704,14 @@ function Flow() {
   };
 
   return (
-    <section className="wi-sec wi-navy" aria-labelledby="s4-h">
-      <div className="wi-gridbg" />
-      <div className="wi-wrap wi-rel">
-        <motion.p className="wi-eyebrow" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEW} transition={{ duration: 0.7, ease: EASE }}>
-          04 / INTELLIGENCE IN ACTION
-        </motion.p>
-        <SplitText id="s4-h" className="wi-h2 is-white" lines={["Intelligence that understands.", "Intelligence that acts."]} />
-        <Reveal className="wi-sub"><p className="wi-lead is-dark">Enterprise information enters, is understood in context, reasoned over, decided on — and becomes a controlled action in your systems.</p></Reveal>
+    <section className="tone-lock wi-dark relative w-full overflow-hidden bg-[#082b4a] py-14 sm:py-16 lg:py-20" aria-labelledby="s4-h">
+      <div className="wi-dots" />
+      <div className="site-container relative z-[1]">
+        <Kicker dark>Intelligence in Action</Kicker>
+        <SplitText id="s4-h" className="mt-4 max-w-[900px] text-white" lines={["Intelligence that understands.", "Intelligence that acts."]} />
+        <Reveal delay={0.15}>
+          <p className="mt-6 max-w-[900px] text-[17px] leading-[1.65] text-[#b6c9da]">Enterprise information enters, is understood in context, reasoned over, decided on — and becomes a controlled action in your systems.</p>
+        </Reveal>
 
         <div
           ref={ref}
@@ -665,16 +737,16 @@ function Flow() {
               <div className="wi-wire"><i className={lit(3)} /></div>
               <button type="button" className={`wi-step ${lit(3)}`} onClick={() => jump(3)}>{THREAD[1]}</button>
               <svg viewBox="0 0 220 60" role="presentation" className="wi-fan">
-                <g fill="none" stroke="#234C68">
+                <g fill="none" stroke="#2a5877">
                   <path d="M110 0 C 110 30, 40 30, 40 60" />
                   <path d="M110 0 C 110 30, 180 30, 180 60" />
                 </g>
-                <path d="M110 0 L110 60" fill="none" stroke="#35D0C2" strokeWidth="1.6" style={{ opacity: phase >= 4 ? 1 : 0.15, transition: "opacity .5s" }} />
+                <path d="M110 0 L110 60" fill="none" stroke="#7ec4c7" strokeWidth="1.6" style={{ opacity: phase >= 4 ? 1 : 0.15, transition: "opacity .5s" }} />
                 {phase >= 4 && !reduce && (
                   <>
-                    <circle r="2.8" fill="#5FE0D4"><animateMotion dur="1.3s" repeatCount="indefinite" path="M110 0 L110 60" /></circle>
-                    <circle r="2" fill="#35D0C2"><animateMotion dur="1.7s" repeatCount="indefinite" path="M110 0 C 110 30, 40 30, 40 60" /></circle>
-                    <circle r="2" fill="#35D0C2"><animateMotion dur="1.7s" begin="0.4s" repeatCount="indefinite" path="M110 0 C 110 30, 180 30, 180 60" /></circle>
+                    <circle r="2.8" fill="#bfe6e8"><animateMotion dur="1.3s" repeatCount="indefinite" path="M110 0 L110 60" /></circle>
+                    <circle r="2" fill="#7ec4c7"><animateMotion dur="1.7s" repeatCount="indefinite" path="M110 0 C 110 30, 40 30, 40 60" /></circle>
+                    <circle r="2" fill="#7ec4c7"><animateMotion dur="1.7s" begin="0.4s" repeatCount="indefinite" path="M110 0 C 110 30, 180 30, 180 60" /></circle>
                   </>
                 )}
               </svg>
@@ -695,7 +767,7 @@ function Flow() {
         </div>
 
         <div className="wi-console" aria-hidden="true">
-          <div className="wi-console-bar"><i /><i /><i /><span>agent run</span></div>
+          <div className="wi-console-bar"><i /><i /><i /><span>AGENT RUN</span></div>
           <div className="wi-console-body">
             {CONSOLE.map((c, i) => (
               <p key={c.k} className={`wi-cline ${phase >= i + 1 ? "is-lit" : ""} ${phase === i + 1 ? "is-now" : ""}`}>
@@ -715,9 +787,18 @@ function Flow() {
           ))}
         </motion.div>
 
-        <Reveal className="wi-mt"><TextLink href="/contact-us" dark>Bring Us Your Business Challenge</TextLink></Reveal>
+        <Reveal className="mt-10"><TextLink href="/contact-us" dark>Bring Us Your Business Challenge</TextLink></Reveal>
       </div>
     </section>
+  );
+}
+
+function FragmentPair({ children, showTimes, cardV, timesV }: { children: ReactNode; showTimes: boolean; cardV: Variants; timesV: Variants }) {
+  return (
+    <>
+      <motion.div className="wi-eq-slot" variants={cardV}>{children}</motion.div>
+      {showTimes && <motion.div className="wi-times" variants={timesV} aria-hidden="true">×</motion.div>}
+    </>
   );
 }
 
@@ -732,21 +813,16 @@ function Why() {
     show: { opacity: 1, scale: 1, rotate: 0, transition: { type: "spring", stiffness: 220, damping: 12 } },
   };
   const draw: Variants = { hidden: { pathLength: 0 }, show: { pathLength: 1, transition: { duration: 1.1, ease: EASE } } };
+  const accents = ["bg-[#163f7d]", "bg-[#2f8b92]", "bg-[#163f7d]"];
 
   return (
-    <section className="wi-sec wi-bd" aria-labelledby="s5-h">
-      <div className="wi-wrap">
-        <div className="wi-split wi-split-end wi-mb-lg">
-          <div>
-            <motion.p className="wi-eyebrow is-teal" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEW} transition={{ duration: 0.7, ease: EASE }}>
-              05 / WHY WOLVIO INTELLIGENCE
-            </motion.p>
-            <SplitText id="s5-h" className="wi-h2" lines={["Built for enterprise.", "Grounded in your business."]} />
-          </div>
-          <Reveal delay={0.2}>
-            <p className="wi-lead">Generic AI understands information. Enterprise AI must understand your organization — its data, processes, terminology, systems and operating context.</p>
-          </Reveal>
-        </div>
+    <section className="site-section" aria-labelledby="s5-h">
+      <div className="site-container">
+        <Kicker>Why Wolvio Intelligence</Kicker>
+        <SplitText id="s5-h" className="mt-4 max-w-[880px]" lines={["Built for enterprise.", "Grounded in your business."]} />
+        <Reveal delay={0.15}>
+          <p className="site-body mt-5 max-w-[980px]">Generic AI understands information. Enterprise AI must understand your organization — its data, processes, terminology, systems and operating context.</p>
+        </Reveal>
 
         <motion.div
           className="wi-eq"
@@ -759,9 +835,10 @@ function Why() {
         >
           {EQUATION.map((e, i) => (
             <FragmentPair key={e.t} showTimes={i < EQUATION.length - 1} cardV={cardV} timesV={timesV}>
-              <Tilt className="wi-eq-card" max={7}>
-                <h3>{e.t}</h3>
-                <div>
+              <Tilt className="wi-eq-card site-card relative overflow-hidden bg-white p-6 sm:p-7" max={7}>
+                <div className={`absolute left-0 top-0 h-[5px] w-full ${accents[i]}`} />
+                <p className="wi-eq-t">{e.t}</p>
+                <div className="wi-eq-list">
                   {e.items.map((it) => (
                     <span key={it}>{it}</span>
                   ))}
@@ -774,7 +851,7 @@ function Why() {
         <motion.div variants={stagger(0.1, 0.1)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.5 }}>
           {!narrow ? (
             <svg viewBox="0 0 1200 90" role="presentation" className="wi-eq-svg">
-              <g fill="none" stroke="#0B8C88" strokeWidth="1.2">
+              <g fill="none" stroke="#2f8b92" strokeWidth="1.4">
                 <motion.path variants={draw} d="M200 0 C 200 50, 600 40, 600 88" />
                 <motion.path variants={draw} d="M600 0 L 600 88" />
                 <motion.path variants={draw} d="M1000 0 C 1000 50, 600 40, 600 88" />
@@ -786,7 +863,7 @@ function Why() {
           <motion.div className="wi-result" variants={{ hidden: { opacity: 0, scale: 0.9 }, show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 110, damping: 14 } } }}>
             <div className="wi-result-in">
               <p className="wi-eq-sign">=</p>
-              <h3>Enterprise AI that works in the real world</h3>
+              <h3 className="mx-auto max-w-[760px] text-white">Enterprise AI that works in the real world</h3>
             </div>
           </motion.div>
         </motion.div>
@@ -799,18 +876,9 @@ function Why() {
             </motion.li>
           ))}
         </motion.ul>
-        <Reveal><p className="wi-sectors">LIFE SCIENCES &nbsp;·&nbsp; ENGINEERING &amp; RELIABILITY &nbsp;·&nbsp; ENTERPRISE OPERATIONS</p></Reveal>
+        <Reveal><p className="wi-sectors">LIFE SCIENCES · ENGINEERING & RELIABILITY · ENTERPRISE OPERATIONS</p></Reveal>
       </div>
     </section>
-  );
-}
-
-function FragmentPair({ children, showTimes, cardV, timesV }: { children: ReactNode; showTimes: boolean; cardV: Variants; timesV: Variants }) {
-  return (
-    <>
-      <motion.div className="wi-eq-slot" variants={cardV}>{children}</motion.div>
-      {showTimes && <motion.div className="wi-times" variants={timesV} aria-hidden="true">×</motion.div>}
-    </>
   );
 }
 
@@ -832,57 +900,68 @@ function Workshop() {
   });
 
   return (
-    <section className="wi-sec wi-deep" aria-labelledby="s6-h">
-      <div className="wi-gridbg" />
-      <div className="wi-wrap wi-rel">
-        <motion.p className="wi-eyebrow" initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={VIEW} transition={{ duration: 0.7, ease: EASE }}>
-          06 / AI TRANSFORMATION WORKSHOP
-        </motion.p>
-        <div className="wi-split wi-split-end wi-mb-xl">
-          <SplitText id="s6-h" className="wi-h2 wi-h2-lg is-white" lines={["Where can AI create the greatest", "value in your enterprise?"]} />
-          <Reveal delay={0.2}><p className="wi-lead is-dark">You don't need another AI experiment. Start with the business opportunity.</p></Reveal>
-        </div>
+    <section className="tone-lock site-section" aria-labelledby="s6-h">
+      <div className="site-container">
+        <motion.div
+          className="wi-band relative overflow-hidden rounded-[34px] bg-[linear-gradient(130deg,#072c52,#0a2d55_48%,#0e355f)] p-10 text-white sm:p-14"
+          initial={{ opacity: 0, y: 50, scale: 0.97 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 1, ease: EASE }}
+        >
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(47,143,146,0.24),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(47,143,146,0.22),transparent_38%)] wi-band-glow" />
+          <div className="wi-dots" />
+          <div className="relative text-center">
+            <span className="inline-flex rounded-full border border-[#1f6980] bg-[#114866]/55 px-5 py-2 text-[14px] font-semibold uppercase tracking-[0.12em] text-[#7ec4c7]">
+              AI Transformation Workshop
+            </span>
+            <SplitText id="s6-h" className="mx-auto mt-7 max-w-[900px] text-white" lines={["Where can AI create the greatest", "value in your enterprise?"]} />
+            <Reveal delay={0.15}>
+              <p className="mx-auto mt-5 max-w-[760px] text-[17px] leading-[1.65] text-[#b6c9da]">You don't need another AI experiment. Start with the business opportunity.</p>
+            </Reveal>
 
-        <div className="wi-path" role="group" aria-label="Workshop path: your business challenge, through discover, prioritize, define and shape, to an AI transformation roadmap">
-          <motion.div className="wi-path-end" {...pop(0)}>
-            <p>START</p>
-            <p className="wi-path-t">Your business challenge</p>
-          </motion.div>
-
-          <div className="wi-conn"><div className="wi-conn-rail"><motion.i {...fill(0.4, 1.2)} /></div></div>
-
-          <div className="wi-path-steps">
-            {WORKSHOP.map((w, i) => (
-              <motion.div
-                key={w.k}
-                className={`wi-pstep ${hot === i ? "is-hot" : ""}`}
-                tabIndex={0}
-                onMouseEnter={() => setHot(i)}
-                onMouseLeave={() => setHot(null)}
-                onFocus={() => setHot(i)}
-                onBlur={() => setHot(null)}
-                {...pop(0.7 + i * 0.25)}
-              >
-                <p className="wi-pstep-k">{w.k}</p>
-                <p>{w.t}</p>
-                <span className="wi-pstep-line" />
+            <div className="wi-path" role="group" aria-label="Workshop path: your business challenge, through discover, prioritize, define and shape, to an AI transformation roadmap">
+              <motion.div className="wi-path-end" {...pop(0)}>
+                <p>START</p>
+                <p className="wi-path-t">Your business challenge</p>
               </motion.div>
-            ))}
+
+              <div className="wi-conn"><div className="wi-conn-rail"><motion.i {...fill(0.4, 1.2)} /></div></div>
+
+              <div className="wi-path-steps">
+                {WORKSHOP.map((w, i) => (
+                  <motion.div
+                    key={w.k}
+                    className={`wi-pstep ${hot === i ? "is-hot" : ""}`}
+                    tabIndex={0}
+                    onMouseEnter={() => setHot(i)}
+                    onMouseLeave={() => setHot(null)}
+                    onFocus={() => setHot(i)}
+                    onBlur={() => setHot(null)}
+                    {...pop(0.7 + i * 0.25)}
+                  >
+                    <p className="wi-pstep-k">{w.k}</p>
+                    <p>{w.t}</p>
+                    <span className="wi-pstep-line" />
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="wi-conn"><div className="wi-conn-rail"><motion.i {...fill(1.9, 1)} /></div></div>
+
+              <motion.div className="wi-path-end is-out" {...pop(2.2)}>
+                <p>OUTCOME</p>
+                <p className="wi-path-t">AI transformation roadmap</p>
+              </motion.div>
+            </div>
+
+            <Reveal className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+              <CtaLink href="/contact-us" variant="solid">Start Your AI Transformation</CtaLink>
+              <CtaLink href="/contact-us" variant="ghostDark">Talk to Wolvio Intelligence</CtaLink>
+            </Reveal>
+            <p className="mt-6 text-[14.5px] text-[#9fb9cc]">From focused AI initiatives to enterprise-wide transformation.</p>
           </div>
-
-          <div className="wi-conn"><div className="wi-conn-rail"><motion.i {...fill(1.9, 1)} /></div></div>
-
-          <motion.div className="wi-path-end is-out" {...pop(2.2)}>
-            <p>OUTCOME</p>
-            <p className="wi-path-t">AI transformation roadmap</p>
-          </motion.div>
-        </div>
-
-        <Reveal className="wi-final">
-          <CtaLink href="/contact-us">Start Your AI Transformation</CtaLink>
-          <CtaLink href="/contact-us" variant="ghost">Talk to Wolvio Intelligence</CtaLink>
-          <p>From focused AI initiatives to enterprise-wide transformation.</p>
-        </Reveal>
+        </motion.div>
       </div>
     </section>
   );
